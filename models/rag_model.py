@@ -89,7 +89,6 @@ def destinations_near_route(route_coords, destinations, max_distance_km=20):
 
     return nearby
 
-
 def route_based_recommendation(route_coords, query):
     nearby = destinations_near_route(
         route_coords,
