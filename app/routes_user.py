@@ -31,16 +31,36 @@ def search():
 
 @user_bp.route("/plan", methods=["POST"])
 def plan_trip():
-    start_lat = float(request.form["start_lat"])
-    start_lon = float(request.form["start_lon"])
+    # Try to get start location from form
+    start_lat = request.form.get("start_lat")
+    start_lon = request.form.get("start_lon")
+
+    # If form does not have start location, use GeoIP
+    if not start_lat or not start_lon:
+        try:
+            import geoip2.database
+            reader = geoip2.database.Reader(GEOIP_DB_PATH)
+            user_ip = request.remote_addr
+            response = reader.city(user_ip)
+            start_lat = response.location.latitude
+            start_lon = response.location.longitude
+            reader.close()
+        except Exception as e:
+            # GeoIP failed
+            return "Cannot determine start location. Please provide a starting location.", 400
+
+    # Convert to float
+    start_lat = float(start_lat)
+    start_lon = float(start_lon)
     end_lat = float(request.form["end_lat"])
     end_lon = float(request.form["end_lon"])
 
+    # Generate route
     route_coords = get_route(start_lat, start_lon, end_lat, end_lon)
     query = "Suggest tourist destinations near this travel route in Sri Lanka"
     recommendations = route_based_recommendation(route_coords, query)
-    
-    # Prepare safe data for JavaScript
+
+    # Prepare data for JS
     destinations_for_js = []
     for r in recommendations:
         dest = r["destination"]
