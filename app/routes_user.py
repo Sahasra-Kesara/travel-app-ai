@@ -49,7 +49,7 @@ def plan_trip():
 
     return render_template(
         "recommendations.html",
-        results=recommendations,
+        results=recommendations or [],
         route_coords=route_coords or [],
-        destinations=destinations_for_js
+        destinations=destinations_for_js or []
     )

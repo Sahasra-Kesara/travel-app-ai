@@ -26,45 +26,36 @@
     </div>
 
 <script>
-    // @ts-nocheck
-    /* eslint-disable */
-    /* jshint ignore:start */
-    
-    // Data is already safe and formatted from Flask
-    const routeCoords = {{ route_coords | tojson | safe }};
-    const destinationList = {{ destinations | tojson | safe }};
+const routeCoords = JSON.parse('{{ route_coords | tojson | safe }}') || [];
+const destinationList = JSON.parse('{{ destinations | tojson | safe }}') || [];
 
-    if(routeCoords.length && destinationList.length){
-        // Initialize map
-        const map = L.map('map').setView([7.8731, 80.7718], 7);
+if (routeCoords.length && destinationList.length) {
+    const map = L.map('map').setView([7.8731, 80.7718], 7);
 
-        // Tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
 
-        // Route polyline
-        const routeLine = L.polyline(
-            routeCoords.map(p => [p[1], p[0]]),
-            { color: 'blue', weight: 4 }
-        ).addTo(map);
+    const routeLine = L.polyline(
+        routeCoords.map(p => [p[1], p[0]]),
+        { color: 'blue', weight: 4 }
+    ).addTo(map);
 
-        map.fitBounds(routeLine.getBounds());
+    map.fitBounds(routeLine.getBounds());
 
-        // Destination markers
-        destinationList.forEach(d => {
-            if(d && d.coordinates && d.coordinates.lat && d.coordinates.lon){
-                L.marker([d.coordinates.lat, d.coordinates.lon])
-                    .addTo(map)
-                    .bindPopup(`<b>${d.name}</b><br/>${d.category}`);
-            }
-        });
-    } else {
-        console.warn("No route or destinations to display on map.");
-    }
-    
-    /* jshint ignore:end */
+    destinationList.forEach(d => {
+        if (d && d.coordinates && d.coordinates.lat && d.coordinates.lon) {
+            L.marker([d.coordinates.lat, d.coordinates.lon])
+             .addTo(map)
+             .bindPopup(`<b>${d.name}</b><br/>${d.category}`);
+        }
+    });
+} else {
+    console.warn("No route or destinations to display on map.");
+}
 </script>
+
+
 
 </body>
 </html>
