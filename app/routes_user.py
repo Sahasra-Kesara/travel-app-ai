@@ -29,14 +29,35 @@ def search():
 
     return render_template('destination.html', results=results)
 
+import requests
+
 @user_bp.route("/plan", methods=["POST"])
 def plan_trip():
-    # Get start location from form
-    start_lat = request.form.get("start_lat")
-    start_lon = request.form.get("start_lon")
+    start_city = request.form.get("start_city")
+    start_lat = None
+    start_lon = None
 
-    # If form is empty, try GeoIP lookup
-    if not start_lat or not start_lon:
+    # 1️⃣ If user provided a city, use Nominatim API to get coordinates
+    if start_city:
+        try:
+            url = "https://nominatim.openstreetmap.org/search"
+            params = {
+                "q": start_city,
+                "format": "json",
+                "limit": 1
+            }
+            response = requests.get(url, params=params, headers={"User-Agent": "TravelApp/1.0"})
+            data = response.json()
+            if data:
+                start_lat = float(data[0]["lat"])
+                start_lon = float(data[0]["lon"])
+            else:
+                return f"City '{start_city}' not found. Please enter a valid city.", 400
+        except Exception as e:
+            return f"Error fetching coordinates for city: {str(e)}", 500
+
+    # 2️⃣ If no city provided, try GeoIP
+    if start_lat is None or start_lon is None:
         try:
             reader = geoip2.database.Reader(GEOIP_DB_PATH)
             user_ip = request.remote_addr
@@ -45,18 +66,16 @@ def plan_trip():
             start_lon = response.location.longitude
             reader.close()
         except Exception:
-            # GeoIP failed → return a message
-            return "Cannot determine start location. Please enter it manually.", 400
+            return "Cannot determine start location. Please enter a city manually.", 400
 
+    # Destination coordinates from form
     try:
-        start_lat = float(start_lat)
-        start_lon = float(start_lon)
         end_lat = float(request.form["end_lat"])
         end_lon = float(request.form["end_lon"])
     except ValueError:
-        return "Invalid coordinates provided.", 400
+        return "Invalid destination coordinates.", 400
 
-    # Generate route and recommendations
+    # Generate route
     route_coords = get_route(start_lat, start_lon, end_lat, end_lon)
     query = "Suggest tourist destinations near this travel route in Sri Lanka"
     recommendations = route_based_recommendation(route_coords, query)
