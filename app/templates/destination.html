@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <title>Recommendations</title>
     <link href="{{ url_for('static', filename='css/tailwind.css') }}" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 </head>
 <body class="bg-gray-100 p-8">
     <h1 class="text-3xl font-bold mb-6">Recommended Destinations</h1>
+    <!-- MAP -->
+<div id="map" class="w-full h-[500px] rounded-lg shadow mb-8"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {% for rec in results %}
         <div class="bg-white p-4 rounded shadow">
@@ -17,5 +25,38 @@
         </div>
         {% endfor %}
     </div>
+    <script>
+  // Init map
+  const map = L.map('map').setView([7.8731, 80.7718], 7);
+
+  // Tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap'
+  }).addTo(map);
+
+  // Route coordinates (SAFE JSON)
+  const routeCoords = {{ route_coords | tojson }};
+
+  // Draw route
+  const routeLine = L.polyline(
+      routeCoords.map(p => [p[1], p[0]]),
+      { color: 'blue', weight: 4 }
+  ).addTo(map);
+
+  map.fitBounds(routeLine.getBounds());
+
+  // Destinations (SAFE JSON)
+  const destinationList = {{ destinations | tojson }};
+
+  destinationList.forEach(d => {
+      L.marker([d.coordinates.lat, d.coordinates.lon])
+        .addTo(map)
+        .bindPopup(
+          `<b>${d.name}</b><br/>${d.category}`
+        );
+  });
+</script>
+
+
 </body>
 </html>

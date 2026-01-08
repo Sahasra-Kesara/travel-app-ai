@@ -42,8 +42,8 @@ def plan_trip():
     destinations = [r["destination"] for r in recommendations]
 
     return render_template(
-        "destination.html",
+        "recommendations.html",
+        results=recommendations,
         route_coords=route_coords,
-        destinations=destinations,
-        recommendations=recommendations
+        destinations=[r["destination"] for r in recommendations]
     )
