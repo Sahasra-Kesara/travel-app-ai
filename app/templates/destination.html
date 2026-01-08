@@ -6,32 +6,39 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-8">
-    <h1 class="text-3xl font-bold mb-6">Recommended Destinations</h1>
+<h1 class="text-3xl font-bold mb-6">Recommended Destinations</h1>
 
-    {% if results %}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {% for rec in results %}
-        <div class="bg-white p-4 rounded shadow">
-            <h2 class="text-xl font-semibold">{{ rec.destination.name }}</h2>
-            <p>{{ rec.summary }}</p>
-            <p class="mt-2 font-medium">Best time to visit: {{ rec.destination.best_time_to_visit }}</p>
-            <p>Activities: {{ rec.destination.activities | join(', ') }}</p>
+{% if results %}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {% for rec in results %}
+    <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-xl font-semibold">{{ rec.destination.name }}</h2>
+        <p>{{ rec.summary }}</p>
+        <p class="mt-2 font-medium">Best time to visit: {{ rec.destination.best_time_to_visit }}</p>
+        <p>Activities: {{ rec.destination.activities | join(', ') }}</p>
 
-            <!-- Plan Trip Button -->
-            <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-4">
-                <!-- For demo purposes, assume the destination itself is the end point -->
-                <input type="hidden" name="end_lat" value="{{ rec.destination.coordinates.lat }}">
-                <input type="hidden" name="end_lon" value="{{ rec.destination.coordinates.lon }}">
-                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                    Plan Trip
-                </button>
-            </form>
-        </div>
-        {% endfor %}
+        <!-- Plan Trip Form -->
+        <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-4">
+            <!-- Starting location inputs -->
+            <label class="block font-medium mb-1">Starting Latitude:</label>
+            <input type="text" name="start_lat" placeholder="Enter starting latitude" class="border p-1 rounded w-full mb-2">
+
+            <label class="block font-medium mb-1">Starting Longitude:</label>
+            <input type="text" name="start_lon" placeholder="Enter starting longitude" class="border p-1 rounded w-full mb-2">
+
+            <!-- Destination coordinates -->
+            <input type="hidden" name="end_lat" value="{{ rec.destination.coordinates.lat }}">
+            <input type="hidden" name="end_lon" value="{{ rec.destination.coordinates.lon }}">
+
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">
+                Plan Trip
+            </button>
+        </form>
     </div>
-    {% else %}
-    <p class="text-gray-600">No recommendations found. Try another search!</p>
-    {% endif %}
-
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-gray-600">No recommendations found. Try another search!</p>
+{% endif %}
 </body>
 </html>
