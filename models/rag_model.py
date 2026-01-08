@@ -64,3 +64,40 @@ def get_recommendations(query, destinations=destinations_with_embeddings, top_k=
         recommendations.append({'destination': dest, 'summary': summary})
     
     return recommendations
+
+def haversine(lat1, lon1, lat2, lon2):
+    R = 6371  # km
+    dlat = radians(lat2 - lat1)
+    dlon = radians(lon2 - lon1)
+
+    a = sin(dlat/2)**2 + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a))
+    return R * c
+
+
+def destinations_near_route(route_coords, destinations, max_distance_km=20):
+    nearby = []
+
+    for dest in destinations:
+        dlat = dest["coordinates"]["lat"]
+        dlon = dest["coordinates"]["lon"]
+
+        for lon, lat in route_coords:
+            if haversine(lat, lon, dlat, dlon) <= max_distance_km:
+                nearby.append(dest)
+                break
+
+    return nearby
+
+
+def route_based_recommendation(route_coords, query):
+    nearby = destinations_near_route(
+        route_coords,
+        destinations_with_embeddings
+    )
+
+    return get_recommendations(
+        query,
+        destinations=nearby,
+        top_k=5
+    )
