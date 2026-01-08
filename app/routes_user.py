@@ -3,7 +3,10 @@ from models.rag_model import get_recommendations, destinations_with_embeddings
 from flask import render_template, request
 from app.services.route_service import get_route
 from models.rag_model import route_based_recommendation
+import geoip2.database
+from flask import request, render_template, flash
 
+GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
 
 @user_bp.route('/')
