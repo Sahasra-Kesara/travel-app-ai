@@ -1,60 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Travel AI</title>
-    <link href="{{ url_for('static', filename='css/tailwind.css') }}" rel="stylesheet">
-</head>
-<body class="bg-gradient-to-r from-blue-100 to-blue-50 min-h-screen">
+{% extends "base.html" %}
+{% block title %}Home - Travel AI{% endblock %}
 
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-600">Travel AI</h1>
-            <div class="space-x-4">
-                <a href="{{ url_for('user.home') }}" class="text-gray-700 hover:text-blue-600 font-semibold">Home</a>
-                <a href="#" class="text-gray-700 hover:text-blue-600 font-semibold">About</a>
-                <a href="#" class="text-gray-700 hover:text-blue-600 font-semibold">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="max-w-7xl mx-auto px-4 py-16 text-center">
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-blue-800">Plan Your Perfect Trip</h2>
-        <p class="text-gray-700 text-lg md:text-xl mb-8">Search destinations, explore routes, and get personalized travel recommendations.</p>
-
-        <!-- Search Form -->
-        <form action="{{ url_for('user.search') }}" method="POST" class="max-w-xl mx-auto flex flex-col md:flex-row gap-4">
-            <input type="text" name="query" placeholder="Enter your travel query..." 
-                   class="flex-1 p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"/>
-            <button class="bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition">Search</button>
-        </form>
-    </section>
-
-    <!-- Quick Categories Section -->
-    <section class="max-w-7xl mx-auto px-4 py-12">
-        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Explore Popular Categories</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center">
-                <h4 class="text-xl font-semibold mb-2">Nature & Parks</h4>
-                <p class="text-gray-600 text-sm">Discover beautiful natural spots and national parks in Sri Lanka.</p>
-            </div>
-            <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center">
-                <h4 class="text-xl font-semibold mb-2">Historical Sites</h4>
-                <p class="text-gray-600 text-sm">Explore ancient cities, temples, and UNESCO World Heritage sites.</p>
-            </div>
-            <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center">
-                <h4 class="text-xl font-semibold mb-2">Beaches & Relaxation</h4>
-                <p class="text-gray-600 text-sm">Find the best beaches and seaside destinations for a relaxing getaway.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-white mt-12 py-6 shadow-inner text-center text-gray-600">
-        &copy; 2026 Travel AI. All Rights Reserved.
-    </footer>
-
-</body>
-</html>
+{% block content %}
+<div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-3xl font-bold mb-4">Search Your Travel Destination</h1>
+    <form action="{{ url_for('user.search') }}" method="POST" class="flex flex-col md:flex-row gap-4">
+        <input type="text" name="query" placeholder="Enter your travel query..." 
+               class="flex-1 p-3 border rounded" required>
+        <button class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">
+            Search
+        </button>
+    </form>
+</div>
+{% endblock %}
