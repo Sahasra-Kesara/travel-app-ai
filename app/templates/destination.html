@@ -20,8 +20,9 @@
             <!-- Plan Trip Button -->
             <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-4">
                 <!-- For demo purposes, assume the destination itself is the end point -->
-                <input type="hidden" name="start_lat" value="7.8731"> <!-- default start, you can let user choose -->
-                <input type="hidden" name="start_lon" value="80.7718">
+                <label>Starting Location (optional):</label>
+                <input type="text" name="start_lat" placeholder="Latitude">
+                <input type="text" name="start_lon" placeholder="Longitude">
                 <input type="hidden" name="end_lat" value="{{ rec.destination.coordinates.lat }}">
                 <input type="hidden" name="end_lon" value="{{ rec.destination.coordinates.lon }}">
                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
