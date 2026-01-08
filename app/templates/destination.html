@@ -18,13 +18,11 @@
         <p>Activities: {{ rec.destination.activities | join(', ') }}</p>
 
         <!-- Plan Trip Form -->
+        <!-- Plan Trip Form -->
         <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-4">
-            <!-- Starting location inputs -->
-            <label class="block font-medium mb-1">Starting Latitude:</label>
-            <input type="text" name="start_lat" placeholder="Enter starting latitude" class="border p-1 rounded w-full mb-2">
-
-            <label class="block font-medium mb-1">Starting Longitude:</label>
-            <input type="text" name="start_lon" placeholder="Enter starting longitude" class="border p-1 rounded w-full mb-2">
+            <!-- Starting location input (city name) -->
+            <label class="block font-medium mb-1">Starting Location (City Name):</label>
+            <input type="text" name="start_city" placeholder="Enter starting city" class="border p-1 rounded w-full mb-2">
 
             <!-- Destination coordinates -->
             <input type="hidden" name="end_lat" value="{{ rec.destination.coordinates.lat }}">
