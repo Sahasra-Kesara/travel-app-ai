@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <title>Route Recommendations</title>
     <link href="{{ url_for('static', filename='css/tailwind.css') }}" rel="stylesheet">
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body class="bg-gray-100 p-8">
@@ -28,8 +25,12 @@
         {% endfor %}
     </div>
 
-    {% if route_coords is defined and destinations is defined %}
-    <script>
+<script>
+    // Ensure we always have safe defaults
+    const routeCoords = {{ route_coords | default([]) | tojson | safe }};
+    const destinationList = {{ destinations | default([]) | tojson | safe }};
+
+    if(routeCoords.length && destinationList.length){
         // Initialize map
         const map = L.map('map').setView([7.8731, 80.7718], 7);
 
@@ -39,7 +40,6 @@
         }).addTo(map);
 
         // Route polyline
-        const routeCoords = {{ route_coords | tojson }};
         const routeLine = L.polyline(
             routeCoords.map(p => [p[1], p[0]]),
             { color: 'blue', weight: 4 }
@@ -47,14 +47,18 @@
 
         map.fitBounds(routeLine.getBounds());
 
-        // Destinations markers
-        const destinationList = {{ destinations | tojson }};
+        // Destination markers
         destinationList.forEach(d => {
-            L.marker([d.coordinates.lat, d.coordinates.lon])
-                .addTo(map)
-                .bindPopup(`<b>${d.name}</b><br/>${d.category}`);
+            if(d && d.coordinates && d.coordinates.lat && d.coordinates.lon){
+                L.marker([d.coordinates.lat, d.coordinates.lon])
+                    .addTo(map)
+                    .bindPopup(`<b>${d.name}</b><br/>${d.category}`);
+            }
         });
-    </script>
-    {% endif %}
+    } else {
+        console.warn("No route or destinations to display on map.");
+    }
+</script>
+
 </body>
 </html>

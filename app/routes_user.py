@@ -34,16 +34,22 @@ def plan_trip():
     end_lon = float(request.form["end_lon"])
 
     route_coords = get_route(start_lat, start_lon, end_lat, end_lon)
-
     query = "Suggest tourist destinations near this travel route in Sri Lanka"
-
     recommendations = route_based_recommendation(route_coords, query)
-
-    destinations = [r["destination"] for r in recommendations]
+    
+    # Prepare safe data for JavaScript
+    destinations_for_js = []
+    for r in recommendations:
+        dest = r["destination"]
+        destinations_for_js.append({
+            "name": dest.get("name", ""),
+            "category": dest.get("category", ""),
+            "coordinates": dest.get("coordinates", {})
+        })
 
     return render_template(
         "recommendations.html",
         results=recommendations,
-        route_coords=route_coords,
-        destinations=[r["destination"] for r in recommendations]
+        route_coords=route_coords or [],
+        destinations=destinations_for_js
     )
