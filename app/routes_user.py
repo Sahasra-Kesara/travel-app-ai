@@ -1,5 +1,8 @@
 from flask import Blueprint, render_template, request
 from models.rag_model import get_recommendations, destinations_with_embeddings
+from flask import render_template, request
+from app.services.route_service import get_route
+from models.rag_model import route_based_recommendation
 
 user_bp = Blueprint('user', __name__)
 
