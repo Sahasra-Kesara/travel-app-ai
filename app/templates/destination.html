@@ -1,35 +1,26 @@
-{% extends "base.html" %}
-{% block title %}Search Results - Travel AI{% endblock %}
-
-{% block content %}
-<div class="max-w-5xl mx-auto space-y-6">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link href="{{ url_for('static', filename='css/tailwind.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
     <h1 class="text-3xl font-bold mb-6">Recommended Destinations</h1>
 
     {% if results %}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {% for rec in results %}
         <div class="bg-white p-4 rounded shadow">
             <h2 class="text-xl font-semibold">{{ rec.destination.name }}</h2>
             <p>{{ rec.summary }}</p>
             <p class="mt-2 font-medium">Best time to visit: {{ rec.destination.best_time_to_visit }}</p>
             <p>Activities: {{ rec.destination.activities | join(', ') }}</p>
-
-            <!-- Button to plan trip / show route -->
-            <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-4">
-                <input type="hidden" name="start_lat" value="7.8731">
-                <input type="hidden" name="start_lon" value="80.7718">
-                <input type="hidden" name="end_lat" value="{{ rec.destination.coordinates.lat }}">
-                <input type="hidden" name="end_lon" value="{{ rec.destination.coordinates.lon }}">
-                <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
-                    Show on Map
-                </button>
-            </form>
         </div>
         {% endfor %}
     </div>
     {% else %}
     <p class="text-gray-600">No recommendations found. Try another search!</p>
     {% endif %}
-</div>
-{% endblock %}
+</body>
+</html>
