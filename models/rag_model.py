@@ -4,6 +4,7 @@ from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline
 import torch
 from math import radians, cos, sin, asin, sqrt
+from functools import lru_cache
 
 # -------------------------------
 # Setup paths
@@ -23,7 +24,13 @@ with open(KB_PATH, 'r', encoding='utf-8') as f:
 embed_model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # LLM for text generation (RAG)
-generator = pipeline("text-generation", model="gpt2")
+#generator = pipeline("text-generation", model="gpt2")
+generator = pipeline(
+    "text2text-generation",
+    model="google/flan-t5-small",
+    device=0 if torch.cuda.is_available() else -1
+)
+
 
 # -------------------------------
 # Precompute embeddings
@@ -59,8 +66,19 @@ def get_recommendations(query, destinations=destinations_with_embeddings, top_k=
     # Generate friendly summaries using LLM
     recommendations = []
     for dest in top_destinations:
-        prompt = f"Provide a friendly travel recommendation for: {dest['name']}, {dest['description']}"
-        summary = generator(prompt, max_length=100, do_sample=True)[0]['generated_text']
+        #prompt = f"Provide a friendly travel recommendation for: {dest['name']}, {dest['description']}"
+        prompt = (
+            f"Recommend {dest['name']} in Sri Lanka for a traveler. "
+            f"Description: {dest['description']} "
+            f"Keep it short and friendly."
+        )
+        #summary = generator(prompt, max_length=100, do_sample=True)[0]['generated_text']
+        summary = generator(
+            prompt,
+            max_new_tokens=60,
+            do_sample=False
+        )[0]["generated_text"]
+
         recommendations.append({'destination': dest, 'summary': summary})
     
     return recommendations
@@ -100,3 +118,7 @@ def route_based_recommendation(route_coords, query):
         destinations=nearby,
         top_k=5
     )
+
+@lru_cache(maxsize=128)
+def generate_summary(prompt):
+    return generator(prompt, max_new_tokens=60, do_sample=False)[0]["generated_text"]
