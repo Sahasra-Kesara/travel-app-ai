@@ -16,11 +16,24 @@
             <p>{{ rec.summary }}</p>
             <p class="mt-2 font-medium">Best time to visit: {{ rec.destination.best_time_to_visit }}</p>
             <p>Activities: {{ rec.destination.activities | join(', ') }}</p>
+
+            <!-- Plan Trip Button -->
+            <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-4">
+                <!-- For demo purposes, assume the destination itself is the end point -->
+                <input type="hidden" name="start_lat" value="7.8731"> <!-- default start, you can let user choose -->
+                <input type="hidden" name="start_lon" value="80.7718">
+                <input type="hidden" name="end_lat" value="{{ rec.destination.coordinates.lat }}">
+                <input type="hidden" name="end_lon" value="{{ rec.destination.coordinates.lon }}">
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    Plan Trip
+                </button>
+            </form>
         </div>
         {% endfor %}
     </div>
     {% else %}
     <p class="text-gray-600">No recommendations found. Try another search!</p>
     {% endif %}
+
 </body>
 </html>
