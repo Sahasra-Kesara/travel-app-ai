@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Route Recommendations</title>
+    <link href="{{ url_for('static', filename='css/tailwind.css') }}" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <h1 class="text-3xl font-bold mb-6">Recommended Destinations Along Your Route</h1>
+
+    <!-- MAP -->
+    <div id="map" class="w-full h-[500px] rounded-lg shadow mb-8"></div>
+
+    <!-- Destination Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {% for rec in results %}
+        <div class="bg-white p-4 rounded shadow">
+            <h2 class="text-xl font-semibold">{{ rec.destination.name }}</h2>
+            <p>{{ rec.summary }}</p>
+            <p class="mt-2 font-medium">Best time to visit: {{ rec.destination.best_time_to_visit }}</p>
+            <p>Activities: {{ rec.destination.activities | join(', ') }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if route_coords is defined and destinations is defined %}
+    <script>
+        // Initialize map
+        const map = L.map('map').setView([7.8731, 80.7718], 7);
+
+        // Tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Route polyline
+        const routeCoords = {{ route_coords | tojson }};
+        const routeLine = L.polyline(
+            routeCoords.map(p => [p[1], p[0]]),
+            { color: 'blue', weight: 4 }
+        ).addTo(map);
+
+        map.fitBounds(routeLine.getBounds());
+
+        // Destinations markers
+        const destinationList = {{ destinations | tojson }};
+        destinationList.forEach(d => {
+            L.marker([d.coordinates.lat, d.coordinates.lon])
+                .addTo(map)
+                .bindPopup(`<b>${d.name}</b><br/>${d.category}`);
+        });
+    </script>
+    {% endif %}
+</body>
+</html>
