@@ -37,7 +37,7 @@ def plan_trip():
     start_lat = None
     start_lon = None
 
-    # 1️⃣ If user provided a city, use Nominatim API to get coordinates
+    # If user provided a city, use Nominatim API to get coordinates
     if start_city:
         try:
             url = "https://nominatim.openstreetmap.org/search"
@@ -56,7 +56,7 @@ def plan_trip():
         except Exception as e:
             return f"Error fetching coordinates for city: {str(e)}", 500
 
-    # 2️⃣ If no city provided, try GeoIP
+    # If no city provided, try GeoIP
     if start_lat is None or start_lon is None:
         try:
             reader = geoip2.database.Reader(GEOIP_DB_PATH)
