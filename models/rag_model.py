@@ -3,6 +3,7 @@ import json
 from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline
 import torch
+from math import radians, cos, sin, asin, sqrt
 
 # -------------------------------
 # Setup paths
