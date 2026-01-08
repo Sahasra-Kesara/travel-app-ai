@@ -25,3 +25,25 @@ def search():
     )
 
     return render_template('destination.html', results=results)
+
+@user_bp.route("/plan", methods=["POST"])
+def plan_trip():
+    start_lat = float(request.form["start_lat"])
+    start_lon = float(request.form["start_lon"])
+    end_lat = float(request.form["end_lat"])
+    end_lon = float(request.form["end_lon"])
+
+    route_coords = get_route(start_lat, start_lon, end_lat, end_lon)
+
+    query = "Suggest tourist destinations near this travel route in Sri Lanka"
+
+    recommendations = route_based_recommendation(route_coords, query)
+
+    destinations = [r["destination"] for r in recommendations]
+
+    return render_template(
+        "destination.html",
+        route_coords=route_coords,
+        destinations=destinations,
+        recommendations=recommendations
+    )
