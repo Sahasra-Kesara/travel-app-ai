@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-4">
+  Guides for {{ destination }}
+</h2>
+
+{% for guide in guides %}
+<div class="border p-4 rounded mb-4">
+  <h3 class="text-lg font-semibold">{{ guide.name }}</h3>
+  <p>{{ guide.description }}</p>
+  <p><b>Languages:</b> {{ guide.language | join(", ") }}</p>
+  <p><b>Price:</b> LKR {{ guide.price_per_hour }}/hour</p>
+  <p><b>Rating:</b> ⭐ {{ guide.rating }}</p>
+
+  <form method="POST" action="/book-guide" class="mt-2">
+    <input type="hidden" name="guide_id" value="{{ guide.id }}">
+    <input type="date" name="date" required>
+    <input type="time" name="time" required>
+    <input type="number" name="hours" min="1" required>
+    <button class="bg-blue-600 text-white px-3 py-1 rounded">
+      Book Now
+    </button>
+  </form>
+</div>
+{% else %}
+<p>No guides available for this destination.</p>
+{% endfor %}
+
+{% endblock %}
