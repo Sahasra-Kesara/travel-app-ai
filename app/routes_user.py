@@ -157,7 +157,7 @@ def book_guide():
         flash("Please fill all booking details")
         return redirect(request.referrer)
 
-    # 🔒 Later: save to database
+    # Later: save to database
     flash("Guide booked successfully!")
     return redirect("/")
 
