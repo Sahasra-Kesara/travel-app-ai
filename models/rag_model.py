@@ -11,6 +11,7 @@ from functools import lru_cache
 # -------------------------------
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KB_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'destinations.json')
+GUIDES_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'guides.json')
 
 # -------------------------------
 # Load knowledge base
