@@ -126,3 +126,12 @@ def route_based_recommendation(route_coords, query):
 @lru_cache(maxsize=128)
 def generate_summary(prompt):
     return generator(prompt, max_new_tokens=60, do_sample=False)[0]["generated_text"]
+
+def get_guides_for_destination(destination_name):
+    matched_guides = []
+
+    for guide in guides_data:
+        if guide["destination"].lower() == destination_name.lower() and guide["available"]:
+            matched_guides.append(guide)
+
+    return matched_guides
