@@ -135,3 +135,23 @@ def get_guides_for_destination(destination_name):
             matched_guides.append(guide)
 
     return matched_guides
+
+def generate_guide_pitch(guide):
+    """
+    Generate a short AI-based sales pitch for a tour guide
+    """
+    prompt = (
+        f"Create a friendly and professional tour guide pitch.\n"
+        f"Guide Name: {guide.get('name')}\n"
+        f"Experience: {guide.get('experience')} years\n"
+        f"Languages: {', '.join(guide.get('languages', []))}\n"
+        f"Specialty: {guide.get('specialty')}\n"
+        f"Destination: {guide.get('destination')}\n"
+        f"Keep it short and persuasive."
+    )
+
+    return generator(
+        prompt,
+        max_new_tokens=60,
+        do_sample=False
+    )[0]["generated_text"]
