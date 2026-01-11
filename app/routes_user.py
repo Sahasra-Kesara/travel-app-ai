@@ -103,9 +103,23 @@ def plan_trip():
 def guides(destination_name):
     from models.rag_model import get_guides_for_destination, generate_guide_pitch
 
-    guides = get_guides_for_destination(destination_name)
+    # Try detecting district from user's IP
+    user_ip = request.remote_addr
+    user_district = None
+    try:
+        import geoip2.database
+        reader = geoip2.database.Reader(GEOIP_DB_PATH)
+        response = reader.city(user_ip)
+        user_lat = response.location.latitude
+        user_lon = response.location.longitude
+        reader.close()
+        user_district = get_district_from_coords(user_lat, user_lon)
+    except Exception:
+        pass
 
-    # Add AI pitch for frontend
+    guides = get_guides_for_destination(destination_name, user_district=user_district)
+
+    # Add AI pitch
     for guide in guides:
         guide["ai_pitch"] = generate_guide_pitch(guide)
 
@@ -114,6 +128,22 @@ def guides(destination_name):
         destination=destination_name,
         guides=guides
     )
+
+
+def get_guides_for_destination(destination_name, user_district=None):
+    matched_guides = []
+
+    for guide in guides_data:
+        if guide["destination"].lower() == destination_name.lower() and guide["available"]:
+            # Filter by district if detected
+            if user_district:
+                if guide.get("district", "").lower() == user_district.lower():
+                    matched_guides.append(guide)
+            else:
+                matched_guides.append(guide)
+
+    return matched_guides
+
 
 @user_bp.route("/book-guide", methods=["POST"])
 def book_guide():
