@@ -1,30 +1,70 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2 class="text-2xl font-bold mb-4">
-  Guides for {{ destination }}
-</h2>
+<div class="max-w-6xl mx-auto px-4 py-6">
 
-{% for guide in guides %}
-<div class="border p-4 rounded mb-4">
-  <h3 class="text-lg font-semibold">{{ guide.name }}</h3>
-  <p>{{ guide.description }}</p>
-  <p><b>Languages:</b> {{ guide.language | join(", ") }}</p>
-  <p><b>Price:</b> LKR {{ guide.price_per_hour }}/hour</p>
-  <p><b>Rating:</b> ⭐ {{ guide.rating }}</p>
+  <h2 class="text-3xl font-bold mb-6">
+    Expert Guides in {{ destination }}
+  </h2>
 
-  <form method="POST" action="/book-guide" class="mt-2">
-    <input type="hidden" name="guide_id" value="{{ guide.id }}">
-    <input type="date" name="date" required>
-    <input type="time" name="time" required>
-    <input type="number" name="hours" min="1" required>
-    <button class="bg-blue-600 text-white px-3 py-1 rounded">
-      Book Now
-    </button>
-  </form>
+  <div class="grid md:grid-cols-2 gap-6">
+
+    {% for guide in guides %}
+    <div class="bg-white shadow-lg rounded-xl p-6">
+
+      <!-- Header -->
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 class="text-xl font-semibold">{{ guide.name }}</h3>
+          <p class="text-sm text-gray-500">
+            {{ guide.specialty | join(", ") }}
+          </p>
+        </div>
+        <span class="text-yellow-500 font-semibold">
+          ⭐ {{ guide.rating }}
+        </span>
+      </div>
+
+      <!-- AI Lecture Pitch -->
+      <div class="mt-4 bg-green-50 border-l-4 border-green-500 p-4 rounded">
+        <p class="text-sm text-gray-700 italic">
+          "{{ guide.ai_pitch }}"
+        </p>
+      </div>
+
+      <!-- Info -->
+      <div class="mt-4 text-sm text-gray-600 space-y-1">
+        <p><b>Languages:</b> {{ guide.language | join(", ") }}</p>
+        <p><b>Price:</b> LKR {{ guide.price_per_hour }} / hour</p>
+      </div>
+
+      <!-- Booking Form -->
+      <form method="POST" action="/book-guide" class="mt-5 grid grid-cols-2 gap-3">
+
+        <input type="hidden" name="guide_id" value="{{ guide.id }}">
+
+        <input type="date" name="date" required
+               class="border rounded px-2 py-1 col-span-1">
+
+        <input type="time" name="time" required
+               class="border rounded px-2 py-1 col-span-1">
+
+        <input type="number" name="hours" min="1" placeholder="Hours"
+               class="border rounded px-2 py-1 col-span-2">
+
+        <button class="col-span-2 bg-green-600 hover:bg-green-700
+                       text-white py-2 rounded-lg transition">
+          Book Lecture / Guide
+        </button>
+
+      </form>
+
+    </div>
+    {% else %}
+      <p>No guides available.</p>
+    {% endfor %}
+
+  </div>
 </div>
-{% else %}
-<p>No guides available for this destination.</p>
-{% endfor %}
 
 {% endblock %}
