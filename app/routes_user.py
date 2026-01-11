@@ -108,3 +108,18 @@ def guides(destination_name):
         destination=destination_name,
         guides=guides
     )
+
+@user_bp.route("/book-guide", methods=["POST"])
+def book_guide():
+    guide_id = request.form.get("guide_id")
+    date = request.form.get("date")
+    time = request.form.get("time")
+    hours = request.form.get("hours")
+
+    if not all([guide_id, date, time, hours]):
+        flash("Please fill all booking details")
+        return redirect(request.referrer)
+
+    # 🔒 Later: save to database
+    flash("Guide booked successfully!")
+    return redirect("/")
