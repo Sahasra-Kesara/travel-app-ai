@@ -99,9 +99,13 @@ def plan_trip():
 
 @user_bp.route("/guides/<destination_name>")
 def guides(destination_name):
-    from models.rag_model import get_guides_for_destination
+    from models.rag_model import get_guides_for_destination, generate_guide_pitch
 
     guides = get_guides_for_destination(destination_name)
+
+    # Add AI pitch for frontend
+    for guide in guides:
+        guide["ai_pitch"] = generate_guide_pitch(guide)
 
     return render_template(
         "guides.html",
