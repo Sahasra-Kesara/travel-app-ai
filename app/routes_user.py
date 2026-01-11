@@ -6,6 +6,7 @@ from models.rag_model import route_based_recommendation
 import geoip2.database
 from flask import request, render_template, flash
 from flask import redirect
+import requests
 
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
@@ -128,3 +129,22 @@ def book_guide():
     # 🔒 Later: save to database
     flash("Guide booked successfully!")
     return redirect("/")
+
+def get_district_from_coords(lat, lon):
+    """Return the district (administrative area) for given coordinates"""
+    try:
+        url = "https://nominatim.openstreetmap.org/reverse"
+        params = {
+            "lat": lat,
+            "lon": lon,
+            "format": "json",
+            "zoom": 10,  # Administrative area level
+            "addressdetails": 1
+        }
+        response = requests.get(url, params=params, headers={"User-Agent": "TravelApp/1.0"})
+        data = response.json()
+        # District in Sri Lanka is usually "county" or "state_district" in OSM
+        district = data.get("address", {}).get("county") or data.get("address", {}).get("state_district")
+        return district
+    except Exception:
+        return None
