@@ -22,10 +22,11 @@
             <p class="mt-2 font-medium">Best time to visit: {{ rec.destination.best_time_to_visit }}</p>
             <p>Activities: {{ rec.destination.activities | join(', ') }}</p>
         </div>
-        <a href="/guides/{{ rec.destination.name }}"
+        <a href="{{ url_for('user.guides', destination_name=rec.destination.name) }}"
             class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded">
-            Book a Guide / Lecture
+                Book a Guide / Lecture
         </a>
+
 
         {% endfor %}
     </div>
