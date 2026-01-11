@@ -1,43 +1,61 @@
-# test_accuracy.py
-
-from models.rag_model import get_recommendations, get_guides_for_destination
-
-# -------------------------------
-# Test Destinations
-# -------------------------------
-def test_destinations():
-    queries = [
-        ("Cultural tourism in Sri Lanka", ["Sigiriya", "Dambulla", "Polonnaruwa"]),
-        ("Beach yoga in Weligama", ["Weligama", "Mirissa"])
-    ]
-
-    for query, ground_truth in queries:
-        recs = get_recommendations(query)
-        retrieved = [r['destination']['name'] for r in recs]
-        correct = sum(1 for r in retrieved if r in ground_truth)
-        acc = correct / len(ground_truth)
-        print(f"Query: {query}, Accuracy: {acc:.2f}, Retrieved: {retrieved}")
-
+import json
+from models.rag_model import get_recommendations, destinations_with_embeddings, get_guides_for_destination
 
 # -------------------------------
-# Test Guides
+# Define test cases
 # -------------------------------
-def test_guides():
-    tests = [
-        ("Weligama", "Matara", ["Nadeeka Samarawickrama"]),
-        ("Kandy", None, ["Saman Perera", "Kumara Silva"])
-    ]
 
-    for dest, district, ground_truth in tests:
-        recs = get_guides_for_destination(dest, district)
-        retrieved = [g['name'] for g in recs]
-        correct = sum(1 for r in retrieved if r in ground_truth)
-        acc = correct / len(ground_truth)
-        print(f"Destination: {dest}, District: {district}, Accuracy: {acc:.2f}, Retrieved: {retrieved}")
+# Destinations test: query -> expected top destinations
+dest_test_cases = [
+    {
+        "query": "Cultural tourism in Sri Lanka",
+        "expected": ["Sigiriya Rock Fortress", "Dambulla Cave Temple", "Polonnaruwa Ancient City"]
+    },
+    {
+        "query": "Beach yoga in Weligama",
+        "expected": ["Weligama Beach", "Dickwella Beach"]
+    }
+]
 
+# Guides test: (destination, district) -> expected guides
+guides_test_cases = [
+    {
+        "destination": "Sigiriya",
+        "district": "Matale",
+        "expected": ["Nimal Perera"]
+    },
+    {
+        "destination": "Kandy",
+        "district": None,
+        "expected": ["Dinesh Wickramasinghe", "Sujatha Wickramasinghe"]
+    }
+]
 
-if __name__ == "__main__":
-    print("=== Testing Destination Recommendations ===")
-    test_destinations()
-    print("\n=== Testing Guide Recommendations ===")
-    test_guides()
+# -------------------------------
+# Helper function for accuracy
+# -------------------------------
+def accuracy(retrieved, expected):
+    retrieved_set = set(retrieved)
+    expected_set = set(expected)
+    if not expected_set:
+        return 0.0
+    return len(retrieved_set & expected_set) / len(expected_set)
+
+# -------------------------------
+# Test destinations
+# -------------------------------
+print("=== Testing Destination Recommendations ===")
+for case in dest_test_cases:
+    results = get_recommendations(case["query"], destinations=destinations_with_embeddings, top_k=5)
+    retrieved = [r['destination']['name'] for r in results]
+    acc = accuracy(retrieved, case["expected"])
+    print(f"Query: {case['query']}, Accuracy: {acc:.2f}, Retrieved: {retrieved}")
+
+# -------------------------------
+# Test guides
+# -------------------------------
+print("\n=== Testing Guide Recommendations ===")
+for case in guides_test_cases:
+    retrieved = [g['name'] for g in get_guides_for_destination(case["destination"], case["district"])]
+    acc = accuracy(retrieved, case["expected"])
+    print(f"Destination: {case['destination']}, District: {case['district']}, Accuracy: {acc:.2f}, Retrieved: {retrieved}")
