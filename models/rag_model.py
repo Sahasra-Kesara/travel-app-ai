@@ -25,7 +25,7 @@ with open(GUIDES_PATH, 'r', encoding='utf-8') as f:
 # -------------------------------
 # Embedding model for retrieval
 # -------------------------------
-embed_model = SentenceTransformer('all-MiniLM-L6-v2')
+embed_model = SentenceTransformer('all-mpnet-base-v2')
 
 # LLM for text generation (RAG)
 #generator = pipeline("text-generation", model="gpt2")
