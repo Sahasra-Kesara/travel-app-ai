@@ -1,0 +1,279 @@
+{
+  "guides": [
+    {
+      "id": "G001",
+      "name": "Nimal Perera",
+      "specialty": ["History", "Culture"],
+      "destination": "Sigiriya",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2500,
+      "rating": 4.7,
+      "available": true,
+      "description": "Experienced cultural guide with deep knowledge of Sigiriya and ancient Sri Lankan history."
+    },
+    {
+      "id": "G002",
+      "name": "Saman Jayasinghe",
+      "specialty": ["Wildlife", "Nature"],
+      "destination": "Yala National Park",
+      "language": ["English"],
+      "price_per_hour": 3000,
+      "rating": 4.9,
+      "available": true,
+      "description": "Professional wildlife guide specializing in leopard tracking and ecology."
+    },
+    {
+      "id": "G003",
+      "name": "Kumari Silva",
+      "specialty": ["Adventure", "Hiking"],
+      "destination": "Ella",
+      "language": ["English", "Tamil"],
+      "price_per_hour": 2000,
+      "rating": 4.5,
+      "available": false,
+      "description": "Enthusiastic adventure guide with expertise in hiking trails around Ella."
+    },
+    {
+      "id": "G004",
+      "name": "Ravi Fernando",
+      "specialty": ["Beach", "Water Sports"],
+      "destination": "Unawatuna",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2200,
+      "rating": 4.6,
+      "available": true,
+      "description": "Skilled beach guide offering water sports and snorkeling experiences."
+    },
+    {
+      "id": "G005",
+      "name": "Anjali De Silva",
+      "specialty": ["Culinary", "Food Tours"],
+      "destination": "Colombo",
+      "language": ["English", "Sinhala", "Tamil"],
+      "price_per_hour": 2800,
+      "rating": 4.8,
+      "available": true,
+      "description": "Culinary expert providing immersive food tours in Colombo's vibrant food scene."
+    },
+    {
+      "id": "G006",
+      "name": "Mahesh Kumar",
+      "specialty": ["Religious Sites", "Pilgrimage"],
+      "destination": "Anuradhapura",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2400,
+      "rating": 4.4,
+      "available": false,
+      "description": "Knowledgeable guide specializing in religious and historical sites in Anuradhapura."
+    },
+    {
+      "id": "G007",
+      "name": "Priya Nadeesha",
+      "specialty": ["Photography", "Scenic Tours"],
+      "destination": "Nuwara Eliya",
+      "language": ["English"],
+      "price_per_hour": 2600,
+      "rating": 4.7,
+      "available": true,
+      "description": "Passionate photography guide capturing the scenic beauty of Nuwara Eliya."
+    },
+    {
+      "id": "G008",
+      "name": "Dinesh Wickramasinghe",
+      "specialty": ["Cultural Festivals", "Events"],
+      "destination": "Kandy",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2700,
+      "rating": 4.9,
+      "available": true,
+      "description": "Expert guide for Kandy's cultural festivals and traditional events."
+    },
+    {
+      "id": "G009",
+      "name": "Lakshmi Rajapaksha",
+      "specialty": ["Spa and Wellness", "Relaxation"],
+      "destination": "Bentota",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2300,
+      "rating": 4.5,
+      "available": true,
+      "description": "Wellness guide specializing in spa experiences and relaxation techniques in Bentota."
+    },
+    {
+      "id": "G010",
+      "name": "Vijayalalitha Perera",
+      "specialty": ["Bird Watching", "Ecotourism"],
+      "destination": "Horton Plains",
+      "language": ["English"],
+      "price_per_hour": 2100,
+      "rating": 4.6,
+      "available": false,
+      "description": "Dedicated bird watching guide with extensive knowledge of Horton Plains' avian species."
+    },
+    {
+      "id": "G011",
+      "name": "Suresh Mendis",
+      "specialty": ["Historical Architecture", "Monuments"],
+      "destination": "Polonnaruwa",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2500,
+      "rating": 4.8,
+      "available": true,
+      "description": "Architectural historian specializing in the ancient monuments of Polonnaruwa."
+    },
+    {
+      "id": "G012",
+      "name": "Tharushi Wijesinghe",
+      "specialty": ["Art and Handicrafts", "Local Markets"],
+      "destination": "Galle",
+      "language": ["English", "Sinhala", "Tamil"],
+      "price_per_hour": 2400,
+      "rating": 4.7,
+      "available": true,
+      "description": "Art enthusiast guide exploring Galle's rich art scene and local markets."
+    },
+    {
+      "id": "G013",
+      "name": "Rohan Silva",
+      "specialty": ["Tea Plantations", "Agritourism"],
+      "destination": "Hatton",
+      "language": ["English"],
+      "price_per_hour": 2200,
+      "rating": 4.5,
+      "available": true,
+      "description": "Agritourism guide with expertise in tea plantation tours around Hatton."
+    },
+    {
+      "id": "G014",
+      "name": "Maya Gunasekara",
+      "specialty": ["Wellness Retreats", "Yoga"],
+      "destination": "Tangalle",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2600,
+      "rating": 4.9,
+      "available": true,
+      "description": "Wellness guide specializing in yoga and relaxation retreats in Tangalle."
+    },
+    {
+      "id": "G015",
+      "name": "Ajith Perera",
+      "specialty": ["Cave Exploration", "Adventure"],
+      "destination": "Dambulla",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2300,
+      "rating": 4.6,
+      "available": false,
+      "description": "Adventure guide with expertise in cave exploration around Dambulla."
+    },
+    {
+      "id": "G016",
+      "name": "Nadeesha Fernando",
+      "specialty": ["City Tours", "Urban Exploration"],
+      "destination": "Negombo",
+      "language": ["English", "Sinhala", "Tamil"],
+      "price_per_hour": 2100,
+      "rating": 4.4,
+      "available": true,
+      "description": "Urban guide specializing in city tours and local experiences in Negombo."
+    },
+    {
+      "id": "G017",
+      "name": "Chathura Rajapakse",
+      "specialty": ["Surfing", "Water Activities"],
+      "destination": "Arugam Bay",
+      "language": ["English"],
+      "price_per_hour": 2800,
+      "rating": 4.8,
+      "available": true,
+      "description": "Surfing expert offering lessons and water activities in Arugam Bay."
+    },
+    {
+      "id": "G018",
+      "name": "Ishara Kumari",
+      "specialty": ["Wildlife Photography", "Nature Tours"],
+      "destination": "Wilpattu National Park",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 3000,
+      "rating": 4.9,
+      "available": true,
+      "description": "Wildlife photography guide with extensive knowledge of Wilpattu's fauna."
+    },
+    {
+      "id": "G019",
+      "name": "Pradeep Senanayake",
+      "specialty": ["Cultural Heritage", "UNESCO Sites"],
+      "destination": "Dambulla",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2500,
+      "rating": 4.7,
+      "available": true,
+      "description": "Cultural heritage guide specializing in UNESCO World Heritage Sites in Sri Lanka."
+    },
+    {
+      "id": "G020",
+      "name": "Sujatha Wickramasinghe",
+      "specialty": ["Wellness and Spa", "Ayurveda"],
+      "destination": "Kandy",
+      "language": ["English", "Sinhala", "Tamil"],
+      "price_per_hour": 2700,
+      "rating": 4.8,
+      "available": true,
+      "description": "Ayurveda specialist offering wellness and spa experiences in Kandy."
+    },
+    {
+      "id": "G021",
+      "name": "Harsha De Alwis",
+      "specialty": ["Mountain Biking", "Adventure Sports"],
+      "destination": "Knuckles Mountain Range",
+      "language": ["English"],
+      "price_per_hour": 2900,
+      "rating": 4.6,
+      "available": true,
+      "description": "Adventure sports guide specializing in mountain biking in the Knuckles Range."
+    },
+    {
+      "id": "G022",
+      "name": "Lahiru Madushanka",
+      "specialty": ["Cave Temples", "Religious Tours"],
+      "destination": "Dambulla",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2400,
+      "rating": 4.5,
+      "available": true,
+      "description": "Religious tour guide with expertise in cave temples and spiritual sites."
+    },
+    {
+      "id": "G023",
+      "name": "Yasodha Perera",
+      "specialty": ["Cultural Dance", "Performing Arts"],
+      "destination": "Kandy",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2600,
+      "rating": 4.7,
+      "available": true,
+      "description": "Cultural dance expert offering insights into traditional Sri Lankan performing arts."
+    },
+    {
+      "id": "G024",
+      "name": "Ravindra Silva",
+      "specialty": ["Fishing Tours", "Boat Trips"],
+      "destination": "Negombo",
+      "language": ["English", "Sinhala"],
+      "price_per_hour": 2300,
+      "rating": 4.4,
+      "available": true,
+      "description": "Experienced fishing guide providing boat trips and fishing tours in Negombo."
+    },
+    {
+      "id": "G025",
+      "name": "Dilani Kumari",
+      "specialty": ["Local Cuisine", "Cooking Classes"],
+      "destination": "Galle",
+      "language": ["English", "Sinhala", "Tamil"],
+      "price_per_hour": 2800,
+      "rating": 4.9,
+      "available": true,
+      "description": "Culinary guide offering cooking classes and local cuisine experiences in Galle."
+    }
+  ]
+}
