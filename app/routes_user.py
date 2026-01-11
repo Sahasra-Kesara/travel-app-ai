@@ -5,6 +5,7 @@ from app.services.route_service import get_route
 from models.rag_model import route_based_recommendation
 import geoip2.database
 from flask import request, render_template, flash
+from flask import redirect
 
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
