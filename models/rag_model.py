@@ -19,6 +19,9 @@ GUIDES_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'guides.json')
 with open(KB_PATH, 'r', encoding='utf-8') as f:
     destinations_data = json.load(f)['destinations']
 
+with open(GUIDES_PATH, 'r', encoding='utf-8') as f:
+    guides_data = json.load(f)['guides']
+
 # -------------------------------
 # Embedding model for retrieval
 # -------------------------------
