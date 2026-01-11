@@ -96,3 +96,15 @@ def plan_trip():
         route_coords=route_coords or [],
         destinations=destinations_for_js or []
     )
+
+@user_bp.route("/guides/<destination_name>")
+def guides(destination_name):
+    from models.rag_model import get_guides_for_destination
+
+    guides = get_guides_for_destination(destination_name)
+
+    return render_template(
+        "guides.html",
+        destination=destination_name,
+        guides=guides
+    )
