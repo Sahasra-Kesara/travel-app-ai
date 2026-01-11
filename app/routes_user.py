@@ -119,6 +119,7 @@ def guides(destination_name):
 
     guides = get_guides_for_destination(destination_name, user_district=user_district)
 
+
     # Add AI pitch
     for guide in guides:
         guide["ai_pitch"] = generate_guide_pitch(guide)
@@ -135,7 +136,6 @@ def get_guides_for_destination(destination_name, user_district=None):
 
     for guide in guides_data:
         if guide["destination"].lower() == destination_name.lower() and guide["available"]:
-            # Filter by district if detected
             if user_district:
                 if guide.get("district", "").lower() == user_district.lower():
                     matched_guides.append(guide)
@@ -143,6 +143,7 @@ def get_guides_for_destination(destination_name, user_district=None):
                 matched_guides.append(guide)
 
     return matched_guides
+
 
 
 @user_bp.route("/book-guide", methods=["POST"])

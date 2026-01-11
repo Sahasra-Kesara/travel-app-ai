@@ -127,14 +127,20 @@ def route_based_recommendation(route_coords, query):
 def generate_summary(prompt):
     return generator(prompt, max_new_tokens=60, do_sample=False)[0]["generated_text"]
 
-def get_guides_for_destination(destination_name):
+def get_guides_for_destination(destination_name, user_district=None):
     matched_guides = []
 
     for guide in guides_data:
         if guide["destination"].lower() == destination_name.lower() and guide["available"]:
-            matched_guides.append(guide)
+            if user_district:
+                # Only include guides in the user's district
+                if guide.get("district", "").lower() == user_district.lower():
+                    matched_guides.append(guide)
+            else:
+                matched_guides.append(guide)
 
     return matched_guides
+
 
 def generate_guide_pitch(guide):
     """
