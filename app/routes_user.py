@@ -127,11 +127,3 @@ def book_guide():
     # 🔒 Later: save to database
     flash("Guide booked successfully!")
     return redirect("/")
-
-def generate_guide_pitch(guide):
-    prompt = (
-        f"Create a short friendly pitch for a tour guide. "
-        f"Name: {guide['name']}, Specialty: {guide['specialty']}, "
-        f"Description: {guide['description']}"
-    )
-    return generate_summary(prompt)
