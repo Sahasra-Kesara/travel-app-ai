@@ -5,6 +5,7 @@ from transformers import pipeline
 import torch
 from math import radians, cos, sin, asin, sqrt
 from functools import lru_cache
+from langdetect import detect
 
 # -------------------------------
 # Setup paths
@@ -25,7 +26,8 @@ with open(GUIDES_PATH, 'r', encoding='utf-8') as f:
 # -------------------------------
 # Embedding model for retrieval
 # -------------------------------
-embed_model = SentenceTransformer('all-mpnet-base-v2')
+#embed_model = SentenceTransformer('all-mpnet-base-v2')
+embed_model = SentenceTransformer('sentence-transformers/distiluse-base-multilingual-cased-v2')
 
 # LLM for text generation (RAG)
 #generator = pipeline("text-generation", model="gpt2")
@@ -54,37 +56,52 @@ destinations_with_embeddings = build_embeddings(destinations_data)
 def get_recommendations(query, destinations=destinations_with_embeddings, top_k=3):
     """
     Retrieve top_k destinations matching the query and generate friendly recommendations.
+    Supports Sinhala or English responses based on the query language.
     """
+    # Detect language of query
+    try:
+        lang = detect(query)
+    except:
+        lang = 'en'  # default to English if detection fails
+
     # Encode query
     query_embedding = embed_model.encode(query, convert_to_tensor=True)
-    
+
     # Compute cosine similarity
     scores = []
     for dest in destinations:
         sim = util.cos_sim(query_embedding, dest['embedding']).item()
         scores.append((sim, dest))
-    
+
     # Sort by similarity and take top_k
     top_destinations = [d for s, d in sorted(scores, key=lambda x: x[0], reverse=True)[:top_k]]
-    
+
     # Generate friendly summaries using LLM
     recommendations = []
     for dest in top_destinations:
-        #prompt = f"Provide a friendly travel recommendation for: {dest['name']}, {dest['description']}"
-        prompt = (
-            f"Recommend {dest['name']} in Sri Lanka for a traveler. "
-            f"Description: {dest['description']} "
-            f"Keep it short and friendly."
-        )
-        #summary = generator(prompt, max_length=100, do_sample=True)[0]['generated_text']
+        if lang == 'si':
+            # Sinhala prompt
+            prompt = (
+                f"Provide a friendly travel recommendation in Sinhala letters for {dest['name']}. "
+                f"Description: {dest['description']} "
+                f"Keep it short and friendly."
+            )
+        else:
+            # English prompt
+            prompt = (
+                f"Recommend {dest['name']} in Sri Lanka for a traveler. "
+                f"Description: {dest['description']} "
+                f"Keep it short and friendly."
+            )
+
         summary = generator(
             prompt,
-            max_new_tokens=60,
+            max_new_tokens=80,
             do_sample=False
         )[0]["generated_text"]
 
         recommendations.append({'destination': dest, 'summary': summary})
-    
+
     return recommendations
 
 def haversine(lat1, lon1, lat2, lon2):
