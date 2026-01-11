@@ -31,7 +31,7 @@ embed_model = SentenceTransformer('all-mpnet-base-v2')
 #generator = pipeline("text-generation", model="gpt2")
 generator = pipeline(
     "text2text-generation",
-    model="google/flan-t5-small",
+    model="google/flan-t5-large",
     device=0 if torch.cuda.is_available() else -1
 )
 
