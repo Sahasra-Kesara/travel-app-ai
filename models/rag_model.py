@@ -13,6 +13,7 @@ from langdetect import detect
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KB_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'destinations.json')
 GUIDES_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'guides.json')
+VEHICLES_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'vehicles.json')
 
 # -------------------------------
 # Load knowledge base
@@ -22,6 +23,27 @@ with open(KB_PATH, 'r', encoding='utf-8') as f:
 
 with open(GUIDES_PATH, 'r', encoding='utf-8') as f:
     guides_data = json.load(f)['guides']
+
+with open(VEHICLES_PATH, 'r', encoding='utf-8') as f:
+    vehicles_data = json.load(f)['vehicles']
+
+def get_available_vehicles():
+    """Return all available vehicles"""
+    return [v for v in vehicles_data if v["available"]]
+
+def estimate_fare(vehicle_id, distance_km):
+    vehicle = next((v for v in vehicles_data if v["id"] == vehicle_id), None)
+    if not vehicle:
+        return None
+    return vehicle["price_per_km"] * distance_km
+
+def update_vehicle_availability(vehicle_id, available):
+    for v in vehicles_data:
+        if v["id"] == vehicle_id:
+            v["available"] = available
+    # Save back to JSON
+    with open(VEHICLES_PATH, 'w', encoding='utf-8') as f:
+        json.dump({"vehicles": vehicles_data}, f, ensure_ascii=False, indent=4)
 
 # -------------------------------
 # Embedding model for retrieval

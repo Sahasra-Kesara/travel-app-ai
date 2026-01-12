@@ -7,6 +7,8 @@ import geoip2.database
 from flask import request, render_template, flash
 from flask import redirect
 import requests
+from models.rag_model import get_available_vehicles, estimate_fare, update_vehicle_availability, haversine
+import requests
 
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
@@ -179,3 +181,76 @@ def get_district_from_coords(lat, lon):
         return district
     except Exception:
         return None
+
+@user_bp.route("/vehicles")
+def vehicles():
+    available_vehicles = get_available_vehicles()
+
+    # Generate static map URL (Google Static Maps)
+    # Each vehicle will be a marker
+    markers = []
+    for v in available_vehicles:
+        lat = v["coordinates"]["lat"]
+        lon = v["coordinates"]["lon"]
+        # Marker label will be the vehicle id (for reference)
+        markers.append(f"color:red|label:{v['id']}|{lat},{lon}")
+
+    # Google Static Maps URL
+    map_url = ""
+    if markers:
+        markers_str = "&".join([f"markers={m}" for m in markers])
+        map_url = (
+            f"https://maps.googleapis.com/maps/api/staticmap?"
+            f"size=600x400&{markers_str}&key=YOUR_GOOGLE_MAPS_API_KEY"
+        )
+
+    return render_template("vehicles.html", vehicles=available_vehicles, map_url=map_url)
+
+
+
+@user_bp.route("/book-vehicle", methods=["POST"])
+def book_vehicle():
+    vehicle_id = request.form.get("vehicle_id")
+    mobile = request.form.get("mobile")
+    start_city = request.form.get("start_city")
+    end_city = request.form.get("end_city")
+
+    if not all([vehicle_id, mobile, start_city, end_city]):
+        flash("Please fill all details")
+        return redirect(request.referrer)
+
+    # Convert cities to coordinates using Nominatim
+    def get_coords(city):
+        try:
+            url = "https://nominatim.openstreetmap.org/search"
+            params = {"q": city, "format": "json", "limit": 1}
+            response = requests.get(url, params=params, headers={"User-Agent": "TravelApp/1.0"})
+            data = response.json()
+            if data:
+                return float(data[0]["lat"]), float(data[0]["lon"])
+        except:
+            pass
+        return None, None
+
+    start_lat, start_lon = get_coords(start_city)
+    end_lat, end_lon = get_coords(end_city)
+
+    if None in [start_lat, start_lon, end_lat, end_lon]:
+        flash("Cannot find coordinates for start or destination. Check city names.")
+        return redirect(request.referrer)
+
+    # Calculate distance
+    distance = haversine(start_lat, start_lon, end_lat, end_lon)
+
+    # Calculate fare
+    fare = estimate_fare(vehicle_id, distance)
+    if fare is None:
+        flash("Invalid vehicle selected")
+        return redirect(request.referrer)
+
+    # Update vehicle availability
+    update_vehicle_availability(vehicle_id, False)
+
+    # TODO: Save booking to DB along with mobile, distance, fare, cities
+    flash(f"Vehicle booked successfully! Distance: {distance:.2f} km, Fare: LKR {fare:.2f}, Mobile: {mobile}")
+    return redirect("/vehicles")

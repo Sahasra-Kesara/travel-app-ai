@@ -1,0 +1,43 @@
+{
+  "vehicles": [
+    {
+      "id": "V001",
+      "name": "Toyota Hiace",
+      "type": "Van",
+      "capacity": 12,
+      "price_per_km": 50,
+      "mobile": "+94771234567",
+      "available": true,
+      "coordinates": {
+        "lat": 6.9271,
+        "lon": 79.8612
+      }
+    },
+    {
+      "id": "V002",
+      "name": "Suzuki Carry",
+      "type": "Mini Van",
+      "capacity": 6,
+      "price_per_km": 35,
+      "mobile": "+94779876543",
+      "available": true,
+      "coordinates": {
+        "lat": 6.9147,
+        "lon": 79.972
+      }
+    },
+    {
+      "id": "V003",
+      "name": "Mercedes Sprinter",
+      "type": "Van",
+      "capacity": 15,
+      "price_per_km": 70,
+      "mobile": "+94770001122",
+      "available": true,
+      "coordinates": {
+        "lat": 6.9271,
+        "lon": 79.85
+      }
+    }
+  ]
+}

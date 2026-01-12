@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto py-6">
+  <h2 class="text-3xl font-bold mb-6">Available Vehicles</h2>
+
+  {% if map_url %}
+    <div class="mb-6">
+      <img src="{{ map_url }}" alt="Vehicles Map" class="w-full border">
+    </div>
+  {% endif %}
+
+  <table class="border w-full">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="border px-2 py-1">Vehicle</th>
+        <th class="border px-2 py-1">Type</th>
+        <th class="border px-2 py-1">Capacity</th>
+        <th class="border px-2 py-1">Price/km</th>
+        <th class="border px-2 py-1">Mobile</th>
+        <th class="border px-2 py-1">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for vehicle in vehicles %}
+      <tr>
+        <td class="border px-2 py-1">{{ vehicle.name }}</td>
+        <td class="border px-2 py-1">{{ vehicle.type }}</td>
+        <td class="border px-2 py-1">{{ vehicle.capacity }}</td>
+        <td class="border px-2 py-1">LKR {{ vehicle.price_per_km }}</td>
+        <td class="border px-2 py-1">
+          <a href="tel:{{ vehicle.mobile }}" class="text-blue-600 underline">{{ vehicle.mobile }}</a>
+        </td>
+        <td class="border px-2 py-1">
+          <form action="/book-vehicle" method="POST">
+            <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
+            <input type="hidden" name="mobile" value="{{ vehicle.mobile }}">
+            <input type="text" name="start_city" placeholder="Start City" required>
+            <input type="text" name="end_city" placeholder="End City" required>
+            <button type="submit" class="bg-green-500 text-white px-2 py-1 rounded mt-1">Book</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
