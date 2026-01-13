@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-xl font-bold mb-4">Add Hotel</h2>
+
+<form method="POST" class="space-y-3">
+  <input name="name" placeholder="Hotel Name" required class="border p-2 w-full">
+  <input name="owner" placeholder="Owner Name" required class="border p-2 w-full">
+  <input name="mobile" placeholder="Mobile Number" required class="border p-2 w-full">
+  <input name="destination" placeholder="Destination" required class="border p-2 w-full">
+  <input name="price" placeholder="Price per Night (LKR)" required class="border p-2 w-full">
+  <textarea name="description" placeholder="Description" class="border p-2 w-full"></textarea>
+
+  <button class="bg-green-600 text-white px-4 py-2 rounded">
+    Save Hotel
+  </button>
+</form>
+{% endblock %}
