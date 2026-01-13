@@ -122,17 +122,42 @@ def ai_assistant():
 
         elif task_type == "trip":
             # Plan trip using route keywords
-            # Example: "Plan a trip from Colombo to Kandy including cultural spots"
+            # Format: "Plan a trip from Colombo to Kandy"
             parts = [p.strip() for p in query.lower().split("to")]
             if len(parts) >= 2:
                 start = next((d for d in destinations_with_embeddings if parts[0] in d["name"].lower()), None)
                 end = next((d for d in destinations_with_embeddings if parts[1] in d["name"].lower()), None)
+
                 if start and end:
-                    route_coords = [(start["coordinates"]["lon"], start["coordinates"]["lat"]),
-                                    (end["coordinates"]["lon"], end["coordinates"]["lat"])]
+                    # Get destinations along the route
+                    route_coords = [
+                        (start["coordinates"]["lon"], start["coordinates"]["lat"]),
+                        (end["coordinates"]["lon"], end["coordinates"]["lat"])
+                    ]
                     nearby = destinations_near_route(route_coords, destinations_with_embeddings)
                     trip_plan = get_recommendations(query, destinations=nearby, top_k=5)
-                    response = [{"name": d["destination"]["name"], "summary": d["summary"]} for d in trip_plan]
+
+                    # Build friendly message with coordinates
+                    response = []
+                    for i, d in enumerate(trip_plan, start=1):
+                        dest = d["destination"]
+                        guides = get_guides_for_destination(dest["name"])
+                        guide_text = " | ".join([generate_guide_pitch(g) for g in guides])
+                        hotels_text = ", ".join([h["name"] for h in dest.get("hotels", [])])
+
+                        message = (
+                            f"{i}️⃣ {dest['name']} ({dest['category']})\n"
+                            f"- Location: {dest.get('province','')}, {dest.get('district','')}\n"
+                            f"- Highlights: {dest.get('description','No description')}\n"
+                            f"- Hotels: {hotels_text or 'No hotels listed'}\n"
+                            f"- Guides: {guide_text or 'No guides available'}"
+                        )
+
+                        response.append({
+                            "message": message,
+                            "lat": dest["coordinates"]["lat"],
+                            "lon": dest["coordinates"]["lon"]
+                        })
                 else:
                     response = [{"message": "Could not identify start or end destinations"}]
             else:
@@ -146,7 +171,7 @@ def ai_assistant():
                 guides = get_guides_for_destination(dest["name"])
                 guide_pitches = [generate_guide_pitch(g) for g in guides]
 
-                # Suggest hotels automatically (example)
+                # Suggest hotels automatically
                 suggested_hotels = [
                     {"name": f"{dest['name']} Inn", "owner": "AI", "mobile": "0712345678", "price_per_night": "5000", "description": "AI suggested hotel"}
                 ]
