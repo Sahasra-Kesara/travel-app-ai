@@ -2,15 +2,77 @@
 {% block content %}
 <h2 class="text-xl font-bold mb-4">Add Destination</h2>
 
-<form method="POST" class="space-y-3">
+<form method="POST" class="space-y-3" id="destinationForm">
   <input name="name" placeholder="Destination Name" required class="border p-2 w-full">
   <input name="category" placeholder="Category (Beach, Hill, Cultural)" required class="border p-2 w-full">
+  <input name="province" placeholder="Province" class="border p-2 w-full">
+  <input name="district" placeholder="District" class="border p-2 w-full">
+  <input name="address" placeholder="Address (City / Street)" class="border p-2 w-full" id="address">
+  <input name="lat" placeholder="Latitude" class="border p-2 w-full" id="lat" readonly required>
+  <input name="lon" placeholder="Longitude" class="border p-2 w-full" id="lon" readonly required>
   <textarea name="description" placeholder="Description" class="border p-2 w-full"></textarea>
-  <input name="lat" placeholder="Latitude" required class="border p-2 w-full">
-  <input name="lon" placeholder="Longitude" required class="border p-2 w-full">
+  <input name="best_time" placeholder="Best Time to Visit" class="border p-2 w-full">
+  <input name="entry_fee" placeholder="Entry Fee" class="border p-2 w-full">
+  <input name="duration" placeholder="Duration" class="border p-2 w-full">
+  <input name="activities" placeholder="Activities (comma separated)" class="border p-2 w-full">
+  <input name="nearby" placeholder="Nearby Attractions (comma separated)" class="border p-2 w-full">
 
-  <button class="bg-blue-600 text-white px-4 py-2 rounded">
-    Save Destination
-  </button>
+  <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Save Destination</button>
 </form>
+
+<!-- Map -->
+<div id="map" style="height: 400px; margin-top: 10px;"></div>
+<p class="text-sm text-gray-600">Click on the map to set destination coordinates</p>
+
+<!-- Leaflet JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+// Initialize map
+let map = L.map('map').setView([7.8731, 80.7718], 7); // Sri Lanka center
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+let marker;
+
+// Set marker and fill lat/lon
+function setMarker(lat, lon) {
+    if(marker) map.removeLayer(marker);
+    marker = L.marker([lat, lon], {draggable:true}).addTo(map);
+    document.getElementById("lat").value = lat.toFixed(6);
+    document.getElementById("lon").value = lon.toFixed(6);
+
+    marker.on('dragend', function(e){
+        const pos = e.target.getLatLng();
+        document.getElementById("lat").value = pos.lat.toFixed(6);
+        document.getElementById("lon").value = pos.lng.toFixed(6);
+    });
+}
+
+// Map click
+map.on('click', function(e) {
+    setMarker(e.latlng.lat, e.latlng.lng);
+});
+
+// Address geocode
+document.getElementById("address").addEventListener("blur", function() {
+    const address = this.value;
+    if (!address) return;
+
+    fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`)
+    .then(res => res.json())
+    .then(data => {
+        if(data && data.length > 0){
+            setMarker(parseFloat(data[0].lat), parseFloat(data[0].lon));
+            map.setView([data[0].lat, data[0].lon], 13);
+        } else {
+            alert("Address not found.");
+        }
+    })
+    .catch(err => console.error(err));
+});
+</script>
 {% endblock %}
