@@ -1,83 +1,128 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2 class="text-xl font-bold mb-4">Add Destination</h2>
+<!-- Hero / Page Header -->
+<section class="max-w-6xl mx-auto px-6 py-12 text-center">
+  <h2 class="text-4xl md:text-5xl font-extrabold text-blue-600 leading-tight">
+    Add a New <span class="text-gray-800">Destination</span>
+  </h2>
+  <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+    Use the map or search bar to select the location. Province and District will auto-fill.
+  </p>
+</section>
 
-<form method="POST" class="space-y-3" id="destinationForm">
-  <input name="name" placeholder="Destination Name" required class="border p-2 w-full">
-  <input name="category" placeholder="Category (Beach, Hill, Cultural)" required class="border p-2 w-full">
-  <input name="province" placeholder="Province" class="border p-2 w-full">
-  <input name="district" placeholder="District" class="border p-2 w-full">
-  <input name="address" placeholder="Address (optional)" class="border p-2 w-full" id="address">
-  <input name="lat" placeholder="Latitude" class="border p-2 w-full" id="lat" readonly required>
-  <input name="lon" placeholder="Longitude" class="border p-2 w-full" id="lon" readonly required>
-  <textarea name="description" placeholder="Description" class="border p-2 w-full"></textarea>
-  <input name="best_time" placeholder="Best Time to Visit" class="border p-2 w-full">
-  <input name="entry_fee" placeholder="Entry Fee" class="border p-2 w-full">
-  <input name="duration" placeholder="Duration" class="border p-2 w-full">
-  <input name="activities" placeholder="Activities (comma separated)" class="border p-2 w-full">
-  <input name="nearby" placeholder="Nearby Attractions (comma separated)" class="border p-2 w-full">
+<!-- Main Content: Form + Map -->
+<section class="max-w-6xl mx-auto px-6 mb-20">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-  <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Save Destination</button>
-</form>
+    <!-- Form Card -->
+    <div class="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+      <h3 class="text-2xl font-semibold mb-4 text-gray-800">Destination Details</h3>
 
-<h3 class="mt-4 font-semibold">Select Location on Map</h3>
-<div id="map" style="height: 400px; margin-top: 10px;"></div>
-<p class="text-sm text-gray-600">Click on the map to select destination coordinates</p>
+      <form method="POST" id="destinationForm" class="space-y-4">
+        <input name="name" placeholder="Destination Name" required
+               class="border p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 shadow-sm">
+        <input name="category" placeholder="Category (Beach, Hill, Cultural)" required
+               class="border p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 shadow-sm">
+        <input name="province" placeholder="Province" id="province" readonly
+               class="border p-3 w-full rounded-xl bg-gray-50">
+        <input name="district" placeholder="District" id="district" readonly
+               class="border p-3 w-full rounded-xl bg-gray-50">
+        <input name="address" placeholder="Search Address or City" id="address"
+               class="border p-3 w-full rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500">
+        <div class="grid grid-cols-2 gap-4">
+          <input name="lat" placeholder="Latitude" id="lat" readonly required
+                 class="border p-3 w-full rounded-xl bg-gray-50">
+          <input name="lon" placeholder="Longitude" id="lon" readonly required
+                 class="border p-3 w-full rounded-xl bg-gray-50">
+        </div>
+        <textarea name="description" placeholder="Description"
+                  class="border p-3 w-full rounded-xl shadow-sm"></textarea>
+        <input name="best_time" placeholder="Best Time to Visit" class="border p-3 w-full rounded-xl">
+        <input name="entry_fee" placeholder="Entry Fee" class="border p-3 w-full rounded-xl">
+        <input name="duration" placeholder="Duration" class="border p-3 w-full rounded-xl">
+        <input name="activities" placeholder="Activities (comma separated)" class="border p-3 w-full rounded-xl">
+        <input name="nearby" placeholder="Nearby Attractions (comma separated)" class="border p-3 w-full rounded-xl">
+
+        <button type="submit"
+                class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-blue-700 transition shadow-md w-full">
+          Save Destination
+        </button>
+      </form>
+    </div>
+
+    <!-- Map Card -->
+    <div class="bg-white rounded-2xl shadow-xl p-6 space-y-4">
+      <h3 class="text-2xl font-semibold mb-4 text-gray-800">Select Location on Map</h3>
+      
+      <input id="mapSearch" placeholder="Search place or city..."
+             class="border p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 shadow-sm mb-3">
+
+      <div id="map" style="height: 480px;" class="rounded-2xl border shadow-sm"></div>
+      <p class="text-sm text-gray-500 mt-2">
+        Click on the map to select coordinates or drag the marker to adjust. Province and District will auto-fill.
+      </p>
+    </div>
+
+  </div>
+</section>
 
 <!-- Leaflet CSS & JS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-// Initialize map centered on Sri Lanka
+// Initialize map
 let map = L.map('map').setView([7.8731, 80.7718], 7);
-
-// OpenStreetMap tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
 let marker;
 
-// Function to set marker and update fields
+// Function to set marker & auto-fill lat/lon + province/district
 function setMarker(lat, lon) {
     if(marker) map.removeLayer(marker);
     marker = L.marker([lat, lon], {draggable:true}).addTo(map);
     document.getElementById("lat").value = lat.toFixed(6);
     document.getElementById("lon").value = lon.toFixed(6);
 
-    // Update lat/lon when marker dragged
+    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&zoom=10&addressdetails=1`)
+    .then(res => res.json())
+    .then(data => {
+        const addr = data.address || {};
+        document.getElementById("province").value = addr.state || addr.region || "";
+        document.getElementById("district").value = addr.county || addr.state_district || "";
+    });
+
     marker.on('dragend', function(e) {
         const pos = e.target.getLatLng();
-        document.getElementById("lat").value = pos.lat.toFixed(6);
-        document.getElementById("lon").value = pos.lng.toFixed(6);
+        setMarker(pos.lat, pos.lng);
     });
 }
 
-// Click on map to add marker
-map.on('click', function(e) {
-    setMarker(e.latlng.lat, e.latlng.lng);
-});
+// Map click to set marker
+map.on('click', e => setMarker(e.latlng.lat, e.latlng.lng));
 
-// Optional: address input to get coordinates
-document.getElementById("address").addEventListener("blur", function() {
-    const address = this.value;
-    if(!address) return;
-
-    fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`)
-    .then(res => res.json())
-    .then(data => {
-        if(data && data.length > 0){
-            const lat = parseFloat(data[0].lat);
-            const lon = parseFloat(data[0].lon);
-            setMarker(lat, lon);
-            map.setView([lat, lon], 13);
-        } else {
-            alert("Address not found.");
-        }
-    })
-    .catch(err => console.error(err));
+// Search bar functionality
+document.getElementById("mapSearch").addEventListener("keypress", function(e) {
+    if(e.key === "Enter") {
+        e.preventDefault();
+        const query = this.value;
+        if(!query) return;
+        fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`)
+        .then(res => res.json())
+        .then(data => {
+            if(data.length > 0){
+                const lat = parseFloat(data[0].lat);
+                const lon = parseFloat(data[0].lon);
+                setMarker(lat, lon);
+                map.setView([lat, lon], 13);
+            } else {
+                alert("Place/City not found.");
+            }
+        });
+    }
 });
 </script>
 {% endblock %}
