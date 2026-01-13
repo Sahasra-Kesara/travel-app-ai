@@ -11,7 +11,11 @@ DEST_PATH = os.path.join(BASE_DIR, "knowledge_base", "destinations.json")
 # ---------------------------
 @admin_bp.route("/")
 def dashboard():
-    return render_template("admin_dashboard.html")
+    with open(DEST_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    destinations = data.get("destinations", [])
+    return render_template("admin_dashboard.html", destinations=destinations)
+
 
 # ---------------------------
 # Add Destination
