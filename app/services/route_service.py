@@ -4,11 +4,34 @@ def get_route(start_lat, start_lon, end_lat, end_lon):
     url = (
         f"http://router.project-osrm.org/route/v1/driving/"
         f"{start_lon},{start_lat};{end_lon},{end_lat}"
-        "?overview=full&geometries=geojson"
+        "?overview=full"
+        "&geometries=geojson"
+        "&steps=true"
+        "&alternatives=true"
     )
 
     response = requests.get(url)
     data = response.json()
+    routes = []
 
-    # coordinates = [[lon, lat], ...]
-    return data["routes"][0]["geometry"]["coordinates"]
+    for route in data["routes"]:
+        steps_list = []
+        for leg in route["legs"]:
+            for step in leg["steps"]:
+                steps_list.append({
+                    "name": step.get("name", ""),  # Road/Street Name
+                    "instruction": step["maneuver"].get("instruction", ""),
+                    "distance": step.get("distance", 0),
+                    "duration": step.get("duration", 0),
+                    "type": step["maneuver"].get("type", ""),
+                    "modifier": step["maneuver"].get("modifier", "")
+                })
+
+        routes.append({
+            "geometry": route["geometry"]["coordinates"],
+            "distance": route["distance"],
+            "duration": route["duration"],
+            "steps": steps_list
+        })
+
+    return routes

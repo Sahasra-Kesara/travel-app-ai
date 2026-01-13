@@ -44,7 +44,17 @@
          class="w-full h-[480px] rounded-2xl border shadow-sm">
     </div>
 </section>
-
+<!-- <section class="max-w-6xl mx-auto px-6 mb-12">
+    <h3 class="text-2xl font-bold mb-4">Turn-by-Turn Directions (City to City)</h3>
+    <ol class="space-y-3 list-decimal ml-6">
+        {% for step in route_main.steps %}
+        <li>
+            <b>{{ step.name or "Unnamed Road" }}</b> → {{ step.instruction }}
+            <span class="text-sm text-gray-500">({{ (step.distance/1000)|round(2) }} km)</span>
+        </li>
+        {% endfor %}
+    </ol>
+</section> -->
 <!-- Results -->
 <section class="max-w-6xl mx-auto px-6 pb-20">
     <h3 class="text-2xl font-bold mb-8">
@@ -94,32 +104,40 @@
 </footer>
 
 <!-- Map Script -->
+<!-- Map Script -->
 <script>
-const routeCoords = JSON.parse('{{ route_coords | tojson | safe }}') || [];
-const destinationList = JSON.parse('{{ destinations | tojson | safe }}') || [];
+const mainRoute = JSON.parse('{{ route_main.geometry | tojson | safe }}');
+const alternativeRoutes = JSON.parse('{{ route_alternatives | tojson | safe }}');
+const destinationList = JSON.parse('{{ destinations | tojson | safe }}');
 
-if (routeCoords.length && destinationList.length) {
-    const map = L.map('map').setView([7.8731, 80.7718], 7);
+const map = L.map('map').setView([7.8731, 80.7718], 7);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
+// Main route (blue)
+const mainLine = L.polyline(
+    mainRoute.map(p => [p[1], p[0]]),
+    { color: '#2563eb', weight: 5 }
+).addTo(map);
+map.fitBounds(mainLine.getBounds());
 
-    const routeLine = L.polyline(
-        routeCoords.map(p => [p[1], p[0]]),
-        { color: '#2563eb', weight: 4 }
-    ).addTo(map);
+// Alternative routes (dashed yellow)
+const altLayers = [];
+alternativeRoutes.forEach((r, i) => {
+    const layer = L.polyline(
+        r.geometry.map(p => [p[1], p[0]]),
+        { color: '#f59e0b', weight: 3, dashArray: '6,6', opacity: 0.7 }
+    ).addTo(map).bindPopup(`Alternative Route ${i + 1}`);
+    altLayers.push(layer);
+});
 
-    map.fitBounds(routeLine.getBounds());
-
-    destinationList.forEach(d => {
-        if (d?.coordinates?.lat && d?.coordinates?.lon) {
-            L.marker([d.coordinates.lat, d.coordinates.lon])
-                .addTo(map)
-                .bindPopup(`<b>${d.name}</b><br/>${d.category}`);
-        }
-    });
-}
+// Destination markers
+destinationList.forEach(d => {
+    if (d?.coordinates?.lat && d?.coordinates?.lon) {
+        L.marker([d.coordinates.lat, d.coordinates.lon])
+         .addTo(map)
+         .bindPopup(`<b>${d.name}</b><br/>${d.category}`);
+    }
+});
 </script>
 
 </body>

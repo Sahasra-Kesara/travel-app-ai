@@ -41,26 +41,22 @@ def plan_trip():
     start_lat = None
     start_lon = None
 
-    # If user provided a city, use Nominatim API to get coordinates
+    # Get start coordinates from city
     if start_city:
         try:
             url = "https://nominatim.openstreetmap.org/search"
-            params = {
-                "q": start_city,
-                "format": "json",
-                "limit": 1
-            }
+            params = {"q": start_city, "format": "json", "limit": 1}
             response = requests.get(url, params=params, headers={"User-Agent": "TravelApp/1.0"})
             data = response.json()
             if data:
                 start_lat = float(data[0]["lat"])
                 start_lon = float(data[0]["lon"])
             else:
-                return f"City '{start_city}' not found. Please enter a valid city.", 400
+                return f"City '{start_city}' not found.", 400
         except Exception as e:
-            return f"Error fetching coordinates for city: {str(e)}", 500
+            return f"Error fetching coordinates: {str(e)}", 500
 
-    # If no city provided, try GeoIP
+    # If no city, try GeoIP
     if start_lat is None or start_lon is None:
         try:
             reader = geoip2.database.Reader(GEOIP_DB_PATH)
@@ -70,21 +66,28 @@ def plan_trip():
             start_lon = response.location.longitude
             reader.close()
         except Exception:
-            return "Cannot determine start location. Please enter a city manually.", 400
+            return "Cannot determine start location. Please enter a city.", 400
 
-    # Destination coordinates from form
+    # Destination coordinates
     try:
         end_lat = float(request.form["end_lat"])
         end_lon = float(request.form["end_lon"])
     except ValueError:
         return "Invalid destination coordinates.", 400
 
-    # Generate route
-    route_coords = get_route(start_lat, start_lon, end_lat, end_lon)
-    query = "Suggest tourist destinations near this travel route in Sri Lanka"
-    recommendations = route_based_recommendation(route_coords, query)
+    # Get routes from OSRM
+    routes = get_route(start_lat, start_lon, end_lat, end_lon)
+    if not routes:
+        return "No routes found.", 500
 
-    # Prepare destinations for JS
+    main_route = routes[0]
+    alternative_routes = routes[1:]
+
+    # Route-based AI recommendations
+    query = "Suggest tourist destinations near this travel route in Sri Lanka"
+    recommendations = route_based_recommendation(main_route["geometry"], query)
+
+    # Prepare destinations for JS map
     destinations_for_js = []
     for r in recommendations:
         dest = r["destination"]
@@ -96,8 +99,9 @@ def plan_trip():
 
     return render_template(
         "recommendations.html",
+        route_main=main_route,
+        route_alternatives=alternative_routes,
         results=recommendations or [],
-        route_coords=route_coords or [],
         destinations=destinations_for_js or []
     )
 
