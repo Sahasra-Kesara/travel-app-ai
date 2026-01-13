@@ -96,3 +96,75 @@ def add_hotel():
         return redirect(url_for("admin.dashboard"))
 
     return render_template("add_hotel.html")
+
+@admin_bp.route("/ai-assistant", methods=["POST"])
+def ai_assistant():
+    data = request.json
+    query = data.get("query", "").strip()
+    task_type = data.get("task_type", "recommend")
+
+    if not query:
+        return jsonify({"success": False, "message": "Query is empty!"})
+
+    response = []
+    try:
+        if task_type == "recommend":
+            # Recommend top destinations
+            results = get_recommendations(query, top_k=5)
+            response = [{"name": r["destination"]["name"], "summary": r["summary"]} for r in results]
+
+        elif task_type == "trip":
+            # Plan trip using route keywords
+            # Example: "Plan a trip from Colombo to Kandy including cultural spots"
+            parts = [p.strip() for p in query.lower().split("to")]
+            if len(parts) >= 2:
+                start = next((d for d in destinations_with_embeddings if parts[0] in d["name"].lower()), None)
+                end = next((d for d in destinations_with_embeddings if parts[1] in d["name"].lower()), None)
+                if start and end:
+                    route_coords = [(start["coordinates"]["lon"], start["coordinates"]["lat"]),
+                                    (end["coordinates"]["lon"], end["coordinates"]["lat"])]
+                    nearby = destinations_near_route(route_coords, destinations_with_embeddings)
+                    trip_plan = get_recommendations(query, destinations=nearby, top_k=5)
+                    response = [{"name": d["destination"]["name"], "summary": d["summary"]} for d in trip_plan]
+                else:
+                    response = [{"message": "Could not identify start or end destinations"}]
+            else:
+                response = [{"message": "Use format: 'StartCity to EndCity'"}]
+
+        elif task_type == "add_dest":
+            # AI suggests new destination details automatically
+            results = get_recommendations(query, top_k=1)
+            if results:
+                dest = results[0]["destination"]
+                guides = get_guides_for_destination(dest["name"])
+                guide_pitches = [generate_guide_pitch(g) for g in guides]
+
+                # Suggest hotels automatically (example)
+                suggested_hotels = [
+                    {"name": f"{dest['name']} Inn", "owner": "AI", "mobile": "0712345678", "price_per_night": "5000", "description": "AI suggested hotel"}
+                ]
+
+                response = [{
+                    "destination": {
+                        "name": dest["name"],
+                        "category": dest["category"],
+                        "province": dest.get("province", ""),
+                        "district": dest.get("district", ""),
+                        "description": dest.get("description", ""),
+                        "best_time_to_visit": dest.get("best_time_to_visit", ""),
+                        "entry_fee": dest.get("entry_fee", ""),
+                        "duration": dest.get("duration", ""),
+                        "activities": dest.get("activities", []),
+                        "nearby_attractions": dest.get("nearby_attractions", []),
+                        "coordinates": dest.get("coordinates", {}),
+                        "hotels": suggested_hotels,
+                        "guides": guide_pitches
+                    }
+                }]
+            else:
+                response = [{"message": "No suitable destination found"}]
+
+        return jsonify({"success": True, "results": response})
+
+    except Exception as e:
+        return jsonify({"success": False, "message": str(e)})
