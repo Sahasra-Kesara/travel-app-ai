@@ -41,7 +41,6 @@
         <div id="aiResponse" class="mt-4 text-gray-700"></div>
     </div>
 
-
   <!-- Map Card -->
   <div class="bg-white rounded-2xl shadow-lg p-6 mb-10">
     <h2 class="text-2xl font-semibold text-gray-800 mb-4">All Destinations Map</h2>
@@ -93,7 +92,7 @@ const categoryColors = {
     "Urban": "#ef4444"
 };
 
-// Add markers with colored circle
+// Add markers for all destinations
 destinations.forEach(dest => {
     if(dest.coordinates?.lat && dest.coordinates?.lon){
         const color = categoryColors[dest.category] || "#6b7280"; // default gray
@@ -103,19 +102,17 @@ destinations.forEach(dest => {
             color: "#fff",
             weight: 2,
             opacity: 1,
-            fillOpacity: 0.8,
-            className: 'shadow-md'
+            fillOpacity: 0.8
         }).addTo(map)
-          .bindPopup(`
-              <b>${dest.name}</b><br>
-              ${dest.category}<br>
-              ${dest.province}, ${dest.district}
-          `);
+          .bindPopup(`<b>${dest.name}</b><br>${dest.category}<br>${dest.province}, ${dest.district}`);
     }
 });
 </script>
+
 <script>
 let selectedTask = "recommend";
+let tripMarkers = [];
+let tripLine = null;
 
 document.querySelectorAll(".ai-task-btn").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -141,25 +138,56 @@ document.getElementById("aiForm").addEventListener("submit", async (e) => {
         });
         const data = await res.json();
 
+        // Clear previous trip markers/lines
+        if(tripMarkers.length){
+            tripMarkers.forEach(m => map.removeLayer(m));
+            tripMarkers = [];
+        }
+        if(tripLine){
+            map.removeLayer(tripLine);
+            tripLine = null;
+        }
+
         if (data.success) {
             responseDiv.innerHTML = "";
-            data.results.forEach(r => {
-                const div = document.createElement("div");
-                div.className = "p-3 border-b last:border-0";
+            const routeLatLngs = [];
 
-                if (r.destination) {
+            data.results.forEach((r, idx) => {
+                const div = document.createElement("div");
+                div.className = "p-3 border-b last:border-0 whitespace-pre-line";
+
+                if (r.message) {
+                    div.textContent = r.message;
+                    responseDiv.appendChild(div);
+
+                    // Add marker on map
+                    if(r.lat && r.lon){
+                        const marker = L.marker([r.lat, r.lon])
+                            .addTo(map)
+                            .bindPopup(`<b>Step ${idx+1}</b><br>${r.message.replace(/\n/g,"<br>")}`);
+                        tripMarkers.push(marker);
+                        routeLatLngs.push([r.lat, r.lon]);
+                    }
+                } else if(r.destination){
                     const dest = r.destination;
                     div.innerHTML = `<b>${dest.name}</b> (${dest.category})<br>
                                      ${dest.province}, ${dest.district}<br>
                                      ${dest.description}<br>
                                      Hotels: ${dest.hotels.map(h => h.name).join(", ")}<br>
                                      Guides: ${dest.guides.join(" | ")}`;
+                    responseDiv.appendChild(div);
                 } else {
-                    div.innerHTML = JSON.stringify(r);
+                    div.textContent = JSON.stringify(r);
+                    responseDiv.appendChild(div);
                 }
-
-                responseDiv.appendChild(div);
             });
+
+            // Draw route line if trip points exist
+            if(routeLatLngs.length > 1){
+                tripLine = L.polyline(routeLatLngs, {color: 'blue', weight: 4, opacity: 0.7}).addTo(map);
+                map.fitBounds(tripLine.getBounds(), {padding: [50,50]});
+            }
+
         } else {
             responseDiv.innerHTML = `<span class="text-red-500">${data.message}</span>`;
         }
