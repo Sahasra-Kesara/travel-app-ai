@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block content %}
 <h2 class="text-xl font-bold mb-4">Add Destination</h2>
 
@@ -7,7 +8,7 @@
   <input name="category" placeholder="Category (Beach, Hill, Cultural)" required class="border p-2 w-full">
   <input name="province" placeholder="Province" class="border p-2 w-full">
   <input name="district" placeholder="District" class="border p-2 w-full">
-  <input name="address" placeholder="Address (City / Street)" class="border p-2 w-full" id="address">
+  <input name="address" placeholder="Address (optional)" class="border p-2 w-full" id="address">
   <input name="lat" placeholder="Latitude" class="border p-2 w-full" id="lat" readonly required>
   <input name="lon" placeholder="Longitude" class="border p-2 w-full" id="lon" readonly required>
   <textarea name="description" placeholder="Description" class="border p-2 w-full"></textarea>
@@ -20,54 +21,58 @@
   <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Save Destination</button>
 </form>
 
-<!-- Map -->
+<h3 class="mt-4 font-semibold">Select Location on Map</h3>
 <div id="map" style="height: 400px; margin-top: 10px;"></div>
-<p class="text-sm text-gray-600">Click on the map to set destination coordinates</p>
+<p class="text-sm text-gray-600">Click on the map to select destination coordinates</p>
 
-<!-- Leaflet JS -->
+<!-- Leaflet CSS & JS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-// Initialize map
-let map = L.map('map').setView([7.8731, 80.7718], 7); // Sri Lanka center
+// Initialize map centered on Sri Lanka
+let map = L.map('map').setView([7.8731, 80.7718], 7);
 
+// OpenStreetMap tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
 let marker;
 
-// Set marker and fill lat/lon
+// Function to set marker and update fields
 function setMarker(lat, lon) {
     if(marker) map.removeLayer(marker);
     marker = L.marker([lat, lon], {draggable:true}).addTo(map);
     document.getElementById("lat").value = lat.toFixed(6);
     document.getElementById("lon").value = lon.toFixed(6);
 
-    marker.on('dragend', function(e){
+    // Update lat/lon when marker dragged
+    marker.on('dragend', function(e) {
         const pos = e.target.getLatLng();
         document.getElementById("lat").value = pos.lat.toFixed(6);
         document.getElementById("lon").value = pos.lng.toFixed(6);
     });
 }
 
-// Map click
+// Click on map to add marker
 map.on('click', function(e) {
     setMarker(e.latlng.lat, e.latlng.lng);
 });
 
-// Address geocode
+// Optional: address input to get coordinates
 document.getElementById("address").addEventListener("blur", function() {
     const address = this.value;
-    if (!address) return;
+    if(!address) return;
 
     fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`)
     .then(res => res.json())
     .then(data => {
         if(data && data.length > 0){
-            setMarker(parseFloat(data[0].lat), parseFloat(data[0].lon));
-            map.setView([data[0].lat, data[0].lon], 13);
+            const lat = parseFloat(data[0].lat);
+            const lon = parseFloat(data[0].lon);
+            setMarker(lat, lon);
+            map.setView([lat, lon], 13);
         } else {
             alert("Address not found.");
         }
