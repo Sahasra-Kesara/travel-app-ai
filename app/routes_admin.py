@@ -1,9 +1,14 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 import json, os
-from rag_model import (
-    get_recommendations, get_guides_for_destination, generate_guide_pitch,
-    destinations_with_embeddings, destinations_near_route, haversine
+from ..models.rag_model import (
+    get_recommendations,
+    get_guides_for_destination,
+    generate_guide_pitch,
+    destinations_with_embeddings,
+    destinations_near_route,
+    haversine
 )
+
 
 admin_bp = Blueprint('admin', __name__, url_prefix="/admin")
 
