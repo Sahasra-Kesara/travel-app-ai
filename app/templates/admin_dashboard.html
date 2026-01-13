@@ -1,17 +1,52 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h1 class="text-2xl font-bold mb-4">Admin Dashboard</h1>
+<h1 class="text-3xl font-bold mb-6 text-blue-600">Admin Dashboard</h1>
+
+<div class="mb-6 space-y-3">
+    <a href="{{ url_for('admin.add_hotel') }}" class="text-blue-600 underline text-lg">➕ Add Hotel</a>
+    <a href="{{ url_for('admin.add_destination') }}" class="text-blue-600 underline text-lg">🌍 Add Destination</a>
+</div>
+
+<h2 class="text-2xl font-semibold mb-4 text-gray-800">All Destinations Map</h2>
+
+<div id="destinationsMap" class="w-full h-[500px] rounded-2xl border shadow-sm mb-6"></div>
 
 <ul class="space-y-3">
-  <li>
-    <a href="/admin/add-hotel" class="text-blue-600 underline">
-      ➕ Add Hotel
-    </a>
-  </li>
-  <li>
-    <a href="/admin/add-destination" class="text-blue-600 underline">
-      🌍 Add Destination
-    </a>
-  </li>
+    {% for dest in destinations %}
+    <li class="p-4 border rounded-xl hover:shadow-md transition">
+        <h3 class="font-semibold text-lg text-blue-600">{{ dest.name }}</h3>
+        <p class="text-gray-600">{{ dest.category }} | {{ dest.province }}, {{ dest.district }}</p>
+    </li>
+    {% endfor %}
 </ul>
+
+<!-- Leaflet CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+// Initialize map
+const map = L.map('destinationsMap').setView([7.8731, 80.7718], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Destinations from backend
+const destinations = JSON.parse('{{ destinations | tojson | safe }}');
+
+// Add markers
+destinations.forEach(dest => {
+    if(dest.coordinates?.lat && dest.coordinates?.lon){
+        L.marker([dest.coordinates.lat, dest.coordinates.lon])
+            .addTo(map)
+            .bindPopup(`
+                <b>${dest.name}</b><br>
+                ${dest.category}<br>
+                ${dest.province}, ${dest.district}
+            `);
+    }
+});
+</script>
 {% endblock %}
