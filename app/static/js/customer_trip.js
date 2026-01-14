@@ -45,12 +45,19 @@ document.getElementById('tripForm').addEventListener('submit', async (e) => {
     let tripStepsDiv = document.getElementById('tripSteps');
     tripStepsDiv.innerHTML = '';
 
-    for(let seg of data.segments) {
-        drawSegment(seg.geometry, seg.mode);
+    for(let seg of data.segments){
+        drawSegment(seg.geometry, seg.mode); // draw each colored segment
 
         let stepDiv = document.createElement('div');
         stepDiv.classList.add('p-2', 'border', 'rounded-xl', 'bg-gray-50', 'cursor-pointer');
         stepDiv.innerHTML = `<strong>${seg.mode.toUpperCase()}:</strong> ${seg.from} → ${seg.to}`;
+        stepDiv.addEventListener('click', () => {
+            if(seg.geometry.length) {
+                let c = seg.geometry[0];
+                map.setView([c[1], c[0]], 13);
+            }
+        });
         tripStepsDiv.appendChild(stepDiv);
     }
 });
+
