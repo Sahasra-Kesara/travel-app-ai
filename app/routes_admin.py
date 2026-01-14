@@ -113,90 +113,88 @@ def ai_assistant():
     if not query:
         return jsonify({"success": False, "message": "Query is empty!"})
 
-    response = []
     try:
+        # ---------------- RECOMMEND ----------------
         if task_type == "recommend":
-            # Recommend top destinations
             results = get_recommendations(query, top_k=5)
-            response = [{"name": r["destination"]["name"], "summary": r["summary"]} for r in results]
+            response = [{
+                "name": r["destination"]["name"],
+                "summary": r["summary"]
+            } for r in results]
 
+            return jsonify({"success": True, "results": response})
+
+        # ---------------- TRIP ----------------
         elif task_type == "trip":
-            # Plan trip using route keywords
-            # Format: "Plan a trip from Colombo to Kandy"
             parts = [p.strip() for p in query.lower().split("to")]
-            if len(parts) >= 2:
-                start = next((d for d in destinations_with_embeddings if parts[0] in d["name"].lower()), None)
-                end = next((d for d in destinations_with_embeddings if parts[1] in d["name"].lower()), None)
+            if len(parts) < 2:
+                return jsonify({
+                    "success": True,
+                    "results": [{"message": "Use format: Colombo to Kandy"}]
+                })
 
-                if start and end:
-                    # Get destinations along the route
-                    route_coords = [
-                        (start["coordinates"]["lon"], start["coordinates"]["lat"]),
-                        (end["coordinates"]["lon"], end["coordinates"]["lat"])
-                    ]
-                    nearby = destinations_near_route(route_coords, destinations_with_embeddings)
-                    trip_plan = get_recommendations(query, destinations=nearby, top_k=5)
+            start = next((d for d in destinations_with_embeddings if parts[0] in d["name"].lower()), None)
+            end = next((d for d in destinations_with_embeddings if parts[1] in d["name"].lower()), None)
 
-                    # Build friendly message with coordinates
-                    response = []
-                    for i, d in enumerate(trip_plan, start=1):
-                        dest = d["destination"]
-                        guides = get_guides_for_destination(dest["name"])
-                        guide_text = " | ".join([generate_guide_pitch(g) for g in guides])
-                        hotels_text = ", ".join([h["name"] for h in dest.get("hotels", [])])
+            if not start or not end:
+                return jsonify({
+                    "success": True,
+                    "results": [{"message": "Start or End location not found"}]
+                })
 
-                        message = (
-                            f"{i}️⃣ {dest['name']} ({dest['category']})\n"
-                            f"- Location: {dest.get('province','')}, {dest.get('district','')}\n"
-                            f"- Highlights: {dest.get('description','No description')}\n"
-                            f"- Hotels: {hotels_text or 'No hotels listed'}\n"
-                            f"- Guides: {guide_text or 'No guides available'}"
-                        )
+            route_coords = [
+                (start["coordinates"]["lon"], start["coordinates"]["lat"]),
+                (end["coordinates"]["lon"], end["coordinates"]["lat"])
+            ]
 
-                        response.append({
-                            "message": message,
-                            "lat": dest["coordinates"]["lat"],
-                            "lon": dest["coordinates"]["lon"]
-                        })
-                else:
-                    response = [{"message": "Could not identify start or end destinations"}]
-            else:
-                response = [{"message": "Use format: 'StartCity to EndCity'"}]
+            nearby = destinations_near_route(route_coords, destinations_with_embeddings)
+            trip_plan = get_recommendations(query, destinations=nearby, top_k=5)
 
-        elif task_type == "add_dest":
-            # AI suggests new destination details automatically
-            results = get_recommendations(query, top_k=1)
-            if results:
-                dest = results[0]["destination"]
+            response = []
+            for i, d in enumerate(trip_plan, start=1):
+                dest = d["destination"]
                 guides = get_guides_for_destination(dest["name"])
-                guide_pitches = [generate_guide_pitch(g) for g in guides]
+                guide_text = " | ".join([generate_guide_pitch(g) for g in guides])
+                hotels = ", ".join([h["name"] for h in dest.get("hotels", [])])
 
-                # Suggest hotels automatically
-                suggested_hotels = [
-                    {"name": f"{dest['name']} Inn", "owner": "AI", "mobile": "0712345678", "price_per_night": "5000", "description": "AI suggested hotel"}
-                ]
+                response.append({
+                    "message": (
+                        f"{i}. {dest['name']} ({dest['category']})\n"
+                        f"📍 {dest.get('province','')}, {dest.get('district','')}\n"
+                        f"✨ {dest.get('description','')}\n"
+                        f"🏨 Hotels: {hotels or 'None'}\n"
+                        f"🧑‍🏫 Guides: {guide_text or 'None'}"
+                    ),
+                    "lat": dest["coordinates"]["lat"],
+                    "lon": dest["coordinates"]["lon"]
+                })
 
-                response = [{
-                    "destination": {
-                        "name": dest["name"],
-                        "category": dest["category"],
-                        "province": dest.get("province", ""),
-                        "district": dest.get("district", ""),
-                        "description": dest.get("description", ""),
-                        "best_time_to_visit": dest.get("best_time_to_visit", ""),
-                        "entry_fee": dest.get("entry_fee", ""),
-                        "duration": dest.get("duration", ""),
-                        "activities": dest.get("activities", []),
-                        "nearby_attractions": dest.get("nearby_attractions", []),
-                        "coordinates": dest.get("coordinates", {}),
-                        "hotels": suggested_hotels,
-                        "guides": guide_pitches
-                    }
-                }]
-            else:
-                response = [{"message": "No suitable destination found"}]
+            return jsonify({"success": True, "results": response})
 
-        return jsonify({"success": True, "results": response})
+        # ---------------- ADD DEST ----------------
+        elif task_type == "add_dest":
+            results = get_recommendations(query, top_k=1)
+            if not results:
+                return jsonify({"success": True, "results": [{"message": "No suggestion"}]})
+
+            dest = results[0]["destination"]
+            guides = get_guides_for_destination(dest["name"])
+
+            response = [{
+                "destination": {
+                    "name": dest["name"],
+                    "category": dest["category"],
+                    "province": dest.get("province", ""),
+                    "district": dest.get("district", ""),
+                    "description": dest.get("description", ""),
+                    "coordinates": dest.get("coordinates", {}),
+                    "guides": [generate_guide_pitch(g) for g in guides]
+                }
+            }]
+
+            return jsonify({"success": True, "results": response})
+
+        return jsonify({"success": False, "message": "Unknown task"})
 
     except Exception as e:
         return jsonify({"success": False, "message": str(e)})

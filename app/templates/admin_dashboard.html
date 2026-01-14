@@ -16,30 +16,31 @@
         🌍 Add Destination
       </a>
     </div>
+
   </div>
 
   <!-- AI Admin Agent Card -->
-    <div class="bg-white rounded-2xl shadow-lg p-6 mb-10">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">AI Admin Agent 🤖</h2>
+  <div class="bg-white rounded-2xl shadow-lg p-6 mb-10">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">AI Admin Agent 🤖</h2>
 
-        <!-- Task Buttons -->
-        <div class="flex space-x-3 mb-4">
-            <button type="button" data-task="recommend" class="ai-task-btn px-4 py-2 bg-blue-50 text-blue-600 rounded-xl font-semibold hover:bg-blue-100 transition">Recommend Destinations</button>
-            <button type="button" data-task="trip" class="ai-task-btn px-4 py-2 bg-green-50 text-green-600 rounded-xl font-semibold hover:bg-green-100 transition">Trip Scheduler</button>
-            <button type="button" data-task="add_dest" class="ai-task-btn px-4 py-2 bg-purple-50 text-purple-600 rounded-xl font-semibold hover:bg-purple-100 transition">Add Destination</button>
-        </div>
+      <!-- Task Buttons -->
+      <div class="flex space-x-3 mb-4">
+          <button type="button" data-task="recommend" class="ai-task-btn px-4 py-2 bg-blue-50 text-blue-600 rounded-xl font-semibold hover:bg-blue-100 transition">Recommend Destinations</button>
+          <button type="button" data-task="trip" class="ai-task-btn px-4 py-2 bg-green-50 text-green-600 rounded-xl font-semibold hover:bg-green-100 transition">Trip Scheduler</button>
+          <button type="button" data-task="add_dest" class="ai-task-btn px-4 py-2 bg-purple-50 text-purple-600 rounded-xl font-semibold hover:bg-purple-100 transition">Add Destination</button>
+      </div>
 
-        <!-- Query Input -->
-        <form id="aiForm">
-            <input type="text" id="aiQuery" placeholder="Ask AI..." class="w-full p-3 border rounded-xl mb-3" />
-            <button type="submit" class="px-5 py-3 bg-blue-50 text-blue-600 rounded-xl font-semibold hover:bg-blue-100 transition">
-                Execute
-            </button>
-        </form>
+      <!-- Query Input -->
+      <form id="aiForm">
+          <input type="text" id="aiQuery" placeholder="Ask AI..." class="w-full p-3 border rounded-xl mb-3" />
+          <button type="submit" class="px-5 py-3 bg-blue-50 text-blue-600 rounded-xl font-semibold hover:bg-blue-100 transition">
+              Execute
+          </button>
+      </form>
 
-        <!-- Response -->
-        <div id="aiResponse" class="mt-4 text-gray-700"></div>
-    </div>
+      <!-- Response -->
+      <div id="aiResponse" class="mt-4 text-gray-700"></div>
+  </div>
 
   <!-- Map Card -->
   <div class="bg-white rounded-2xl shadow-lg p-6 mb-10">
@@ -111,90 +112,100 @@ destinations.forEach(dest => {
 
 <script>
 let selectedTask = "recommend";
-let tripMarkers = [];
-let tripLine = null;
+let tripLayers = L.layerGroup().addTo(map);
 
+// Task buttons
 document.querySelectorAll(".ai-task-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         selectedTask = btn.dataset.task;
-        document.getElementById("aiQuery").placeholder = selectedTask === "trip" ?
-            "e.g., Plan a trip from Colombo to Kandy" : "Ask AI...";
+        aiQuery.placeholder =
+            selectedTask === "trip"
+                ? "Colombo to Kandy"
+                : "Ask AI...";
     });
 });
 
+// Submit
 document.getElementById("aiForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const query = document.getElementById("aiQuery").value.trim();
-    if (!query) return;
 
-    const responseDiv = document.getElementById("aiResponse");
-    responseDiv.innerHTML = "⏳ AI is working...";
+    const query = aiQuery.value.trim();
+    if(!query) return;
 
-    try {
-        const res = await fetch("{{ url_for('admin.ai_assistant') }}", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ query, task_type: selectedTask })
+    aiResponse.innerHTML = "🤖 AI is thinking...";
+    tripLayers.clearLayers();
+
+    const res = await fetch("{{ url_for('admin.ai_assistant') }}", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ query, task_type: selectedTask })
+    });
+
+    const data = await res.json();
+
+    if(!data.success){
+        aiResponse.innerHTML = `<p class="text-red-600">${data.message}</p>`;
+        return;
+    }
+
+    aiResponse.innerHTML = "";
+
+    /* ---------------- RECOMMEND ---------------- */
+    if(selectedTask === "recommend"){
+        data.results.forEach((r,i) => {
+            aiResponse.innerHTML += `
+              <div class="p-4 bg-blue-50 rounded-xl mb-3">
+                <h4 class="font-bold text-blue-600">${i+1}. ${r.name}</h4>
+                <p>${r.summary}</p>
+              </div>`;
         });
-        const data = await res.json();
+    }
 
-        // Clear previous trip markers/lines
-        if(tripMarkers.length){
-            tripMarkers.forEach(m => map.removeLayer(m));
-            tripMarkers = [];
-        }
-        if(tripLine){
-            map.removeLayer(tripLine);
-            tripLine = null;
-        }
+    /* ---------------- ADD DEST ---------------- */
+    else if(selectedTask === "add_dest"){
+        const d = data.results[0].destination;
+        aiResponse.innerHTML = `
+          <div class="p-4 bg-purple-50 rounded-xl">
+            <h4 class="font-bold text-purple-600">${d.name}</h4>
+            <p>${d.description}</p>
+            <p class="text-sm mt-2">📍 ${d.province}, ${d.district}</p>
+          </div>`;
+    }
 
-        if (data.success) {
-            responseDiv.innerHTML = "";
-            const routeLatLngs = [];
+    /* ---------------- TRIP ---------------- */
+    else if(selectedTask === "trip"){
+        const points = [];
 
-            data.results.forEach((r, idx) => {
-                const div = document.createElement("div");
-                div.className = "p-3 border-b last:border-0 whitespace-pre-line";
+        data.results.forEach((stop,i) => {
+            if(!stop.lat) return;
 
-                if (r.message) {
-                    div.textContent = r.message;
-                    responseDiv.appendChild(div);
+            points.push([stop.lat, stop.lon]);
 
-                    // Add marker on map
-                    if(r.lat && r.lon){
-                        const marker = L.marker([r.lat, r.lon])
-                            .addTo(map)
-                            .bindPopup(`<b>Step ${idx+1}</b><br>${r.message.replace(/\n/g,"<br>")}`);
-                        tripMarkers.push(marker);
-                        routeLatLngs.push([r.lat, r.lon]);
-                    }
-                } else if(r.destination){
-                    const dest = r.destination;
-                    div.innerHTML = `<b>${dest.name}</b> (${dest.category})<br>
-                                     ${dest.province}, ${dest.district}<br>
-                                     ${dest.description}<br>
-                                     Hotels: ${dest.hotels.map(h => h.name).join(", ")}<br>
-                                     Guides: ${dest.guides.join(" | ")}`;
-                    responseDiv.appendChild(div);
-                } else {
-                    div.textContent = JSON.stringify(r);
-                    responseDiv.appendChild(div);
-                }
+            const icon = L.divIcon({
+                html:`<div class="trip-step-icon">${i+1}</div>`,
+                iconSize:[30,30],
+                iconAnchor:[15,30]
             });
 
-            // Draw route line if trip points exist
-            if(routeLatLngs.length > 1){
-                tripLine = L.polyline(routeLatLngs, {color: 'blue', weight: 4, opacity: 0.7}).addTo(map);
-                map.fitBounds(tripLine.getBounds(), {padding: [50,50]});
-            }
+            L.marker([stop.lat, stop.lon], {icon})
+                .addTo(tripLayers)
+                .bindPopup(stop.message.replace(/\n/g,"<br>"));
 
-        } else {
-            responseDiv.innerHTML = `<span class="text-red-500">${data.message}</span>`;
+            aiResponse.innerHTML += `
+              <div class="p-4 bg-gray-50 rounded-xl mb-3">
+                <h4 class="font-bold text-blue-600">Step ${i+1}</h4>
+                <pre class="whitespace-pre-wrap text-sm">${stop.message}</pre>
+              </div>`;
+        });
+
+        if(points.length > 1){
+            L.polyline(points,{color:"#2563eb",weight:5}).addTo(tripLayers);
+            map.fitBounds(points,{padding:[50,50]});
         }
-    } catch (err) {
-        responseDiv.innerHTML = `<span class="text-red-500">Error: ${err.message}</span>`;
     }
 });
 </script>
+
+
 
 {% endblock %}
