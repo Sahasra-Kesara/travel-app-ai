@@ -1,52 +1,115 @@
-{% extends "base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Trip Planner</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #tripMap { height: 600px; width: 100%; margin-top: 20px; }
+        body { font-family: sans-serif; padding: 20px; }
+        input, button { padding: 8px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>AI Multi-Modal Trip Planner</h1>
 
-<section class="h-screen flex">
-
-  <!-- LEFT PANEL -->
-  <div class="w-full md:w-1/3 bg-white p-6 overflow-y-auto">
-    <h1 class="text-3xl font-bold text-blue-600 mb-4">
-      Plan Your Trip ✈️
-    </h1>
-
-    <!-- Trip Form -->
-    <form id="tripForm" class="mb-4">
-      <input id="startCity" placeholder="Start city" class="w-full p-3 border rounded-xl mb-2"/>
-      <input id="endCity" placeholder="Destination city" class="w-full p-3 border rounded-xl mb-2"/>
-      <div id="stopSelection" class="mb-2">
-        <!-- AI suggested stops checkboxes will be inserted here -->
-      </div>
-      <button class="w-full py-3 bg-blue-600 text-white rounded-xl">Generate Route</button>
+    <form id="tripForm">
+        Start City: <input type="text" id="startCity" placeholder="Colombo" required>
+        End City: <input type="text" id="endCity" placeholder="Kandy" required>
+        <button type="submit">Plan Trip</button>
     </form>
 
-    <!-- Trip Steps -->
-    <div id="tripSteps" class="space-y-3"></div>
-  </div>
+    <div id="stopSelection"></div>
+    <div id="tripSteps"></div>
+    <div id="tripMap"></div>
 
-  <!-- MAP -->
-  <div class="flex-1 relative">
-    <div id="tripMap" class="absolute inset-0"></div>
+    <script>
+        let map = L.map('tripMap').setView([7.8731, 80.7718], 7); // Sri Lanka
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
 
-    <!-- STOP DETAILS CARD -->
-    <div id="stopCard"
-         class="absolute bottom-6 left-1/2 -translate-x-1/2
-                w-96 bg-white rounded-2xl shadow-xl p-5 hidden">
-      <h3 id="scTitle" class="font-bold text-lg text-blue-600"></h3>
-      <p id="scDesc" class="text-sm text-gray-700 mt-2"></p>
-      <p class="text-sm mt-2">⏰ <span id="scTime"></span></p>
-      <button onclick="closeStopCard()" class="mt-3 px-4 py-2 bg-gray-100 rounded-lg text-sm">
-        Close
-      </button>
-    </div>
-  </div>
+        let routeLayers = [];
+        let stopMarkers = [];
 
-</section>
+        function drawSegment(coords, mode, stops) {
+            if (!coords || coords.length === 0) return;
 
-<!-- Leaflet -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+            let color = {
+                "normal_car": "#007bff",
+                "train": "#28a745",
+                "bus": "#ffc107",
+                "highway_car": "#dc3545"
+            }[mode] || "#000000";
 
-<!-- Your JS -->
-<script src="{{ url_for('static', filename='js/customer_trip.js') }}"></script>
+            let polyline = L.polyline(coords.map(c => [c[1], c[0]]), {
+                color: color,
+                weight: 5,
+                opacity: 0.8,
+                dashArray: mode === "bus" ? '10,10' : null
+            }).addTo(map);
 
-{% endblock %}
+            routeLayers.push(polyline);
+
+            if(stops && stops.length){
+                stops.forEach(stop => {
+                    fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(stop)}&format=json&limit=1`)
+                        .then(res => res.json())
+                        .then(data => {
+                            if(data.length>0){
+                                let marker = L.marker([parseFloat(data[0].lat), parseFloat(data[0].lon)])
+                                    .addTo(map)
+                                    .bindPopup(`<strong>${stop}</strong><br>${mode}`);
+                                stopMarkers.push(marker);
+                            }
+                        });
+                });
+            }
+
+            map.fitBounds(polyline.getBounds());
+        }
+
+        function clearRoutes() {
+            routeLayers.forEach(l => map.removeLayer(l));
+            routeLayers = [];
+            stopMarkers.forEach(m => map.removeLayer(m));
+            stopMarkers = [];
+            document.getElementById('stopSelection').innerHTML = '';
+            document.getElementById('tripSteps').innerHTML = '';
+        }
+
+        document.getElementById('tripForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearRoutes();
+
+            let start = document.getElementById('startCity').value;
+            let end = document.getElementById('endCity').value;
+
+            let res = await fetch('/user/ai-trip-plan', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({start, end})
+            });
+
+            let data = await res.json();
+
+            for (let seg of data.segments) {
+                drawSegment(seg.geometry, seg.mode, seg.stops);
+
+                // Show clickable segments
+                let stepDiv = document.createElement('div');
+                stepDiv.innerHTML = `<strong>${seg.mode.toUpperCase()}:</strong> ${seg.from} → ${seg.to}`;
+                stepDiv.style.cursor = "pointer";
+                stepDiv.style.margin = "5px 0";
+                document.getElementById('tripSteps').appendChild(stepDiv);
+
+                stepDiv.addEventListener('click', () => {
+                    if(seg.geometry.length)
+                        map.fitBounds(seg.geometry.map(c => [c[1], c[0]]));
+                });
+            }
+        });
+    </script>
+</body>
+</html>
