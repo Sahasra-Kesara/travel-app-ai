@@ -264,3 +264,28 @@ def book_vehicle():
     # TODO: Save booking to DB along with mobile, distance, fare, cities
     flash(f"Vehicle booked successfully! Distance: {distance:.2f} km, Fare: LKR {fare:.2f}, Mobile: {mobile}")
     return redirect("/vehicles")
+
+@user_bp.route("/ai-trip-plan", methods=["POST"])
+def ai_trip_plan():
+    data = request.json
+    start = data["start"]
+    end = data["end"]
+
+    ai_plan = ai_transport_plan(start, end)
+
+    full_route = []
+
+    for segment in ai_plan["segments"]:
+        geometry = build_route(segment)
+
+        full_route.append({
+            "mode": segment["mode"],
+            "from": segment["from"],
+            "to": segment["to"],
+            "geometry": geometry
+        })
+
+    return {
+        "success": True,
+        "segments": full_route
+    }
