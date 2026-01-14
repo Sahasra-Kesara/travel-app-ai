@@ -1,6 +1,7 @@
 import json
 from transformers import pipeline
 import torch
+from app.services.multi_route_service import build_route  # <-- import build_route
 
 # -------------------------------
 # Load LLM
@@ -17,7 +18,7 @@ generator = pipeline(
 def ai_transport_plan(start, end):
     """
     Decide transport modes and segments for Sri Lanka trips
-    Returns structured JSON (NO sentences)
+    Returns structured JSON with geometry for each segment (NO sentences)
     """
 
     prompt = f"""
@@ -60,10 +61,9 @@ JSON format:
     )[0]["generated_text"]
 
     try:
-        return json.loads(result)
+        plan = json.loads(result)
     except Exception:
-        # fallback (VERY IMPORTANT)
-        return {
+        plan = {
             "segments": [
                 {
                     "mode": "normal_car",
@@ -72,3 +72,9 @@ JSON format:
                 }
             ]
         }
+
+    # Add geometry for each segment
+    for seg in plan["segments"]:
+        seg["geometry"] = build_route(seg)  # must return [[lon, lat], ...]
+
+    return plan

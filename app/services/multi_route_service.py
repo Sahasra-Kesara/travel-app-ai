@@ -12,4 +12,7 @@ def build_route(segment):
     if mode == "highway_car":
         return get_osrm_route(segment["from"], segment["to"], "highway")
 
-    return get_osrm_route(segment["from"], segment["to"], "normal")
+    return [
+        [get_lon(segment["from"]), get_lat(segment["from"])],
+        [get_lon(segment["to"]), get_lat(segment["to"])]
+    ]

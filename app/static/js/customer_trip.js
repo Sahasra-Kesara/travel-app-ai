@@ -1,89 +1,56 @@
-const map = L.map("tripMap").setView([7.8731, 80.7718], 7);
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+let map = L.map('tripMap').setView([7.8731, 80.7718], 7); // Sri Lanka
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
 
-const routeLayer = L.layerGroup().addTo(map);
-const stopMarkers = L.layerGroup().addTo(map);
+let routeLayers = [];
 
-// Transport color map
-const colors = {
-  train: "green",
-  bus: "blue",
-  highway_car: "red",
-  normal_car: "gray"
-};
+// Draw a segment on map
+function drawSegment(coords, mode) {
+    if(!coords || coords.length === 0) return;
+    let color = "#007bff"; // default blue
+    if(mode === "train") color = "#28a745";
+    if(mode === "bus") color = "#ffc107";
+    if(mode === "highway_car") color = "#dc3545";
 
-// Handle form submit
-document.getElementById("tripForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+    let polyline = L.polyline(coords.map(c => [c[1], c[0]]), {
+        color: color,
+        weight: 5,
+        opacity: 0.8,
+        dashArray: mode === "bus" ? '10, 10' : null
+    }).addTo(map);
 
-  routeLayer.clearLayers();
-  stopMarkers.clearLayers();
-  document.getElementById("tripSteps").innerHTML = "";
+    routeLayers.push(polyline);
+    map.fitBounds(polyline.getBounds());
+}
 
-  const start = document.getElementById("startCity").value.trim();
-  const end = document.getElementById("endCity").value.trim();
-  if (!start || !end) return alert("Enter both start and end cities");
+function clearRoutes() {
+    routeLayers.forEach(l => map.removeLayer(l));
+    routeLayers = [];
+}
 
-  // Call AI trip planner
-  const res = await fetch("/user/ai-trip-plan", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({ start, end })
-  });
+document.getElementById('tripForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearRoutes();
 
-  const data = await res.json();
-  if (!data.success || !data.segments.length) return alert("No route found");
+    let start = document.getElementById('startCity').value;
+    let end = document.getElementById('endCity').value;
 
-  let stepCounter = 1;
-
-  data.segments.forEach((seg) => {
-    const points = seg.geometry; // [[lat, lon], ...]
-
-    // Draw segment line
-    L.polyline(points, { color: colors[seg.mode], weight: 5 }).addTo(routeLayer);
-
-    // Add markers at start and end
-    [points[0], points[points.length-1]].forEach((pt, idx) => {
-      const icon = L.divIcon({
-        html: `<div class="bg-${colors[seg.mode]}-600 text-white w-7 h-7 flex items-center justify-center rounded-full text-sm">${stepCounter++}</div>`
-      });
-      L.marker(pt, {icon}).addTo(stopMarkers)
-        .on("click", () => loadStopDetails(seg.from));
+    let res = await fetch('/user/ai-trip-plan', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({start, end})
     });
+    let data = await res.json();
+    let tripStepsDiv = document.getElementById('tripSteps');
+    tripStepsDiv.innerHTML = '';
 
-    // Add step to sidebar
-    document.getElementById("tripSteps").innerHTML += `
-      <div class="p-3 bg-gray-50 rounded-xl">
-        <b>Segment ${stepCounter-1}</b> (${seg.mode.replace("_"," ")})<br>
-        From: ${seg.from}<br>To: ${seg.to}
-      </div>
-    `;
-  });
+    for(let seg of data.segments) {
+        drawSegment(seg.geometry, seg.mode);
 
-  // Fit map to route
-  const allPoints = data.segments.flatMap(s => s.geometry);
-  const bounds = L.latLngBounds(allPoints);
-  map.fitBounds(bounds, { padding: [50, 50] });
+        let stepDiv = document.createElement('div');
+        stepDiv.classList.add('p-2', 'border', 'rounded-xl', 'bg-gray-50', 'cursor-pointer');
+        stepDiv.innerHTML = `<strong>${seg.mode.toUpperCase()}:</strong> ${seg.from} → ${seg.to}`;
+        tripStepsDiv.appendChild(stepDiv);
+    }
 });
-
-// Load stop details
-async function loadStopDetails(name){
-  const res = await fetch("/admin/route-stop-details", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({ destination: name })
-  });
-
-  const data = await res.json();
-  if(!data.success) return;
-
-  scTitle.innerText = data.data.name;
-  scDesc.innerText = data.data.description;
-  scTime.innerText = data.data.best_time;
-
-  document.getElementById("stopCard").classList.remove("hidden");
-}
-
-function closeStopCard(){
-  document.getElementById("stopCard").classList.add("hidden");
-}

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, jsonify
 from models.rag_model import get_recommendations, destinations_with_embeddings
 from flask import render_template, request
 from app.services.route_service import get_route
@@ -265,30 +265,31 @@ def book_vehicle():
     flash(f"Vehicle booked successfully! Distance: {distance:.2f} km, Fare: LKR {fare:.2f}, Mobile: {mobile}")
     return redirect("/vehicles")
 
-@user_bp.route("/ai-trip-plan", methods=["GET", "POST"])
-def ai_trip_plan():
-    if request.method == "GET":
-        return "Send a POST request with start/end JSON", 200
 
-    data = request.json
-    start = data["start"]
-    end = data["end"]
+# -------------------------------
+# AI Trip Plan Endpoint
+# -------------------------------
+@user_bp.route("/ai-trip-plan", methods=["POST"])
+def ai_trip_plan_route():
+    data = request.get_json()
+    start = data.get("start")
+    end = data.get("end")
+    if not start or not end:
+        return jsonify({"error": "Start and end required"}), 400
 
-    ai_plan = ai_transport_plan(start, end)
+    plan = ai_transport_plan(start, end)
+    return jsonify(plan)
 
-    full_route = []
+# -------------------------------
+# Route Geometry Endpoint
+# -------------------------------
+@user_bp.route("/route", methods=["GET"])
+def get_route_endpoint():
+    start = request.args.get("from")
+    end = request.args.get("to")
+    mode = request.args.get("mode")
+    if not all([start, end, mode]):
+        return jsonify([])
 
-    for segment in ai_plan["segments"]:
-        geometry = build_route(segment)
-
-        full_route.append({
-            "mode": segment["mode"],
-            "from": segment["from"],
-            "to": segment["to"],
-            "geometry": geometry
-        })
-
-    return {
-        "success": True,
-        "segments": full_route
-    }
+    coords = build_route({"from": start, "to": end, "mode": mode})
+    return jsonify(coords)
