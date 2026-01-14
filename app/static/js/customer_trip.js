@@ -9,30 +9,30 @@ let stopMarkers = [];
 function drawSegment(coords, mode, stops) {
     if (!coords || coords.length === 0) return;
 
-    let color = "#007bff"; // normal car
-    if (mode === "train") color = "#28a745";
-    if (mode === "bus") color = "#ffc107";
-    if (mode === "highway_car") color = "#dc3545";
+    let color = {
+        "normal_car": "#007bff",
+        "train": "#28a745",
+        "bus": "#ffc107",
+        "highway_car": "#dc3545"
+    }[mode] || "#000000";
 
-    // Draw polyline
     let polyline = L.polyline(coords.map(c => [c[1], c[0]]), {
         color: color,
         weight: 5,
         opacity: 0.8,
         dashArray: mode === "bus" ? '10,10' : null
     }).addTo(map);
+
     routeLayers.push(polyline);
 
-    // Draw stops as markers
-    if(stops && stops.length) {
+    if(stops && stops.length){
         stops.forEach(stop => {
             fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(stop)}&format=json&limit=1`)
                 .then(res => res.json())
                 .then(data => {
-                    if(data.length > 0) {
-                        let lat = parseFloat(data[0].lat);
-                        let lon = parseFloat(data[0].lon);
-                        let marker = L.marker([lat, lon]).addTo(map)
+                    if(data.length>0){
+                        let marker = L.marker([parseFloat(data[0].lat), parseFloat(data[0].lon)])
+                            .addTo(map)
                             .bindPopup(`<strong>${stop}</strong><br>${mode}`);
                         stopMarkers.push(marker);
                     }
@@ -42,6 +42,7 @@ function drawSegment(coords, mode, stops) {
 
     map.fitBounds(polyline.getBounds());
 }
+
 
 function clearRoutes() {
     routeLayers.forEach(l => map.removeLayer(l));
