@@ -1,58 +1,77 @@
 const map = L.map("tripMap").setView([7.8731, 80.7718], 7);
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
-  .addTo(map);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
 const routeLayer = L.layerGroup().addTo(map);
+const stopMarkers = L.layerGroup().addTo(map);
 
-document.getElementById("tripForm").addEventListener("submit", async e => {
+// Transport color map
+const colors = {
+  train: "green",
+  bus: "blue",
+  highway_car: "red",
+  normal_car: "gray"
+};
+
+// Handle form submit
+document.getElementById("tripForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   routeLayer.clearLayers();
+  stopMarkers.clearLayers();
   document.getElementById("tripSteps").innerHTML = "";
 
-  const query = tripQuery.value.trim();
-  if (!query) return;
+  const start = document.getElementById("startCity").value.trim();
+  const end = document.getElementById("endCity").value.trim();
+  if (!start || !end) return alert("Enter both start and end cities");
 
-  const res = await fetch("/admin/ai-assistant", {
+  // Call AI trip planner
+  const res = await fetch("/ai-trip-plan", {
     method: "POST",
     headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({ query, task_type:"trip" })
+    body: JSON.stringify({ start, end })
   });
 
   const data = await res.json();
-  const points = [];
+  if (!data.success || !data.segments.length) return alert("No route found");
 
-  data.results.forEach((stop, i) => {
-    points.push([stop.lat, stop.lon]);
+  let stepCounter = 1;
 
-    const icon = L.divIcon({
-      html:`<div class="bg-blue-600 text-white
-                  w-7 h-7 flex items-center justify-center
-                  rounded-full text-sm">${i+1}</div>`
+  data.segments.forEach((seg) => {
+    const points = seg.geometry; // [[lat, lon], ...]
+
+    // Draw segment line
+    L.polyline(points, { color: colors[seg.mode], weight: 5 }).addTo(routeLayer);
+
+    // Add markers at start and end
+    [points[0], points[points.length-1]].forEach((pt, idx) => {
+      const icon = L.divIcon({
+        html: `<div class="bg-${colors[seg.mode]}-600 text-white w-7 h-7 flex items-center justify-center rounded-full text-sm">${stepCounter++}</div>`
+      });
+      L.marker(pt, {icon}).addTo(stopMarkers)
+        .on("click", () => loadStopDetails(seg.from));
     });
 
-    L.marker([stop.lat, stop.lon], {icon})
-      .addTo(routeLayer)
-      .on("click", () => loadStopDetails(stop.name));
-
+    // Add step to sidebar
     document.getElementById("tripSteps").innerHTML += `
       <div class="p-3 bg-gray-50 rounded-xl">
-        <b>Stop ${i+1}</b><br>
-        ${stop.name}
-      </div>`;
+        <b>Segment ${stepCounter-1}</b> (${seg.mode.replace("_"," ")})<br>
+        From: ${seg.from}<br>To: ${seg.to}
+      </div>
+    `;
   });
 
-  if (points.length > 1) {
-    L.polyline(points, {weight:5}).addTo(routeLayer);
-    map.fitBounds(points, {padding:[50,50]});
-  }
+  // Fit map to route
+  const allPoints = data.segments.flatMap(s => s.geometry);
+  const bounds = L.latLngBounds(allPoints);
+  map.fitBounds(bounds, { padding: [50, 50] });
 });
 
+// Load stop details
 async function loadStopDetails(name){
   const res = await fetch("/admin/route-stop-details", {
     method: "POST",
     headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({ destination:name })
+    body: JSON.stringify({ destination: name })
   });
 
   const data = await res.json();
