@@ -9,6 +9,8 @@ from flask import redirect
 import requests
 from models.rag_model import get_available_vehicles, estimate_fare, update_vehicle_availability, haversine
 import requests
+from app.ai.transport_ai import ai_transport_plan
+from app.services.multi_route_service import build_route
 
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
@@ -21,7 +23,7 @@ def home():
 @user_bp.route("/trip-planner")
 def trip_planner():
     return render_template("customer_dashboard.html")
-    
+
 @user_bp.route('/search', methods=['POST'])
 def search():
     query = request.form.get('query')
