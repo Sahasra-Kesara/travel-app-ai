@@ -1,9 +1,16 @@
 from app.services.route_service import get_osrm_route
 import requests
+import os
 import geopandas as gpd
 
 # Load railway shapefile once (GeoJSON or Shapefile)
-RAILWAY_SHAPEFILE = "data/sri_lanka_railways.geojson"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+RAILWAY_SHAPEFILE = os.path.join(BASE_DIR, "data", "sri_lanka_railways.geojson")
+
+# Check if file exists
+if not os.path.exists(RAILWAY_SHAPEFILE):
+    raise FileNotFoundError(f"Railway file not found: {RAILWAY_SHAPEFILE}")
+
 railway_gdf = gpd.read_file(RAILWAY_SHAPEFILE)
 
 def get_coords(city):
