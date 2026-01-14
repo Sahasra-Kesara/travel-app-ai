@@ -198,3 +198,43 @@ def ai_assistant():
 
     except Exception as e:
         return jsonify({"success": False, "message": str(e)})
+
+@admin_bp.route("/route-stop-details", methods=["POST"])
+def route_stop_details():
+    data = request.json
+    dest_name = data.get("destination")
+
+    if not dest_name:
+        return jsonify({"success": False, "message": "Destination required"})
+
+    try:
+        dest = next(
+            d for d in destinations_with_embeddings
+            if d["name"].lower() == dest_name.lower()
+        )
+
+        prompt = (
+            f"Explain why {dest['name']} is a good stop during a trip in Sri Lanka.\n"
+            f"Description: {dest['description']}\n"
+            f"Activities: {', '.join(dest.get('activities', []))}\n"
+            f"Best time: {dest.get('best_time_to_visit','')}\n"
+            f"Give a short, user-friendly explanation."
+        )
+
+        explanation = generate_summary(prompt)
+
+        return jsonify({
+            "success": True,
+            "data": {
+                "name": dest["name"],
+                "category": dest["category"],
+                "description": explanation,
+                "activities": dest.get("activities", []),
+                "best_time": dest.get("best_time_to_visit", ""),
+                "province": dest.get("province", ""),
+                "district": dest.get("district", "")
+            }
+        })
+
+    except StopIteration:
+        return jsonify({"success": False, "message": "Destination not found"})
