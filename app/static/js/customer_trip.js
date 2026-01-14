@@ -9,6 +9,7 @@ let stopMarkers = [];
 function drawSegment(coords, mode, stops) {
     if (!coords || coords.length === 0) return;
 
+    // Color by mode
     let color = {
         "normal_car": "#007bff",
         "train": "#28a745",
@@ -16,6 +17,7 @@ function drawSegment(coords, mode, stops) {
         "highway_car": "#dc3545"
     }[mode] || "#000000";
 
+    // Draw polyline
     let polyline = L.polyline(coords.map(c => [c[1], c[0]]), {
         color: color,
         weight: 5,
@@ -25,6 +27,7 @@ function drawSegment(coords, mode, stops) {
 
     routeLayers.push(polyline);
 
+    // Draw stops as markers
     if(stops && stops.length){
         stops.forEach(stop => {
             fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(stop)}&format=json&limit=1`)
@@ -43,12 +46,15 @@ function drawSegment(coords, mode, stops) {
     map.fitBounds(polyline.getBounds());
 }
 
-
 function clearRoutes() {
     routeLayers.forEach(l => map.removeLayer(l));
     routeLayers = [];
     stopMarkers.forEach(m => map.removeLayer(m));
     stopMarkers = [];
+
+    // Clear stop checkboxes
+    let stopDiv = document.getElementById('stopSelection');
+    if(stopDiv) stopDiv.innerHTML = '';
 }
 
 document.getElementById('tripForm').addEventListener('submit', async (e) => {
@@ -68,10 +74,31 @@ document.getElementById('tripForm').addEventListener('submit', async (e) => {
     let tripStepsDiv = document.getElementById('tripSteps');
     tripStepsDiv.innerHTML = '';
 
+    let stopDiv = document.getElementById('stopSelection');
+    stopDiv.innerHTML = '';
+
     for (let seg of data.segments) {
         drawSegment(seg.geometry, seg.mode, seg.stops);
 
-        // Create clickable step
+        // Populate AI suggested stops as checkboxes
+        if(seg.stops && seg.stops.length){
+            seg.stops.forEach(stop => {
+                let cb = document.createElement('input');
+                cb.type = 'checkbox';
+                cb.name = 'stops';
+                cb.value = stop;
+                cb.checked = true;
+
+                let label = document.createElement('label');
+                label.innerText = stop;
+                label.prepend(cb);
+
+                stopDiv.appendChild(label);
+                stopDiv.appendChild(document.createElement('br'));
+            });
+        }
+
+        // Create clickable step for each segment
         let stepDiv = document.createElement('div');
         stepDiv.classList.add('p-2', 'border', 'rounded-xl', 'bg-gray-50', 'cursor-pointer');
         stepDiv.innerHTML = `<strong>${seg.mode.toUpperCase()}:</strong> ${seg.from} → ${seg.to}`;
