@@ -1,3 +1,5 @@
+from app.services.route_service import get_osrm_route
+
 def build_route(segment):
     mode = segment["mode"]
 

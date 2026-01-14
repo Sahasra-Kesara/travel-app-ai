@@ -265,8 +265,11 @@ def book_vehicle():
     flash(f"Vehicle booked successfully! Distance: {distance:.2f} km, Fare: LKR {fare:.2f}, Mobile: {mobile}")
     return redirect("/vehicles")
 
-@user_bp.route("/ai-trip-plan", methods=["POST"])
+@user_bp.route("/ai-trip-plan", methods=["GET", "POST"])
 def ai_trip_plan():
+    if request.method == "GET":
+        return "Send a POST request with start/end JSON", 200
+
     data = request.json
     start = data["start"]
     end = data["end"]

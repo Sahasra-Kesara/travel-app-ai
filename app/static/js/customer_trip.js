@@ -25,7 +25,7 @@ document.getElementById("tripForm").addEventListener("submit", async (e) => {
   if (!start || !end) return alert("Enter both start and end cities");
 
   // Call AI trip planner
-  const res = await fetch("/ai-trip-plan", {
+  const res = await fetch("/user/ai-trip-plan", {
     method: "POST",
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify({ start, end })
