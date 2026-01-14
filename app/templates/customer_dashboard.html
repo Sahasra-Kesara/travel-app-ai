@@ -2,27 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI Trip Planner</title>
+    <title>AI Multi-Destination Trip Planner</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
-        #tripMap { height: 600px; width: 100%; margin-top: 20px; }
         body { font-family: sans-serif; padding: 20px; }
         input, button { padding: 8px; margin: 5px; }
+        #tripMap { height: 600px; width: 100%; margin-top: 20px; }
+
+        /* Spinner overlay */
+        #spinnerOverlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            display: none;
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #007bff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #tripSteps div:hover { background: #f0f0f0; }
     </style>
 </head>
 <body>
     <h1>AI Multi-Modal Trip Planner</h1>
 
     <form id="tripForm">
-        Start City: <input type="text" id="startCity" placeholder="Colombo" required>
-        End City: <input type="text" id="endCity" placeholder="Kandy" required>
+        Destinations (comma-separated): 
+        <input type="text" id="destinations" placeholder="Colombo,Kandy,Nuwara Eliya" required>
         <button type="submit">Plan Trip</button>
     </form>
 
-    <div id="stopSelection"></div>
     <div id="tripSteps"></div>
     <div id="tripMap"></div>
+
+    <!-- Spinner overlay -->
+    <div id="spinnerOverlay">
+        <div class="spinner"></div>
+    </div>
 
     <script>
         let map = L.map('tripMap').setView([7.8731, 80.7718], 7); // Sri Lanka
@@ -72,42 +105,57 @@
 
         function clearRoutes() {
             routeLayers.forEach(l => map.removeLayer(l));
-            routeLayers = [];
             stopMarkers.forEach(m => map.removeLayer(m));
+            routeLayers = [];
             stopMarkers = [];
-            document.getElementById('stopSelection').innerHTML = '';
             document.getElementById('tripSteps').innerHTML = '';
+        }
+
+        function showSpinner(show = true) {
+            document.getElementById('spinnerOverlay').style.display = show ? 'flex' : 'none';
         }
 
         document.getElementById('tripForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             clearRoutes();
 
-            let start = document.getElementById('startCity').value;
-            let end = document.getElementById('endCity').value;
+            let destinations = document.getElementById('destinations').value
+                                .split(",").map(d => d.trim())
+                                .filter(d => d);
 
-            let res = await fetch('/user/ai-trip-plan', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({start, end})
-            });
+            if(destinations.length < 2) return alert("Please enter at least 2 destinations.");
 
-            let data = await res.json();
+            showSpinner(true); // Show spinner
 
-            for (let seg of data.segments) {
-                drawSegment(seg.geometry, seg.mode, seg.stops);
-
-                // Show clickable segments
-                let stepDiv = document.createElement('div');
-                stepDiv.innerHTML = `<strong>${seg.mode.toUpperCase()}:</strong> ${seg.from} → ${seg.to}`;
-                stepDiv.style.cursor = "pointer";
-                stepDiv.style.margin = "5px 0";
-                document.getElementById('tripSteps').appendChild(stepDiv);
-
-                stepDiv.addEventListener('click', () => {
-                    if(seg.geometry.length)
-                        map.fitBounds(seg.geometry.map(c => [c[1], c[0]]));
+            try {
+                let res = await fetch('/user/ai-trip-plan', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({destinations})
                 });
+
+                if (!res.ok) throw new Error("Failed to get AI response");
+
+                let data = await res.json();
+
+                data.segments.forEach((seg, i) => {
+                    drawSegment(seg.geometry, seg.mode, seg.stops);
+
+                    let stepDiv = document.createElement('div');
+                    stepDiv.innerHTML = `<strong>${seg.mode.toUpperCase()}:</strong> ${seg.from} → ${seg.to}`;
+                    stepDiv.style.cursor = "pointer";
+                    stepDiv.style.margin = "5px 0";
+                    document.getElementById('tripSteps').appendChild(stepDiv);
+
+                    stepDiv.addEventListener('click', () => {
+                        if(seg.geometry.length)
+                            map.fitBounds(seg.geometry.map(c => [c[1], c[0]]));
+                    });
+                });
+            } catch (err) {
+                alert("Error: " + err.message);
+            } finally {
+                showSpinner(false); // Hide spinner
             }
         });
     </script>

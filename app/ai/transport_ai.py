@@ -1,3 +1,15 @@
+import json
+from transformers import pipeline
+import torch
+from app.services.multi_route_service import build_route
+
+# Load LLM
+generator = pipeline(
+    "text2text-generation",
+    model="google/flan-t5-large",
+    device=0 if torch.cuda.is_available() else -1
+)
+
 def ai_transport_plan(destinations):
     """
     Multi-modal AI planner for multiple destinations.
