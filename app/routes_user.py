@@ -18,6 +18,10 @@ def home():
     # Just show search page
     return render_template('home.html')
 
+@user_bp.route("/trip-planner")
+def trip_planner():
+    return render_template("customer_dashboard.html")
+    
 @user_bp.route('/search', methods=['POST'])
 def search():
     query = request.form.get('query')
