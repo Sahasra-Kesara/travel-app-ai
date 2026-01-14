@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi-Modal Trip Planner</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #tripMap { height: 600px; width: 100%; margin-bottom: 1rem; }
+        .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <h2>Multi-Modal Sri Lanka Trip Planner</h2>
+    <form id="tripForm">
+        Start: <input type="text" id="startCity" required placeholder="Colombo"><br>
+        End: <input type="text" id="endCity" required placeholder="Kandy"><br>
+        <button type="submit">Plan Trip</button>
+    </form>
+
+    <div id="tripMap"></div>
+    <div id="stopSelection"></div>
+    <div id="tripSteps"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        let map = L.map('tripMap').setView([7.8731, 80.7718], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        let routeLayers = [];
+        let stopMarkers = [];
+
+        // Add legend
+        L.control({position: 'topright'}).onAdd = function () {
+            let div = L.DomUtil.create('div', 'legend');
+            div.innerHTML = `
+                <i style="background:#007bff"></i> Normal Car<br>
+                <i style="background:#28a745"></i> Train<br>
+                <i style="background:#ffc107"></i> Bus<br>
+                <i style="background:#dc3545"></i> Highway Car
+            `;
+            return div;
+        }.addTo(map);
+
+        function drawSegment(coords, mode, stops) {
+            if (!coords || coords.length === 0) return;
+
+            let color = {
+                "normal_car": "#007bff",
+                "train": "#28a745",
+                "bus": "#ffc107",
+                "highway_car": "#dc3545"
+            }[mode] || "#000000";
+
+            let polyline = L.polyline(coords.map(c => [c[1], c[0]]), {
+                color: color,
+                weight: 5,
+                opacity: 0.8,
+                dashArray: mode === "bus" ? '10,10' : null
+            }).addTo(map);
+
+            routeLayers.push(polyline);
+
+            // Stops
+            if(stops && stops.length){
+                stops.forEach(stop => {
+                    fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(stop)}&format=json&limit=1`)
+                        .then(res => res.json())
+                        .then(data => {
+                            if(data.length>0){
+                                let marker = L.marker([parseFloat(data[0].lat), parseFloat(data[0].lon)])
+                                    .addTo(map)
+                                    .bindPopup(`<strong>${stop}</strong><br>${mode}`);
+                                stopMarkers.push(marker);
+                            }
+                        });
+                });
+            }
+
+            map.fitBounds(polyline.getBounds());
+        }
+
+        function clearRoutes() {
+            routeLayers.forEach(l => map.removeLayer(l));
+            routeLayers = [];
+            stopMarkers.forEach(m => map.removeLayer(m));
+            stopMarkers = [];
+            let stopDiv = document.getElementById('stopSelection');
+            if(stopDiv) stopDiv.innerHTML = '';
+        }
+
+        document.getElementById('tripForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearRoutes();
+
+            let start = document.getElementById('startCity').value;
+            let end = document.getElementById('endCity').value;
+
+            let res = await fetch('/user/ai-trip-plan', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({start, end})
+            });
+
+            let data = await res.json();
+            let tripStepsDiv = document.getElementById('tripSteps');
+            tripStepsDiv.innerHTML = '';
+
+            let stopDiv = document.getElementById('stopSelection');
+            stopDiv.innerHTML = '';
+
+            for (let seg of data.segments) {
+                drawSegment(seg.geometry, seg.mode, seg.stops);
+
+                // Stops checkboxes
+                if(seg.stops && seg.stops.length){
+                    seg.stops.forEach(stop => {
+                        let cb = document.createElement('input');
+                        cb.type = 'checkbox';
+                        cb.name = 'stops';
+                        cb.value = stop;
+                        cb.checked = true;
+                        let label = document.createElement('label');
+                        label.innerText = stop;
+                        label.prepend(cb);
+                        stopDiv.appendChild(label);
+                        stopDiv.appendChild(document.createElement('br'));
+                    });
+                }
+
+                // Clickable step
+                let stepDiv = document.createElement('div');
+                stepDiv.classList.add('p-2', 'border', 'rounded-xl', 'bg-gray-50', 'cursor-pointer');
+                stepDiv.innerHTML = `<strong>${seg.mode.toUpperCase()}:</strong> ${seg.from} → ${seg.to}`;
+                tripStepsDiv.appendChild(stepDiv);
+                stepDiv.addEventListener('click', () => {
+                    if(seg.geometry.length) map.fitBounds(seg.geometry.map(c => [c[1], c[0]]));
+                });
+            }
+        });
+    </script>
+</body>
+</html>
