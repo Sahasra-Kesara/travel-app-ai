@@ -1,22 +1,15 @@
-import json
-from transformers import pipeline
-import torch
-from app.services.multi_route_service import build_route
-
-# Load LLM
-generator = pipeline(
-    "text2text-generation",
-    model="google/flan-t5-large",
-    device=0 if torch.cuda.is_available() else -1
-)
-
-def ai_transport_plan(start, end):
+def ai_transport_plan(destinations):
     """
-    Multi-modal AI planner:
-    Combines train → bus → highway_car → normal_car
-    Returns segments with 'mode', 'from', 'to', 'geometry', 'stops'
+    Multi-modal AI planner for multiple destinations.
+    Returns segments connecting each destination in order.
     """
-    prompt = f"""
+    segments = []
+
+    for i in range(len(destinations)-1):
+        start = destinations[i]
+        end = destinations[i+1]
+
+        prompt = f"""
 You are a smart Sri Lanka trip planner AI.
 
 Start: {start}
@@ -37,15 +30,16 @@ Rules:
 - Return ONLY JSON with segments including 'mode', 'from', 'to', 'stops' (array of strings)
 """
 
-    result = generator(prompt, max_new_tokens=400, do_sample=False)[0]["generated_text"]
+        result = generator(prompt, max_new_tokens=400, do_sample=False)[0]["generated_text"]
 
-    try:
-        plan = json.loads(result)
-    except Exception:
-        plan = {"segments": [{"mode": "normal_car", "from": start, "to": end, "stops": []}]}
+        try:
+            plan = json.loads(result)
+        except Exception:
+            plan = {"segments": [{"mode": "normal_car", "from": start, "to": end, "stops": []}]}
 
-    # Build route geometry
-    for seg in plan["segments"]:
-        seg["geometry"] = build_route(seg)
+        # Build geometry
+        for seg in plan["segments"]:
+            seg["geometry"] = build_route(seg)
+            segments.append(seg)
 
-    return plan
+    return {"segments": segments}
