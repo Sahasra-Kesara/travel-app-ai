@@ -13,8 +13,9 @@ generator = pipeline(
 def ai_transport_plan(start, end):
     """
     Multi-modal AI planner:
-    - Can combine train, bus, highway_car, normal_car
-    - Returns segments with 'mode', 'from', 'to', 'geometry'
+    - Combines train → bus → highway_car → normal_car
+    - Suggests intermediate stops/destinations
+    - Returns segments with 'mode', 'from', 'to', 'geometry', 'stops'
     """
     prompt = f"""
 You are a smart Sri Lanka trip planner AI.
@@ -33,29 +34,37 @@ Rules:
 - Use highway_car if expressways shorten the route
 - Use bus to connect train stations to destinations
 - Combine multiple transport modes if needed
-- Return ONLY JSON with segments including 'mode', 'from', 'to'
+- Suggest intermediate stops/destinations along the way
+- Return ONLY JSON with segments including 'mode', 'from', 'to', 'stops' (array of strings)
 
 JSON format example:
 {{
   "segments": [
-    {{"mode": "train", "from": "Colombo Fort", "to": "Kandy"}},
-    {{"mode": "bus", "from": "Kandy", "to": "Nuwara Eliya"}}
+    {{
+      "mode": "train",
+      "from": "Colombo Fort",
+      "to": "Kandy",
+      "stops": ["Pettah", "Polgahawela"]
+    }},
+    {{
+      "mode": "bus",
+      "from": "Kandy",
+      "to": "Nuwara Eliya",
+      "stops": ["Ambewela"]
+    }}
   ]
 }}
 Do NOT explain anything.
 """
 
-    result = generator(prompt, max_new_tokens=350, do_sample=False)[0]["generated_text"]
+    result = generator(prompt, max_new_tokens=400, do_sample=False)[0]["generated_text"]
 
     try:
         plan = json.loads(result)
     except Exception:
-        # fallback single segment
-        plan = {
-            "segments": [{"mode": "normal_car", "from": start, "to": end}]
-        }
+        plan = {"segments": [{"mode": "normal_car", "from": start, "to": end, "stops": []}]}
 
-    # Build geometry for each segment
+    # Build real road geometry for each segment
     for seg in plan["segments"]:
         seg["geometry"] = build_route(seg)
 

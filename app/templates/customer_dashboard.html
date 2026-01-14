@@ -9,12 +9,17 @@
       Plan Your Trip ✈️
     </h1>
 
+    <!-- Trip Form -->
     <form id="tripForm" class="mb-4">
       <input id="startCity" placeholder="Start city" class="w-full p-3 border rounded-xl mb-2"/>
-      <input id="endCity" placeholder="Destination city" class="w-full p-3 border rounded-xl mb-3"/>
+      <input id="endCity" placeholder="Destination city" class="w-full p-3 border rounded-xl mb-2"/>
+      <div id="stopSelection" class="mb-2">
+        <!-- AI suggested stops checkboxes will be inserted here -->
+      </div>
       <button class="w-full py-3 bg-blue-600 text-white rounded-xl">Generate Route</button>
     </form>
 
+    <!-- Trip Steps -->
     <div id="tripSteps" class="space-y-3"></div>
   </div>
 
@@ -37,8 +42,11 @@
 
 </section>
 
+<!-- Leaflet -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Your JS -->
 <script src="{{ url_for('static', filename='js/customer_trip.js') }}"></script>
 
 {% endblock %}

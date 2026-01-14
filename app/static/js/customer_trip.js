@@ -4,29 +4,50 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 let routeLayers = [];
+let stopMarkers = [];
 
-// Draw a segment on map
-function drawSegment(coords, mode) {
-    if(!coords || coords.length === 0) return;
-    let color = "#007bff"; // default blue
-    if(mode === "train") color = "#28a745";
-    if(mode === "bus") color = "#ffc107";
-    if(mode === "highway_car") color = "#dc3545";
+function drawSegment(coords, mode, stops) {
+    if (!coords || coords.length === 0) return;
 
+    let color = "#007bff"; // normal car
+    if (mode === "train") color = "#28a745";
+    if (mode === "bus") color = "#ffc107";
+    if (mode === "highway_car") color = "#dc3545";
+
+    // Draw polyline
     let polyline = L.polyline(coords.map(c => [c[1], c[0]]), {
         color: color,
         weight: 5,
         opacity: 0.8,
-        dashArray: mode === "bus" ? '10, 10' : null
+        dashArray: mode === "bus" ? '10,10' : null
     }).addTo(map);
-
     routeLayers.push(polyline);
+
+    // Draw stops as markers
+    if(stops && stops.length) {
+        stops.forEach(stop => {
+            fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(stop)}&format=json&limit=1`)
+                .then(res => res.json())
+                .then(data => {
+                    if(data.length > 0) {
+                        let lat = parseFloat(data[0].lat);
+                        let lon = parseFloat(data[0].lon);
+                        let marker = L.marker([lat, lon]).addTo(map)
+                            .bindPopup(`<strong>${stop}</strong><br>${mode}`);
+                        stopMarkers.push(marker);
+                    }
+                });
+        });
+    }
+
     map.fitBounds(polyline.getBounds());
 }
 
 function clearRoutes() {
     routeLayers.forEach(l => map.removeLayer(l));
     routeLayers = [];
+    stopMarkers.forEach(m => map.removeLayer(m));
+    stopMarkers = [];
 }
 
 document.getElementById('tripForm').addEventListener('submit', async (e) => {
@@ -41,23 +62,23 @@ document.getElementById('tripForm').addEventListener('submit', async (e) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({start, end})
     });
+
     let data = await res.json();
     let tripStepsDiv = document.getElementById('tripSteps');
     tripStepsDiv.innerHTML = '';
 
-    for(let seg of data.segments){
-        drawSegment(seg.geometry, seg.mode); // draw each colored segment
+    for (let seg of data.segments) {
+        drawSegment(seg.geometry, seg.mode, seg.stops);
 
+        // Create clickable step
         let stepDiv = document.createElement('div');
         stepDiv.classList.add('p-2', 'border', 'rounded-xl', 'bg-gray-50', 'cursor-pointer');
         stepDiv.innerHTML = `<strong>${seg.mode.toUpperCase()}:</strong> ${seg.from} → ${seg.to}`;
-        stepDiv.addEventListener('click', () => {
-            if(seg.geometry.length) {
-                let c = seg.geometry[0];
-                map.setView([c[1], c[0]], 13);
-            }
-        });
         tripStepsDiv.appendChild(stepDiv);
+
+        // Zoom to this segment on click
+        stepDiv.addEventListener('click', () => {
+            if(seg.geometry.length) map.fitBounds(seg.geometry.map(c => [c[1], c[0]]));
+        });
     }
 });
-
