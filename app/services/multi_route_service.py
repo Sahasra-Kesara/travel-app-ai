@@ -2,6 +2,7 @@ from app.services.route_service import get_osrm_route
 import requests
 import os
 import geopandas as gpd
+from shapely.geometry import Point
 
 # Load railway shapefile once (GeoJSON or Shapefile)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,12 +28,15 @@ def get_coords(city):
     return None, None
 
 def get_train_path(start, end):
-    """Approximate train path using railway shapefile"""
-    start_lon, start_lat = start
-    end_lon, end_lat = end
-
-    # Simple straight line for now (can later snap to nearest railway network)
-    return [[start_lon, start_lat], [end_lon, end_lat]]
+    start_point = Point(start)
+    end_point = Point(end)
+    
+    # Snap start/end to nearest railway line
+    start_snapped = railway_gdf.geometry.distance(start_point).sort_values().index[0]
+    end_snapped = railway_gdf.geometry.distance(end_point).sort_values().index[0]
+    
+    line_coords = list(railway_gdf.loc[start_snapped:end_snapped].geometry.unary_union.coords)
+    return [[lon, lat] for lon, lat in line_coords]
 
 def build_route(segment):
     """Return route geometry array (lon, lat) for this segment"""
@@ -51,6 +55,11 @@ def build_route(segment):
 
     if mode == "highway_car":
         return get_osrm_route(segment["from"], segment["to"], "highway")
+    
+    if mode in ["bus", "highway_car", "normal_car"]:
+    # OSRM needs (lat, lon) tuples
+        return get_osrm_route([start_lat, start_lon], [end_lat, end_lon],
+                            "highway" if mode=="highway_car" else "normal")
 
     # normal_car
     return get_osrm_route(segment["from"], segment["to"], "normal")
