@@ -10,8 +10,6 @@ from models.rag_model import (
     haversine
 )
 
-
-
 admin_bp = Blueprint('admin', __name__, url_prefix="/admin")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
