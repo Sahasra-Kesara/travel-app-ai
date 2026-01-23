@@ -27,7 +27,8 @@ with open(GUIDES_PATH, 'r', encoding='utf-8') as f:
 with open(VEHICLES_PATH, 'r', encoding='utf-8') as f:
     vehicles_data = json.load(f)['vehicles']
 
-
+with open(DRIVERS_PATH, 'r', encoding='utf-8') as f:
+    drivers_data = json.load(f)['drivers']
 
 def get_available_vehicles():
     """Return all available vehicles"""
