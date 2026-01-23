@@ -203,3 +203,31 @@ def generate_guide_pitch(guide):
         max_new_tokens=60,
         do_sample=False
     )[0]["generated_text"]
+
+def get_available_drivers(vehicle_type=None, user_district=None):
+    available_drivers = []
+
+    for driver in drivers_data:
+        if not driver["available"]:
+            continue
+
+        vehicle = next(
+            (v for v in vehicles_data if v["id"] == driver["vehicle_id"] and v["available"]),
+            None
+        )
+
+        if not vehicle:
+            continue
+
+        if vehicle_type and vehicle["type"] != vehicle_type:
+            continue
+
+        if user_district and driver["district"].lower() != user_district.lower():
+            continue
+
+        available_drivers.append({
+            "driver": driver,
+            "vehicle": vehicle
+        })
+
+    return available_drivers
