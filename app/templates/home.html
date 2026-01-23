@@ -3,103 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <title>AI Travel Assistant</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="bg-white text-gray-800 font-['Inter']">
 
-<!-- Navbar -->
-<nav class="border-b bg-white">
+<!-- ================= NAVBAR ================= -->
+<nav class="bg-white border-b shadow-sm">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-blue-600">
+
+        <!-- Logo -->
+        <h1 class="text-xl font-semibold tracking-tight text-blue-700">
             AI Travel Assistant
         </h1>
 
-        <div class="hidden md:flex space-x-8 text-sm font-medium">
-            <a href="#" class="hover:text-blue-600">Solutions</a>
-            <a href="#" class="hover:text-blue-600">Technology</a>
-            <a href="#" class="hover:text-blue-600">Research</a>
-            <a href="#" class="hover:text-blue-600">About</a>
+        <!-- Menu -->
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+            <a href="#" class="hover:text-blue-700">Solutions</a>
+            <a href="#" class="hover:text-blue-700">Technology</a>
+            <a href="#" class="hover:text-blue-700">Research</a>
+            <a href="#" class="hover:text-blue-700">About</a>
         </div>
 
-        <!-- <a href="{{ url_for('user.trip_planner') }}"
-            class="border border-blue-600 text-blue-600 px-5 py-2 rounded-lg font-semibold
-                    hover:bg-blue-600 hover:text-white transition">
-            Plan My Trip
-        </a> -->
-
-        <a href="/admin" class="bg-black text-white px-4 py-2 rounded">
-   Hotel Owner / Admin Portal
-</a>
-
-
+        <!-- Admin Button -->
+        <a href="/admin"
+           class="bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold
+                  hover:bg-blue-800 transition">
+            Admin Portal
+        </a>
     </div>
 </nav>
 
-<!-- Hero Section -->
-<section class="max-w-6xl mx-auto px-6 py-20 text-center">
-    <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
-        AI-Powered <span class="text-blue-600">Travel Booking</span><br>
-        & Recommendation System
+<!-- ================= HERO SECTION ================= -->
+<section class="max-w-6xl mx-auto px-6 py-24 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-gray-900">
+        AI-Powered Travel Booking <br>
+        <span class="text-blue-700">& Recommendation Platform</span>
     </h2>
 
-    <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
-        Plan your entire journey using Natural Language.
-        Ask in <b>English</b> or <b>සිංහල</b> — our AI understands both.
-        Powered by NLP & Retrieval-Augmented Generation (RAG).
+    <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        A unified AI platform designed to plan, book, and optimize travel experiences
+        using advanced Natural Language Processing and Retrieval-Augmented Generation.
+        <br><br>
+        Supports <strong>English</strong> and <strong>සිංහල</strong>.
     </p>
 
-    <!-- Quick Prompts -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
-        <div class="border rounded-xl p-6 hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">✈️ Smart Travel Planning</h3>
-            <p class="text-sm text-gray-600 mt-2">
-                Find routes, destinations & schedules using natural language.
+    <!-- Feature Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+
+        <div class="bg-white border rounded-xl p-8 hover:shadow-md transition">
+            <h3 class="font-semibold text-lg text-gray-900">
+                Smart Travel Planning
+            </h3>
+            <p class="text-sm text-gray-600 mt-3 leading-relaxed">
+                Generate optimized travel routes, destinations, and schedules using
+                AI-driven natural language understanding.
             </p>
         </div>
 
-        <div class="border rounded-xl p-6 hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">🏨 Hotel & Restaurant Booking</h3>
-            <p class="text-sm text-gray-600 mt-2">
-                Personalized recommendations based on context & preferences.
+        <div class="bg-white border rounded-xl p-8 hover:shadow-md transition">
+            <h3 class="font-semibold text-lg text-gray-900">
+                Hotel & Restaurant Booking
+            </h3>
+            <p class="text-sm text-gray-600 mt-3 leading-relaxed">
+                Context-aware accommodation and dining recommendations tailored to
+                user preferences and availability.
             </p>
         </div>
 
-        <div class="border rounded-xl p-6 hover:shadow-lg transition">
-            <h3 class="font-semibold text-lg">🧠 NLP + RAG Intelligence</h3>
-            <p class="text-sm text-gray-600 mt-2">
-                Natural Language → SQL + Vector Search for accurate results.
+        <div class="bg-white border rounded-xl p-8 hover:shadow-md transition">
+            <h3 class="font-semibold text-lg text-gray-900">
+                NLP & RAG Intelligence
+            </h3>
+            <p class="text-sm text-gray-600 mt-3 leading-relaxed">
+                Natural language queries converted into SQL and vector-based search
+                pipelines for high-precision results.
             </p>
         </div>
+
     </div>
 </section>
 
-<!-- Big AI Search Bar Section -->
-<section class="bg-gray-50 border-t py-16">
+<!-- ================= AI SEARCH SECTION ================= -->
+<section class="bg-gray-50 border-t py-20">
     <div class="max-w-5xl mx-auto px-6 text-center">
 
-        <h3 class="text-2xl font-bold mb-6">
-            Hello 👋 How may I help you?
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+            AI Travel Intelligence Console
         </h3>
 
-        <p class="text-gray-600 mb-10">
-            Ask anything about travel, hotels, routes, restaurants or healthcare.
-            <br>
-            <span class="font-medium">English | සිංහල දෙකෙන්ම අහන්න</span>
+        <p class="text-gray-600 mb-12">
+            Query travel routes, accommodations, restaurants, and healthcare facilities
+            using natural language in English or සිංහල.
         </p>
 
-        <!-- Search Bar -->
+        <!-- Search Form -->
         <form action="{{ url_for('user.search') }}" method="POST" class="relative">
             <textarea
                 name="query"
                 rows="2"
-                placeholder="Eg: Colombo ඉඳලා Ella යන්න හොඳම route එක මොකද්ද? / Find hotels near Sigiriya for next weekend"
-                class="w-full resize-none rounded-2xl border border-gray-300 px-6 py-5 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+                placeholder="Example: Colombo ඉඳලා Ella යන්න හොඳම route එක මොකද්ද? / Find hotels near Sigiriya for next weekend"
+                class="w-full resize-none rounded-xl border border-gray-300 px-6 py-5 text-base
+                       focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
             ></textarea>
 
             <button
                 type="submit"
-                class="absolute right-4 bottom-4 bg-blue-600 text-white px-6 py-2 rounded-xl font-semibold hover:bg-blue-700 transition">
+                class="absolute right-4 bottom-4 bg-blue-700 text-white px-6 py-2
+                       rounded-lg text-sm font-semibold hover:bg-blue-800 transition">
                 Ask AI
             </button>
         </form>
@@ -107,11 +123,11 @@
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="text-center text-sm text-gray-500 py-6">
-    © 2026 AI-Powered Travel Booking & Recommendation System  
+<!-- ================= FOOTER ================= -->
+<footer class="text-center text-sm text-gray-500 py-10 border-t">
+    © 2026 AI Travel Assistant Platform  
     <br>
-    Final Year Project – NLP & RAG Integration
+    Final Year Research Project – NLP & RAG Based Recommendation System
 </footer>
 
 </body>
