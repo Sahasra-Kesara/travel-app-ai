@@ -231,3 +231,20 @@ def get_available_drivers(vehicle_type=None, user_district=None):
         })
 
     return available_drivers
+
+def get_driver_options(distance_km, vehicle_type=None, user_district=None):
+    drivers = get_available_drivers(vehicle_type, user_district)
+
+    results = []
+    for item in drivers:
+        fare = estimate_fare(item["vehicle"]["id"], distance_km)
+
+        results.append({
+            "driver_name": item["driver"]["name"],
+            "phone": item["driver"]["phone"],
+            "vehicle": item["vehicle"]["type"],
+            "fare_estimate": round(fare, 2),
+            "rating": item["driver"]["rating"]
+        })
+
+    return results
