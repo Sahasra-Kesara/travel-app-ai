@@ -45,6 +45,40 @@
         Supports <strong>English</strong> and <strong>සිංහල</strong>.
     </p>
 
+    <!-- ================= AI SEARCH SECTION ================= -->
+<section class="bg-gray-50 border-t py-20">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+            AI Travel Intelligence Console
+        </h3>
+
+        <p class="text-gray-600 mb-12">
+            Query travel routes, accommodations, restaurants, and healthcare facilities
+            using natural language in English or සිංහල.
+        </p>
+
+        <!-- Search Form -->
+        <form action="{{ url_for('user.search') }}" method="POST" class="relative">
+            <textarea
+                name="query"
+                rows="2"
+                placeholder="Example: Colombo ඉඳලා Ella යන්න හොඳම route එක මොකද්ද? / Find hotels near Sigiriya for next weekend"
+                class="w-full resize-none rounded-xl border border-gray-300 px-6 py-5 text-base
+                       focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
+            ></textarea>
+
+            <button
+                type="submit"
+                class="absolute right-4 bottom-4 bg-blue-700 text-white px-6 py-2
+                       rounded-lg text-sm font-semibold hover:bg-blue-800 transition">
+                Ask AI
+            </button>
+        </form>
+
+    </div>
+</section>
+
     <!-- Feature Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
 
@@ -81,39 +115,7 @@
     </div>
 </section>
 
-<!-- ================= AI SEARCH SECTION ================= -->
-<section class="bg-gray-50 border-t py-20">
-    <div class="max-w-5xl mx-auto px-6 text-center">
 
-        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
-            AI Travel Intelligence Console
-        </h3>
-
-        <p class="text-gray-600 mb-12">
-            Query travel routes, accommodations, restaurants, and healthcare facilities
-            using natural language in English or සිංහල.
-        </p>
-
-        <!-- Search Form -->
-        <form action="{{ url_for('user.search') }}" method="POST" class="relative">
-            <textarea
-                name="query"
-                rows="2"
-                placeholder="Example: Colombo ඉඳලා Ella යන්න හොඳම route එක මොකද්ද? / Find hotels near Sigiriya for next weekend"
-                class="w-full resize-none rounded-xl border border-gray-300 px-6 py-5 text-base
-                       focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
-            ></textarea>
-
-            <button
-                type="submit"
-                class="absolute right-4 bottom-4 bg-blue-700 text-white px-6 py-2
-                       rounded-lg text-sm font-semibold hover:bg-blue-800 transition">
-                Ask AI
-            </button>
-        </form>
-
-    </div>
-</section>
 
 <!-- ================= FOOTER ================= -->
 <footer class="text-center text-sm text-gray-500 py-10 border-t">
