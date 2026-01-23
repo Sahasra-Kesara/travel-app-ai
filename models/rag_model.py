@@ -250,3 +250,38 @@ def get_driver_options(distance_km, vehicle_type=None, user_district=None):
         })
 
     return results
+
+def book_driver(driver_id, user_name, pickup, drop, distance_km):
+    driver = next((d for d in drivers_data if d["id"] == driver_id and d["available"]), None)
+    if not driver:
+        return {"error": "Driver not available"}
+
+    vehicle = next((v for v in vehicles_data if v["id"] == driver["vehicle_id"]), None)
+
+
+    fare = estimate_fare(vehicle["id"], distance_km)
+
+    booking = {
+        "booking_id": f"B{len(driver_id)+1001}",
+        "user": user_name,
+        "driver_id": driver_id,
+        "vehicle_id": vehicle["id"],
+        "pickup": pickup,
+        "drop": drop,
+        "distance_km": distance_km,
+        "fare": fare,
+        "status": "confirmed"
+    }
+
+    # Save booking
+    with open(BOOKINGS_PATH, 'r+', encoding='utf-8') as f:
+        data = json.load(f)
+        data["bookings"].append(booking)
+        f.seek(0)
+        json.dump(data, f, indent=4)
+
+    # Lock driver & vehicle
+    driver["available"] = False
+    update_vehicle_availability(vehicle["id"], False)
+
+    return booking
