@@ -1,0 +1,15 @@
+{
+  "drivers": [
+    {
+      "id": "D001",
+      "name": "Kamal Perera",
+      "phone": "+94771234567",
+      "email": "kamal@drivers.lk",
+      "district": "Colombo",
+      "languages": ["English", "Sinhala"],
+      "vehicle_id": "V001",
+      "rating": 4.8,
+      "available": true
+    }
+  ]
+}
