@@ -285,3 +285,14 @@ def book_driver(driver_id, user_name, pickup, drop, distance_km):
     update_vehicle_availability(vehicle["id"], False)
 
     return booking
+
+def generate_driver_message(booking, driver):
+    prompt = (
+        f"Write a polite driver notification message.\n"
+        f"Driver: {driver['name']}\n"
+        f"Pickup: {booking['pickup']}\n"
+        f"Drop: {booking['drop']}\n"
+        f"Fare: {booking['fare']} LKR\n"
+        f"Keep it short."
+    )
+    return generator(prompt, max_new_tokens=50, do_sample=False)[0]["generated_text"]
