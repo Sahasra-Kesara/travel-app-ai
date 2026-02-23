@@ -95,9 +95,10 @@
         </p>
 
         <!-- Search Form -->
-        <form action="{{ url_for('user.search') }}" method="POST" class="relative">
+        <form id="searchForm" class="relative">
             <textarea
                 name="query"
+                id="query"
                 rows="2"
                 placeholder="Example: Colombo ඉඳලා Ella යන්න හොඳම route එක මොකද්ද? / Find hotels near Sigiriya for next weekend"
                 class="w-full resize-none rounded-xl border border-gray-300 px-6 py-5 text-base
@@ -111,6 +112,9 @@
                 Ask AI
             </button>
         </form>
+
+        <!-- Results container -->
+        <div id="results" class="mt-10 text-left space-y-6"></div>
 
     </div>
 </section>
