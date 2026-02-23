@@ -90,17 +90,19 @@ def plan_trip():
     main_route = routes[0]
 
     destination_name = request.form.get("destination_name")
-    
+    guides = []
+    if destination_name:
+        guides = get_guides_route_based(
+            destination_name,
+            main_route["geometry"]
+        )
 
     alternative_routes = routes[1:]
-
-    
 
     # Route-based AI recommendations
     query = "Suggest tourist destinations near this travel route in Sri Lanka"
     recommendations = route_based_recommendation(main_route["geometry"], query)
     
-
     # Prepare destinations for JS map
     destinations_for_js = []
     for r in recommendations:
