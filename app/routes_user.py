@@ -11,7 +11,6 @@ from models.rag_model import get_available_vehicles, estimate_fare, update_vehic
 import requests
 from app.ai.transport_ai import ai_transport_plan
 from app.services.multi_route_service import build_route
-from models.fast_rag import get_recommendations
 
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
@@ -32,7 +31,11 @@ def search():
     if not query:
         return render_template('destination.html', results=[])
 
-    results = get_recommendations(query, top_k=5)
+    # Use RAG knowledge base with embeddings
+    results = get_recommendations(
+        query,
+        destinations=destinations_with_embeddings
+    )
 
     return render_template('destination.html', results=results)
 
