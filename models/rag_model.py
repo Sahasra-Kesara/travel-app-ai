@@ -109,7 +109,8 @@ def get_recommendations(query, destinations=destinations_with_embeddings, top_k=
 
         summary = generator(
             prompt,
-            max_new_tokens=80,
+            max_new_tokens=60,
+            temperature=0.3,
             do_sample=False
         )[0]["generated_text"]
 
