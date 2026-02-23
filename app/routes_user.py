@@ -12,13 +12,6 @@ import requests
 from app.ai.transport_ai import ai_transport_plan
 from app.services.multi_route_service import build_route
 from models.rag_model import get_guides_route_based
-import requests
-import json
-import os
-DRIVERS_FILE = os.path.join(os.path.dirname(__file__), 'drivers.json')
-
-with open(DRIVERS_FILE, 'r', encoding='utf-8') as f:
-    drivers_data = json.load(f)['drivers']
 
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
@@ -39,33 +32,15 @@ def search():
     if not query:
         return render_template('destination.html', results=[])
 
-    # 1. Get top destination recommendations
-    results = get_recommendations(query, destinations=destinations_with_embeddings, top_k=3)
-
-    # 2. Find available drivers in the district of the top destination
-    top_districts = [r['destination']['district'].lower() for r in results]
-    available_drivers = [
-        d for d in drivers_data
-        if d['available'] and d['district'].lower() in top_districts
-    ]
-
-    # 3. Build AI-style response text
-    reply_text = "Here’s a travel suggestion for you:\n"
-    for r in results:
-        dest = r['destination']
-        reply_text += f"- {dest['name']} ({dest['category']}) in {dest['district']}, {dest['province']}. {r['summary']}\n"
-
-    if available_drivers:
-        reply_text += "\nAvailable drivers along your trip route:\n"
-        for drv in available_drivers:
-            reply_text += f"- {drv['name']} ({drv['vehicle']['type']}, {drv['vehicle']['brand']}) — Contact: {drv['phone']}\n"
-
-    return render_template(
-        'destination.html',
-        results=results,
-        drivers=available_drivers,
-        ai_reply=reply_text
+    # Use RAG knowledge base with embeddings
+    results = get_recommendations(
+        query,
+        destinations=destinations_with_embeddings
     )
+
+    return render_template('destination.html', results=results)
+
+import requests
 
 @user_bp.route("/plan", methods=["POST"])
 def plan_trip():
