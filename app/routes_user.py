@@ -117,8 +117,9 @@ def plan_trip():
         "recommendations.html",
         route_main=main_route,
         route_alternatives=alternative_routes,
-        results=recommendations or [],
-        destinations=destinations_for_js or []
+        results=recommendations,
+        destinations=destinations_for_js,
+        guides=guides
     )
 
 @user_bp.route("/guides/<destination_name>")
