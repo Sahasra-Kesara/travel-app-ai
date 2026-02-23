@@ -299,3 +299,23 @@ def get_route_endpoint():
 
     coords = build_route({"from": start, "to": end, "mode": mode})
     return jsonify(coords)
+
+# In your user_bp Blueprint
+@user_bp.route('/search-live', methods=['POST'])
+def search_live():
+    query = request.form.get('query')
+    if not query:
+        return jsonify({"results": []})
+
+    # Get recommendations
+    results = get_recommendations(query, destinations=destinations_with_embeddings)
+
+    # Return only necessary fields for typing effect
+    simplified = []
+    for r in results:
+        simplified.append({
+            "name": r["destination"]["name"],
+            "summary": r["summary"]
+        })
+
+    return jsonify({"results": simplified})
