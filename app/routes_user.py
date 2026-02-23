@@ -31,11 +31,7 @@ def search():
     if not query:
         return render_template('destination.html', results=[])
 
-    # Use RAG knowledge base with embeddings
-    results = get_recommendations(
-        query,
-        destinations=destinations_with_embeddings
-    )
+    results = get_recommendations(query, top_k=5)
 
     return render_template('destination.html', results=results)
 
