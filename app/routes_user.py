@@ -153,7 +153,17 @@ def guides(destination_name):
         guides=guides
     )
 
+@user_bp.route("/guide/<guide_id>")
+def guide_details(guide_id):
+    from models.rag_model import guides_data
 
+    guide = next((g for g in guides_data if g["id"] == guide_id), None)
+
+    if not guide:
+        return "Guide not found", 404
+
+    return render_template("guide_details.html", guide=guide)
+    
 @user_bp.route("/book-guide", methods=["POST"])
 def book_guide():
     guide_id = request.form.get("guide_id")
