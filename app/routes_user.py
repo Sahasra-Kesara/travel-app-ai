@@ -163,7 +163,7 @@ def guide_details(guide_id):
         return "Guide not found", 404
 
     return render_template("guide_details.html", guide=guide)
-    
+
 @user_bp.route("/book-guide", methods=["POST"])
 def book_guide():
     guide_id = request.form.get("guide_id")
