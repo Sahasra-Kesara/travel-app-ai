@@ -32,13 +32,33 @@ def search():
     if not query:
         return render_template('destination.html', results=[])
 
-    # Use RAG knowledge base with embeddings
-    results = get_recommendations(
-        query,
-        destinations=destinations_with_embeddings
-    )
+    # 1. Get top destination recommendations
+    results = get_recommendations(query, destinations=destinations_with_embeddings, top_k=3)
 
-    return render_template('destination.html', results=results)
+    # 2. Find available drivers in the district of the top destination
+    top_districts = [r['destination']['district'].lower() for r in results]
+    available_drivers = [
+        d for d in drivers_data
+        if d['available'] and d['district'].lower() in top_districts
+    ]
+
+    # 3. Build AI-style response text
+    reply_text = "Here’s a travel suggestion for you:\n"
+    for r in results:
+        dest = r['destination']
+        reply_text += f"- {dest['name']} ({dest['category']}) in {dest['district']}, {dest['province']}. {r['summary']}\n"
+
+    if available_drivers:
+        reply_text += "\nAvailable drivers along your trip route:\n"
+        for drv in available_drivers:
+            reply_text += f"- {drv['name']} ({drv['vehicle']['type']}, {drv['vehicle']['brand']}) — Contact: {drv['phone']}\n"
+
+    return render_template(
+        'destination.html',
+        results=results,
+        drivers=available_drivers,
+        ai_reply=reply_text
+    )
 
 import requests
 
