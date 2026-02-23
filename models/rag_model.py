@@ -218,3 +218,43 @@ def route_based_recommendation(route_coords, query):
 @lru_cache(maxsize=128)
 def generate_summary(prompt):
     return generator(prompt, max_new_tokens=60, do_sample=False)[0]["generated_text"]
+
+# ============================================================
+# Guide Functions (FIX FOR IMPORT ERROR)
+# ============================================================
+
+def get_guides_for_destination(destination_name, user_district=None):
+    """
+    Return available guides for a destination.
+    If user_district provided → prioritize same district.
+    """
+    matched_guides = []
+
+    for guide in guides_data:
+        if (
+            guide.get("destination", "").lower() == destination_name.lower()
+            and guide.get("available", False)
+        ):
+            if user_district:
+                if guide.get("district", "").lower() == user_district.lower():
+                    matched_guides.append(guide)
+            else:
+                matched_guides.append(guide)
+
+    return matched_guides
+
+
+def generate_guide_pitch(guide):
+    """
+    Generate short AI marketing pitch for a guide
+    """
+    prompt = (
+        f"Write a short professional travel guide introduction.\n"
+        f"Name: {guide.get('name','')}\n"
+        f"Destination: {guide.get('destination','')}\n"
+        f"Experience: {guide.get('experience','')} years\n"
+        f"Languages: {', '.join(guide.get('languages', []))}\n"
+        f"Keep it short and friendly."
+    )
+
+    return generate_summary(prompt)
