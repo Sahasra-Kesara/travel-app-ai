@@ -14,6 +14,11 @@ from app.services.multi_route_service import build_route
 from models.rag_model import get_guides_route_based
 import requests
 
+DRIVERS_FILE = os.path.join(os.path.dirname(__file__), 'drivers.json')
+
+with open(DRIVERS_FILE, 'r', encoding='utf-8') as f:
+    drivers_data = json.load(f)['drivers']
+    
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
 
