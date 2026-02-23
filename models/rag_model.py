@@ -274,3 +274,31 @@ def get_districts_along_route(route_coords, step=50):
 
     return list(districts)
 
+def get_guides_route_based(destination_name, route_coords):
+    """
+    Priority:
+    1. Destination guides
+    2. District guides along route
+    """
+
+    route_districts = get_districts_along_route(route_coords)
+
+    matched = []
+
+    for guide in guides_data:
+        if not guide.get("available"):
+            continue
+
+        # Priority 1: Exact destination
+        if guide.get("destination", "").lower() == destination_name.lower():
+            matched.append(guide)
+            continue
+
+        # Priority 2: District along route
+        if guide.get("district", "").lower() in route_districts:
+            matched.append(guide)
+
+    # Sort by rating
+    matched = sorted(matched, key=lambda x: x.get("rating", 0), reverse=True)
+
+    return matched
