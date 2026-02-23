@@ -258,3 +258,19 @@ def generate_guide_pitch(guide):
     )
 
     return generate_summary(prompt)
+
+def get_districts_along_route(route_coords, step=50):
+    """
+    Sample route points and detect districts.
+    step = every Nth point to reduce API calls
+    """
+    districts = set()
+
+    for i in range(0, len(route_coords), step):
+        lon, lat = route_coords[i]
+        district = get_district_from_coords(lat, lon)
+        if district:
+            districts.add(district.lower())
+
+    return list(districts)
+
