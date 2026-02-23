@@ -12,6 +12,7 @@ import requests
 from app.ai.transport_ai import ai_transport_plan
 from app.services.multi_route_service import build_route
 from models.rag_model import get_guides_route_based
+import requests
 
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
@@ -59,8 +60,6 @@ def search():
         drivers=available_drivers,
         ai_reply=reply_text
     )
-
-import requests
 
 @user_bp.route("/plan", methods=["POST"])
 def plan_trip():
