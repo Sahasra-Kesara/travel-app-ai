@@ -88,13 +88,19 @@ def plan_trip():
         return "No routes found.", 500
 
     main_route = routes[0]
+
+    destination_name = request.form.get("destination_name")
+    
+
     alternative_routes = routes[1:]
+
+    
 
     # Route-based AI recommendations
     query = "Suggest tourist destinations near this travel route in Sri Lanka"
     recommendations = route_based_recommendation(main_route["geometry"], query)
-    destination_name = request.form.get("destination_name")
     
+
     # Prepare destinations for JS map
     destinations_for_js = []
     for r in recommendations:
