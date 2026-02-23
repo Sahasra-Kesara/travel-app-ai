@@ -5,7 +5,6 @@ from transformers import pipeline
 import torch
 from math import radians, cos, sin, asin, sqrt
 from functools import lru_cache
-from langdetect import detect
 
 # -------------------------------
 # Setup paths
