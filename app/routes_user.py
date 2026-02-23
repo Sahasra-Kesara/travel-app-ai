@@ -13,7 +13,8 @@ from app.ai.transport_ai import ai_transport_plan
 from app.services.multi_route_service import build_route
 from models.rag_model import get_guides_route_based
 import requests
-
+import json
+import os
 DRIVERS_FILE = os.path.join(os.path.dirname(__file__), 'drivers.json')
 
 with open(DRIVERS_FILE, 'r', encoding='utf-8') as f:
