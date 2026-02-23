@@ -100,20 +100,12 @@ def get_recommendations(query, destinations=destinations_with_embeddings, top_k=
     # Generate friendly summaries using LLM
     recommendations = []
     for dest in top_destinations:
-        if lang == 'si':
-            # Sinhala prompt
-            prompt = (
-                f"Provide a friendly travel recommendation in Sinhala letters for {dest['name']}. "
-                f"Description: {dest['description']} "
-                f"Keep it short and friendly."
-            )
-        else:
-            # English prompt
-            prompt = (
-                f"Recommend {dest['name']} in Sri Lanka for a traveler. "
-                f"Description: {dest['description']} "
-                f"Keep it short and friendly."
-            )
+        prompt = (
+            f"You are a professional travel assistant.\n"
+            f"Recommend the destination: {dest['name']} in Sri Lanka.\n"
+            f"Description: {dest['description']}\n"
+            f"Write a short, clear, friendly recommendation in English only."
+        )
 
         summary = generator(
             prompt,
