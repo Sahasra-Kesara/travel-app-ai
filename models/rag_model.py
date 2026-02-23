@@ -84,11 +84,6 @@ def get_recommendations(query, destinations=destinations_with_embeddings, top_k=
     Retrieve top_k destinations matching the query and generate friendly recommendations.
     Supports Sinhala or English responses based on the query language.
     """
-    # Detect language of query
-    try:
-        lang = detect(query)
-    except:
-        lang = 'en'  # default to English if detection fails
 
     # Encode query
     query_embedding = embed_model.encode(query, convert_to_tensor=True)
