@@ -52,8 +52,10 @@ def update_vehicle_availability(vehicle_id, available):
 # -------------------------------
 # Embedding model for retrieval
 # -------------------------------
-#embed_model = SentenceTransformer('all-mpnet-base-v2')
-embed_model = SentenceTransformer('sentence-transformers/distiluse-base-multilingual-cased-v2')
+
+embed_model = SentenceTransformer(
+    'sentence-transformers/all-MiniLM-L6-v2'
+)
 
 # LLM for text generation (RAG)
 #generator = pipeline("text-generation", model="gpt2")
