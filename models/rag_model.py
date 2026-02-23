@@ -81,23 +81,24 @@ destinations_with_embeddings = build_embeddings(destinations_data)
 # -------------------------------
 def get_recommendations(query, destinations=destinations_with_embeddings, top_k=3):
     """
-    Retrieve top_k destinations matching the query and generate friendly recommendations.
-    Supports Sinhala or English responses based on the query language.
+    Retrieve top_k destinations matching the query and generate English recommendations.
     """
 
     # Encode query
     query_embedding = embed_model.encode(query, convert_to_tensor=True)
 
-    # Compute cosine similarity
+    # Compute similarity
     scores = []
     for dest in destinations:
         sim = util.cos_sim(query_embedding, dest['embedding']).item()
         scores.append((sim, dest))
 
-    # Sort by similarity and take top_k
-    top_destinations = [d for s, d in sorted(scores, key=lambda x: x[0], reverse=True)[:top_k]]
+    # Top results
+    top_destinations = [
+        d for s, d in sorted(scores, key=lambda x: x[0], reverse=True)[:top_k]
+    ]
 
-    # Generate friendly summaries using LLM
+    # Generate English summaries
     recommendations = []
     for dest in top_destinations:
         prompt = (
@@ -114,7 +115,10 @@ def get_recommendations(query, destinations=destinations_with_embeddings, top_k=
             do_sample=False
         )[0]["generated_text"]
 
-        recommendations.append({'destination': dest, 'summary': summary})
+        recommendations.append({
+            'destination': dest,
+            'summary': summary
+        })
 
     return recommendations
 
