@@ -143,21 +143,6 @@ def guides(destination_name):
     )
 
 
-def get_guides_for_destination(destination_name, user_district=None):
-    matched_guides = []
-
-    for guide in guides_data:
-        if guide["destination"].lower() == destination_name.lower() and guide["available"]:
-            if user_district:
-                if guide.get("district", "").lower() == user_district.lower():
-                    matched_guides.append(guide)
-            else:
-                matched_guides.append(guide)
-
-    return matched_guides
-
-
-
 @user_bp.route("/book-guide", methods=["POST"])
 def book_guide():
     guide_id = request.form.get("guide_id")
