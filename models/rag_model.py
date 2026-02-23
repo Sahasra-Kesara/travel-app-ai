@@ -71,8 +71,26 @@ generator = pipeline(
 # -------------------------------
 def build_embeddings(destinations):
     for dest in destinations:
-        # Convert description to vector embedding
-        dest['embedding'] = embed_model.encode(dest['description'], convert_to_tensor=True)
+        # Create a rich searchable text using all location fields
+        search_text = f"""
+        Name: {dest.get('name','')}
+        Category: {dest.get('category','')}
+        Province: {dest.get('province','')}
+        District: {dest.get('district','')}
+        Description: {dest.get('description','')}
+        Activities: {', '.join(dest.get('activities', []))}
+        Nearby: {', '.join(dest.get('nearby_attractions', []))}
+        """
+
+        # Save searchable text
+        dest['search_text'] = search_text.lower()
+
+        # Create embedding from full context (NOT description only)
+        dest['embedding'] = embed_model.encode(
+            dest['search_text'],
+            convert_to_tensor=True
+        )
+
     return destinations
 
 # Apply embeddings once
