@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guide Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="border-b bg-white">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-blue-600">
+            Guide Profile
+        </h1>
+        <a href="{{ request.referrer or url_for('user.home') }}"
+           class="text-sm font-semibold text-blue-600 hover:underline">
+            ← Back
+        </a>
+    </div>
+</nav>
+
+<!-- Guide Card -->
+<section class="max-w-4xl mx-auto px-6 py-12">
+    <div class="bg-white rounded-2xl shadow p-8">
+
+        <h2 class="text-3xl font-bold text-blue-600">
+            {{ guide.name }}
+        </h2>
+
+        <p class="mt-2 text-gray-600">
+            {{ guide.description }}
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-6 text-sm">
+
+            <div class="space-y-2">
+                <p><b>Destination:</b> {{ guide.destination }}</p>
+                <p><b>District:</b> {{ guide.district }}</p>
+                <p><b>Languages:</b> {{ guide.languages | join(', ') }}</p>
+                <p><b>Specialties:</b> {{ guide.specialty | join(', ') }}</p>
+            </div>
+
+            <div class="space-y-2">
+                <p><b>Experience:</b> {{ guide.experience }} years</p>
+                <p><b>Rating:</b> ⭐ {{ guide.rating }}</p>
+                <p><b>Price:</b> LKR {{ guide.price_per_hour }} / hour</p>
+                <p>
+                    <b>Status:</b>
+                    {% if guide.available %}
+                        <span class="text-green-600 font-semibold">Available</span>
+                    {% else %}
+                        <span class="text-red-600 font-semibold">Not Available</span>
+                    {% endif %}
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Booking Form -->
+        {% if guide.available %}
+        <div class="mt-8 border-t pt-6">
+            <h3 class="text-xl font-bold mb-4">
+                Book This Guide
+            </h3>
+
+            <form action="{{ url_for('user.book_guide') }}" method="POST" class="grid md:grid-cols-3 gap-4">
+
+                <input type="hidden" name="guide_id" value="{{ guide.id }}">
+
+                <div>
+                    <label class="text-sm">Date</label>
+                    <input type="date" name="date" required
+                           class="w-full border rounded-lg px-3 py-2">
+                </div>
+
+                <div>
+                    <label class="text-sm">Time</label>
+                    <input type="time" name="time" required
+                           class="w-full border rounded-lg px-3 py-2">
+                </div>
+
+                <div>
+                    <label class="text-sm">Hours</label>
+                    <input type="number" name="hours" min="1" required
+                           class="w-full border rounded-lg px-3 py-2">
+                </div>
+
+                <div class="md:col-span-3">
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">
+                        Confirm Booking
+                    </button>
+                </div>
+
+            </form>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<footer class="text-center text-sm text-gray-500 py-6">
+    © 2026 AI Travel Guide System
+</footer>
+
+</body>
+</html>
