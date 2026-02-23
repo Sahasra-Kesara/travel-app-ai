@@ -114,7 +114,7 @@ def filter_by_location(query, destinations):
 # ============================================================
 # STEP 3 — Retrieval with Location Boosting
 # ============================================================
-def get_recommendations(query, destinations=destinations_with_embeddings, top_k=3):
+def get_recommendations(query, destinations=destinations_with_embeddings, top_k=5):
 
     # Location pre-filter
     destinations = filter_by_location(query, destinations)
