@@ -93,23 +93,23 @@
         </p>
 
         <!-- Search Form -->
-        <form action="{{ url_for('user.search') }}" method="POST" class="relative">
+        <form id="searchForm" action="{{ url_for('user.search') }}" method="POST" class="relative">
             <textarea
+                id="searchInput"
                 name="query"
                 rows="2"
                 placeholder="Type your travel question here..."
                 class="w-full resize-none rounded-xl border border-gray-300 px-6 py-5 text-base
-                       focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
+                    focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
             ></textarea>
 
             <button
                 type="submit"
                 class="absolute right-4 bottom-4 bg-blue-700 text-white px-6 py-2
-                       rounded-lg text-sm font-semibold hover:bg-blue-800 transition">
+                    rounded-lg text-sm font-semibold hover:bg-blue-800 transition">
                 Search
             </button>
         </form>
-
     </div>
 </section>
 
@@ -119,6 +119,14 @@
     <br>
     Helping you travel smarter and easier
 </footer>
-
+<script>
+document.getElementById("searchInput").addEventListener("keydown", function(event) {
+    // If Enter is pressed without Shift
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault(); // stop new line
+        document.getElementById("searchForm").submit(); // submit form
+    }
+});
+</script>
 </body>
 </html>
