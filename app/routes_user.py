@@ -299,3 +299,79 @@ def get_route_endpoint():
 
     coords = build_route({"from": start, "to": end, "mode": mode})
     return jsonify(coords)
+
+def build_global_index():
+    global_index = []
+
+    # Destinations
+    for d in destinations_data:
+        text = f"""
+        Type: destination
+        Name: {d['name']}
+        Category: {d['category']}
+        District: {d['district']}
+        Description: {d['description']}
+        Activities: {', '.join(d.get('activities', []))}
+        """
+        embedding = embed_model.encode(text, convert_to_tensor=True)
+
+        global_index.append({
+            "type": "destination",
+            "data": d,
+            "embedding": embedding
+        })
+
+    # Hotels
+    for h in hotels_data:
+        text = f"""
+        Type: hotel
+        Name: {h['name']}
+        Location: {h['location']}
+        District: {h['district']}
+        Price: {h['price_per_night']}
+        Amenities: {', '.join(h.get('amenities', []))}
+        Rating: {h['rating']}
+        """
+        embedding = embed_model.encode(text, convert_to_tensor=True)
+
+        global_index.append({
+            "type": "hotel",
+            "data": h,
+            "embedding": embedding
+        })
+
+    # Hospitals
+    for m in hospitals_data:
+        text = f"""
+        Type: hospital
+        Name: {m['name']}
+        District: {m['district']}
+        Specialties: {', '.join(m.get('specialties', []))}
+        """
+        embedding = embed_model.encode(text, convert_to_tensor=True)
+
+        global_index.append({
+            "type": "hospital",
+            "data": m,
+            "embedding": embedding
+        })
+
+    # Guides
+    for g in guides_data:
+        text = f"""
+        Type: guide
+        Name: {g['name']}
+        Destination: {g['destination']}
+        District: {g['district']}
+        Languages: {', '.join(g.get('language', []))}
+        Experience: {g.get('description','')}
+        """
+        embedding = embed_model.encode(text, convert_to_tensor=True)
+
+        global_index.append({
+            "type": "guide",
+            "data": g,
+            "embedding": embedding
+        })
+
+    return global_index
