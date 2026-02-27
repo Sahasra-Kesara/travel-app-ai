@@ -33,18 +33,37 @@ def search():
     query = request.form.get('query')
 
     if not query:
-        return render_template('destination.html', results=[])
+        return render_template('destination.html', results=[], map_items=[])
 
     raw_results = search_all_knowledge(query)
 
     results = []
+    map_items = []
+
     for item in raw_results:
+        data = item["data"]
+
         results.append({
             "type": item["type"],
-            "data": item["data"]
+            "data": data
         })
 
-    return render_template('destination.html', results=results)
+        # Only add items that have coordinates
+        if "coordinates" in data:
+            map_items.append({
+                "type": item["type"],
+                "name": data.get("name"),
+                "lat": data["coordinates"]["lat"],
+                "lon": data["coordinates"]["lon"],
+                "district": data.get("district", ""),
+                "description": data.get("description", "")
+            })
+
+    return render_template(
+        'destination.html',
+        results=results,
+        map_items=map_items
+    )
 
 @user_bp.route("/plan", methods=["POST"])
 def plan_trip():
