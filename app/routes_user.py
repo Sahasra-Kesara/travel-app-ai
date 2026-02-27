@@ -41,7 +41,6 @@ def search():
 
     return render_template('destination.html', results=results)
 
-import requests
 
 @user_bp.route("/plan", methods=["POST"])
 def plan_trip():
