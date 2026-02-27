@@ -41,64 +41,74 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
     {% for rec in results %}
-    <div class="border rounded-2xl p-6 hover:shadow-lg transition">
+<div class="border rounded-2xl p-6 hover:shadow-lg transition">
 
-        <!-- Destination Title -->
-        <h3 class="text-xl font-semibold text-blue-600">
-            {% if rec.type == 'destination' %}
-                {{ rec.data.name }}
-            {% elif rec.type == 'hotel' %}
-                {{ rec.data.name }} (Hotel)
-            {% elif rec.type == 'hospital' %}
-                {{ rec.data.name }} (Hospital)
-            {% elif rec.type == 'guide' %}
-                {{ rec.data.name }} (Guide)
-            {% endif %}
-        </h3>
+    <!-- Title -->
+    <h3 class="text-xl font-semibold text-blue-600">
+        {% if rec.type == 'destination' %}
+            {{ rec.data.name }}
+        {% elif rec.type == 'hotel' %}
+            {{ rec.data.name }} (Hotel)
+        {% elif rec.type == 'hospital' %}
+            {{ rec.data.name }} (Hospital)
+        {% elif rec.type == 'guide' %}
+            {{ rec.data.name }} (Guide)
+        {% endif %}
+    </h3>
 
-        <!-- AI Summary -->
-        <p class="text-gray-600 mt-3">
-            {{ rec.summary }}
+    <!-- Description -->
+    <p class="text-gray-600 mt-3">
+        {% if rec.type == 'destination' %}
+            {{ rec.data.description }}
+        {% elif rec.type == 'hotel' %}
+            Price: LKR {{ rec.data.price_per_night }} per night
+        {% elif rec.type == 'hospital' %}
+            Specialties: {{ rec.data.specialties | join(', ') }}
+        {% elif rec.type == 'guide' %}
+            Languages: {{ rec.data.language | join(', ') }}
+        {% endif %}
+    </p>
+
+    <!-- Meta Info for Destinations -->
+    {% if rec.type == 'destination' %}
+    <div class="mt-4 space-y-1 text-sm">
+        <p>
+            <span class="font-medium">District:</span>
+            {{ rec.data.district }}
         </p>
-
-        <!-- Meta Info -->
-        <div class="mt-4 space-y-1 text-sm">
-            <p>
-                <span class="font-medium">Best Time to Visit:</span>
-                {{ rec.destination.best_time_to_visit }}
-            </p>
-            <p>
-                <span class="font-medium">Activities:</span>
-                {{ rec.destination.activities | join(', ') }}
-            </p>
-        </div>
-
-        <!-- Plan Trip -->
-        <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-6 space-y-3">
-
-            <label class="block text-sm font-medium">
-                Starting Location (City Name)
-            </label>
-
-            <input
-                type="text"
-                name="start_city"
-                placeholder="Eg: Colombo / කොළඹ"
-                class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-
-            <input type="hidden" name="end_lat" value="{{ rec.destination.coordinates.lat }}">
-            <input type="hidden" name="end_lon" value="{{ rec.destination.coordinates.lon }}">
-
-            <button
-                type="submit"
-                class="w-full border border-blue-600 text-blue-600 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
-                Plan Trip
-            </button>
-        </form>
-
+        <p>
+            <span class="font-medium">Best Time:</span>
+            {{ rec.data.best_time_to_visit }}
+        </p>
     </div>
-    {% endfor %}
+
+    <!-- Plan Trip (only for destinations) -->
+    <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-6 space-y-3">
+        <label class="block text-sm font-medium">
+            Starting Location
+        </label>
+
+        <input
+            type="text"
+            name="start_city"
+            placeholder="Eg: Colombo"
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+
+        <input type="hidden" name="end_lat" value="{{ rec.data.coordinates.lat }}">
+        <input type="hidden" name="end_lon" value="{{ rec.data.coordinates.lon }}">
+        <input type="hidden" name="destination_name" value="{{ rec.data.name }}">
+
+        <button
+            type="submit"
+            class="w-full border border-blue-600 text-blue-600 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
+            Plan Trip
+        </button>
+    </form>
+    {% endif %}
+
+</div>
+{% endfor %}
 
 </div>
 
