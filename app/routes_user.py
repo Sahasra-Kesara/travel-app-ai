@@ -33,22 +33,29 @@ def search():
     query = request.form.get('query')
 
     if not query:
-        return render_template('destination.html', results=[], map_items=[])
+        return render_template('destination.html', results_by_type={}, map_items=[])
 
     raw_results = search_all_knowledge(query)
 
-    results = []
+    results_by_type = {
+        "destinations": [],
+        "guides": [],
+        "vehicles": [],
+        "drivers": [],
+        "bookings": [],
+        "hotels": [],
+        "hospitals": []
+    }
+
     map_items = []
 
     for item in raw_results:
         data = item["data"]
+        type_key = item["type"] + "s"  # plural key
+        if type_key in results_by_type:
+            results_by_type[type_key].append(data)
 
-        results.append({
-            "type": item["type"],
-            "data": data
-        })
-
-        # Only add items that have coordinates
+        # Only add items that have coordinates for the map
         if "coordinates" in data:
             map_items.append({
                 "type": item["type"],
@@ -61,7 +68,7 @@ def search():
 
     return render_template(
         'destination.html',
-        results=results,
+        results_by_type=results_by_type,
         map_items=map_items
     )
 
