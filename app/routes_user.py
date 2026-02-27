@@ -75,78 +75,56 @@ def search():
 @user_bp.route("/plan", methods=["POST"])
 def plan_trip():
     start_city = request.form.get("start_city")
-    start_lat = None
-    start_lon = None
+    end_lat = float(request.form.get("end_lat"))
+    end_lon = float(request.form.get("end_lon"))
+    destination_name = request.form.get("destination_name")
 
-    # Get start coordinates from city
+    # 1. Get start coordinates
+    start_lat, start_lon = None, None
     if start_city:
         try:
             url = "https://nominatim.openstreetmap.org/search"
             params = {"q": start_city, "format": "json", "limit": 1}
-            response = requests.get(url, params=params, headers={"User-Agent": "TravelApp/1.0"})
-            data = response.json()
+            res = requests.get(url, params=params, headers={"User-Agent": "TravelApp/1.0"})
+            data = res.json()
             if data:
-                start_lat = float(data[0]["lat"])
-                start_lon = float(data[0]["lon"])
-            else:
-                return f"City '{start_city}' not found.", 400
-        except Exception as e:
-            return f"Error fetching coordinates: {str(e)}", 500
-
-    # If no city, try GeoIP
-    if start_lat is None or start_lon is None:
+                start_lat, start_lon = float(data[0]["lat"]), float(data[0]["lon"])
+        except:
+            pass
+    if start_lat is None:
         try:
             reader = geoip2.database.Reader(GEOIP_DB_PATH)
-            user_ip = request.remote_addr
-            response = reader.city(user_ip)
-            start_lat = response.location.latitude
-            start_lon = response.location.longitude
+            ip = request.remote_addr
+            resp = reader.city(ip)
+            start_lat, start_lon = resp.location.latitude, resp.location.longitude
             reader.close()
-        except Exception:
-            return "Cannot determine start location. Please enter a city.", 400
+        except:
+            return "Cannot determine start location. Enter a city.", 400
 
-    # Destination coordinates
-    try:
-        end_lat = float(request.form["end_lat"])
-        end_lon = float(request.form["end_lon"])
-    except ValueError:
-        return "Invalid destination coordinates.", 400
-
-    # Get routes from OSRM
+    # 2. Get route
     routes = get_route(start_lat, start_lon, end_lat, end_lon)
     if not routes:
         return "No routes found.", 500
-
     main_route = routes[0]
 
-    destination_name = request.form.get("destination_name")
-    guides = []
-    if destination_name:
-        guides = get_guides_route_based(
-            destination_name,
-            main_route["geometry"]
-        )
+    # 3. Get guides for route
+    guides = get_guides_route_based(destination_name, main_route["geometry"]) if destination_name else []
 
-    alternative_routes = routes[1:]
+    # 4. AI Recommendations (fast)
+    recommendations = route_based_recommendation(main_route["geometry"], "Tourist destinations along route in Sri Lanka")
 
-    # Route-based AI recommendations
-    query = "Suggest tourist destinations near this travel route in Sri Lanka"
-    recommendations = route_based_recommendation(main_route["geometry"], query)
-    
-    # Prepare destinations for JS map
-    destinations_for_js = []
-    for r in recommendations:
-        dest = r["destination"]
-        destinations_for_js.append({
-            "name": dest.get("name", ""),
-            "category": dest.get("category", ""),
-            "coordinates": dest.get("coordinates", {})
-        })
+    # 5. Prepare data for JS map
+    destinations_for_js = [
+        {"name": r["destination"]["name"], 
+         "category": r["destination"]["category"], 
+         "coordinates": r["destination"]["coordinates"]}
+        for r in recommendations
+    ]
 
     return render_template(
         "recommendations.html",
         route_main=main_route,
-        route_alternatives=alternative_routes,
+        route_alternatives=routes[1:],
         results=recommendations,
         destinations=destinations_for_js,
         guides=guides,
