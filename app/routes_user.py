@@ -34,10 +34,16 @@ def search():
     if not query:
         return render_template('results.html', results=[])
 
-    results = search_all_knowledge(query)
+    raw_results = search_all_knowledge(query)
+
+    results = []
+    for item in raw_results:
+        results.append({
+            "type": item["type"],
+            "destination": item["data"]   # <-- key expected by template
+        })
 
     return render_template('destination.html', results=results)
-
 
 @user_bp.route("/plan", methods=["POST"])
 def plan_trip():
