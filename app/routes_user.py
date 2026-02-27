@@ -31,15 +31,11 @@ def search():
     query = request.form.get('query')
 
     if not query:
-        return render_template('destination.html', results=[])
+        return render_template('results.html', results=[])
 
-    # Use RAG knowledge base with embeddings
-    results = get_recommendations(
-        query,
-        destinations=destinations_with_embeddings
-    )
+    results = search_all_knowledge(query)
 
-    return render_template('destination.html', results=results)
+    return render_template('results.html', results=results)
 
 
 @user_bp.route("/plan", methods=["POST"])
