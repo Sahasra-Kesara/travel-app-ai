@@ -26,6 +26,7 @@ def home():
 def trip_planner():
     return render_template("customer_dashboard.html")
 
+
 @user_bp.route('/search', methods=['POST'])
 def search():
     query = request.form.get('query')
@@ -35,7 +36,7 @@ def search():
 
     results = search_all_knowledge(query)
 
-    return render_template('results.html', results=results)
+    return render_template('destination.html', results=results)
 
 
 @user_bp.route("/plan", methods=["POST"])
@@ -295,3 +296,4 @@ def get_route_endpoint():
 
     coords = build_route({"from": start, "to": end, "mode": mode})
     return jsonify(coords)
+
