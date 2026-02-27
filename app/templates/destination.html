@@ -41,69 +41,71 @@
 <!-- Results Section -->
 <section class="max-w-6xl mx-auto px-6 pb-20">
 
-{% if results %}
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+{% if results_by_type %}
+    {% for type, items in results_by_type.items() %}
+        <section class="mb-10">
+            <h2 class="text-3xl font-bold text-blue-600 mb-6">{{ type|capitalize }}</h2>
 
-{% for rec in results %}
-<div class="border rounded-2xl p-6 hover:shadow-lg transition">
+            {% if items %}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for item in items %}
+                <div class="border rounded-xl p-4 hover:shadow-lg transition">
+                    <h3 class="text-xl font-semibold text-blue-600">{{ item.name }}</h3>
 
-    <h3 class="text-xl font-semibold text-blue-600">
-        {% if rec.type == 'destination' %}
-            {{ rec.data.name }}
-        {% elif rec.type == 'hotel' %}
-            {{ rec.data.name }} (Hotel)
-        {% elif rec.type == 'hospital' %}
-            {{ rec.data.name }} (Hospital)
-        {% elif rec.type == 'guide' %}
-            {{ rec.data.name }} (Guide)
-        {% endif %}
-    </h3>
+                    <p class="text-gray-600 mt-2">
+                        {% if type == 'destinations' %}
+                            {{ item.description }}
+                        {% elif type == 'hotels' %}
+                            Price: LKR {{ item.price_per_night }} per night
+                        {% elif type == 'hospitals' %}
+                            Specialties: {{ item.specialties | join(', ') }}
+                        {% elif type == 'guides' %}
+                            Languages: {{ item.language | join(', ') }}
+                        {% elif type == 'vehicles' %}
+                            Type: {{ item.vehicle_type }}, Seats: {{ item.seats }}
+                        {% elif type == 'drivers' %}
+                            Experience: {{ item.experience }} years
+                        {% elif type == 'bookings' %}
+                            Booking Date: {{ item.date }}
+                        {% endif %}
+                    </p>
 
-    <p class="text-gray-600 mt-3">
-        {% if rec.type == 'destination' %}
-            {{ rec.data.description }}
-        {% elif rec.type == 'hotel' %}
-            Price: LKR {{ rec.data.price_per_night }} per night
-        {% elif rec.type == 'hospital' %}
-            Specialties: {{ rec.data.specialties | join(', ') }}
-        {% elif rec.type == 'guide' %}
-            Languages: {{ rec.data.language | join(', ') }}
-        {% endif %}
-    </p>
+                    {% if type == 'destinations' %}
+                    <div class="mt-4 space-y-1 text-sm">
+                        <p><span class="font-medium">District:</span> {{ item.district }}</p>
+                        <p><span class="font-medium">Best Time:</span> {{ item.best_time_to_visit }}</p>
+                    </div>
 
-    {% if rec.type == 'destination' %}
-    <div class="mt-4 space-y-1 text-sm">
-        <p><span class="font-medium">District:</span> {{ rec.data.district }}</p>
-        <p><span class="font-medium">Best Time:</span> {{ rec.data.best_time_to_visit }}</p>
-    </div>
+                    <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-6 space-y-3">
+                        <label class="block text-sm font-medium">Starting Location</label>
 
-    <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-6 space-y-3">
-        <label class="block text-sm font-medium">Starting Location</label>
+                        <input
+                            type="text"
+                            name="start_city"
+                            placeholder="Eg: Colombo"
+                            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
 
-        <input
-            type="text"
-            name="start_city"
-            placeholder="Eg: Colombo"
-            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
+                        <input type="hidden" name="end_lat" value="{{ item.coordinates.lat }}">
+                        <input type="hidden" name="end_lon" value="{{ item.coordinates.lon }}">
+                        <input type="hidden" name="destination_name" value="{{ item.name }}">
 
-        <input type="hidden" name="end_lat" value="{{ rec.data.coordinates.lat }}">
-        <input type="hidden" name="end_lon" value="{{ rec.data.coordinates.lon }}">
-        <input type="hidden" name="destination_name" value="{{ rec.data.name }}">
+                        <button
+                            type="submit"
+                            class="w-full border border-blue-600 text-blue-600 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
+                            Plan Trip
+                        </button>
+                    </form>
+                    {% endif %}
 
-        <button
-            type="submit"
-            class="w-full border border-blue-600 text-blue-600 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
-            Plan Trip
-        </button>
-    </form>
-    {% endif %}
-
-</div>
-{% endfor %}
-
-</div>
-
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-gray-600">No {{ type }} found.</p>
+            {% endif %}
+        </section>
+    {% endfor %}
 {% else %}
 <p class="text-gray-600">
     No recommendations found. Try another search!
@@ -119,11 +121,8 @@
     NLP • RAG • Intelligent Recommendations
 </footer>
 
-<!-- ===================== -->
 <!-- Leaflet Map Script -->
-<!-- ===================== -->
 <script>
-    // Safe JSON parsing from Flask
     const mapItems = JSON.parse('{{ map_items | tojson | safe }}' || '[]');
 
     // Default Sri Lanka center
@@ -137,19 +136,32 @@
         zoomLevel = 9;
     }
 
-    // Initialize Leaflet map
     const map = L.map('map').setView([centerLat, centerLon], zoomLevel);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Add markers
+    // Color-coded markers by type
+    const typeColors = {
+        destination: 'blue',
+        hotel: 'green',
+        hospital: 'red',
+        guide: 'orange',
+        vehicle: 'purple',
+        driver: 'pink',
+        booking: 'gray'
+    };
+
     mapItems.forEach(item => {
         if (item.lat && item.lon) {
-            const marker = L.marker([item.lat, item.lon]).addTo(map);
+            const icon = L.circleMarker([item.lat, item.lon], {
+                radius: 8,
+                color: typeColors[item.type] || 'black',
+                fillOpacity: 0.7
+            }).addTo(map);
 
-            marker.bindPopup(`
+            icon.bindPopup(`
                 <b>${item.name}</b><br>
                 ${item.type || ''}<br>
                 ${item.district || ''}<br>
