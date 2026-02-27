@@ -90,10 +90,6 @@ def build_global_index():
     return index
 
 
-# Build once at startup
-global_knowledge_index = build_global_index()
-
-
 # ---- Search function ----
 def search_all_knowledge(query, top_k=10):
     query_embedding = embed_model.encode(query, convert_to_tensor=True)
@@ -140,6 +136,8 @@ generator = pipeline(
     device=0 if torch.cuda.is_available() else -1
 )
 
+# Build once at startup
+global_knowledge_index = build_global_index()
 
 # ============================================================
 # STEP 1 — Location-aware embeddings (HIGH ACCURACY)
