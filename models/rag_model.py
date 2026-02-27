@@ -38,6 +38,76 @@ with open(HOTELS_PATH, 'r', encoding='utf-8') as f:
 
 with open(HOSPITALS_PATH, 'r', encoding='utf-8') as f:
     hospitals_data = json.load(f)['hospitals']
+
+# ---- Build global index ----
+def build_global_index():
+    index = []
+
+    # Destinations
+    for d in destinations_data:
+        text = f"{d['name']} {d['category']} {d['district']} {d['description']}"
+        emb = embed_model.encode(text, convert_to_tensor=True)
+
+        index.append({
+            "type": "destination",
+            "data": d,
+            "embedding": emb
+        })
+
+    # Hotels
+    for h in hotels_data:
+        text = f"{h['name']} hotel {h['district']} price {h['price_per_night']} amenities {' '.join(h.get('amenities', []))}"
+        emb = embed_model.encode(text, convert_to_tensor=True)
+
+        index.append({
+            "type": "hotel",
+            "data": h,
+            "embedding": emb
+        })
+
+    # Hospitals
+    for m in hospitals_data:
+        text = f"{m['name']} hospital {m['district']} specialties {' '.join(m.get('specialties', []))}"
+        emb = embed_model.encode(text, convert_to_tensor=True)
+
+        index.append({
+            "type": "hospital",
+            "data": m,
+            "embedding": emb
+        })
+
+    # Guides
+    for g in guides_data:
+        text = f"{g['name']} guide {g['destination']} {g['district']} languages {' '.join(g.get('language', []))}"
+        emb = embed_model.encode(text, convert_to_tensor=True)
+
+        index.append({
+            "type": "guide",
+            "data": g,
+            "embedding": emb
+        })
+
+    return index
+
+
+# Build once at startup
+global_knowledge_index = build_global_index()
+
+
+# ---- Search function ----
+def search_all_knowledge(query, top_k=10):
+    query_embedding = embed_model.encode(query, convert_to_tensor=True)
+
+    scores = []
+    for item in global_knowledge_index:
+        sim = util.cos_sim(query_embedding, item["embedding"]).item()
+        scores.append((sim, item))
+
+    results = [
+        item for score, item in sorted(scores, key=lambda x: x[0], reverse=True)[:top_k]
+    ]
+
+    return results
 # -------------------------------
 # Vehicle functions (unchanged)
 # -------------------------------
