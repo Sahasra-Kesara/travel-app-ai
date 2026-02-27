@@ -304,3 +304,38 @@ def get_route_endpoint():
     coords = build_route({"from": start, "to": end, "mode": mode})
     return jsonify(coords)
 
+@user_bp.route("/full-trip-plan", methods=["POST"])
+def full_trip_plan():
+    data = request.get_json()
+
+    start_city = data.get("start_city")
+    destination_name = data.get("destination")
+
+    if not start_city or not destination_name:
+        return jsonify({"error": "Start city and destination required"}), 400
+
+    # Convert cities to coordinates
+    def get_coords(city):
+        url = "https://nominatim.openstreetmap.org/search"
+        params = {"q": city, "format": "json", "limit": 1}
+        res = requests.get(url, params=params, headers={"User-Agent": "TravelApp/1.0"})
+        data = res.json()
+        if data:
+            return float(data[0]["lat"]), float(data[0]["lon"])
+        return None, None
+
+    start_lat, start_lon = get_coords(start_city)
+    end_lat, end_lon = get_coords(destination_name)
+
+    if None in [start_lat, start_lon, end_lat, end_lon]:
+        return jsonify({"error": "Location not found"}), 400
+
+    result = build_trip_response(
+        start_lat,
+        start_lon,
+        end_lat,
+        end_lon,
+        destination_name
+    )
+
+    return jsonify(result)
