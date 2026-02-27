@@ -1,174 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AI Search Results</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<title>Sri Lanka AI Travel Planner</title>
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="bg-gray-50 text-gray-800">
 
 <!-- Navbar -->
-<nav class="border-b bg-white">
+<nav class="bg-white shadow-md">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-blue-600">
-            AI Travel Assistant
-        </h1>
-        <a href="{{ url_for('user.home') }}"
-           class="text-sm font-semibold text-blue-600 hover:underline">
-            ← Back to Search
-        </a>
+        <h1 class="text-2xl font-bold text-blue-600">Sri Lanka Travel AI</h1>
+        <a href="{{ url_for('user.home') }}" class="text-blue-600 font-semibold hover:underline">← Back to Search</a>
     </div>
 </nav>
 
-<!-- Page Header -->
-<section class="max-w-6xl mx-auto px-6 py-12">
-    <h2 class="text-4xl font-extrabold">
-        AI-Recommended Results
-    </h2>
+<!-- Hero / Top Recommendations -->
+<section class="max-w-7xl mx-auto px-6 py-10">
+    <h2 class="text-3xl font-extrabold text-blue-600 mb-6">Top Recommended Destinations</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {% for rec in results_by_type['destinations'][:3] %}
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col justify-between">
+            <h3 class="text-xl font-semibold text-blue-600">{{ rec.name }}</h3>
+            <p class="text-gray-600 mt-2">{{ rec.summary or rec.description }}</p>
+            <p class="text-sm mt-2"><span class="font-medium">District:</span> {{ rec.district }}</p>
+            <div class="mt-4 flex gap-2">
+                <form action="{{ url_for('user.plan_trip') }}" method="POST" class="flex-1">
+                    <input type="hidden" name="end_lat" value="{{ rec.coordinates.lat }}">
+                    <input type="hidden" name="end_lon" value="{{ rec.coordinates.lon }}">
+                    <input type="hidden" name="destination_name" value="{{ rec.name }}">
+                    <input type="text" name="start_city" placeholder="Enter start city"
+                           class="w-full border rounded-lg px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+                        Plan Trip
+                    </button>
+                </form>
+                <a href="tel:+94770000000" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center justify-center">
+                    <i class="fas fa-phone-alt mr-2"></i> Call
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 
-<!-- Map Section -->
-<section class="max-w-6xl mx-auto px-6 pb-10">
-    <h3 class="text-2xl font-bold mb-4">Results Map</h3>
-    <div id="map" class="w-full h-96 rounded-xl border"></div>
+<!-- Interactive Map -->
+<section class="max-w-7xl mx-auto px-6 pb-10">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">Explore Sri Lanka</h2>
+    <div id="map" class="w-full h-96 rounded-xl border shadow-md"></div>
 </section>
 
-<!-- Results Section -->
-<section class="max-w-6xl mx-auto px-6 pb-20">
-
-{% if results_by_type %}
-    {% for type, items in results_by_type.items() %}
-        <section class="mb-10">
-            <h2 class="text-3xl font-bold text-blue-600 mb-6">{{ type|capitalize }}</h2>
-
-            {% if items %}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {% for item in items %}
-                <div class="border rounded-xl p-4 hover:shadow-lg transition">
-                    <h3 class="text-xl font-semibold text-blue-600">{{ item.name }}</h3>
-
-                    <p class="text-gray-600 mt-2">
-                        {% if type == 'destinations' %}
-                            {{ item.description }}
-                        {% elif type == 'hotels' %}
-                            Price: LKR {{ item.price_per_night }} per night
-                        {% elif type == 'hospitals' %}
-                            Specialties: {{ item.specialties | join(', ') }}
-                        {% elif type == 'guides' %}
-                            Languages: {{ item.language | join(', ') }}
-                        {% elif type == 'vehicles' %}
-                            Type: {{ item.vehicle_type }}, Seats: {{ item.seats }}
-                        {% elif type == 'drivers' %}
-                            Experience: {{ item.experience }} years
-                        {% elif type == 'bookings' %}
-                            Booking Date: {{ item.date }}
-                        {% endif %}
-                    </p>
-
-                    {% if type == 'destinations' %}
-                    <div class="mt-4 space-y-1 text-sm">
-                        <p><span class="font-medium">District:</span> {{ item.district }}</p>
-                        <p><span class="font-medium">Best Time:</span> {{ item.best_time_to_visit }}</p>
-                    </div>
-
-                    <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-6 space-y-3">
-                        <label class="block text-sm font-medium">Starting Location</label>
-
-                        <input
-                            type="text"
-                            name="start_city"
-                            placeholder="Eg: Colombo"
-                            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-
-                        <input type="hidden" name="end_lat" value="{{ item.coordinates.lat }}">
-                        <input type="hidden" name="end_lon" value="{{ item.coordinates.lon }}">
-                        <input type="hidden" name="destination_name" value="{{ item.name }}">
-
-                        <button
-                            type="submit"
-                            class="w-full border border-blue-600 text-blue-600 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
-                            Plan Trip
+<!-- District-wise Guides -->
+<section class="max-w-7xl mx-auto px-6 pb-10">
+    <h2 class="text-3xl font-bold text-blue-600 mb-6">Guides by District</h2>
+    {% for district, guides in results_by_type['guides']|groupby('district') %}
+    <div class="mb-8">
+        <h3 class="text-2xl font-semibold text-gray-700">{{ district|capitalize }}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            {% for guide in guides %}
+            <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
+                <h4 class="text-lg font-semibold text-blue-600">{{ guide.name }}</h4>
+                <p class="text-gray-600 mt-1"><span class="font-medium">Languages:</span> {{ guide.language | join(', ') }}</p>
+                <p class="text-gray-600 mt-1"><span class="font-medium">Rating:</span> {{ guide.rating }}</p>
+                <p class="text-gray-600 mt-1">{{ guide.ai_pitch }}</p>
+                <div class="mt-4 flex gap-2">
+                    <a href="tel:+94770000000" class="flex-1 bg-green-500 text-white py-2 rounded-lg text-center hover:bg-green-600 transition">
+                        Call Guide
+                    </a>
+                    <form action="{{ url_for('user.book_guide') }}" method="POST" class="flex-1">
+                        <input type="hidden" name="guide_id" value="{{ guide.id }}">
+                        <input type="date" name="date" class="border rounded-lg px-2 py-1 w-full mb-1">
+                        <input type="time" name="time" class="border rounded-lg px-2 py-1 w-full mb-1">
+                        <input type="number" name="hours" placeholder="Hours" class="border rounded-lg px-2 py-1 w-full mb-1">
+                        <button type="submit" class="w-full bg-blue-600 text-white py-1 rounded-lg hover:bg-blue-700 transition">
+                            Book Guide
                         </button>
                     </form>
-                    {% endif %}
-
                 </div>
-                {% endfor %}
             </div>
-            {% else %}
-            <p class="text-gray-600">No {{ type }} found.</p>
-            {% endif %}
-        </section>
+            {% endfor %}
+        </div>
+    </div>
     {% endfor %}
-{% else %}
-<p class="text-gray-600">
-    No recommendations found. Try another search!
-</p>
-{% endif %}
+</section>
 
+<!-- Hotels & Hospitals -->
+<section class="max-w-7xl mx-auto px-6 pb-10">
+    <h2 class="text-3xl font-bold text-blue-600 mb-6">Nearby Hotels & Hospitals</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Hotels -->
+        <div>
+            <h3 class="text-2xl font-semibold text-gray-700 mb-4">Hotels</h3>
+            {% for hotel in results_by_type['hotels'] %}
+            <div class="bg-white p-4 rounded-xl shadow mb-4">
+                <h4 class="text-lg font-semibold text-blue-600">{{ hotel.name }}</h4>
+                <p class="text-gray-600 mt-1"><span class="font-medium">Price:</span> LKR {{ hotel.price_per_night }}</p>
+                <p class="text-gray-600 mt-1"><span class="font-medium">Amenities:</span> {{ hotel.amenities | join(', ') }}</p>
+                <a href="tel:+94770000000" class="mt-2 inline-block bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition">
+                    Call Hotel
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Hospitals -->
+        <div>
+            <h3 class="text-2xl font-semibold text-gray-700 mb-4">Hospitals</h3>
+            {% for hospital in results_by_type['hospitals'] %}
+            <div class="bg-white p-4 rounded-xl shadow mb-4">
+                <h4 class="text-lg font-semibold text-blue-600">{{ hospital.name }}</h4>
+                <p class="text-gray-600 mt-1"><span class="font-medium">Specialties:</span> {{ hospital.specialties | join(', ') }}</p>
+                <a href="tel:+94770000000" class="mt-2 inline-block bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">
+                    Call Hospital
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Vehicle Booking -->
+<section class="max-w-7xl mx-auto px-6 pb-20">
+    <h2 class="text-3xl font-bold text-blue-600 mb-6">Vehicle Booking & Fare Estimate</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for vehicle in results_by_type['vehicles'] %}
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
+            <h4 class="text-lg font-semibold text-blue-600">{{ vehicle.type }} - {{ vehicle.seats }} seats</h4>
+            <p class="text-gray-600 mt-1"><span class="font-medium">Fare Estimate:</span> LKR {{ vehicle.estimated_fare }}</p>
+            <form action="{{ url_for('user.book_vehicle') }}" method="POST" class="mt-4 space-y-2">
+                <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
+                <input type="text" name="mobile" placeholder="Your mobile number" class="w-full border rounded-lg px-3 py-2">
+                <input type="text" name="start_city" placeholder="Start city" class="w-full border rounded-lg px-3 py-2">
+                <input type="text" name="end_city" placeholder="Destination city" class="w-full border rounded-lg px-3 py-2">
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                    Book Vehicle
+                </button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 
 <!-- Footer -->
 <footer class="text-center text-sm text-gray-500 py-6 border-t">
-    © 2026 AI-Powered Travel Booking & Recommendation System  
-    <br>
-    NLP • RAG • Intelligent Recommendations
+    © 2026 AI-Powered Sri Lanka Travel Planner
 </footer>
 
 <!-- Leaflet Map Script -->
 <script>
     const mapItems = JSON.parse('{{ map_items | tojson | safe }}' || '[]');
-
-    // Default Sri Lanka center
-    let centerLat = 7.8731;
-    let centerLon = 80.7718;
-    let zoomLevel = 7;
-
-    if (mapItems.length > 0) {
-        centerLat = mapItems[0].lat;
-        centerLon = mapItems[0].lon;
-        zoomLevel = 9;
-    }
-
-    const map = L.map('map').setView([centerLat, centerLon], zoomLevel);
+    const map = L.map('map').setView([7.8731, 80.7718], 7); // Center Sri Lanka
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
+        maxZoom: 19
     }).addTo(map);
 
-    // Color-coded markers by type
-    const typeColors = {
-        destination: 'blue',
-        hotel: 'green',
-        hospital: 'red',
-        guide: 'orange',
-        vehicle: 'purple',
-        driver: 'pink',
-        booking: 'gray'
-    };
-
     mapItems.forEach(item => {
-        if (item.lat && item.lon) {
-            const icon = L.circleMarker([item.lat, item.lon], {
-                radius: 8,
-                color: typeColors[item.type] || 'black',
-                fillOpacity: 0.7
-            }).addTo(map);
-
-            icon.bindPopup(`
-                <b>${item.name}</b><br>
-                ${item.type || ''}<br>
-                ${item.district || ''}<br>
-                ${item.description || ''}
-            `);
+        if(item.lat && item.lon){
+            L.marker([item.lat, item.lon])
+                .addTo(map)
+                .bindPopup(`<strong>${item.name}</strong><br>${item.description || ''}<br><span class="font-medium">District:</span> ${item.district}`);
         }
     });
 </script>
+
 </body>
 </html>
