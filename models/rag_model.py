@@ -5,6 +5,7 @@ from transformers import pipeline
 import torch
 from math import radians, cos, sin, asin, sqrt
 from functools import lru_cache
+from app.routes_user import get_district_from_coords
 
 # -------------------------------
 # Setup paths
