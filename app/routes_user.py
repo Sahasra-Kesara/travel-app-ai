@@ -375,3 +375,18 @@ def build_global_index():
         })
 
     return global_index
+
+def search_all_knowledge(query, top_k=10):
+    query_embedding = embed_model.encode(query, convert_to_tensor=True)
+
+    scores = []
+
+    for item in global_knowledge_index:
+        sim = util.cos_sim(query_embedding, item["embedding"]).item()
+        scores.append((sim, item))
+
+    results = [
+        item for score, item in sorted(scores, key=lambda x: x[0], reverse=True)[:top_k]
+    ]
+
+    return results
