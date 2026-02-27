@@ -32,7 +32,7 @@ def search():
     query = request.form.get('query')
 
     if not query:
-        return render_template('results.html', results=[])
+        return render_template('destination.html', results=[])
 
     raw_results = search_all_knowledge(query)
 
@@ -40,7 +40,7 @@ def search():
     for item in raw_results:
         results.append({
             "type": item["type"],
-            "destination": item["data"]   # <-- key expected by template
+            "data": item["data"]
         })
 
     return render_template('destination.html', results=results)
