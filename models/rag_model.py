@@ -15,6 +15,8 @@ GUIDES_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'guides.json')
 VEHICLES_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'vehicles.json')
 DRIVERS_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'drivers.json')
 BOOKINGS_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'bookings.json')
+HOTELS_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'hotels.json')
+HOSPITALS_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'hospitals.json')
 
 # -------------------------------
 # Load knowledge base
