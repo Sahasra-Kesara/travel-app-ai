@@ -339,3 +339,22 @@ def full_trip_plan():
     )
 
     return jsonify(result)
+
+def get_district_from_coords(lat, lon):
+    """Return the district (administrative area) for given coordinates using Nominatim."""
+    try:
+        url = "https://nominatim.openstreetmap.org/reverse"
+        params = {
+            "lat": lat,
+            "lon": lon,
+            "format": "json",
+            "zoom": 10,  # Administrative area level
+            "addressdetails": 1
+        }
+        response = requests.get(url, params=params, headers={"User-Agent": "TravelApp/1.0"})
+        data = response.json()
+        # District in Sri Lanka is usually "county" or "state_district" in OSM
+        district = data.get("address", {}).get("county") or data.get("address", {}).get("state_district")
+        return district
+    except Exception:
+        return None
