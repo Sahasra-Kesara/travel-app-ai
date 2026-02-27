@@ -56,7 +56,15 @@
 
         <!-- Destination Title -->
         <h3 class="text-xl font-semibold text-blue-600">
-            {{ rec.destination.name }}
+            {% if rec.type == 'destination' %}
+                {{ rec.data.name }}
+            {% elif rec.type == 'hotel' %}
+                {{ rec.data.name }} (Hotel)
+            {% elif rec.type == 'hospital' %}
+                {{ rec.data.name }} (Hospital)
+            {% elif rec.type == 'guide' %}
+                {{ rec.data.name }} (Guide)
+            {% endif %}
         </h3>
 
         <!-- AI Summary -->
