@@ -5,7 +5,7 @@
     <title>AI Route Recommendations</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Leaflet -->
+    <!-- Leaflet CSS & JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
@@ -13,11 +13,9 @@
 <body class="bg-white text-gray-800">
 
 <!-- Navbar -->
-<nav class="border-b bg-white">
+<nav class="border-b bg-white shadow-sm">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-blue-600">
-            AI Travel Assistant
-        </h1>
+        <h1 class="text-2xl font-bold text-blue-600">AI Travel Assistant</h1>
         <a href="{{ url_for('user.home') }}"
            class="text-sm font-semibold text-blue-600 hover:underline">
             ← Back to Search
@@ -27,75 +25,45 @@
 
 <!-- Page Header -->
 <section class="max-w-6xl mx-auto px-6 py-12">
-    <h2 class="text-4xl font-extrabold">
-        AI-Recommended Destinations
-    </h2>
+    <h2 class="text-4xl font-extrabold">AI-Recommended Destinations</h2>
 </section>
 
 <!-- Map Section -->
 <section class="max-w-6xl mx-auto px-6 mb-14">
-    <div id="map"
-         class="w-full h-[480px] rounded-2xl border shadow-sm">
-    </div>
+    <div id="map" class="w-full h-[480px] rounded-2xl border shadow-sm"></div>
 </section>
 
-<!-- Results -->
- 
+<!-- Destination Results -->
 <section class="max-w-6xl mx-auto px-6 pb-20">
-    <h3 class="text-2xl font-bold mb-8">
-        Destinations Along Your Route
-    </h3>
-
+    <h3 class="text-2xl font-bold mb-8">Destinations Along Your Route</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {% for rec in results %}
-        <div class="border rounded-2xl p-6 hover:shadow-lg transition">
-
-            <h4 class="text-xl font-semibold text-blue-600">
-                {{ rec.destination.name }}
-            </h4>
-
-            <p class="text-gray-600 mt-3">
-                {{ rec.summary }}
-            </p>
-
+        <div class="border rounded-2xl p-6 hover:shadow-lg transition bg-white">
+            <h4 class="text-xl font-semibold text-blue-600">{{ rec.destination.name }}</h4>
+            <p class="text-gray-600 mt-3">{{ rec.summary }}</p>
             <div class="mt-4 space-y-1 text-sm">
-                <p>
-                    <span class="font-medium">Best Time to Visit:</span>
-                    {{ rec.destination.best_time_to_visit }}
-                </p>
-                <p>
-                    <span class="font-medium">Activities:</span>
-                    {{ rec.destination.activities | join(', ') }}
-                </p>
+                <p><span class="font-medium">Best Time to Visit:</span> {{ rec.destination.best_time_to_visit }}</p>
+                <p><span class="font-medium">Activities:</span> {{ rec.destination.activities | join(', ') }}</p>
             </div>
-
             <div class="mt-6">
                 <a href="{{ url_for('user.guides', destination_name=rec.destination.name) }}"
                    class="inline-block border border-blue-600 text-blue-600 px-5 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
                     Book a Guide / Lecture
                 </a>
             </div>
-
         </div>
         {% endfor %}
     </div>
 </section>
+
 <!-- Guides Section -->
 <section class="max-w-6xl mx-auto px-6 pb-20">
-    <h3 class="text-2xl font-bold mb-8">
-        Available Guides Along Your Route
-    </h3>
-
+    <h3 class="text-2xl font-bold mb-8">Available Guides Along Your Route</h3>
     {% if guides and guides|length > 0 %}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
         {% for guide in guides %}
         <div class="border rounded-2xl p-6 hover:shadow-lg transition bg-white">
-
-            <h4 class="text-lg font-semibold text-blue-600">
-                {{ guide.name }}
-            </h4>
-
+            <h4 class="text-lg font-semibold text-blue-600">{{ guide.name }}</h4>
             <div class="mt-3 space-y-1 text-sm text-gray-700">
                 <p><b>District:</b> {{ guide.district }}</p>
                 <p><b>Destination:</b> {{ guide.destination }}</p>
@@ -103,32 +71,26 @@
                 <p><b>Rating:</b> ⭐ {{ guide.rating }}</p>
                 <p><b>Price:</b> LKR {{ guide.price_per_hour }}/hr</p>
             </div>
-
             <div class="mt-5">
                 <a href="{{ url_for('user.guide_details', guide_id=guide.id) }}"
                    class="inline-block border border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
                     View Details
                 </a>
             </div>
-
         </div>
         {% endfor %}
-
     </div>
     {% else %}
-    <p class="text-gray-500">
-        No guides available for this route.
-    </p>
+    <p class="text-gray-500">No guides available for this route.</p>
     {% endif %}
 </section>
+
 <!-- Footer -->
 <footer class="text-center text-sm text-gray-500 py-6 border-t">
-    © 2026 AI-Powered Travel Booking & Recommendation System  
-    <br>
+    © 2026 AI-Powered Travel Booking & Recommendation System<br>
     NLP • RAG • Intelligent Route Analysis
 </footer>
 
-<!-- Map Script -->
 <!-- Map Script -->
 <script>
 const mainRoute = JSON.parse('{{ route_main.geometry | tojson | safe }}');
@@ -139,20 +101,14 @@ const map = L.map('map').setView([7.8731, 80.7718], 7);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
 
 // Main route (blue)
-const mainLine = L.polyline(
-    mainRoute.map(p => [p[1], p[0]]),
-    { color: '#2563eb', weight: 5 }
-).addTo(map);
+const mainLine = L.polyline(mainRoute.map(p => [p[1], p[0]]), { color: '#2563eb', weight: 5 }).addTo(map);
 map.fitBounds(mainLine.getBounds());
 
 // Alternative routes (dashed yellow)
-const altLayers = [];
 alternativeRoutes.forEach((r, i) => {
-    const layer = L.polyline(
-        r.geometry.map(p => [p[1], p[0]]),
-        { color: '#f59e0b', weight: 3, dashArray: '6,6', opacity: 0.7 }
-    ).addTo(map).bindPopup(`Alternative Route ${i + 1}`);
-    altLayers.push(layer);
+    L.polyline(r.geometry.map(p => [p[1], p[0]]), {
+        color: '#f59e0b', weight: 3, dashArray: '6,6', opacity: 0.7
+    }).addTo(map).bindPopup(`Alternative Route ${i + 1}`);
 });
 
 // Destination markers
