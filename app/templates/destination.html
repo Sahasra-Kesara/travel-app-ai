@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>AI Search Results</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
 <body class="bg-white text-gray-800">
@@ -26,23 +28,25 @@
 <!-- Page Header -->
 <section class="max-w-6xl mx-auto px-6 py-12">
     <h2 class="text-4xl font-extrabold">
-        AI-Recommended Destinations
+        AI-Recommended Results
     </h2>
 </section>
+
+<!-- Map Section -->
 <section class="max-w-6xl mx-auto px-6 pb-10">
     <h3 class="text-2xl font-bold mb-4">Results Map</h3>
     <div id="map" class="w-full h-96 rounded-xl border"></div>
 </section>
+
 <!-- Results Section -->
 <section class="max-w-6xl mx-auto px-6 pb-20">
 
 {% if results %}
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-    {% for rec in results %}
+{% for rec in results %}
 <div class="border rounded-2xl p-6 hover:shadow-lg transition">
 
-    <!-- Title -->
     <h3 class="text-xl font-semibold text-blue-600">
         {% if rec.type == 'destination' %}
             {{ rec.data.name }}
@@ -55,7 +59,6 @@
         {% endif %}
     </h3>
 
-    <!-- Description -->
     <p class="text-gray-600 mt-3">
         {% if rec.type == 'destination' %}
             {{ rec.data.description }}
@@ -68,24 +71,14 @@
         {% endif %}
     </p>
 
-    <!-- Meta Info for Destinations -->
     {% if rec.type == 'destination' %}
     <div class="mt-4 space-y-1 text-sm">
-        <p>
-            <span class="font-medium">District:</span>
-            {{ rec.data.district }}
-        </p>
-        <p>
-            <span class="font-medium">Best Time:</span>
-            {{ rec.data.best_time_to_visit }}
-        </p>
+        <p><span class="font-medium">District:</span> {{ rec.data.district }}</p>
+        <p><span class="font-medium">Best Time:</span> {{ rec.data.best_time_to_visit }}</p>
     </div>
 
-    <!-- Plan Trip (only for destinations) -->
     <form action="{{ url_for('user.plan_trip') }}" method="POST" class="mt-6 space-y-3">
-        <label class="block text-sm font-medium">
-            Starting Location
-        </label>
+        <label class="block text-sm font-medium">Starting Location</label>
 
         <input
             type="text"
@@ -125,40 +118,10 @@
     <br>
     NLP • RAG • Intelligent Recommendations
 </footer>
-<script>
-    const mapItems = {{ map_items | tojson }};
 
-    // Initialize map (center Sri Lanka)
-    const map = L.map('map').setView([7.8731, 80.7718], 7);
+<!-- ===================== -->
+<!-- Leaflet Map Script -->
+<!-- ===================== -->
 
-    // OpenStreetMap layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
-
-    // Add markers
-    mapItems.forEach(item => {
-        let marker = L.marker([item.lat, item.lon]).addTo(map);
-
-        let popupContent = `
-            <div style="min-width:200px">
-                <h4 style="font-weight:bold">${item.name}</h4>
-                <p><b>Type:</b> ${item.type}</p>
-                <p><b>District:</b> ${item.district}</p>
-                <p>${item.description ? item.description.substring(0,120) + '...' : ''}</p>
-            </div>
-        `;
-
-        marker.bindPopup(popupContent);
-    });
-
-    // Auto zoom to markers
-    if (mapItems.length > 0) {
-        let group = new L.featureGroup(
-            mapItems.map(i => L.marker([i.lat, i.lon]))
-        );
-        map.fitBounds(group.getBounds().pad(0.3));
-    }
-</script>
 </body>
 </html>
