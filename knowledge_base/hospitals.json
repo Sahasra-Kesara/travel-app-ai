@@ -1,0 +1,1504 @@
+{
+  "hospitals": [
+    {
+      "id": "M001",
+      "name": "Lanka Hospitals",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Cardiology", "General", "Orthopedic"],
+      "rating": 4.6,
+      "available_slots": ["2026-03-01 10:00", "2026-03-01 14:00"],
+      "coordinates": { "lat": 6.896, "lon": 79.8763 }
+    },
+    {
+      "id": "M002",
+      "name": "Asiri Central Hospital",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Neurology", "General", "ENT"],
+      "rating": 4.4,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.9053, "lon": 79.8707 }
+    },
+    {
+      "id": "M003",
+      "name": "Teaching Hospital Kandy",
+      "location": "Kandy",
+      "district": "Kandy",
+      "specialties": ["Emergency", "General", "Surgery"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-03 11:00", "2026-03-03 15:00"],
+      "coordinates": { "lat": 7.2906, "lon": 80.6337 }
+    },
+    {
+      "id": "M004",
+      "name": "National Hospital of Sri Lanka",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Emergency", "General", "Neurology", "Cardiology"],
+      "rating": 4.3,
+      "available_slots": ["2026-03-01 08:00", "2026-03-01 12:00"],
+      "coordinates": { "lat": 6.9176, "lon": 79.8627 }
+    },
+    {
+      "id": "M005",
+      "name": "Asiri Surgical Hospital",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Surgery", "Oncology", "Orthopedic"],
+      "rating": 4.5,
+      "available_slots": ["2026-03-02 10:00", "2026-03-02 15:00"],
+      "coordinates": { "lat": 6.899, "lon": 79.86 }
+    },
+    {
+      "id": "M006",
+      "name": "Nawaloka Hospital",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Cardiology", "Nephrology", "General"],
+      "rating": 4.4,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.91, "lon": 79.865 }
+    },
+    {
+      "id": "M007",
+      "name": "Durdans Hospital",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["General", "Pediatrics", "ENT"],
+      "rating": 4.3,
+      "available_slots": ["2026-03-04 10:00", "2026-03-04 14:00"],
+      "coordinates": { "lat": 6.902, "lon": 79.868 }
+    },
+    {
+      "id": "M008",
+      "name": "Hemas Hospital Wattala",
+      "location": "Wattala",
+      "district": "Gampaha",
+      "specialties": ["General", "Orthopedic", "Pediatrics"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.99, "lon": 79.89 }
+    },
+    {
+      "id": "M009",
+      "name": "Hemas Hospital Negombo",
+      "location": "Negombo",
+      "district": "Gampaha",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-02 10:00", "2026-03-02 14:00"],
+      "coordinates": { "lat": 7.2096, "lon": 79.838 }
+    },
+    {
+      "id": "M010",
+      "name": "Ninewells Hospital",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["General", "Cardiology", "Surgery"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-03 08:30", "2026-03-03 12:30"],
+      "coordinates": { "lat": 6.887, "lon": 79.872 }
+    },
+    {
+      "id": "M011",
+      "name": "Oasis Hospital",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Ophthalmology", "General", "Dermatology"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.92, "lon": 79.855 }
+    },
+    {
+      "id": "M012",
+      "name": "Central Hospital Colombo",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Neurology", "General", "Psychiatry"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-01 11:00", "2026-03-01 15:00"],
+      "coordinates": { "lat": 6.914, "lon": 79.859 }
+    },
+    {
+      "id": "M013",
+      "name": "Teaching Hospital Peradeniya",
+      "location": "Peradeniya",
+      "district": "Kandy",
+      "specialties": ["General", "Surgery", "Orthopedic", "Pediatrics"],
+      "rating": 4.3,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 14:00"],
+      "coordinates": { "lat": 7.268, "lon": 80.596 }
+    },
+    {
+      "id": "M014",
+      "name": "Kandy Private Hospital",
+      "location": "Kandy",
+      "district": "Kandy",
+      "specialties": ["General", "Cardiology", "ENT"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-03 10:00", "2026-03-03 14:00"],
+      "coordinates": { "lat": 7.295, "lon": 80.636 }
+    },
+    {
+      "id": "M015",
+      "name": "Teaching Hospital Galle",
+      "location": "Galle",
+      "district": "Galle",
+      "specialties": ["Emergency", "General", "Surgery", "Oncology"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.0535, "lon": 80.221 }
+    },
+    {
+      "id": "M016",
+      "name": "Karapitiya Teaching Hospital",
+      "location": "Galle",
+      "district": "Galle",
+      "specialties": ["General", "Neurology", "Pediatrics"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-02 10:00", "2026-03-02 14:00"],
+      "coordinates": { "lat": 6.06, "lon": 80.23 }
+    },
+    {
+      "id": "M017",
+      "name": "Teaching Hospital Jaffna",
+      "location": "Jaffna",
+      "district": "Jaffna",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 9.6615, "lon": 80.0255 }
+    },
+    {
+      "id": "M018",
+      "name": "Jaffna Teaching Hospital Annex",
+      "location": "Jaffna",
+      "district": "Jaffna",
+      "specialties": ["Pediatrics", "General", "Orthopedic"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-04 10:00", "2026-03-04 14:00"],
+      "coordinates": { "lat": 9.67, "lon": 80.031 }
+    },
+    {
+      "id": "M019",
+      "name": "Teaching Hospital Batticaloa",
+      "location": "Batticaloa",
+      "district": "Batticaloa",
+      "specialties": ["General", "Emergency", "Surgery"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.7172, "lon": 81.6924 }
+    },
+    {
+      "id": "M020",
+      "name": "District General Hospital Matara",
+      "location": "Matara",
+      "district": "Matara",
+      "specialties": ["General", "Orthopedic", "Cardiology"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 5.9549, "lon": 80.555 }
+    },
+    {
+      "id": "M021",
+      "name": "Base Hospital Matara",
+      "location": "Matara",
+      "district": "Matara",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-03 10:00", "2026-03-03 14:00"],
+      "coordinates": { "lat": 5.951, "lon": 80.549 }
+    },
+    {
+      "id": "M022",
+      "name": "District General Hospital Anuradhapura",
+      "location": "Anuradhapura",
+      "district": "Anuradhapura",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 8.3114, "lon": 80.4037 }
+    },
+    {
+      "id": "M023",
+      "name": "Teaching Hospital Anuradhapura",
+      "location": "Anuradhapura",
+      "district": "Anuradhapura",
+      "specialties": ["General", "Neurology", "Pediatrics", "Orthopedic"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 8.32, "lon": 80.41 }
+    },
+    {
+      "id": "M024",
+      "name": "District General Hospital Ratnapura",
+      "location": "Ratnapura",
+      "district": "Ratnapura",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.6828, "lon": 80.3992 }
+    },
+    {
+      "id": "M025",
+      "name": "District General Hospital Badulla",
+      "location": "Badulla",
+      "district": "Badulla",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.9934, "lon": 81.055 }
+    },
+    {
+      "id": "M026",
+      "name": "Teaching Hospital Batticaloa",
+      "location": "Batticaloa",
+      "district": "Batticaloa",
+      "specialties": ["General", "Cardiology", "Pediatrics"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-01 10:00", "2026-03-01 14:00"],
+      "coordinates": { "lat": 7.72, "lon": 81.7 }
+    },
+    {
+      "id": "M027",
+      "name": "Base Hospital Chilaw",
+      "location": "Chilaw",
+      "district": "Puttalam",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 7.5758, "lon": 79.7953 }
+    },
+    {
+      "id": "M028",
+      "name": "District General Hospital Puttalam",
+      "location": "Puttalam",
+      "district": "Puttalam",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 8.0362, "lon": 79.8283 }
+    },
+    {
+      "id": "M029",
+      "name": "Base Hospital Avissawella",
+      "location": "Avissawella",
+      "district": "Colombo",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.946, "lon": 80.208 }
+    },
+    {
+      "id": "M030",
+      "name": "District General Hospital Polonnaruwa",
+      "location": "Polonnaruwa",
+      "district": "Polonnaruwa",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.9403, "lon": 81.0188 }
+    },
+    {
+      "id": "M031",
+      "name": "District General Hospital Trincomalee",
+      "location": "Trincomalee",
+      "district": "Trincomalee",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 8.5922, "lon": 81.2152 }
+    },
+    {
+      "id": "M032",
+      "name": "Base Hospital Trincomalee",
+      "location": "Trincomalee",
+      "district": "Trincomalee",
+      "specialties": ["General", "Orthopedic", "Pediatrics"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 8.595, "lon": 81.22 }
+    },
+    {
+      "id": "M033",
+      "name": "Base Hospital Mullaitivu",
+      "location": "Mullaitivu",
+      "district": "Mullaitivu",
+      "specialties": ["General", "Emergency", "Surgery"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 9.2675, "lon": 80.8127 }
+    },
+    {
+      "id": "M034",
+      "name": "District General Hospital Mannar",
+      "location": "Mannar",
+      "district": "Mannar",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 8.981, "lon": 79.904 }
+    },
+    {
+      "id": "M035",
+      "name": "District General Hospital Vavuniya",
+      "location": "Vavuniya",
+      "district": "Vavuniya",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 8.7514, "lon": 80.4972 }
+    },
+    {
+      "id": "M036",
+      "name": "Base Hospital Kilinochchi",
+      "location": "Kilinochchi",
+      "district": "Kilinochchi",
+      "specialties": ["General", "Emergency", "Surgery"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 9.3803, "lon": 80.4 }
+    },
+    {
+      "id": "M037",
+      "name": "Base Hospital Ampara",
+      "location": "Ampara",
+      "district": "Ampara",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.2978, "lon": 81.6724 }
+    },
+    {
+      "id": "M038",
+      "name": "District General Hospital Kalmunai",
+      "location": "Kalmunai",
+      "district": "Ampara",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.4167, "lon": 81.8167 }
+    },
+    {
+      "id": "M039",
+      "name": "Base Hospital Nuwara Eliya",
+      "location": "Nuwara Eliya",
+      "district": "Nuwara Eliya",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.9497, "lon": 80.7891 }
+    },
+    {
+      "id": "M040",
+      "name": "District General Hospital Nuwara Eliya",
+      "location": "Nuwara Eliya",
+      "district": "Nuwara Eliya",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.953, "lon": 80.792 }
+    },
+    {
+      "id": "M041",
+      "name": "District General Hospital Kegalle",
+      "location": "Kegalle",
+      "district": "Kegalle",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.2513, "lon": 80.3464 }
+    },
+    {
+      "id": "M042",
+      "name": "Base Hospital Kegalle",
+      "location": "Kegalle",
+      "district": "Kegalle",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.255, "lon": 80.35 }
+    },
+    {
+      "id": "M043",
+      "name": "District General Hospital Hambantota",
+      "location": "Hambantota",
+      "district": "Hambantota",
+      "specialties": ["General", "Surgery", "Cardiology"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.1241, "lon": 81.1185 }
+    },
+    {
+      "id": "M044",
+      "name": "Base Hospital Tangalle",
+      "location": "Tangalle",
+      "district": "Hambantota",
+      "specialties": ["General", "Emergency", "Surgery"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.0273, "lon": 80.7967 }
+    },
+    {
+      "id": "M045",
+      "name": "Base Hospital Weligama",
+      "location": "Weligama",
+      "district": "Matara",
+      "specialties": ["General", "Orthopedic", "ENT"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 5.9757, "lon": 80.429 }
+    },
+    {
+      "id": "M046",
+      "name": "Base Hospital Deniyaya",
+      "location": "Deniyaya",
+      "district": "Matara",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.3427, "lon": 80.5742 }
+    },
+    {
+      "id": "M047",
+      "name": "Base Hospital Gampola",
+      "location": "Gampola",
+      "district": "Kandy",
+      "specialties": ["General", "Emergency", "Surgery"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 7.164, "lon": 80.573 }
+    },
+    {
+      "id": "M048",
+      "name": "Base Hospital Nawalapitiya",
+      "location": "Nawalapitiya",
+      "district": "Kandy",
+      "specialties": ["General", "Orthopedic", "ENT"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 7.054, "lon": 80.536 }
+    },
+    {
+      "id": "M049",
+      "name": "Base Hospital Matale",
+      "location": "Matale",
+      "district": "Matale",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.4675, "lon": 80.6234 }
+    },
+    {
+      "id": "M050",
+      "name": "District General Hospital Matale",
+      "location": "Matale",
+      "district": "Matale",
+      "specialties": ["General", "Emergency", "Cardiology"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.471, "lon": 80.627 }
+    },
+    {
+      "id": "M051",
+      "name": "Hemas Hospital Thalawathugoda",
+      "location": "Thalawathugoda",
+      "district": "Colombo",
+      "specialties": ["General", "Cardiology", "Pediatrics"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.86, "lon": 79.91 }
+    },
+    {
+      "id": "M052",
+      "name": "Hemas Hospital Galle",
+      "location": "Galle",
+      "district": "Galle",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.051, "lon": 80.218 }
+    },
+    {
+      "id": "M053",
+      "name": "Hemas Hospital Kurunegala",
+      "location": "Kurunegala",
+      "district": "Kurunegala",
+      "specialties": ["General", "ENT", "Neurology"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.486, "lon": 80.362 }
+    },
+    {
+      "id": "M054",
+      "name": "District General Hospital Kurunegala",
+      "location": "Kurunegala",
+      "district": "Kurunegala",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.487, "lon": 80.365 }
+    },
+    {
+      "id": "M055",
+      "name": "Teaching Hospital Kurunegala",
+      "location": "Kurunegala",
+      "district": "Kurunegala",
+      "specialties": ["Neurology", "Cardiology", "Oncology", "General"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-02 10:00", "2026-03-02 14:00"],
+      "coordinates": { "lat": 7.49, "lon": 80.37 }
+    },
+    {
+      "id": "M056",
+      "name": "Base Hospital Kuliyapitiya",
+      "location": "Kuliyapitiya",
+      "district": "Kurunegala",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 7.465, "lon": 80.045 }
+    },
+    {
+      "id": "M057",
+      "name": "Base Hospital Wariyapola",
+      "location": "Wariyapola",
+      "district": "Kurunegala",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.605, "lon": 80.275 }
+    },
+    {
+      "id": "M058",
+      "name": "Base Hospital Maho",
+      "location": "Maho",
+      "district": "Kurunegala",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.896, "lon": 80.256 }
+    },
+    {
+      "id": "M059",
+      "name": "District General Hospital Kalutara",
+      "location": "Kalutara",
+      "district": "Kalutara",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.5854, "lon": 79.9607 }
+    },
+    {
+      "id": "M060",
+      "name": "Base Hospital Panadura",
+      "location": "Panadura",
+      "district": "Kalutara",
+      "specialties": ["General", "Cardiology", "Pediatrics"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.7139, "lon": 79.9073 }
+    },
+    {
+      "id": "M061",
+      "name": "Base Hospital Horana",
+      "location": "Horana",
+      "district": "Kalutara",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.715, "lon": 80.059 }
+    },
+    {
+      "id": "M062",
+      "name": "Base Hospital Beruwala",
+      "location": "Beruwala",
+      "district": "Kalutara",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.4807, "lon": 79.9843 }
+    },
+    {
+      "id": "M063",
+      "name": "District General Hospital Gampaha",
+      "location": "Gampaha",
+      "district": "Gampaha",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 7.084, "lon": 80.007 }
+    },
+    {
+      "id": "M064",
+      "name": "Base Hospital Ja-Ela",
+      "location": "Ja-Ela",
+      "district": "Gampaha",
+      "specialties": ["General", "Pediatrics", "ENT"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 7.073, "lon": 79.89 }
+    },
+    {
+      "id": "M065",
+      "name": "Base Hospital Minuwangoda",
+      "location": "Minuwangoda",
+      "district": "Gampaha",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.167, "lon": 79.946 }
+    },
+    {
+      "id": "M066",
+      "name": "Base Hospital Divulapitiya",
+      "location": "Divulapitiya",
+      "district": "Gampaha",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.227, "lon": 80.01 }
+    },
+    {
+      "id": "M067",
+      "name": "Base Hospital Kelaniya",
+      "location": "Kelaniya",
+      "district": "Gampaha",
+      "specialties": ["General", "Surgery", "Cardiology"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.955, "lon": 79.921 }
+    },
+    {
+      "id": "M068",
+      "name": "Teaching Hospital Ragama",
+      "location": "Ragama",
+      "district": "Gampaha",
+      "specialties": ["General", "Neurology", "Oncology", "Surgery"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 7.029, "lon": 79.922 }
+    },
+    {
+      "id": "M069",
+      "name": "Colombo South Teaching Hospital",
+      "location": "Kalubowila",
+      "district": "Colombo",
+      "specialties": ["General", "Cardiology", "Surgery", "Nephrology"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.853, "lon": 79.882 }
+    },
+    {
+      "id": "M070",
+      "name": "Castle Street Hospital for Women",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Gynecology", "Obstetrics", "Pediatrics"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.923, "lon": 79.86 }
+    },
+    {
+      "id": "M071",
+      "name": "De Soysa Hospital for Women",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Gynecology", "Obstetrics"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.916, "lon": 79.864 }
+    },
+    {
+      "id": "M072",
+      "name": "Lady Ridgeway Hospital for Children",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Pediatrics", "Pediatric Surgery", "Pediatric Neurology"],
+      "rating": 4.3,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.919, "lon": 79.866 }
+    },
+    {
+      "id": "M073",
+      "name": "Eye Hospital Colombo",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Ophthalmology"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.922, "lon": 79.861 }
+    },
+    {
+      "id": "M074",
+      "name": "National Cancer Institute Maharagama",
+      "location": "Maharagama",
+      "district": "Colombo",
+      "specialties": ["Oncology", "Radiotherapy", "Chemotherapy"],
+      "rating": 4.3,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.848, "lon": 79.928 }
+    },
+    {
+      "id": "M075",
+      "name": "Apeksha Hospital Maharagama",
+      "location": "Maharagama",
+      "district": "Colombo",
+      "specialties": ["Oncology", "Palliative Care"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.846, "lon": 79.926 }
+    },
+    {
+      "id": "M076",
+      "name": "District General Hospital Monaragala",
+      "location": "Monaragala",
+      "district": "Monaragala",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.8713, "lon": 81.35 }
+    },
+    {
+      "id": "M077",
+      "name": "Base Hospital Wellawaya",
+      "location": "Wellawaya",
+      "district": "Monaragala",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.736, "lon": 81.099 }
+    },
+    {
+      "id": "M078",
+      "name": "District General Hospital Ampara",
+      "location": "Ampara",
+      "district": "Ampara",
+      "specialties": ["General", "Surgery", "Cardiology"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.298, "lon": 81.675 }
+    },
+    {
+      "id": "M079",
+      "name": "Base Hospital Akkaraipattu",
+      "location": "Akkaraipattu",
+      "district": "Ampara",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 7.215, "lon": 81.835 }
+    },
+    {
+      "id": "M080",
+      "name": "Nawaloka Hospitals Dehiwala",
+      "location": "Dehiwala",
+      "district": "Colombo",
+      "specialties": ["General", "Cardiology", "Orthopedic"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.847, "lon": 79.866 }
+    },
+    {
+      "id": "M081",
+      "name": "Sri Jayewardenepura General Hospital",
+      "location": "Nugegoda",
+      "district": "Colombo",
+      "specialties": ["General", "Surgery", "Neurology"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.87, "lon": 79.899 }
+    },
+    {
+      "id": "M082",
+      "name": "Laksiri Hospital",
+      "location": "Moratuwa",
+      "district": "Colombo",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.773, "lon": 79.882 }
+    },
+    {
+      "id": "M083",
+      "name": "Golden Key Hospital",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["General", "Dermatology", "ENT"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.909, "lon": 79.873 }
+    },
+    {
+      "id": "M084",
+      "name": "Colombo North Teaching Hospital",
+      "location": "Ragama",
+      "district": "Gampaha",
+      "specialties": ["General", "Surgery", "Cardiology", "Neurology"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 7.032, "lon": 79.925 }
+    },
+    {
+      "id": "M085",
+      "name": "Polonnaruwa General Hospital",
+      "location": "Polonnaruwa",
+      "district": "Polonnaruwa",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.938, "lon": 81.016 }
+    },
+    {
+      "id": "M086",
+      "name": "Base Hospital Medirigiriya",
+      "location": "Medirigiriya",
+      "district": "Polonnaruwa",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 8.109, "lon": 81.059 }
+    },
+    {
+      "id": "M087",
+      "name": "Base Hospital Padavi-Sri Pura",
+      "location": "Padavi-Sri Pura",
+      "district": "Trincomalee",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 8.5, "lon": 80.95 }
+    },
+    {
+      "id": "M088",
+      "name": "Base Hospital Morawewa",
+      "location": "Morawewa",
+      "district": "Trincomalee",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 8.48, "lon": 81.12 }
+    },
+    {
+      "id": "M089",
+      "name": "Base Hospital Mutur",
+      "location": "Mutur",
+      "district": "Trincomalee",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 8.453, "lon": 81.259 }
+    },
+    {
+      "id": "M090",
+      "name": "Base Hospital Kantale",
+      "location": "Kantale",
+      "district": "Trincomalee",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 8.385, "lon": 80.987 }
+    },
+    {
+      "id": "M091",
+      "name": "Base Hospital Valvettithurai",
+      "location": "Valvettithurai",
+      "district": "Jaffna",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 9.804, "lon": 80.172 }
+    },
+    {
+      "id": "M092",
+      "name": "Base Hospital Chavakachcheri",
+      "location": "Chavakachcheri",
+      "district": "Jaffna",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 9.658, "lon": 80.177 }
+    },
+    {
+      "id": "M093",
+      "name": "Base Hospital Nallur",
+      "location": "Nallur",
+      "district": "Jaffna",
+      "specialties": ["General", "ENT", "Surgery"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 9.682, "lon": 80.022 }
+    },
+    {
+      "id": "M094",
+      "name": "Base Hospital Kilinochchi North",
+      "location": "Kilinochchi",
+      "district": "Kilinochchi",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 9.385, "lon": 80.405 }
+    },
+    {
+      "id": "M095",
+      "name": "Base Hospital Mannar South",
+      "location": "Mannar",
+      "district": "Mannar",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 8.975, "lon": 79.9 }
+    },
+    {
+      "id": "M096",
+      "name": "Base Hospital Madhu",
+      "location": "Madhu",
+      "district": "Mannar",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 8.963, "lon": 80.182 }
+    },
+    {
+      "id": "M097",
+      "name": "Base Hospital Cheddikulam",
+      "location": "Cheddikulam",
+      "district": "Vavuniya",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 8.898, "lon": 80.299 }
+    },
+    {
+      "id": "M098",
+      "name": "Base Hospital Nedunkerni",
+      "location": "Nedunkerni",
+      "district": "Vavuniya",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.4,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 9.01, "lon": 80.379 }
+    },
+    {
+      "id": "M099",
+      "name": "Base Hospital Mulliyawalai",
+      "location": "Mulliyawalai",
+      "district": "Mullaitivu",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.4,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 9.21, "lon": 80.804 }
+    },
+    {
+      "id": "M100",
+      "name": "Base Hospital Oddusuddan",
+      "location": "Oddusuddan",
+      "district": "Mullaitivu",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.4,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 9.285, "lon": 80.631 }
+    },
+    {
+      "id": "M101",
+      "name": "Lotus Road Hospital",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["General", "Psychiatry", "Dermatology"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.931, "lon": 79.849 }
+    },
+    {
+      "id": "M102",
+      "name": "National Institute of Nephrology",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Nephrology", "Urology"],
+      "rating": 4.2,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.92, "lon": 79.863 }
+    },
+    {
+      "id": "M103",
+      "name": "National Hospital for Respiratory Diseases",
+      "location": "Welisara",
+      "district": "Gampaha",
+      "specialties": ["Pulmonology", "Respiratory Medicine"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 7.042, "lon": 79.898 }
+    },
+    {
+      "id": "M104",
+      "name": "National Institute of Mental Health",
+      "location": "Angoda",
+      "district": "Colombo",
+      "specialties": ["Psychiatry", "Mental Health"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.954, "lon": 79.931 }
+    },
+    {
+      "id": "M105",
+      "name": "National Hospital Orthopedic",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["Orthopedic", "Physiotherapy"],
+      "rating": 4.1,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.918, "lon": 79.862 }
+    },
+    {
+      "id": "M106",
+      "name": "Base Hospital Embilipitiya",
+      "location": "Embilipitiya",
+      "district": "Ratnapura",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.338, "lon": 80.845 }
+    },
+    {
+      "id": "M107",
+      "name": "Base Hospital Balangoda",
+      "location": "Balangoda",
+      "district": "Ratnapura",
+      "specialties": ["General", "Orthopedic", "ENT"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.651, "lon": 80.698 }
+    },
+    {
+      "id": "M108",
+      "name": "Base Hospital Kahawatte",
+      "location": "Kahawatte",
+      "district": "Ratnapura",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.606, "lon": 80.587 }
+    },
+    {
+      "id": "M109",
+      "name": "Base Hospital Pelmadulla",
+      "location": "Pelmadulla",
+      "district": "Ratnapura",
+      "specialties": ["General", "Emergency", "Cardiology"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.712, "lon": 80.514 }
+    },
+    {
+      "id": "M110",
+      "name": "District General Hospital Badulla",
+      "location": "Badulla",
+      "district": "Badulla",
+      "specialties": ["General", "Surgery", "Cardiology", "Emergency"],
+      "rating": 4.0,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.9934, "lon": 81.056 }
+    },
+    {
+      "id": "M111",
+      "name": "Base Hospital Bandarawela",
+      "location": "Bandarawela",
+      "district": "Badulla",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.831, "lon": 80.988 }
+    },
+    {
+      "id": "M112",
+      "name": "Base Hospital Welimada",
+      "location": "Welimada",
+      "district": "Badulla",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.906, "lon": 80.907 }
+    },
+    {
+      "id": "M113",
+      "name": "Base Hospital Mahiyangana",
+      "location": "Mahiyangana",
+      "district": "Badulla",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.328, "lon": 81.004 }
+    },
+    {
+      "id": "M114",
+      "name": "Base Hospital Passara",
+      "location": "Passara",
+      "district": "Badulla",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.844, "lon": 81.18 }
+    },
+    {
+      "id": "M115",
+      "name": "Base Hospital Hatton",
+      "location": "Hatton",
+      "district": "Nuwara Eliya",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.891, "lon": 80.598 }
+    },
+    {
+      "id": "M116",
+      "name": "Base Hospital Talawakele",
+      "location": "Talawakele",
+      "district": "Nuwara Eliya",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.939, "lon": 80.66 }
+    },
+    {
+      "id": "M117",
+      "name": "Base Hospital Rikillagaskada",
+      "location": "Rikillagaskada",
+      "district": "Nuwara Eliya",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.118, "lon": 80.686 }
+    },
+    {
+      "id": "M118",
+      "name": "Base Hospital Pundaluoya",
+      "location": "Pundaluoya",
+      "district": "Nuwara Eliya",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.042, "lon": 80.75 }
+    },
+    {
+      "id": "M119",
+      "name": "Base Hospital Gampaha North",
+      "location": "Gampaha",
+      "district": "Gampaha",
+      "specialties": ["General", "Pediatrics", "Cardiology"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 7.088, "lon": 80.012 }
+    },
+    {
+      "id": "M120",
+      "name": "Base Hospital Biyagama",
+      "location": "Biyagama",
+      "district": "Gampaha",
+      "specialties": ["General", "Surgery", "Emergency"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.975, "lon": 80.015 }
+    },
+    {
+      "id": "M121",
+      "name": "District General Hospital Hambantota North",
+      "location": "Hambantota",
+      "district": "Hambantota",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.128, "lon": 81.124 }
+    },
+    {
+      "id": "M122",
+      "name": "Base Hospital Tissamaharama",
+      "location": "Tissamaharama",
+      "district": "Hambantota",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.2893, "lon": 81.289 }
+    },
+    {
+      "id": "M123",
+      "name": "Base Hospital Beliatta",
+      "location": "Beliatta",
+      "district": "Hambantota",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.058, "lon": 80.93 }
+    },
+    {
+      "id": "M124",
+      "name": "Base Hospital Elpitiya",
+      "location": "Elpitiya",
+      "district": "Galle",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.286, "lon": 80.162 }
+    },
+    {
+      "id": "M125",
+      "name": "Base Hospital Balapitiya",
+      "location": "Balapitiya",
+      "district": "Galle",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.272, "lon": 80.055 }
+    },
+    {
+      "id": "M126",
+      "name": "Base Hospital Baddegama",
+      "location": "Baddegama",
+      "district": "Galle",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.171, "lon": 80.211 }
+    },
+    {
+      "id": "M127",
+      "name": "Base Hospital Akuressa",
+      "location": "Akuressa",
+      "district": "Matara",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.105, "lon": 80.452 }
+    },
+    {
+      "id": "M128",
+      "name": "Base Hospital Dickwella",
+      "location": "Dickwella",
+      "district": "Matara",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 5.969, "lon": 80.699 }
+    },
+    {
+      "id": "M129",
+      "name": "Base Hospital Kamburupitiya",
+      "location": "Kamburupitiya",
+      "district": "Matara",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.059, "lon": 80.502 }
+    },
+    {
+      "id": "M130",
+      "name": "Base Hospital Aluthgama",
+      "location": "Aluthgama",
+      "district": "Kalutara",
+      "specialties": ["General", "Surgery", "Cardiology"],
+      "rating": 3.7,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 6.434, "lon": 79.99 }
+    },
+    {
+      "id": "M131",
+      "name": "Base Hospital Mathugama",
+      "location": "Mathugama",
+      "district": "Kalutara",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.513, "lon": 80.112 }
+    },
+    {
+      "id": "M132",
+      "name": "Base Hospital Bulathsinhala",
+      "location": "Bulathsinhala",
+      "district": "Kalutara",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.609, "lon": 80.23 }
+    },
+    {
+      "id": "M133",
+      "name": "Base Hospital Nikaweratiya",
+      "location": "Nikaweratiya",
+      "district": "Kurunegala",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.726, "lon": 80.115 }
+    },
+    {
+      "id": "M134",
+      "name": "Base Hospital Pannala",
+      "location": "Pannala",
+      "district": "Kurunegala",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.327, "lon": 80.043 }
+    },
+    {
+      "id": "M135",
+      "name": "Base Hospital Dankotuwa",
+      "location": "Dankotuwa",
+      "district": "Kurunegala",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 7.306, "lon": 79.938 }
+    },
+    {
+      "id": "M136",
+      "name": "Base Hospital Alawwa",
+      "location": "Alawwa",
+      "district": "Kurunegala",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 7.431, "lon": 80.227 }
+    },
+    {
+      "id": "M137",
+      "name": "Base Hospital Ibbagamuwa",
+      "location": "Ibbagamuwa",
+      "district": "Kurunegala",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.4,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.581, "lon": 80.452 }
+    },
+    {
+      "id": "M138",
+      "name": "Base Hospital Giriulla",
+      "location": "Giriulla",
+      "district": "Kurunegala",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.4,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.344, "lon": 80.127 }
+    },
+    {
+      "id": "M139",
+      "name": "Base Hospital Anuradapura North",
+      "location": "Anuradhapura",
+      "district": "Anuradhapura",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.8,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 8.325, "lon": 80.415 }
+    },
+    {
+      "id": "M140",
+      "name": "Base Hospital Kekirawa",
+      "location": "Kekirawa",
+      "district": "Anuradhapura",
+      "specialties": ["General", "Surgery", "Orthopedic"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 8.036, "lon": 80.625 }
+    },
+    {
+      "id": "M141",
+      "name": "Base Hospital Thambuttegama",
+      "location": "Thambuttegama",
+      "district": "Anuradhapura",
+      "specialties": ["General", "Emergency", "ENT"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 8.089, "lon": 80.497 }
+    },
+    {
+      "id": "M142",
+      "name": "Base Hospital Mihintale",
+      "location": "Mihintale",
+      "district": "Anuradhapura",
+      "specialties": ["General", "Surgery", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 8.351, "lon": 80.509 }
+    },
+    {
+      "id": "M143",
+      "name": "Neville Fernando Hospital",
+      "location": "Malabe",
+      "district": "Colombo",
+      "specialties": ["General", "Cardiology", "Surgery", "Orthopedic"],
+      "rating": 4.3,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 6.905, "lon": 79.969 }
+    },
+    {
+      "id": "M144",
+      "name": "Suduwella Hospital",
+      "location": "Colombo",
+      "district": "Colombo",
+      "specialties": ["General", "ENT", "Dermatology"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 6.896, "lon": 79.86 }
+    },
+    {
+      "id": "M145",
+      "name": "Jayawardhana Memorial Hospital",
+      "location": "Panadura",
+      "district": "Kalutara",
+      "specialties": ["General", "Surgery", "Cardiology"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 6.717, "lon": 79.909 }
+    },
+    {
+      "id": "M146",
+      "name": "Mettananda Memorial Hospital",
+      "location": "Negombo",
+      "district": "Gampaha",
+      "specialties": ["General", "Orthopedic", "ENT"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.213, "lon": 79.841 }
+    },
+    {
+      "id": "M147",
+      "name": "District General Hospital Kegalle",
+      "location": "Kegalle",
+      "district": "Kegalle",
+      "specialties": ["General", "Surgery", "Emergency", "Pediatrics"],
+      "rating": 3.9,
+      "available_slots": ["2026-03-02 09:00", "2026-03-02 13:00"],
+      "coordinates": { "lat": 7.254, "lon": 80.349 }
+    },
+    {
+      "id": "M148",
+      "name": "Base Hospital Rambukkana",
+      "location": "Rambukkana",
+      "district": "Kegalle",
+      "specialties": ["General", "Emergency", "Orthopedic"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-03 09:00", "2026-03-03 13:00"],
+      "coordinates": { "lat": 7.329, "lon": 80.418 }
+    },
+    {
+      "id": "M149",
+      "name": "Base Hospital Mawanella",
+      "location": "Mawanella",
+      "district": "Kegalle",
+      "specialties": ["General", "Surgery", "ENT"],
+      "rating": 3.6,
+      "available_slots": ["2026-03-04 09:00", "2026-03-04 13:00"],
+      "coordinates": { "lat": 7.253, "lon": 80.46 }
+    },
+    {
+      "id": "M150",
+      "name": "Base Hospital Warakapola",
+      "location": "Warakapola",
+      "district": "Kegalle",
+      "specialties": ["General", "Emergency", "Pediatrics"],
+      "rating": 3.5,
+      "available_slots": ["2026-03-01 09:00", "2026-03-01 13:00"],
+      "coordinates": { "lat": 7.259, "lon": 80.287 }
+    }
+  ]
+}
