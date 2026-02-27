@@ -33,7 +33,11 @@ with open(VEHICLES_PATH, 'r', encoding='utf-8') as f:
 with open(DRIVERS_PATH, 'r', encoding='utf-8') as f:
     drivers_data = json.load(f)['drivers']
 
+with open(HOTELS_PATH, 'r', encoding='utf-8') as f:
+    hotels_data = json.load(f)['hotels']
 
+with open(HOSPITALS_PATH, 'r', encoding='utf-8') as f:
+    hospitals_data = json.load(f)['hospitals']
 # -------------------------------
 # Vehicle functions (unchanged)
 # -------------------------------
