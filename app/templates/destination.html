@@ -125,6 +125,40 @@
     <br>
     NLP • RAG • Intelligent Recommendations
 </footer>
+<script>
+    const mapItems = {{ map_items | tojson }};
 
+    // Initialize map (center Sri Lanka)
+    const map = L.map('map').setView([7.8731, 80.7718], 7);
+
+    // OpenStreetMap layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Add markers
+    mapItems.forEach(item => {
+        let marker = L.marker([item.lat, item.lon]).addTo(map);
+
+        let popupContent = `
+            <div style="min-width:200px">
+                <h4 style="font-weight:bold">${item.name}</h4>
+                <p><b>Type:</b> ${item.type}</p>
+                <p><b>District:</b> ${item.district}</p>
+                <p>${item.description ? item.description.substring(0,120) + '...' : ''}</p>
+            </div>
+        `;
+
+        marker.bindPopup(popupContent);
+    });
+
+    // Auto zoom to markers
+    if (mapItems.length > 0) {
+        let group = new L.featureGroup(
+            mapItems.map(i => L.marker([i.lat, i.lon]))
+        );
+        map.fitBounds(group.getBounds().pad(0.3));
+    }
+</script>
 </body>
 </html>
