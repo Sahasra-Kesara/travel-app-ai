@@ -142,7 +142,8 @@ def plan_trip():
         route_alternatives=alternative_routes,
         results=recommendations,
         destinations=destinations_for_js,
-        guides=guides
+        guides=guides,
+        route_geometry=main_route["geometry"]
     )
 
 @user_bp.route("/guides/<destination_name>")
