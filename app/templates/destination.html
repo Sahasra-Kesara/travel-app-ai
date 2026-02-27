@@ -36,17 +36,6 @@
 
 <!-- Results Section -->
 <section class="max-w-6xl mx-auto px-6 pb-20">
-{% for r in results %}
-  {% if r.type == "destination" %}
-      <h3>Destination: {{ r.data.name }}</h3>
-  {% elif r.type == "hotel" %}
-      <h3>Hotel: {{ r.data.name }}</h3>
-  {% elif r.type == "hospital" %}
-      <h3>Hospital: {{ r.data.name }}</h3>
-  {% elif r.type == "guide" %}
-      <h3>Guide: {{ r.data.name }}</h3>
-  {% endif %}
-{% endfor %}
 
 {% if results %}
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
