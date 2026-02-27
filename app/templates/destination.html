@@ -122,6 +122,41 @@
 <!-- ===================== -->
 <!-- Leaflet Map Script -->
 <!-- ===================== -->
+<script>
+    // Safe JSON parsing from Flask
+    const mapItems = JSON.parse('{{ map_items | tojson | safe }}' || '[]');
 
+    // Default Sri Lanka center
+    let centerLat = 7.8731;
+    let centerLon = 80.7718;
+    let zoomLevel = 7;
+
+    if (mapItems.length > 0) {
+        centerLat = mapItems[0].lat;
+        centerLon = mapItems[0].lon;
+        zoomLevel = 9;
+    }
+
+    // Initialize Leaflet map
+    const map = L.map('map').setView([centerLat, centerLon], zoomLevel);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add markers
+    mapItems.forEach(item => {
+        if (item.lat && item.lon) {
+            const marker = L.marker([item.lat, item.lon]).addTo(map);
+
+            marker.bindPopup(`
+                <b>${item.name}</b><br>
+                ${item.type || ''}<br>
+                ${item.district || ''}<br>
+                ${item.description || ''}
+            `);
+        }
+    });
+</script>
 </body>
 </html>
