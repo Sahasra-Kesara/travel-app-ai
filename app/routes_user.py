@@ -385,3 +385,25 @@ def get_district_from_coords(lat, lon):
         return district
     except Exception:
         return None
+
+# ==============================
+# AI Auto Suggest Endpoint
+# ==============================
+@user_bp.route("/suggest", methods=["GET"])
+def suggest():
+    query = request.args.get("q", "").strip()
+
+    if not query or len(query) < 2:
+        return jsonify([])
+
+    # Get semantic matches from knowledge base
+    results = search_all_knowledge(query, top_k=5)
+
+    suggestions = []
+    for item in results:
+        data = item["data"]
+        name = data.get("name")
+        if name and name not in suggestions:
+            suggestions.append(name)
+
+    return jsonify(suggestions)
