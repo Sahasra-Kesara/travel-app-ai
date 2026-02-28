@@ -408,7 +408,19 @@ async function fetchSuggestions(query){
     }
 }
 
+input.addEventListener("keydown", function(event) {
 
+    // TAB = accept inline suggestion
+    if (event.key === "Tab" && currentInlineSuggestion) {
+        event.preventDefault();
+        input.value = currentInlineSuggestion;
+        ghostText.textContent = "";
+        currentInlineSuggestion = "";
+        suggestionBox.classList.add("hidden");
+        return;
+    }
+
+});
 </script>
 </body>
 </html>
