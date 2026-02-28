@@ -348,24 +348,23 @@ input.addEventListener("keydown", function(event){
 });
 
 const ghostText = document.getElementById("ghostText");
-let currentInlineSuggestion = "";
+let inlineSuggestion = "";
 
-// Show inline suggestion
 function showInlineSuggestion(query, suggestions) {
     if (!suggestions.length) {
         ghostText.textContent = "";
-        currentInlineSuggestion = "";
+        inlineSuggestion = "";
         return;
     }
 
     const first = suggestions[0];
 
     if (first.toLowerCase().startsWith(query.toLowerCase())) {
-        currentInlineSuggestion = first;
+        inlineSuggestion = first;
         ghostText.textContent = first;
     } else {
+        inlineSuggestion = "";
         ghostText.textContent = "";
-        currentInlineSuggestion = "";
     }
 }
 
@@ -378,7 +377,7 @@ async function fetchSuggestions(query){
         currentSuggestions = data;
         suggestionBox.innerHTML = "";
 
-        showInlineSuggestion(query, data); // ⭐ inline part
+        showInlineSuggestion(query, data);
 
         if(data.length === 0){
             suggestionBox.classList.add("hidden");
@@ -403,19 +402,17 @@ async function fetchSuggestions(query){
         suggestionBox.classList.remove("hidden");
 
     }catch(error){
-        console.error("Suggestion error:", error);
         suggestionBox.classList.add("hidden");
     }
 }
 
 input.addEventListener("keydown", function(event) {
 
-    // TAB = accept inline suggestion
-    if (event.key === "Tab" && currentInlineSuggestion) {
+    if (event.key === "Tab" && inlineSuggestion) {
         event.preventDefault();
-        input.value = currentInlineSuggestion;
+        input.value = inlineSuggestion;
         ghostText.textContent = "";
-        currentInlineSuggestion = "";
+        inlineSuggestion = "";
         suggestionBox.classList.add("hidden");
         return;
     }
