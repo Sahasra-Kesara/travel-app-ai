@@ -346,6 +346,69 @@ input.addEventListener("keydown", function(event){
         suggestionBox.classList.add("hidden");
     }
 });
+
+const ghostText = document.getElementById("ghostText");
+let currentInlineSuggestion = "";
+
+// Show inline suggestion
+function showInlineSuggestion(query, suggestions) {
+    if (!suggestions.length) {
+        ghostText.textContent = "";
+        currentInlineSuggestion = "";
+        return;
+    }
+
+    const first = suggestions[0];
+
+    if (first.toLowerCase().startsWith(query.toLowerCase())) {
+        currentInlineSuggestion = first;
+        ghostText.textContent = first;
+    } else {
+        ghostText.textContent = "";
+        currentInlineSuggestion = "";
+    }
+}
+
+// Modify fetchSuggestions()
+async function fetchSuggestions(query){
+    try{
+        const res = await fetch(`${suggestUrl}?q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+
+        currentSuggestions = data;
+        suggestionBox.innerHTML = "";
+
+        showInlineSuggestion(query, data); // ⭐ inline part
+
+        if(data.length === 0){
+            suggestionBox.classList.add("hidden");
+            return;
+        }
+
+        data.forEach((item, index) => {
+            const li = document.createElement("li");
+            li.className = "px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm";
+            li.textContent = item;
+
+            li.onclick = () => {
+                input.value = item;
+                ghostText.textContent = "";
+                suggestionBox.classList.add("hidden");
+                form.submit();
+            };
+
+            suggestionBox.appendChild(li);
+        });
+
+        suggestionBox.classList.remove("hidden");
+
+    }catch(error){
+        console.error("Suggestion error:", error);
+        suggestionBox.classList.add("hidden");
+    }
+}
+
+
 </script>
 </body>
 </html>
