@@ -208,14 +208,51 @@
 <script>
 const input = document.getElementById("searchInput");
 const suggestionBox = document.getElementById("suggestions");
+const form = document.getElementById("searchForm");
 
-// Enter submit
+// Flask generated URL (important for Blueprint)
+const suggestUrl = "{{ url_for('user.suggest') }}";
+
+let debounceTimer;
+let selectedIndex = -1;
+let currentSuggestions = [];
+
+// ============================
+// Submit on Enter (when no suggestion selected)
+// ============================
 input.addEventListener("keydown", function(event) {
-    if (event.key === "Enter" && !event.shiftKey) {
+    const items = suggestionBox.querySelectorAll("li");
+
+    if (event.key === "ArrowDown") {
         event.preventDefault();
-        document.getElementById("searchForm").submit();
+        selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+        highlightItem(items);
+    }
+    else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        selectedIndex = Math.max(selectedIndex - 1, 0);
+        highlightItem(items);
+    }
+    else if (event.key === "Enter") {
+        event.preventDefault();
+
+        if (selectedIndex >= 0 && items[selectedIndex]) {
+            input.value = items[selectedIndex].textContent;
+        }
+
+        suggestionBox.classList.add("hidden");
+        form.submit();
     }
 });
+
+// Highlight selected suggestion
+function highlightItem(items){
+    items.forEach(item => item.classList.remove("bg-blue-100"));
+
+    if(items[selectedIndex]){
+        items[selectedIndex].classList.add("bg-blue-100");
+    }
+}
 
 // Example autofill
 function setExample(text){
@@ -225,47 +262,75 @@ function setExample(text){
 }
 
 // ============================
-// AI Auto Suggestions
+// AI Auto Suggestions (Debounced)
 // ============================
-input.addEventListener("input", async function(){
+input.addEventListener("input", function(){
     const query = input.value.trim();
+
+    selectedIndex = -1;
 
     if(query.length < 2){
         suggestionBox.classList.add("hidden");
         return;
     }
 
-    const res = await fetch(`/user/suggest?q=${encodeURIComponent(query)}`);
-    const data = await res.json();
-
-    suggestionBox.innerHTML = "";
-
-    if(data.length === 0){
-        suggestionBox.classList.add("hidden");
-        return;
-    }
-
-    data.forEach(item => {
-        const li = document.createElement("li");
-        li.className = "px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm";
-        li.textContent = item;
-        li.onclick = () => {
-            input.value = item;
-            suggestionBox.classList.add("hidden");
-        };
-        suggestionBox.appendChild(li);
-    });
-
-    suggestionBox.classList.remove("hidden");
+    // Debounce (300ms)
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => fetchSuggestions(query), 300);
 });
 
+async function fetchSuggestions(query){
+    try{
+        const res = await fetch(`${suggestUrl}?q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+
+        currentSuggestions = data;
+        suggestionBox.innerHTML = "";
+
+        if(data.length === 0){
+            suggestionBox.classList.add("hidden");
+            return;
+        }
+
+        data.forEach((item, index) => {
+            const li = document.createElement("li");
+            li.className = "px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm";
+            li.textContent = item;
+
+            li.onclick = () => {
+                input.value = item;
+                suggestionBox.classList.add("hidden");
+                form.submit();
+            };
+
+            suggestionBox.appendChild(li);
+        });
+
+        suggestionBox.classList.remove("hidden");
+
+    }catch(error){
+        console.error("Suggestion error:", error);
+        suggestionBox.classList.add("hidden");
+    }
+}
+
+// ============================
 // Hide when clicking outside
+// ============================
 document.addEventListener("click", function(e){
     if(!suggestionBox.contains(e.target) && e.target !== input){
         suggestionBox.classList.add("hidden");
     }
 });
-</script>
 
+// ============================
+// Hide on Escape
+// ============================
+input.addEventListener("keydown", function(event){
+    if(event.key === "Escape"){
+        suggestionBox.classList.add("hidden");
+    }
+});
+</script>
 </body>
 </html>
