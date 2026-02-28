@@ -5,6 +5,7 @@ from transformers import pipeline
 import torch
 from math import radians, cos, sin, asin, sqrt
 from functools import lru_cache
+import re
 
 # -------------------------------
 # Setup paths
@@ -469,3 +470,61 @@ def strict_district_filter(query, items):
             filtered.append(item)
 
     return filtered
+
+def detect_user_intent(query):
+    q = query.lower()
+
+    route_keywords = [
+        "route", "how to go", "travel from", "directions",
+        "distance from", "path", "way to"
+    ]
+
+    detail_keywords = [
+        "tell me about", "details", "information",
+        "best places", "recommend", "what to see",
+        "hotels", "guides", "hospitals"
+    ]
+
+    if any(k in q for k in route_keywords):
+        return "route"
+
+    if any(k in q for k in detail_keywords):
+        return "details"
+
+    return "general"
+
+def extract_cities(query):
+    pattern = r"from (.*?) to (.*)"
+    match = re.search(pattern, query.lower())
+    if match:
+        return match.group(1), match.group(2)
+    return None, None
+
+def generate_human_response(query, results):
+    context = ""
+
+    for item in results[:3]:
+        data = item["data"]
+        context += f"""
+        Name: {data.get('name')}
+        District: {data.get('district')}
+        Category: {data.get('category')}
+        Description: {data.get('description')}
+        """
+
+    prompt = f"""
+    You are a friendly Sri Lanka travel assistant.
+
+    User question:
+    {query}
+
+    Relevant information:
+    {context}
+
+    Answer naturally like a human.
+    Include helpful travel tips.
+    Suggest nearby places or services.
+    Keep it under 120 words.
+    """
+
+    return generator(prompt, max_new_tokens=120, do_sample=False)[0]["generated_text"]

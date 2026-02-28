@@ -481,60 +481,27 @@ def ai_autocomplete():
     except Exception as e:
         return jsonify([])
 
-def detect_user_intent(query):
-    q = query.lower()
 
-    route_keywords = [
-        "route", "how to go", "travel from", "directions",
-        "distance from", "path", "way to"
-    ]
 
-    detail_keywords = [
-        "tell me about", "details", "information",
-        "best places", "recommend", "what to see",
-        "hotels", "guides", "hospitals"
-    ]
+@user_bp.route('/smart-search', methods=['POST'])
+def smart_search():
+    query = request.form.get("query")
+    intent = detect_user_intent(query)
 
-    if any(k in q for k in route_keywords):
-        return "route"
+    # ROUTE MODE
+    if intent == "route":
+        start, end = extract_cities(query)
+        if start and end:
+            return redirect(url_for("user.plan_trip",
+                                    start_city=start,
+                                    destination_name=end))
 
-    if any(k in q for k in detail_keywords):
-        return "details"
+    # DETAIL MODE
+    results = search_all_knowledge(query)
+    ai_answer = generate_human_response(query, results)
 
-    return "general"
-
-def extract_cities(query):
-    pattern = r"from (.*?) to (.*)"
-    match = re.search(pattern, query.lower())
-    if match:
-        return match.group(1), match.group(2)
-    return None, None
-
-def generate_human_response(query, results):
-    context = ""
-
-    for item in results[:3]:
-        data = item["data"]
-        context += f"""
-        Name: {data.get('name')}
-        District: {data.get('district')}
-        Category: {data.get('category')}
-        Description: {data.get('description')}
-        """
-
-    prompt = f"""
-    You are a friendly Sri Lanka travel assistant.
-
-    User question:
-    {query}
-
-    Relevant information:
-    {context}
-
-    Answer naturally like a human.
-    Include helpful travel tips.
-    Suggest nearby places or services.
-    Keep it under 120 words.
-    """
-
-    return generator(prompt, max_new_tokens=120, do_sample=False)[0]["generated_text"]
+    return render_template(
+        "destination.html",
+        results_by_type=group_results(results),
+        ai_answer=ai_answer
+    )
