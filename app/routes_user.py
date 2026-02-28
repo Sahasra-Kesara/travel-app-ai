@@ -416,3 +416,66 @@ def suggest():
             results.append(name)
 
     return jsonify(results[:5])
+
+# ==============================
+# ChatGPT-level AI Autocomplete
+# ==============================
+@user_bp.route("/ai-autocomplete", methods=["GET"])
+def ai_autocomplete():
+    query = request.args.get("q", "").strip()
+
+    if len(query) < 3:
+        return jsonify([])
+
+    try:
+        # Detect intent keywords
+        lower_q = query.lower()
+
+        intent_hint = ""
+        if "hotel" in lower_q:
+            intent_hint = "Complete this travel query about hotels."
+        elif "route" in lower_q or "travel" in lower_q:
+            intent_hint = "Complete this travel route question."
+        elif "guide" in lower_q:
+            intent_hint = "Complete this query about tour guides."
+        elif "hospital" in lower_q:
+            intent_hint = "Complete this query about hospitals."
+        elif "vehicle" in lower_q or "transport" in lower_q:
+            intent_hint = "Complete this transportation query."
+        else:
+            intent_hint = "Complete this Sri Lanka travel query naturally."
+
+        # AI prompt
+        prompt = f"""
+        {intent_hint}
+        User started typing: "{query}"
+        Complete it as a natural search sentence.
+        Keep it under 15 words.
+        """
+
+        suggestion = generator(
+            prompt,
+            max_new_tokens=30,
+            do_sample=False
+        )[0]["generated_text"]
+
+        # Clean output
+        suggestion = suggestion.replace(prompt, "").strip()
+
+        # Also add KB-based completions
+        kb_results = search_all_knowledge(query, top_k=3)
+        kb_names = [
+            item["data"].get("name")
+            for item in kb_results
+            if item["data"].get("name")
+        ]
+
+        results = [suggestion] + kb_names
+
+        # Remove duplicates
+        results = list(dict.fromkeys(results))
+
+        return jsonify(results[:5])
+
+    except Exception as e:
+        return jsonify([])
