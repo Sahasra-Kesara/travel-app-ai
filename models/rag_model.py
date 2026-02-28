@@ -117,7 +117,7 @@ def search_all_knowledge(query, top_k=10):
 
     # No district mentioned → normal
     return results[:top_k]
-    
+
 # -------------------------------
 # Vehicle functions (unchanged)
 # -------------------------------
@@ -205,7 +205,13 @@ def filter_by_location(query, destinations):
 def get_recommendations(query, destinations=destinations_with_embeddings, top_k=5):
 
     # Location pre-filter
-    destinations = filter_by_location(query, destinations)
+    # STRICT district filtering
+    district = extract_district_from_query(query)
+    if district:
+        destinations = [
+            d for d in destinations
+            if d.get("district", "").lower() == district
+        ]
 
     query_embedding = embed_model.encode(query, convert_to_tensor=True)
     query_lower = query.lower()
