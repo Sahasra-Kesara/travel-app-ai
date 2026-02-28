@@ -206,8 +206,11 @@
 
 <!-- ================= JS ================= -->
 <script>
-// Enter to submit
-document.getElementById("searchInput").addEventListener("keydown", function(event) {
+const input = document.getElementById("searchInput");
+const suggestionBox = document.getElementById("suggestions");
+
+// Enter submit
+input.addEventListener("keydown", function(event) {
     if (event.key === "Enter" && !event.shiftKey) {
         event.preventDefault();
         document.getElementById("searchForm").submit();
@@ -216,9 +219,52 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
 
 // Example autofill
 function setExample(text){
-    document.getElementById("searchInput").value = text;
-    document.getElementById("searchInput").focus();
+    input.value = text;
+    input.focus();
+    suggestionBox.classList.add("hidden");
 }
+
+// ============================
+// AI Auto Suggestions
+// ============================
+input.addEventListener("input", async function(){
+    const query = input.value.trim();
+
+    if(query.length < 2){
+        suggestionBox.classList.add("hidden");
+        return;
+    }
+
+    const res = await fetch(`/suggest?q=${encodeURIComponent(query)}`);
+    const data = await res.json();
+
+    suggestionBox.innerHTML = "";
+
+    if(data.length === 0){
+        suggestionBox.classList.add("hidden");
+        return;
+    }
+
+    data.forEach(item => {
+        const li = document.createElement("li");
+        li.className = "px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm";
+        li.textContent = item;
+        li.onclick = () => {
+            input.value = item;
+            suggestionBox.classList.add("hidden");
+        };
+        suggestionBox.appendChild(li);
+    });
+
+    suggestionBox.classList.remove("hidden");
+});
+
+// Hide when clicking outside
+document.addEventListener("click", function(e){
+    if(!suggestionBox.contains(e.target) && e.target !== input){
+        suggestionBox.classList.add("hidden");
+    }
+});
 </script>
 
 </body>
