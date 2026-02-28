@@ -14,6 +14,7 @@ from app.services.multi_route_service import build_route
 from models.rag_model import get_guides_route_based
 from models.rag_model import search_all_knowledge
 from app.services.trip_response_builder import build_trip_response
+import re
 
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
@@ -479,3 +480,25 @@ def ai_autocomplete():
 
     except Exception as e:
         return jsonify([])
+
+def detect_user_intent(query):
+    q = query.lower()
+
+    route_keywords = [
+        "route", "how to go", "travel from", "directions",
+        "distance from", "path", "way to"
+    ]
+
+    detail_keywords = [
+        "tell me about", "details", "information",
+        "best places", "recommend", "what to see",
+        "hotels", "guides", "hospitals"
+    ]
+
+    if any(k in q for k in route_keywords):
+        return "route"
+
+    if any(k in q for k in detail_keywords):
+        return "details"
+
+    return "general"
