@@ -17,12 +17,10 @@
 <nav class="bg-white border-b shadow-sm">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-        <!-- Logo -->
         <h1 class="text-xl font-semibold tracking-tight text-blue-700">
             Travel Assistant
         </h1>
 
-        <!-- Admin Button -->
         <a href="/admin"
            class="bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold
                   hover:bg-blue-800 transition">
@@ -39,10 +37,8 @@
     </h2>
 
     <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        This platform helps you plan your trips, find the best places to visit,
-        book hotels, and discover restaurants — all with simple questions.
-        <br><br>
-        Just type what you need, and we’ll help you find the best options.
+        Plan your entire Sri Lanka trip using simple questions.  
+        Find destinations, routes, hotels, tour guides, vehicles, hospitals, and more.
     </p>
 
     <!-- Feature Cards -->
@@ -52,26 +48,26 @@
             <h3 class="font-semibold text-lg text-gray-900">
                 Easy Trip Planning
             </h3>
-            <p class="text-sm text-gray-600 mt-3 leading-relaxed">
-                Get travel routes, places to visit, and daily plans based on your needs.
+            <p class="text-sm text-gray-600 mt-3">
+                Get routes, nearby attractions, and travel plans instantly.
             </p>
         </div>
 
         <div class="bg-white border rounded-xl p-8 hover:shadow-md transition">
             <h3 class="font-semibold text-lg text-gray-900">
-                Hotels & Restaurants
+                Hotels & Services
             </h3>
-            <p class="text-sm text-gray-600 mt-3 leading-relaxed">
-                Find comfortable places to stay and great food options near your destination.
+            <p class="text-sm text-gray-600 mt-3">
+                Find hotels, guides, vehicles, hospitals, and essential services.
             </p>
         </div>
 
         <div class="bg-white border rounded-xl p-8 hover:shadow-md transition">
             <h3 class="font-semibold text-lg text-gray-900">
-                Smart Recommendations
+                Smart AI Recommendations
             </h3>
-            <p class="text-sm text-gray-600 mt-3 leading-relaxed">
-                Get helpful suggestions based on your travel plans and preferences.
+            <p class="text-sm text-gray-600 mt-3">
+                Get personalized suggestions based on your travel needs.
             </p>
         </div>
 
@@ -82,15 +78,50 @@
 <section class="bg-gray-50 border-t py-20">
     <div class="max-w-5xl mx-auto px-6 text-center">
 
-        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-3">
             Ask Your Travel Question
         </h3>
 
-        <p class="text-gray-600 mb-12">
-            Ask about routes, hotels, restaurants, or places to visit.  
-            For example: “Best way to travel from Colombo to Ella” or  
-            “Find hotels near Sigiriya for next weekend”.
+        <p class="text-gray-600 mb-10">
+            You can ask about destinations, hotels, routes, guides, vehicles, or emergency services.
         </p>
+
+        <!-- What Users Can Ask -->
+        <div class="bg-white border rounded-xl p-6 mb-10 text-left">
+            <h4 class="font-semibold text-gray-900 mb-3">Examples:</h4>
+
+            <ul class="text-sm text-gray-600 space-y-2 list-disc list-inside">
+                <li>Best places to visit in Ella</li>
+                <li>Hotels near Sigiriya under LKR 10,000</li>
+                <li>Best route from Colombo to Kandy</li>
+                <li>Available tour guides in Galle</li>
+                <li>Vehicle from Colombo to Arugam Bay</li>
+                <li>Hospitals near Nuwara Eliya</li>
+            </ul>
+        </div>
+
+        <!-- Quick Example Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button onclick="setExample('Best places to visit in Ella')"
+                class="px-4 py-2 bg-white border rounded-full text-sm hover:bg-blue-50">
+                Ella attractions
+            </button>
+
+            <button onclick="setExample('Hotels near Sigiriya for this weekend')"
+                class="px-4 py-2 bg-white border rounded-full text-sm hover:bg-blue-50">
+                Sigiriya hotels
+            </button>
+
+            <button onclick="setExample('Best route from Colombo to Kandy')"
+                class="px-4 py-2 bg-white border rounded-full text-sm hover:bg-blue-50">
+                Colombo → Kandy
+            </button>
+
+            <button onclick="setExample('Available tour guides in Galle')"
+                class="px-4 py-2 bg-white border rounded-full text-sm hover:bg-blue-50">
+                Galle guides
+            </button>
+        </div>
 
         <!-- Search Form -->
         <form id="searchForm" action="{{ url_for('user.search') }}" method="POST" class="relative">
@@ -98,7 +129,7 @@
                 id="searchInput"
                 name="query"
                 rows="2"
-                placeholder="Type your travel question here..."
+                placeholder="Example: Best hotels near Ella or How to travel from Colombo to Sigiriya"
                 class="w-full resize-none rounded-xl border border-gray-300 px-6 py-5 text-base
                     focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
             ></textarea>
@@ -110,6 +141,56 @@
                 Search
             </button>
         </form>
+
+        <!-- ================= FAQ ACCORDION ================= -->
+        <div class="mt-16 text-left">
+            <h4 class="text-xl font-semibold text-gray-900 mb-6 text-center">
+                Frequently Asked Questions
+            </h4>
+
+            <div class="space-y-3">
+
+                <details class="bg-white border rounded-lg p-4">
+                    <summary class="cursor-pointer font-medium">
+                        What can I search here?
+                    </summary>
+                    <p class="mt-2 text-sm text-gray-600">
+                        You can search for tourist destinations, hotels, travel routes,
+                        tour guides, vehicles, hospitals, and other travel services.
+                    </p>
+                </details>
+
+                <details class="bg-white border rounded-lg p-4">
+                    <summary class="cursor-pointer font-medium">
+                        Do I need exact place names?
+                    </summary>
+                    <p class="mt-2 text-sm text-gray-600">
+                        No. You can type natural questions like
+                        "cheap hotels in Kandy" or "things to do in Galle".
+                    </p>
+                </details>
+
+                <details class="bg-white border rounded-lg p-4">
+                    <summary class="cursor-pointer font-medium">
+                        Can I search travel routes?
+                    </summary>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Yes. Example: "Best way to travel from Colombo to Ella".
+                    </p>
+                </details>
+
+                <details class="bg-white border rounded-lg p-4">
+                    <summary class="cursor-pointer font-medium">
+                        Can I find emergency services?
+                    </summary>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Yes. You can search for hospitals and nearby medical facilities.
+                    </p>
+                </details>
+
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -119,14 +200,23 @@
     <br>
     Helping you travel smarter and easier
 </footer>
+
+<!-- ================= JS ================= -->
 <script>
+// Enter to submit
 document.getElementById("searchInput").addEventListener("keydown", function(event) {
-    // If Enter is pressed without Shift
     if (event.key === "Enter" && !event.shiftKey) {
-        event.preventDefault(); // stop new line
-        document.getElementById("searchForm").submit(); // submit form
+        event.preventDefault();
+        document.getElementById("searchForm").submit();
     }
 });
+
+// Example autofill
+function setExample(text){
+    document.getElementById("searchInput").value = text;
+    document.getElementById("searchInput").focus();
+}
 </script>
+
 </body>
 </html>
