@@ -502,3 +502,10 @@ def detect_user_intent(query):
         return "details"
 
     return "general"
+
+def extract_cities(query):
+    pattern = r"from (.*?) to (.*)"
+    match = re.search(pattern, query.lower())
+    if match:
+        return match.group(1), match.group(2)
+    return None, None
