@@ -235,7 +235,7 @@ input.addEventListener("input", async function(){
         return;
     }
 
-    const res = await fetch(`/suggest?q=${encodeURIComponent(query)}`);
+    const res = await fetch(`/user/suggest?q=${encodeURIComponent(query)}`);
     const data = await res.json();
 
     suggestionBox.innerHTML = "";
