@@ -405,3 +405,47 @@ def get_districts_along_route(route_coords, step=50):
         if district:
             districts.add(district.lower())
     return list(districts)
+
+# ============================================================
+# STRICT DISTRICT LIST (Sri Lanka)
+# ============================================================
+SRI_LANKA_DISTRICTS = [
+    "colombo","gampaha","kalutara",
+    "kandy","matale","nuwara eliya",
+    "galle","matara","hambantota",
+    "jaffna","kilinochchi","mannar","vavuniya","mullaitivu",
+    "batticaloa","ampara","trincomalee",
+    "kurunegala","puttalam",
+    "anuradhapura","polonnaruwa",
+    "badulla","monaragala",
+    "ratnapura","kegalle"
+]
+
+
+def extract_district_from_query(query):
+    q = query.lower()
+    for d in SRI_LANKA_DISTRICTS:
+        if d in q:
+            return d
+    return None
+
+def strict_district_filter(query, items):
+    """
+    Only return items where district EXACTLY matches query district.
+    No description-based matching.
+    """
+    district = extract_district_from_query(query)
+
+    if not district:
+        return items  # No district mentioned → normal search
+
+    filtered = []
+
+    for item in items:
+        item_district = item.get("district", "").lower()
+
+        # Exact match only
+        if item_district == district:
+            filtered.append(item)
+
+    return filtered
