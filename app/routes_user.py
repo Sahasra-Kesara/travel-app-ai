@@ -391,19 +391,28 @@ def get_district_from_coords(lat, lon):
 # ==============================
 @user_bp.route("/suggest", methods=["GET"])
 def suggest():
-    query = request.args.get("q", "").strip()
+    query = request.args.get("q", "").strip().lower()
 
-    if not query or len(query) < 2:
+    if len(query) < 2:
         return jsonify([])
 
-    # Get semantic matches from knowledge base
-    results = search_all_knowledge(query, top_k=5)
+    # Predefined smart prompts (ChatGPT-style)
+    smart_phrases = [
+        "best places to visit in ella",
+        "hotels near sigiriya under 10000",
+        "best route from colombo to kandy",
+        "tour guides available in galle",
+        "vehicle from colombo to arugam bay",
+        "hospitals near nuwara eliya"
+    ]
 
-    suggestions = []
-    for item in results:
-        data = item["data"]
-        name = data.get("name")
-        if name and name not in suggestions:
-            suggestions.append(name)
+    results = [p for p in smart_phrases if p.startswith(query)]
 
-    return jsonify(suggestions)
+    # Also add semantic matches
+    kb_results = search_all_knowledge(query, top_k=3)
+    for item in kb_results:
+        name = item["data"].get("name", "")
+        if name and name.lower().startswith(query):
+            results.append(name)
+
+    return jsonify(results[:5])
