@@ -501,7 +501,7 @@ def smart_search():
     ai_answer = generate_human_response(query, results)
 
     return render_template(
-        "destination.html",
+        "recommendations.html",
         results_by_type=group_results(results),
         ai_answer=ai_answer
     )
