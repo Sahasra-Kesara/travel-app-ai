@@ -226,7 +226,7 @@ const suggestionBox = document.getElementById("suggestions");
 const form = document.getElementById("searchForm");
 
 // Flask generated URL (important for Blueprint)
-const suggestUrl = "{{ url_for('user.suggest') }}";
+const suggestUrl = "{{ url_for('user.ai_autocomplete') }}";
 
 let debounceTimer;
 let selectedIndex = -1;
