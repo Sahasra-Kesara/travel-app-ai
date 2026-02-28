@@ -124,26 +124,41 @@
         </div>
 
         <!-- Search Form -->
-        <form id="searchForm" action="{{ url_for('user.search') }}" method="POST" class="relative">
-            <textarea
-                id="searchInput"
-                name="query"
-                rows="2"
-                placeholder="Example: Best hotels near Ella or How to travel from Colombo to Sigiriya"
-                class="w-full resize-none rounded-xl border border-gray-300 px-6 py-5 text-base
-                    focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
-            ></textarea>
-            <ul id="suggestions"
-                class="absolute left-0 right-0 bg-white border rounded-lg mt-1 shadow hidden z-10">
-            </ul>
+        <!-- Search Form -->
+<form id="searchForm" action="{{ url_for('user.search') }}" method="POST" class="relative">
 
-            <button
-                type="submit"
-                class="absolute right-4 bottom-4 bg-blue-700 text-white px-6 py-2
-                    rounded-lg text-sm font-semibold hover:bg-blue-800 transition">
-                Search
-            </button>
-        </form>
+    <!-- Wrapper -->
+    <div class="relative">
+
+        <!-- Ghost text (AI completion) -->
+        <div id="ghostText"
+            class="absolute top-0 left-0 w-full h-full px-6 py-5 text-base
+                   text-gray-400 pointer-events-none whitespace-pre-wrap">
+        </div>
+
+        <!-- Real input -->
+        <textarea
+            id="searchInput"
+            name="query"
+            rows="2"
+            placeholder="Example: Best hotels near Ella"
+            class="relative w-full resize-none rounded-xl border border-gray-300
+                   px-6 py-5 text-base bg-transparent
+                   focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
+        ></textarea>
+    </div>
+
+    <ul id="suggestions"
+        class="absolute left-0 right-0 bg-white border rounded-lg mt-1 shadow hidden z-10">
+    </ul>
+
+    <button
+        type="submit"
+        class="absolute right-4 bottom-4 bg-blue-700 text-white px-6 py-2
+               rounded-lg text-sm font-semibold hover:bg-blue-800 transition">
+        Search
+    </button>
+</form>
 
         <!-- ================= FAQ ACCORDION ================= -->
         <div class="mt-16 text-left">
