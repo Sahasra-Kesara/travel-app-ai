@@ -509,3 +509,32 @@ def extract_cities(query):
     if match:
         return match.group(1), match.group(2)
     return None, None
+
+def generate_human_response(query, results):
+    context = ""
+
+    for item in results[:3]:
+        data = item["data"]
+        context += f"""
+        Name: {data.get('name')}
+        District: {data.get('district')}
+        Category: {data.get('category')}
+        Description: {data.get('description')}
+        """
+
+    prompt = f"""
+    You are a friendly Sri Lanka travel assistant.
+
+    User question:
+    {query}
+
+    Relevant information:
+    {context}
+
+    Answer naturally like a human.
+    Include helpful travel tips.
+    Suggest nearby places or services.
+    Keep it under 120 words.
+    """
+
+    return generator(prompt, max_new_tokens=120, do_sample=False)[0]["generated_text"]
