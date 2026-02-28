@@ -100,10 +100,24 @@ def search_all_knowledge(query, top_k=10):
         scores.append((sim, item))
 
     results = [
-        item for score, item in sorted(scores, key=lambda x: x[0], reverse=True)[:top_k]
+        item for score, item in sorted(scores, key=lambda x: x[0], reverse=True)
     ]
 
-    return results
+    # 🔴 STRICT DISTRICT FILTER (after ranking)
+    filtered = []
+    district = extract_district_from_query(query)
+
+    if district:
+        for item in results:
+            if item["data"].get("district", "").lower() == district:
+                filtered.append(item)
+
+        # If district mentioned but nothing found → return empty
+        return filtered[:top_k]
+
+    # No district mentioned → normal
+    return results[:top_k]
+    
 # -------------------------------
 # Vehicle functions (unchanged)
 # -------------------------------
