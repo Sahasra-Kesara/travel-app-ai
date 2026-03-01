@@ -235,7 +235,7 @@ class TravelChatAgent:
             fare = vehicle.get('estimated_fare', 'Contact for quote')
             response += f"• {vehicle_type} ({seats} seats) - LKR {fare}\n"
         
-        response += "\n📞 Ready to book? Provide your travel dates and route!"
+        response += "\nReady to book? Provide your travel dates and route!"
         return response
     
     def handle_hospitals_query(self, message, results):
