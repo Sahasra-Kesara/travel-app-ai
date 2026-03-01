@@ -159,7 +159,7 @@ class TravelChatAgent:
             name = dest.get('name', 'Unknown')
             district = dest.get('district', '')
             description = dest.get('description', dest.get('summary', ''))[:100]
-            response += f"📍 **{name}** ({district})\n{description}...\n\n"
+            response += f"**{name}** ({district})\n{description}...\n\n"
         
         return response
     
@@ -168,7 +168,7 @@ class TravelChatAgent:
         routes = results.get('routes', [])
         vehicles = results.get('vehicles', [])
         
-        response = "🛣️ Here's transportation information for your journey:\n\n"
+        response = "Here's transportation information for your journey:\n\n"
         
         if routes:
             response += "**Available Routes:**\n"
