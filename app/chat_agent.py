@@ -1,8 +1,3 @@
-"""
-Intelligent Travel Chat Agent for Voyager
-Handles conversations about destinations, routes, guides, hotels, vehicles, hospitals, and trip planning
-"""
-
 from models.rag_model import search_all_knowledge, get_recommendations
 from transformers import pipeline
 import torch
