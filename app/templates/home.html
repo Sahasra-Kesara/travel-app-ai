@@ -133,9 +133,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            z-index: 40;
-            display: none;
-            animation: slideUpFinal 0.4s ease-out;
+            z-index: 50; /* Make sure it’s above everything */
+            display: none; /* will toggle via JS */
         }
         
         @keyframes slideUpFinal {
