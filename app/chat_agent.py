@@ -183,7 +183,7 @@ class TravelChatAgent:
                 response += f"• {vehicle_type} - LKR {fare}\n"
         
         if not routes and not vehicles:
-            return "🛤️ I can help you plan your route! Please tell me where you're traveling from and where you want to go."
+            return "I can help you plan your route! Please tell me where you're traveling from and where you want to go."
         
         return response
     
