@@ -218,7 +218,10 @@ class TravelChatAgent:
                 query_preview = f"{start} to " + " to ".join(stops) + f" to {end}"
 
             maps_embed = (
-                f"https://www.google.com/maps?q={quote_plus(query_preview)}&output=embed"
+                f"https://maps.google.com/maps"
+                f"?saddr={quote_plus(start)}"
+                f"&daddr={quote_plus(end)}"
+                f"&output=embed"
             )
 
             # Travel mode display text
