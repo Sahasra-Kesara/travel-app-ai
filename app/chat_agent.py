@@ -275,7 +275,7 @@ class TravelChatAgent:
             for dest in destinations[:4]:
                 response += f"• {dest.get('name', 'Destination')} ({dest.get('district', '')})\n"
         
-        response += "\n💡 Would you like me to suggest a specific itinerary?"
+        response += "\nWould you like me to suggest a specific itinerary?"
         return response
     
     def handle_general_query(self, message, results):
