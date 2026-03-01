@@ -403,5 +403,4 @@ function hideFloatingSearch() {
 
 // Optional: show on page load
 window.addEventListener('load', () => {
-    // showFloatingSearch(); // uncomment if you want to show by default
 });
