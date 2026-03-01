@@ -162,36 +162,53 @@ class TravelChatAgent:
         return response
     
     def handle_routes_query(self, message, results):
-        """Handle route queries with Google Maps links"""
+        message_lower = message.lower()
 
-        start, end = self.extract_locations(message)
+        # Check if user replied with method
+        methods = ['drive', 'car', 'train', 'bus']
+        selected_method = None
+
+        for m in methods:
+            if m in message_lower:
+                selected_method = m
+                break
+
+        # If method given and pending route exists
+        if selected_method and self.context.get("pending_route"):
+            route = self.context["pending_route"]
+            self.context["pending_route"] = None
+
+            return self.generate_route_response(
+                route["start"],
+                route["end"],
+                route["stops"],
+                selected_method
+            )
+
+        # Otherwise extract route
+        start, end, stops = self.extract_locations(message)
 
         if not start or not end:
             return (
-                "Please tell me your route like:\n"
-                "**Example:** Colombo to Kandy\n"
-                "or\n"
-                "How to travel from Ella to Nuwara Eliya"
+                "Tell me your route like:\n"
+                "• Colombo to Kandy\n"
+                "• Ella to Mirissa via Nuwara Eliya"
             )
 
-        # Create Google Maps link
-        maps_url = (
-            "https://www.google.com/maps/dir/?api=1"
-            f"&origin={quote_plus(start)}"
-            f"&destination={quote_plus(end)}"
-            "&travelmode=driving"
-        )
+        # Save route and ask method
+        self.context["pending_route"] = {
+            "start": start,
+            "end": end,
+            "stops": stops
+        }
 
-        response = (
-            f"Route: **{start} → {end}**\n\n"
-            f"Open in Google Maps:\n{maps_url}\n\n"
-            f"Approximate travel time:\n"
-            f"• By Car: Depends on traffic\n"
-            f"• Public Transport: Bus / Train options available\n\n"
-            f"Would you like vehicle or train recommendations for this route?"
+        return (
+            f"Route detected: **{start} → {end}**\n\n"
+            "Which travel method would you prefer?\n"
+            "• Drive\n"
+            "• Train\n"
+            "• Bus"
         )
-
-        return response
     
     def handle_guides_query(self, message, results):
         """Handle tour guide queries"""
