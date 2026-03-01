@@ -2,6 +2,8 @@ from models.rag_model import search_all_knowledge, get_recommendations
 from transformers import pipeline
 import torch
 import json
+import re
+from urllib.parse import quote_plus
 
 # Load text generation pipeline for intelligent responses
 try:
