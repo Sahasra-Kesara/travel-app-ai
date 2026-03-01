@@ -331,25 +331,32 @@ class TravelChatAgent:
 
     def extract_locations(self, message):
         """
-        Extract 'from X to Y' or 'X to Y' pattern
+        Extract routes:
+        from A to B
+        A to B
+        A to B via C
         """
+
         message = message.lower()
 
-        # Pattern: from Colombo to Kandy
+        # via stops
+        via_match = re.search(r'from (.*?) to (.*?) via (.*)', message)
+        if via_match:
+            start = via_match.group(1).strip().title()
+            end = via_match.group(2).strip().title()
+            stops = [s.strip().title() for s in via_match.group(3).split(',')]
+            return start, end, stops
+
+        # normal pattern
         match = re.search(r'from (.*?) to (.*)', message)
         if match:
-            start = match.group(1).strip().title()
-            end = match.group(2).strip().title()
-            return start, end
+            return match.group(1).title(), match.group(2).title(), []
 
-        # Pattern: Colombo to Kandy
         match = re.search(r'(.*?) to (.*)', message)
         if match:
-            start = match.group(1).strip().title()
-            end = match.group(2).strip().title()
-            return start, end
+            return match.group(1).title(), match.group(2).title(), []
 
-        return None, None
+        return None, None, []
 
 # Global agent instance
 chat_agent = TravelChatAgent()
