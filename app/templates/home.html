@@ -517,7 +517,6 @@
 document.addEventListener('click', function(e) {
 <!-- Page scripts -->
 <script>
-    // Provide Flask URL to external JS
     window.suggestUrl = "{{ url_for('user.ai_autocomplete') }}";
 </script>
 <script src="{{ url_for('static', filename='js/home.js') }}"></script>
