@@ -462,15 +462,19 @@ class TravelChatAgent:
 
     def extract_locations(self, message):
         """
-        Extract routes:
-        from A to B
+        Understand:
+        how to go from A to B
+        best route from A to B
         A to B
-        A to B via C
+        from A to B via C
         """
 
         message = message.lower()
 
-        # via stops
+        # Remove common words
+        message = re.sub(r'how to go|how to get|best route|route|way|travel|please', '', message)
+
+        # via pattern
         via_match = re.search(r'from (.*?) to (.*?) via (.*)', message)
         if via_match:
             start = via_match.group(1).strip().title()
@@ -478,14 +482,15 @@ class TravelChatAgent:
             stops = [s.strip().title() for s in via_match.group(3).split(',')]
             return start, end, stops
 
-        # normal pattern
+        # from A to B
         match = re.search(r'from (.*?) to (.*)', message)
         if match:
-            return match.group(1).title(), match.group(2).title(), []
+            return match.group(1).strip().title(), match.group(2).strip().title(), []
 
-        match = re.search(r'(.*?) to (.*)', message)
+        # A to B
+        match = re.search(r'([a-zA-Z ]+) to ([a-zA-Z ]+)', message)
         if match:
-            return match.group(1).title(), match.group(2).title(), []
+            return match.group(1).strip().title(), match.group(2).strip().title(), []
 
         return None, None, []
 
