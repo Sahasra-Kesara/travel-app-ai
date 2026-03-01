@@ -520,7 +520,7 @@ def chat():
     
     if not message:
         return jsonify({
-            'response': '👋 Please ask me something! I can help with destinations, routes, guides, hotels, vehicles, hospitals, and trip planning.'
+            'response': 'Please ask me something! I can help with destinations, routes, guides, hotels, vehicles, hospitals, and trip planning.'
         })
     
     try:
@@ -534,7 +534,7 @@ def chat():
     except Exception as e:
         print(f"Chat error: {str(e)}")
         return jsonify({
-            'response': '😅 I encountered an error processing your request. Please try again with a different question!',
+            'response': 'I encountered an error processing your request. Please try again with a different question!',
             'status': 'error',
             'error': str(e)
         }), 200  # Return 200 to prevent fetch from failing
