@@ -259,7 +259,7 @@ class TravelChatAgent:
         """Handle trip planning queries"""
         destinations = results.get('destinations', [])
         
-        response = "📅 **Trip Planning Guide for Sri Lanka**\n\n"
+        response = "**Trip Planning Guide for Sri Lanka**\n\n"
         response += "**Best Time to Visit:**\n"
         response += "• West/South Coast: Nov-Feb (Dry season)\n"
         response += "• East Coast: May-Sept (Dry season)\n"
