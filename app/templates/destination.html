@@ -1,52 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Sri Lanka AI Travel Planner</title>
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Leaflet -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Destinations & Services - Voyager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Poppins & Inter Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            color: #667eea;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .leaflet-container {
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+    </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800">
 
 <!-- Navbar -->
-<nav class="bg-white shadow-md sticky top-0 z-50">
+<nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-blue-600 tracking-wide">Sri Lanka Travel AI</h1>
-        <a href="{{ url_for('user.home') }}" class="text-blue-600 font-semibold hover:underline flex items-center gap-2">
+        <div class="flex items-center gap-3">
+            <div class="gradient-primary w-10 h-10 rounded-xl flex items-center justify-center">
+                <i class="fas fa-map-location-dot text-white text-lg"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-900">Voyager</h1>
+        </div>
+
+        <a href="{{ url_for('user.home') }}" class="text-gray-700 font-semibold hover:text-blue-600 transition flex items-center gap-2">
             <i class="fas fa-arrow-left"></i> Back to Search
         </a>
     </div>
 </nav>
 
-<!-- Hero / Top Destinations -->
-<section class="max-w-7xl mx-auto px-6 py-12">
-    <h2 class="text-3xl md:text-4xl font-extrabold text-blue-600 mb-8">Top Recommended Destinations</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Spacer for fixed navbar -->
+<div class="h-16"></div>
+
+<!-- Hero / Top Destinations Section -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="mb-12">
+        <div class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-compass mr-2"></i>Curated Destinations
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-3">Top Recommended Destinations</h2>
+        <p class="text-lg text-gray-600">Discover amazing places and plan your perfect trip</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for rec in results_by_type['destinations'][:6] %}
-        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition p-6 flex flex-col justify-between">
-            <h3 class="text-xl font-semibold text-blue-600 mb-2">{{ rec.name }}</h3>
-            <p class="text-gray-600 mb-2">{{ rec.summary or rec.description }}</p>
-            <p class="text-sm text-gray-500 mb-4"><span class="font-medium">District:</span> {{ rec.district }}</p>
+        <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
+            <!-- Header -->
+            <div class="mb-6">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-2xl font-bold text-gray-900">{{ rec.name }}</h3>
+                    <span class="badge">
+                        <i class="fas fa-star mr-1"></i>Featured
+                    </span>
+                </div>
+                <p class="text-gray-600 leading-relaxed">{{ rec.summary or rec.description }}</p>
+            </div>
+
+            <!-- Info -->
+            <div class="space-y-3 mb-6 pb-6 border-b border-gray-200">
+                <div class="flex items-center gap-2 text-sm text-gray-700">
+                    <i class="fas fa-map-pin text-blue-600 w-5"></i>
+                    <span><span class="font-semibold">District:</span> {{ rec.district }}</span>
+                </div>
+            </div>
+
+            <!-- Actions -->
             <div class="flex flex-col gap-3">
-                <form action="{{ url_for('user.plan_trip') }}" method="POST" class="flex flex-col gap-2">
+                <form action="{{ url_for('user.plan_trip') }}" method="POST" class="flex flex-col gap-3">
                     <input type="hidden" name="end_lat" value="{{ rec.coordinates.lat }}">
                     <input type="hidden" name="end_lon" value="{{ rec.coordinates.lon }}">
                     <input type="hidden" name="destination_name" value="{{ rec.name }}">
-                    <input type="text" name="start_city" placeholder="Enter start city"
-                           class="w-full border-gray-300 border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
-                        Plan Trip
+                    
+                    <input type="text" name="start_city" placeholder="📍 Enter start city"
+                           class="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:border-blue-600 transition">
+                    
+                    <button type="submit" class="btn-gradient text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+                        <i class="fas fa-route"></i> Plan Trip
                     </button>
                 </form>
-                <a href="tel:+94770000000" class="w-full flex items-center justify-center gap-2 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">
-                    <i class="fas fa-phone-alt"></i> Call
+                
+                <a href="tel:+94770000000" class="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-2.5 rounded-lg font-semibold transition btn-secondary">
+                    <i class="fas fa-phone-alt"></i> Call Now
                 </a>
             </div>
         </div>
@@ -55,26 +159,62 @@
 </section>
 
 <!-- Guides Section -->
-<section class="max-w-7xl mx-auto px-6 py-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Tour Guides</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="mb-12">
+        <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-person-hiking mr-2"></i>Expert Guides
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-3">Tour Guides</h2>
+        <p class="text-lg text-gray-600">Connect with experienced local guides for unforgettable experiences</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for guide in results_by_type['guides'] %}
-        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition flex flex-col justify-between">
-            <h3 class="text-xl font-semibold text-blue-600 mb-2">{{ guide.name }}</h3>
-            <p class="text-gray-600 mb-1"><span class="font-medium">Destination:</span> {{ guide.destination }}</p>
-            <p class="text-gray-600 mb-1"><span class="font-medium">District:</span> {{ guide.district }}</p>
-            <p class="text-gray-600 mb-1"><span class="font-medium">Languages:</span> {{ guide.language | join(', ') }}</p>
-            <p class="text-gray-600 mb-2"><span class="font-medium">Experience:</span> {{ guide.experience }} years</p>
-            <p class="text-gray-500 mb-4">{{ guide.ai_pitch }}</p>
-            <div class="flex flex-col gap-2">
-                <a href="tel:+94770000000" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 text-center transition">Call Guide</a>
-                <form action="{{ url_for('user.book_guide') }}" method="POST" class="flex flex-col gap-2">
+        <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
+            <!-- Header -->
+            <div class="mb-6">
+                <div class="flex items-start justify-between mb-3">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900">{{ guide.name }}</h3>
+                        <div class="flex items-center gap-1 mt-2 text-yellow-400">
+                            {% for i in range(5) %}<i class="fas fa-star text-xs"></i>{% endfor %}
+                        </div>
+                    </div>
+                    <span class="badge">{{ guide.experience }}y exp</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-sm">{{ guide.ai_pitch }}</p>
+            </div>
+
+            <!-- Info -->
+            <div class="space-y-2 mb-6 pb-6 border-b border-gray-200 text-sm">
+                <div class="flex items-center gap-2 text-gray-700">
+                    <i class="fas fa-map-pin text-blue-600 w-5"></i>
+                    <span><span class="font-semibold">{{ guide.destination }}</span>, {{ guide.district }}</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-700">
+                    <i class="fas fa-language text-blue-600 w-5"></i>
+                    <span>{{ guide.language | join(', ') }}</span>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col gap-3">
+                <a href="tel:+94770000000" class="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-2.5 rounded-lg font-semibold transition btn-secondary">
+                    <i class="fas fa-phone-alt"></i> Call Guide
+                </a>
+                
+                <form action="{{ url_for('user.book_guide') }}" method="POST" class="space-y-2">
                     <input type="hidden" name="guide_id" value="{{ guide.id }}">
-                    <input type="date" name="date" class="border rounded-lg px-3 py-2 w-full">
-                    <input type="time" name="time" class="border rounded-lg px-3 py-2 w-full">
-                    <input type="number" name="hours" placeholder="Hours" class="border rounded-lg px-3 py-2 w-full">
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                        Book Guide
+                    
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="date" name="date" class="border-2 border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-600 transition" required>
+                        <input type="time" name="time" class="border-2 border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-600 transition" required>
+                    </div>
+                    
+                    <input type="number" name="hours" placeholder="Hours" min="1" class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-600 transition" required>
+                    
+                    <button type="submit" class="btn-gradient w-full text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+                        <i class="fas fa-calendar-check"></i> Book Guide
                     </button>
                 </form>
             </div>
@@ -83,57 +223,135 @@
     </div>
 </section>
 
-<!-- Hotels & Hospitals -->
-<section class="max-w-7xl mx-auto px-6 py-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Hotels & Hospitals</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Hotels & Hospitals Section -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="mb-12">
+        <div class="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-building mr-2"></i>Services
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-3">Hotels & Medical Facilities</h2>
+        <p class="text-lg text-gray-600">Find comfortable stays and healthcare nearby</p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Hotels -->
         <div>
-            <h3 class="text-2xl font-semibold text-gray-700 mb-4">Hotels</h3>
-            {% for hotel in results_by_type['hotels'] %}
-            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition mb-4">
-                <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ hotel.name }}</h4>
-                <p class="text-gray-600 mb-1"><span class="font-medium">Price:</span> LKR {{ hotel.price_per_night }}</p>
-                <p class="text-gray-600 mb-1"><span class="font-medium">Amenities:</span> {{ hotel.amenities | join(', ') }}</p>
-                <p class="text-gray-600 mb-1"><span class="font-medium">District:</span> {{ hotel.district }}</p>
-                <a href="tel:+94770000000" class="inline-block bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition">
-                    Call Hotel
-                </a>
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-hotel text-blue-600 text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">Hotels & Resorts</h3>
             </div>
-            {% endfor %}
+            
+            <div class="space-y-6">
+                {% for hotel in results_by_type['hotels'] %}
+                <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="text-lg font-bold text-gray-900">{{ hotel.name }}</h4>
+                        <span class="badge text-xs">LKR {{ hotel.price_per_night }}/night</span>
+                    </div>
+                    
+                    <div class="space-y-2 mb-4 text-sm text-gray-600">
+                        <div class="flex flex-wrap gap-2">
+                            {% for amenity in hotel.amenities %}
+                            <span class="inline-flex items-center gap-1 bg-blue-50 px-3 py-1 rounded-full text-xs font-medium text-blue-700">
+                                <i class="fas fa-check"></i> {{ amenity }}
+                            </span>
+                            {% endfor %}
+                        </div>
+                        <p><span class="font-semibold text-gray-900">District:</span> {{ hotel.district }}</p>
+                    </div>
+                    
+                    <a href="tel:+94770000000" class="inline-flex items-center gap-2 btn-secondary bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold text-sm">
+                        <i class="fas fa-phone-alt"></i> Call Hotel
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
         </div>
+
         <!-- Hospitals -->
         <div>
-            <h3 class="text-2xl font-semibold text-gray-700 mb-4">Hospitals</h3>
-            {% for hospital in results_by_type['hospitals'] %}
-            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition mb-4">
-                <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ hospital.name }}</h4>
-                <p class="text-gray-600 mb-1"><span class="font-medium">Specialties:</span> {{ hospital.specialties | join(', ') }}</p>
-                <p class="text-gray-600 mb-1"><span class="font-medium">District:</span> {{ hospital.district }}</p>
-                <a href="tel:+94770000000" class="inline-block bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">
-                    Call Hospital
-                </a>
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-hospital text-red-600 text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">Hospitals & Medical</h3>
             </div>
-            {% endfor %}
+            
+            <div class="space-y-6">
+                {% for hospital in results_by_type['hospitals'] %}
+                <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="text-lg font-bold text-gray-900">{{ hospital.name }}</h4>
+                        <span class="badge bg-red-50 text-red-700">Emergency</span>
+                    </div>
+                    
+                    <div class="space-y-2 mb-4 text-sm text-gray-600">
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            {% for specialty in hospital.specialties %}
+                            <span class="inline-flex items-center gap-1 bg-red-50 px-3 py-1 rounded-full text-xs font-medium text-red-700">
+                                <i class="fas fa-heart"></i> {{ specialty }}
+                            </span>
+                            {% endfor %}
+                        </div>
+                        <p><span class="font-semibold text-gray-900">District:</span> {{ hospital.district }}</p>
+                    </div>
+                    
+                    <a href="tel:+94770000000" class="inline-flex items-center gap-2 btn-secondary bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-semibold text-sm">
+                        <i class="fas fa-phone-alt"></i> Call Hospital
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Vehicles -->
-<section class="max-w-7xl mx-auto px-6 py-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Vehicle Booking</h2>
+<!-- Vehicles Section -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="mb-12">
+        <div class="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-car mr-2"></i>Transport
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-3">Vehicle Booking</h2>
+        <p class="text-lg text-gray-600">Book reliable transportation for your journey</p>
+    </div>
+    
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {% for vehicle in results_by_type['vehicles'] %}
-        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition">
-            <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ vehicle.type }} - {{ vehicle.seats }} seats</h4>
-            <p class="text-gray-600 mb-4"><span class="font-medium">Fare Estimate:</span> LKR {{ vehicle.estimated_fare }}</p>
-            <form action="{{ url_for('user.book_vehicle') }}" method="POST" class="flex flex-col gap-3">
+        <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
+            <!-- Header -->
+            <div class="mb-6 pb-6 border-b border-gray-200">
+                <div class="flex items-center justify-between mb-3">
+                    <h4 class="text-2xl font-bold text-gray-900">
+                        <i class="fas fa-van-shuttle text-blue-600 mr-2"></i>{{ vehicle.type }}
+                    </h4>
+                    <span class="badge">
+                        <i class="fas fa-users mr-1"></i>{{ vehicle.seats }} seats
+                    </span>
+                </div>
+                <p class="text-2xl font-bold text-blue-600">LKR {{ vehicle.estimated_fare }}</p>
+                <p class="text-sm text-gray-600 mt-2">Estimated fare</p>
+            </div>
+
+            <!-- Booking Form -->
+            <form action="{{ url_for('user.book_vehicle') }}" method="POST" class="space-y-4">
                 <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
-                <input type="text" name="mobile" placeholder="Your mobile number" class="w-full border rounded-lg px-3 py-2">
-                <input type="text" name="start_city" placeholder="Start city" class="w-full border rounded-lg px-3 py-2">
-                <input type="text" name="end_city" placeholder="Destination city" class="w-full border rounded-lg px-3 py-2">
-                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                    Book Vehicle
+                
+                <div class="space-y-3">
+                    <input type="text" name="mobile" placeholder="📱 Your mobile number" 
+                           class="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:border-blue-600 transition" required>
+                    
+                    <input type="text" name="start_city" placeholder="📍 Start city" 
+                           class="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:border-blue-600 transition" required>
+                    
+                    <input type="text" name="end_city" placeholder="🎯 Destination city" 
+                           class="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:border-blue-600 transition" required>
+                </div>
+                
+                <button type="submit" class="btn-gradient w-full text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 text-lg">
+                    <i class="fas fa-check"></i> Book Vehicle
                 </button>
             </form>
         </div>
@@ -141,15 +359,85 @@
     </div>
 </section>
 
-<!-- Map -->
-<section class="max-w-7xl mx-auto px-6 py-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Map View</h2>
-    <div id="map" class="w-full h-96 rounded-2xl shadow-md"></div>
+<!-- Map Section -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="mb-12">
+        <div class="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-map mr-2"></i>Location Map
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-3">Explore on Map</h2>
+        <p class="text-lg text-gray-600">View all locations and services on an interactive map</p>
+    </div>
+    
+    <div id="map" class="w-full h-96 rounded-2xl shadow-lg overflow-hidden"></div>
 </section>
 
 <!-- Footer -->
-<footer class="text-center text-sm text-gray-500 py-6 border-t">
-    © 2026 AI-Powered Sri Lanka Travel Planner
+<footer class="bg-gray-900 text-gray-400 py-16 border-t-2 border-gray-800 mt-20">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <!-- Brand -->
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-map-location-dot text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Voyager</h3>
+                </div>
+                <p class="text-sm leading-relaxed text-gray-500">
+                    Your complete travel companion for exploring Sri Lanka.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Explore</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition">Destinations</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Hotels</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Guides</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Transport</a></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Support</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition">FAQ</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Contact</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Emergency</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Help</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Contact</h4>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-blue-500"></i>
+                        help@voyager.com
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone text-blue-500"></i>
+                        +94 (123) 456-789
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-location-dot text-blue-500"></i>
+                        Colombo, Sri Lanka
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="border-t border-gray-800 pt-8">
+            <p class="text-center text-sm text-gray-500">
+                &copy; 2026 Voyager Travel. All rights reserved. <span class="text-blue-500">Helping you travel smarter</span>
+            </p>
+        </div>
+    </div>
 </footer>
 
 <!-- Leaflet Map -->

@@ -2,102 +2,325 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI Route Recommendations</title>
+    <title>Route Recommendations - Voyager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Leaflet CSS & JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Poppins & Inter Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            color: #667eea;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .ai-answer {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .leaflet-container {
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+    </style>
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="bg-gray-50 text-gray-800">
 
 <!-- Navbar -->
-<nav class="border-b bg-white shadow-sm">
+<nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-blue-600">AI Travel Assistant</h1>
-        <a href="{{ url_for('user.home') }}"
-           class="text-sm font-semibold text-blue-600 hover:underline">
-            ← Back to Search
+        <div class="flex items-center gap-3">
+            <div class="gradient-primary w-10 h-10 rounded-xl flex items-center justify-center">
+                <i class="fas fa-map-location-dot text-white text-lg"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-900">Voyager</h1>
+        </div>
+
+        <a href="{{ url_for('user.home') }}" class="text-gray-700 font-semibold hover:text-blue-600 transition flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i> Back to Search
         </a>
     </div>
 </nav>
 
+<!-- Spacer for fixed navbar -->
+<div class="h-16"></div>
+
 <!-- Page Header -->
-<section class="max-w-6xl mx-auto px-6 py-12">
-    <h2 class="text-4xl font-extrabold">AI-Recommended Destinations</h2>
+<section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="mb-8">
+        <div class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-route mr-2"></i>Your Journey
+        </div>
+        <h2 class="text-5xl sm:text-6xl font-bold text-gray-900 mb-3">Route Recommendations</h2>
+        <p class="text-xl text-gray-600">AI-powered suggestions for your travel journey with stops and services along the way</p>
+    </div>
 </section>
 
-<!-- Map Section -->
-<!-- <section class="max-w-6xl mx-auto px-6 mb-14">
-    <div id="map" class="w-full h-[480px] rounded-2xl border shadow-sm"></div>
-</section> -->
+<!-- AI Assistant Answer -->
 {% if ai_answer %}
-<div class="max-w-6xl mx-auto px-6 mb-10">
-    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
-        <h3 class="text-xl font-bold text-blue-700 mb-2">
-            AI Travel Assistant
-        </h3>
-        <p class="text-gray-700">{{ ai_answer }}</p>
+<section class="max-w-7xl mx-auto px-6 mb-12">
+    <div class="ai-answer rounded-2xl p-8 border-l-4 border-blue-600">
+        <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-sparkles text-white text-lg"></i>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-xl font-bold text-blue-600 mb-2">
+                    AI Travel Assistant
+                </h3>
+                <p class="text-gray-700 leading-relaxed text-lg">{{ ai_answer }}</p>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 {% endif %}
-<!-- Destination Results -->
-<section class="max-w-6xl mx-auto px-6 pb-20">
-    <h3 class="text-2xl font-bold mb-8">Destinations Along Your Route</h3>
+<!-- Destination Results Section -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="mb-12">
+        <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-compass mr-2"></i>Stops Along Your Route
+        </div>
+        <h3 class="text-4xl font-bold text-gray-900 mb-3">Destinations Along Your Route</h3>
+        <p class="text-lg text-gray-600">Discover amazing places and attractions along the way</p>
+    </div>
+    
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {% for rec in results %}
-        <div class="border rounded-2xl p-6 hover:shadow-lg transition bg-white">
-            <h4 class="text-xl font-semibold text-blue-600">{{ rec.destination.name }}</h4>
-            <p class="text-gray-600 mt-3">{{ rec.summary }}</p>
-            <div class="mt-4 space-y-1 text-sm">
-                <p><span class="font-medium">Best Time to Visit:</span> {{ rec.destination.best_time_to_visit }}</p>
-                <p><span class="font-medium">Activities:</span> {{ rec.destination.activities | join(', ') }}</p>
+        <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
+            <!-- Header -->
+            <div class="mb-6">
+                <div class="flex items-start justify-between mb-3">
+                    <h4 class="text-2xl font-bold text-gray-900">{{ rec.destination.name }}</h4>
+                    <span class="badge"><i class="fas fa-star mr-1"></i>Featured</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed">{{ rec.summary }}</p>
             </div>
-            <div class="mt-6">
-                <a href="{{ url_for('user.guides', destination_name=rec.destination.name) }}"
-                   class="inline-block border border-blue-600 text-blue-600 px-5 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
-                    Book a Guide / Lecture
-                </a>
+
+            <!-- Info -->
+            <div class="space-y-3 mb-6 pb-6 border-b border-gray-200">
+                <div class="flex items-center gap-2 text-sm text-gray-700">
+                    <i class="fas fa-calendar text-blue-600 w-5"></i>
+                    <span><span class="font-semibold">Best Time to Visit:</span> {{ rec.destination.best_time_to_visit }}</span>
+                </div>
+                <div class="flex items-start gap-2 text-sm text-gray-700">
+                    <i class="fas fa-dumbbell text-blue-600 w-5 mt-0.5"></i>
+                    <div>
+                        <span class="font-semibold">Activities:</span>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            {% for activity in rec.destination.activities %}
+                            <span class="inline-flex items-center bg-blue-50 px-3 py-1 rounded-full text-xs font-medium text-blue-700">
+                                {{ activity }}
+                            </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Actions -->
+            <a href="{{ url_for('user.guides', destination_name=rec.destination.name) }}"
+               class="btn-gradient w-full text-white px-5 py-3 rounded-lg font-semibold flex items-center justify-center gap-2">
+                <i class="fas fa-person-hiking"></i> Book a Guide
+            </a>
         </div>
         {% endfor %}
     </div>
 </section>
 
 <!-- Guides Section -->
-<section class="max-w-6xl mx-auto px-6 pb-20">
-    <h3 class="text-2xl font-bold mb-8">Available Guides Along Your Route</h3>
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="mb-12">
+        <div class="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-person-hiking mr-2"></i>Expert Guides
+        </div>
+        <h3 class="text-4xl font-bold text-gray-900 mb-3">Available Guides Along Your Route</h3>
+        <p class="text-lg text-gray-600">Professional and experienced guides ready to enhance your journey</p>
+    </div>
+    
     {% if guides and guides|length > 0 %}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for guide in guides %}
-        <div class="border rounded-2xl p-6 hover:shadow-lg transition bg-white">
-            <h4 class="text-lg font-semibold text-blue-600">{{ guide.name }}</h4>
-            <div class="mt-3 space-y-1 text-sm text-gray-700">
-                <p><b>District:</b> {{ guide.district }}</p>
-                <p><b>Destination:</b> {{ guide.destination }}</p>
-                <p><b>Languages:</b> {{ guide.languages | join(', ') }}</p>
-                <p><b>Rating:</b> ⭐ {{ guide.rating }}</p>
-                <p><b>Price:</b> LKR {{ guide.price_per_hour }}/hr</p>
+        <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
+            <!-- Header -->
+            <div class="mb-6">
+                <div class="flex items-center justify-between mb-3">
+                    <h4 class="text-2xl font-bold text-gray-900">{{ guide.name }}</h4>
+                    <div class="flex items-center gap-1 text-yellow-400">
+                        {% for i in range(5) %}<i class="fas fa-star text-xs"></i>{% endfor %}
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                    <i class="fas fa-clock text-blue-600"></i>
+                    <span class="font-semibold">LKR {{ guide.price_per_hour }}/hr</span>
+                </div>
             </div>
-            <div class="mt-5">
-                <a href="{{ url_for('user.guide_details', guide_id=guide.id) }}"
-                   class="inline-block border border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
-                    View Details
-                </a>
+
+            <!-- Info -->
+            <div class="space-y-2 mb-6 pb-6 border-b border-gray-200 text-sm">
+                <div class="flex items-center gap-2 text-gray-700">
+                    <i class="fas fa-map-pin text-blue-600 w-5"></i>
+                    <span><span class="font-semibold">{{ guide.destination }}</span>, {{ guide.district }}</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-700">
+                    <i class="fas fa-language text-blue-600 w-5"></i>
+                    <span>{{ guide.languages | join(', ') }}</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-700">
+                    <i class="fas fa-star text-yellow-500 w-5"></i>
+                    <span><span class="font-semibold">Rating:</span> {{ guide.rating }} / 5</span>
+                </div>
             </div>
+
+            <!-- Action -->
+            <a href="{{ url_for('user.guide_details', guide_id=guide.id) }}"
+               class="btn-gradient w-full text-white px-5 py-3 rounded-lg font-semibold flex items-center justify-center gap-2">
+                <i class="fas fa-arrow-right"></i> View Details & Book
+            </a>
         </div>
         {% endfor %}
     </div>
     {% else %}
-    <p class="text-gray-500">No guides available for this route.</p>
+    <div class="bg-white rounded-2xl border-2 border-dashed border-gray-300 p-12 text-center">
+        <i class="fas fa-info-circle text-gray-400 text-5xl mb-4"></i>
+        <p class="text-xl text-gray-600 font-semibold">No guides available for this route</p>
+        <p class="text-gray-500 mt-2">Check back soon or try a different destination</p>
+    </div>
     {% endif %}
 </section>
 
+<!-- Map Section -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="mb-12">
+        <div class="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-map mr-2"></i>Interactive Map
+        </div>
+        <h3 class="text-4xl font-bold text-gray-900 mb-3">Map View</h3>
+        <p class="text-lg text-gray-600">Visualize your route and all stops along the way</p>
+    </div>
+    
+    <div id="map" class="w-full h-96 rounded-2xl shadow-lg overflow-hidden"></div>
+</section>
+
 <!-- Footer -->
-<footer class="text-center text-sm text-gray-500 py-6 border-t">
-    © 2026 AI-Powered Travel Booking & Recommendation System<br>
-    NLP • RAG • Intelligent Route Analysis
+<footer class="bg-gray-900 text-gray-400 py-16 border-t-2 border-gray-800 mt-20">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <!-- Brand -->
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-map-location-dot text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Voyager</h3>
+                </div>
+                <p class="text-sm leading-relaxed text-gray-500">
+                    Your AI-powered travel companion for exploring Sri Lanka effortlessly.
+                </p>
+            </div>
+
+            <!-- Features -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Features</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition">Route Planning</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Destinations</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Guides</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Hotels</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition">Book Guides</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Find Transport</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Hotels</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Emergency Help</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Contact</h4>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-blue-500"></i>
+                        help@voyager.com
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone text-blue-500"></i>
+                        +94 (123) 456-789
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-location-dot text-blue-500"></i>
+                        Colombo, Sri Lanka
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="border-t border-gray-800 pt-8">
+            <p class="text-center text-sm text-gray-500">
+                &copy; 2026 Voyager Travel. All rights reserved. <span class="text-blue-500">Helping you travel smarter</span>
+            </p>
+        </div>
+    </div>
 </footer>
 
 <!-- Map Script -->
@@ -110,13 +333,13 @@ const map = L.map('map').setView([7.8731, 80.7718], 7);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
 
 // Main route (blue)
-const mainLine = L.polyline(mainRoute.map(p => [p[1], p[0]]), { color: '#2563eb', weight: 5 }).addTo(map);
+const mainLine = L.polyline(mainRoute.map(p => [p[1], p[0]]), { color: '#667eea', weight: 5 }).addTo(map);
 map.fitBounds(mainLine.getBounds());
 
-// Alternative routes (dashed yellow)
+// Alternative routes (dashed orange)
 alternativeRoutes.forEach((r, i) => {
     L.polyline(r.geometry.map(p => [p[1], p[0]]), {
-        color: '#f59e0b', weight: 3, dashArray: '6,6', opacity: 0.7
+        color: '#f97316', weight: 3, dashArray: '6,6', opacity: 0.7
     }).addTo(map).bindPopup(`Alternative Route ${i + 1}`);
 });
 

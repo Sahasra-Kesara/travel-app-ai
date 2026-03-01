@@ -2,221 +2,588 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Travel Assistant</title>
-
+    <title>Travel Assistant - AI-Powered Travel Planning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Poppins & Inter Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #667eea;
+        }
+        
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+        
+        .input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #667eea;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .hero-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        details summary {
+            transition: all 0.3s ease;
+        }
+        
+        details[open] summary {
+            color: #667eea;
+        }
+    </style>
 </head>
 
-<body class="bg-white text-gray-800 font-['Inter']">
+<body class="bg-gray-50 text-gray-800">
 
 <!-- ================= NAVBAR ================= -->
-<nav class="bg-white border-b shadow-sm">
+<nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-        <h1 class="text-xl font-semibold tracking-tight text-blue-700">
-            Travel Assistant
-        </h1>
+        <div class="flex items-center gap-3">
+            <div class="gradient-primary w-10 h-10 rounded-xl flex items-center justify-center">
+                <i class="fas fa-map-location-dot text-white text-lg"></i>
+            </div>
+            <h1 class="text-2xl font-bold hero-text">
+                Voyager
+            </h1>
+        </div>
 
         <a href="/admin"
-           class="bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold
-                  hover:bg-blue-800 transition">
-            Admin Login
+           class="btn-gradient text-white px-6 py-2.5 rounded-lg text-sm font-semibold
+                  flex items-center gap-2 hover:shadow-lg">
+            <i class="fas fa-lock"></i>
+            Admin Portal
         </a>
     </div>
 </nav>
 
+<!-- Spacer for fixed navbar -->
+<div class="h-16"></div>
+
 <!-- ================= HERO SECTION ================= -->
-<section class="max-w-6xl mx-auto px-6 py-24 text-center">
-    <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-gray-900">
-        Plan Your Trip Easily <br>
-        <span class="text-blue-700">All in One Place</span>
-    </h2>
+<section class="relative overflow-hidden py-20 sm:py-32">
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute top-0 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-8 left-20 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    </div>
+    
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <div class="animate-fade-in-up">
+            <p class="inline-block px-4 py-2 bg-blue-100/80 text-blue-700 rounded-full text-sm font-semibold mb-6 backdrop-blur-sm">
+                <i class="fas fa-sparkles mr-2"></i>AI-Powered Travel Planning
+            </p>
+            
+            <h2 class="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight tracking-tight text-gray-900 mb-6">
+                Explore Sri Lanka
+                <span class="hero-text block">Effortlessly</span>
+            </h2>
 
-    <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        Plan your entire Sri Lanka trip using simple questions.  
-        Find destinations, routes, hotels, tour guides, vehicles, hospitals, and more.
-    </p>
-
-    <!-- Feature Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-
-        <div class="bg-white border rounded-xl p-8 hover:shadow-md transition">
-            <h3 class="font-semibold text-lg text-gray-900">
-                Easy Trip Planning
-            </h3>
-            <p class="text-sm text-gray-600 mt-3">
-                Get routes, nearby attractions, and travel plans instantly.
+            <p class="mt-8 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
+                Your AI-powered travel companion for discovering destinations, booking hotels, finding guides, and planning perfect routes across Sri Lanka.
             </p>
         </div>
-
-        <div class="bg-white border rounded-xl p-8 hover:shadow-md transition">
-            <h3 class="font-semibold text-lg text-gray-900">
-                Hotels & Services
-            </h3>
-            <p class="text-sm text-gray-600 mt-3">
-                Find hotels, guides, vehicles, hospitals, and essential services.
-            </p>
-        </div>
-
-        <div class="bg-white border rounded-xl p-8 hover:shadow-md transition">
-            <h3 class="font-semibold text-lg text-gray-900">
-                Smart AI Recommendations
-            </h3>
-            <p class="text-sm text-gray-600 mt-3">
-                Get personalized suggestions based on your travel needs.
-            </p>
-        </div>
-
     </div>
 </section>
 
-<!-- ================= SEARCH SECTION ================= -->
-<section class="bg-gray-50 border-t py-20">
-    <div class="max-w-5xl mx-auto px-6 text-center">
+<!-- ================= FEATURE CARDS ================= -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-        <h3 class="text-2xl font-semibold text-gray-900 mb-3">
-            Ask Your Travel Question
-        </h3>
-
-        <p class="text-gray-600 mb-10">
-            You can ask about destinations, hotels, routes, guides, vehicles, or emergency services.
-        </p>
-
-        <!-- What Users Can Ask -->
-        <div class="bg-white border rounded-xl p-6 mb-10 text-left">
-            <h4 class="font-semibold text-gray-900 mb-3">Examples:</h4>
-
-            <ul class="text-sm text-gray-600 space-y-2 list-disc list-inside">
-                <li>Best places to visit in Ella</li>
-                <li>Hotels near Sigiriya under LKR 10,000</li>
-                <li>Best route from Colombo to Kandy</li>
-                <li>Available tour guides in Galle</li>
-                <li>Vehicle from Colombo to Arugam Bay</li>
-                <li>Hospitals near Nuwara Eliya</li>
-            </ul>
+        <!-- Card 1 -->
+        <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100 backdrop-blur">
+            <div class="feature-icon mb-5">
+                <i class="fas fa-map-pin"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Smart Destinations
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+                Discover hidden gems and popular attractions across Sri Lanka with AI-powered recommendations tailored to your interests.
+            </p>
+            <div class="mt-5 flex items-center text-blue-600 font-semibold text-sm">
+                Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </div>
         </div>
 
-        <!-- Quick Example Buttons -->
-        <div class="flex flex-wrap justify-center gap-3 mb-10">
-            <button onclick="setExample('Best places to visit in Ella')"
-                class="px-4 py-2 bg-white border rounded-full text-sm hover:bg-blue-50">
-                Ella attractions
-            </button>
-
-            <button onclick="setExample('Hotels near Sigiriya for this weekend')"
-                class="px-4 py-2 bg-white border rounded-full text-sm hover:bg-blue-50">
-                Sigiriya hotels
-            </button>
-
-            <button onclick="setExample('Best route from Colombo to Kandy')"
-                class="px-4 py-2 bg-white border rounded-full text-sm hover:bg-blue-50">
-                Colombo → Kandy
-            </button>
-
-            <button onclick="setExample('Available tour guides in Galle')"
-                class="px-4 py-2 bg-white border rounded-full text-sm hover:bg-blue-50">
-                Galle guides
-            </button>
+        <!-- Card 2 -->
+        <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100 backdrop-blur">
+            <div class="feature-icon mb-5">
+                <i class="fas fa-hotel"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Hotels & Lodging
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+                Find perfect accommodations with real-time availability. From luxury resorts to budget-friendly guesthouses, all in one place.
+            </p>
+            <div class="mt-5 flex items-center text-blue-600 font-semibold text-sm">
+                Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </div>
         </div>
 
-        <!-- Search Form -->
-        <!-- Search Form -->
-<form id="searchForm" action="{{ url_for('user.search') }}" method="POST" class="relative">
-
-    <!-- Wrapper -->
-    <div class="relative">
-
-        <!-- Ghost text (AI completion) -->
-        <div id="ghostText"
-            class="absolute top-0 left-0 w-full h-full px-6 py-5 text-base
-                   text-gray-400 pointer-events-none whitespace-pre-wrap">
+        <!-- Card 3 -->
+        <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100 backdrop-blur">
+            <div class="feature-icon mb-5">
+                <i class="fas fa-route"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Travel Routes
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+                Get optimized travel routes with real-time traffic data. Choose from railways, roads, or private vehicles based on your needs.
+            </p>
+            <div class="mt-5 flex items-center text-blue-600 font-semibold text-sm">
+                Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </div>
         </div>
 
-        <!-- Real input -->
-        <textarea
-            id="searchInput"
-            name="query"
-            rows="2"
-            placeholder="Example: Best hotels near Ella"
-            class="relative w-full resize-none rounded-xl border border-gray-300
-                   px-6 py-5 text-base bg-transparent
-                   focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
-        ></textarea>
     </div>
+    
+    <!-- Additional Features Row -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
 
-    <ul id="suggestions"
-        class="absolute left-0 right-0 bg-white border rounded-lg mt-1 shadow hidden z-10">
-    </ul>
+        <!-- Card 4 -->
+        <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100 backdrop-blur">
+            <div class="feature-icon mb-5">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Expert Guides
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+                Connect with experienced local guides who know every corner of Sri Lanka and can make your trip unforgettable.
+            </p>
+            <div class="mt-5 flex items-center text-blue-600 font-semibold text-sm">
+                Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </div>
+        </div>
 
-    <button
-        type="submit"
-        class="absolute right-4 bottom-4 bg-blue-700 text-white px-6 py-2
-               rounded-lg text-sm font-semibold hover:bg-blue-800 transition">
-        Search
-    </button>
-</form>
-
-        <!-- ================= FAQ ACCORDION ================= -->
-        <div class="mt-16 text-left">
-            <h4 class="text-xl font-semibold text-gray-900 mb-6 text-center">
-                Frequently Asked Questions
-            </h4>
-
-            <div class="space-y-3">
-
-                <details class="bg-white border rounded-lg p-4">
-                    <summary class="cursor-pointer font-medium">
-                        What can I search here?
-                    </summary>
-                    <p class="mt-2 text-sm text-gray-600">
-                        You can search for tourist destinations, hotels, travel routes,
-                        tour guides, vehicles, hospitals, and other travel services.
-                    </p>
-                </details>
-
-                <details class="bg-white border rounded-lg p-4">
-                    <summary class="cursor-pointer font-medium">
-                        Do I need exact place names?
-                    </summary>
-                    <p class="mt-2 text-sm text-gray-600">
-                        No. You can type natural questions like
-                        "cheap hotels in Kandy" or "things to do in Galle".
-                    </p>
-                </details>
-
-                <details class="bg-white border rounded-lg p-4">
-                    <summary class="cursor-pointer font-medium">
-                        Can I search travel routes?
-                    </summary>
-                    <p class="mt-2 text-sm text-gray-600">
-                        Yes. Example: "Best way to travel from Colombo to Ella".
-                    </p>
-                </details>
-
-                <details class="bg-white border rounded-lg p-4">
-                    <summary class="cursor-pointer font-medium">
-                        Can I find emergency services?
-                    </summary>
-                    <p class="mt-2 text-sm text-gray-600">
-                        Yes. You can search for hospitals and nearby medical facilities.
-                    </p>
-                </details>
-
+        <!-- Card 5 -->
+        <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100 backdrop-blur">
+            <div class="feature-icon mb-5">
+                <i class="fas fa-shield-heart"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Emergency Services
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+                Quick access to hospitals, medical facilities, and emergency services nearby. Your safety is our priority.
+            </p>
+            <div class="mt-5 flex items-center text-blue-600 font-semibold text-sm">
+                Learn more <i class="fas fa-arrow-right ml-2"></i>
             </div>
         </div>
 
     </div>
 </section>
 
+<!-- ================= SEARCH SECTION ================= -->
+<section class="relative py-20">
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50"></div>
+    </div>
+    
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <h3 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-wand-magic-sparkles text-blue-600 mr-2"></i>Ask Anything About Your Trip
+            </h3>
+            <p class="text-lg text-gray-600">
+                Use natural language to ask questions. Our AI understands your travel needs.
+            </p>
+        </div>
+
+        <!-- Search Form -->
+        <form id="searchForm" action="{{ url_for('user.search') }}" method="POST" class="relative mb-12">
+            <div class="relative">
+                <!-- Ghost text (AI completion) -->
+                <div id="ghostText"
+                    class="absolute top-0 left-0 w-full px-6 py-5 text-lg text-gray-300 pointer-events-none whitespace-pre-wrap">
+                </div>
+
+                <!-- Real input -->
+                <textarea
+                    id="searchInput"
+                    name="query"
+                    rows="2"
+                    placeholder="Example: Best budget hotels near Ella for next weekend"
+                    class="input-focus relative w-full resize-none rounded-2xl border-2 border-gray-200 px-6 py-5 text-lg bg-white/80 backdrop-blur
+                           focus:outline-none focus:ring-0 shadow-xl focus:bg-white"
+                ></textarea>
+            </div>
+
+            <ul id="suggestions"
+                class="absolute left-0 right-0 bg-white border border-gray-200 rounded-2xl mt-2 shadow-xl hidden z-20 max-h-64 overflow-y-auto">
+            </ul>
+
+            <button
+                type="submit"
+                class="btn-gradient absolute right-4 bottom-4 text-white px-8 py-3 rounded-xl text-base font-semibold hover:shadow-lg flex items-center gap-2">
+                <i class="fas fa-arrow-right"></i>Search
+            </button>
+        </form>
+
+        <!-- Quick Examples -->
+        <div class="mb-12">
+            <p class="text-center text-gray-600 text-sm font-semibold mb-4">
+                <i class="fas fa-bolt text-yellow-500 mr-2"></i>Popular Searches
+            </p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="setExample('Best places to visit in Ella')"
+                    class="px-5 py-2.5 bg-white border-2 border-gray-200 rounded-full text-sm font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">
+                    <i class="fas fa-mountain mr-2"></i>Ella attractions
+                </button>
+
+                <button onclick="setExample('Budget hotels near Sigiriya under 10000')"
+                    class="px-5 py-2.5 bg-white border-2 border-gray-200 rounded-full text-sm font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">
+                    <i class="fas fa-bed mr-2"></i>Sigiriya hotels
+                </button>
+
+                <button onclick="setExample('Best route from Colombo to Kandy')"
+                    class="px-5 py-2.5 bg-white border-2 border-gray-200 rounded-full text-sm font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">
+                    <i class="fas fa-train mr-2"></i>Colombo → Kandy
+                </button>
+
+                <button onclick="setExample('Tour guides in Galle')"
+                    class="px-5 py-2.5 bg-white border-2 border-gray-200 rounded-full text-sm font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">
+                    <i class="fas fa-person-hiking mr-2"></i>Galle guides
+                </button>
+            </div>
+        </div>
+
+        <!-- What You Can Ask -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-8 shadow-lg">
+            <h4 class="font-bold text-gray-900 mb-4 text-lg">
+                <i class="fas fa-circle-info text-blue-600 mr-2"></i>What Can You Search?
+            </h4>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class="fas fa-map text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900">Destinations</p>
+                        <p class="text-xs text-gray-600 mt-1">Tourist spots, attractions, viewpoints</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class="fas fa-hotel text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900">Accommodations</p>
+                        <p class="text-xs text-gray-600 mt-1">Hotels, resorts, guesthouses</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class="fas fa-route text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900">Routes & Transport</p>
+                        <p class="text-xs text-gray-600 mt-1">Travel paths, vehicles, connections</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class="fas fa-person text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900">Guides & Services</p>
+                        <p class="text-xs text-gray-600 mt-1">Tour guides, travel services</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class="fas fa-hospital text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900">Emergency Services</p>
+                        <p class="text-xs text-gray-600 mt-1">Hospitals, medical facilities</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class="fas fa-dna text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900">AI Recommendations</p>
+                        <p class="text-xs text-gray-600 mt-1">Personalized suggestions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FAQ ACCORDION ================= -->
+<section class="max-w-4xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+        <h4 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <i class="fas fa-question text-blue-600 mr-2"></i>Frequently Asked Questions
+        </h4>
+        <p class="text-gray-600">Find answers to common questions about our travel planning service</p>
+    </div>
+
+    <div class="space-y-4">
+
+        <details class="bg-white border-2 border-gray-200 rounded-xl p-6 cursor-pointer hover:border-blue-600 transition group">
+            <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg">
+                <span class="flex items-center gap-3">
+                    <i class="fas fa-check text-blue-600"></i>
+                    What can I search here?
+                </span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i>
+            </summary>
+            <p class="mt-4 text-gray-600 leading-relaxed ml-8">
+                You can search for tourist destinations, hotels, travel routes, tour guides, vehicles for transport, hospitals, and other essential travel services across Sri Lanka. Ask in any natural language - our AI understands your travel needs.
+            </p>
+        </details>
+
+        <details class="bg-white border-2 border-gray-200 rounded-xl p-6 cursor-pointer hover:border-blue-600 transition group">
+            <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg">
+                <span class="flex items-center gap-3">
+                    <i class="fas fa-check text-blue-600"></i>
+                    Do I need exact place names?
+                </span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i>
+            </summary>
+            <p class="mt-4 text-gray-600 leading-relaxed ml-8">
+                No! You can type natural questions like "best budget hotels in Kandy", "things to do around Galle", or "cheapest way to reach Ella". Our AI will understand and find relevant results for you.
+            </p>
+        </details>
+
+        <details class="bg-white border-2 border-gray-200 rounded-xl p-6 cursor-pointer hover:border-blue-600 transition group">
+            <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg">
+                <span class="flex items-center gap-3">
+                    <i class="fas fa-check text-blue-600"></i>
+                    Can I search for travel routes?
+                </span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i>
+            </summary>
+            <p class="mt-4 text-gray-600 leading-relaxed ml-8">
+                Absolutely! You can ask for routes between any two locations. Example: "Best way to travel from Colombo to Ella", "Train options from Kandy to Nuwara Eliya", or "How to reach Arugam Bay from Colombo". We provide multiple route options with details.
+            </p>
+        </details>
+
+        <details class="bg-white border-2 border-gray-200 rounded-xl p-6 cursor-pointer hover:border-blue-600 transition group">
+            <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg">
+                <span class="flex items-center gap-3">
+                    <i class="fas fa-check text-blue-600"></i>
+                    Can I find emergency services?
+                </span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i>
+            </summary>
+            <p class="mt-4 text-gray-600 leading-relaxed ml-8">
+                Yes! You can search for hospitals and medical facilities near any location. Example: "Hospitals near Sigiriya", "Medical services in Nuwara Eliya", or "Emergency clinics in Colombo". We help you locate the nearest healthcare facilities quickly.
+            </p>
+        </details>
+
+        <details class="bg-white border-2 border-gray-200 rounded-xl p-6 cursor-pointer hover:border-blue-600 transition group">
+            <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg">
+                <span class="flex items-center gap-3">
+                    <i class="fas fa-check text-blue-600"></i>
+                    How accurate are the recommendations?
+                </span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i>
+            </summary>
+            <p class="mt-4 text-gray-600 leading-relaxed ml-8">
+                Our AI uses comprehensive knowledge bases of verified destinations, hotels, routes, and services across Sri Lanka. Recommendations are based on real data and are regularly updated. Always verify current prices and availability before booking.
+            </p>
+        </details>
+
+    </div>
+</section>
+
 <!-- ================= FOOTER ================= -->
-<footer class="text-center text-sm text-gray-500 py-10 border-t">
-    © 2026 Travel Assistant  
-    <br>
-    Helping you travel smarter and easier
+<footer class="bg-gray-900 text-gray-400 py-16 border-t-2 border-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <!-- Brand -->
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-map-location-dot text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Voyager</h3>
+                </div>
+                <p class="text-sm leading-relaxed text-gray-500">
+                    Your AI-powered travel companion for exploring Sri Lanka effortlessly and planning perfect trips.
+                </p>
+            </div>
+
+            <!-- Features -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Features</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition">AI Destinations</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Hotel Booking</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Route Planning</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Guide Services</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition">Find Hotels</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Book Guides</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Transport</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Emergency Help</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Contact</h4>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-blue-500"></i>
+                        <a href="mailto:help@voyager.com" class="hover:text-blue-400 transition">help@voyager.com</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone text-blue-500"></i>
+                        <a href="tel:+94123456789" class="hover:text-blue-400 transition">+94 (123) 456-789</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-location-dot text-blue-500"></i>
+                        <span>Colombo, Sri Lanka</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="border-t border-gray-800 pt-8 pb-8">
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                    <i class="fab fa-facebook text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                    <i class="fab fa-twitter text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                    <i class="fab fa-instagram text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                    <i class="fab fa-linkedin text-white"></i>
+                </a>
+            </div>
+
+            <div class="text-center text-sm text-gray-500 space-y-2">
+                <p>&copy; 2026 Voyager Travel. All rights reserved. <span class="text-blue-500">Helping you travel smarter</span></p>
+                <div class="flex justify-center gap-6 flex-wrap">
+                    <a href="#" class="hover:text-blue-400 transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-blue-400 transition">Terms of Service</a>
+                    <a href="#" class="hover:text-blue-400 transition">Cookie Policy</a>
+                    <a href="#" class="hover:text-blue-400 transition">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
 
 <!-- ================= JS ================= -->
@@ -386,7 +753,7 @@ async function fetchSuggestions(query){
 
         data.forEach((item, index) => {
             const li = document.createElement("li");
-            li.className = "px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm";
+            li.className = "px-5 py-3 hover:bg-blue-50 cursor-pointer text-sm font-medium text-gray-700 border-b last:border-b-0 transition";
             li.textContent = item;
 
             li.onclick = () => {
@@ -402,6 +769,7 @@ async function fetchSuggestions(query){
         suggestionBox.classList.remove("hidden");
 
     }catch(error){
+        console.error("Suggestion error:", error);
         suggestionBox.classList.add("hidden");
     }
 }
@@ -419,6 +787,48 @@ input.addEventListener("keydown", function(event) {
 
 });
 
+// Clear ghost text when input is deleted
+input.addEventListener("keydown", function(event) {
+    if (event.key === "Backspace" || event.key === "Delete") {
+        setTimeout(() => {
+            ghostText.textContent = "";
+            inlineSuggestion = "";
+        }, 0);
+    }
+});
+
+// Add smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
 </script>
+
+<style>
+    @keyframes blob {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+
+    .animate-blob {
+        animation: blob 7s infinite;
+    }
+
+    .animation-delay-2000 {
+        animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+        animation-delay: 4s;
+    }
+</style>
+
 </body>
 </html>
