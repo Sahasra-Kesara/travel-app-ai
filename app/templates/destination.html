@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<!-- Font Awesome for icons -->
+<!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
@@ -25,11 +25,11 @@
     </div>
 </nav>
 
-<!-- Hero / Top Recommendations -->
+<!-- Hero / Top Destinations -->
 <section class="max-w-7xl mx-auto px-6 py-12">
     <h2 class="text-3xl md:text-4xl font-extrabold text-blue-600 mb-8">Top Recommended Destinations</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {% for rec in results_by_type['destinations'][:3] %}
+        {% for rec in results_by_type['destinations'][:6] %}
         <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition p-6 flex flex-col justify-between">
             <h3 class="text-xl font-semibold text-blue-600 mb-2">{{ rec.name }}</h3>
             <p class="text-gray-600 mb-2">{{ rec.summary or rec.description }}</p>
@@ -54,43 +54,38 @@
     </div>
 </section>
 
-<!-- District-wise Guides -->
+<!-- Guides Section -->
 <section class="max-w-7xl mx-auto px-6 py-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Guides by District</h2>
-    {% for district, guides in results_by_type['guides']|groupby('district') %}
-    <div class="mb-10">
-        <h3 class="text-2xl font-semibold text-gray-700 mb-4">{{ district|capitalize }}</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {% for guide in guides %}
-            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition flex flex-col justify-between">
-                <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ guide.name }}</h4>
-                <p class="text-gray-600 mb-1"><span class="font-medium">Languages:</span> {{ guide.language | join(', ') }}</p>
-                <p class="text-gray-600 mb-1"><span class="font-medium">Rating:</span> {{ guide.rating }}</p>
-                <p class="text-gray-600 mb-3">{{ guide.ai_pitch }}</p>
-                <div class="flex flex-col gap-2 md:flex-row">
-                    <a href="tel:+94770000000" class="flex-1 bg-green-500 text-white py-2 rounded-lg text-center hover:bg-green-600 transition">
-                        Call Guide
-                    </a>
-                    <form action="{{ url_for('user.book_guide') }}" method="POST" class="flex-1 flex flex-col gap-2">
-                        <input type="hidden" name="guide_id" value="{{ guide.id }}">
-                        <input type="date" name="date" class="border rounded-lg px-3 py-2 w-full">
-                        <input type="time" name="time" class="border rounded-lg px-3 py-2 w-full">
-                        <input type="number" name="hours" placeholder="Hours" class="border rounded-lg px-3 py-2 w-full">
-                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                            Book Guide
-                        </button>
-                    </form>
-                </div>
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Tour Guides</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {% for guide in results_by_type['guides'] %}
+        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition flex flex-col justify-between">
+            <h3 class="text-xl font-semibold text-blue-600 mb-2">{{ guide.name }}</h3>
+            <p class="text-gray-600 mb-1"><span class="font-medium">Destination:</span> {{ guide.destination }}</p>
+            <p class="text-gray-600 mb-1"><span class="font-medium">District:</span> {{ guide.district }}</p>
+            <p class="text-gray-600 mb-1"><span class="font-medium">Languages:</span> {{ guide.language | join(', ') }}</p>
+            <p class="text-gray-600 mb-2"><span class="font-medium">Experience:</span> {{ guide.experience }} years</p>
+            <p class="text-gray-500 mb-4">{{ guide.ai_pitch }}</p>
+            <div class="flex flex-col gap-2">
+                <a href="tel:+94770000000" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 text-center transition">Call Guide</a>
+                <form action="{{ url_for('user.book_guide') }}" method="POST" class="flex flex-col gap-2">
+                    <input type="hidden" name="guide_id" value="{{ guide.id }}">
+                    <input type="date" name="date" class="border rounded-lg px-3 py-2 w-full">
+                    <input type="time" name="time" class="border rounded-lg px-3 py-2 w-full">
+                    <input type="number" name="hours" placeholder="Hours" class="border rounded-lg px-3 py-2 w-full">
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                        Book Guide
+                    </button>
+                </form>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </section>
 
 <!-- Hotels & Hospitals -->
 <section class="max-w-7xl mx-auto px-6 py-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Nearby Hotels & Hospitals</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Hotels & Hospitals</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Hotels -->
         <div>
@@ -99,7 +94,8 @@
             <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition mb-4">
                 <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ hotel.name }}</h4>
                 <p class="text-gray-600 mb-1"><span class="font-medium">Price:</span> LKR {{ hotel.price_per_night }}</p>
-                <p class="text-gray-600 mb-2"><span class="font-medium">Amenities:</span> {{ hotel.amenities | join(', ') }}</p>
+                <p class="text-gray-600 mb-1"><span class="font-medium">Amenities:</span> {{ hotel.amenities | join(', ') }}</p>
+                <p class="text-gray-600 mb-1"><span class="font-medium">District:</span> {{ hotel.district }}</p>
                 <a href="tel:+94770000000" class="inline-block bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition">
                     Call Hotel
                 </a>
@@ -112,7 +108,8 @@
             {% for hospital in results_by_type['hospitals'] %}
             <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition mb-4">
                 <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ hospital.name }}</h4>
-                <p class="text-gray-600 mb-2"><span class="font-medium">Specialties:</span> {{ hospital.specialties | join(', ') }}</p>
+                <p class="text-gray-600 mb-1"><span class="font-medium">Specialties:</span> {{ hospital.specialties | join(', ') }}</p>
+                <p class="text-gray-600 mb-1"><span class="font-medium">District:</span> {{ hospital.district }}</p>
                 <a href="tel:+94770000000" class="inline-block bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">
                     Call Hospital
                 </a>
@@ -122,9 +119,9 @@
     </div>
 </section>
 
-<!-- Vehicle Booking -->
+<!-- Vehicles -->
 <section class="max-w-7xl mx-auto px-6 py-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Vehicle Booking & Fare Estimate</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Vehicle Booking</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {% for vehicle in results_by_type['vehicles'] %}
         <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition">
@@ -144,27 +141,31 @@
     </div>
 </section>
 
+<!-- Map -->
+<section class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Map View</h2>
+    <div id="map" class="w-full h-96 rounded-2xl shadow-md"></div>
+</section>
+
 <!-- Footer -->
 <footer class="text-center text-sm text-gray-500 py-6 border-t">
     © 2026 AI-Powered Sri Lanka Travel Planner
 </footer>
 
-<!-- Leaflet Map Script -->
+<!-- Leaflet Map -->
 <script>
     const mapItems = JSON.parse('{{ map_items | tojson | safe }}' || '[]');
     const map = L.map('map').setView([7.8731, 80.7718], 7); // Center Sri Lanka
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19
-    }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
 
     mapItems.forEach(item => {
         if(item.lat && item.lon){
             L.marker([item.lat, item.lon])
-                .addTo(map)
-                .bindPopup(`<strong>${item.name}</strong><br>${item.description || ''}<br><span class="font-medium">District:</span> ${item.district}`);
+             .addTo(map)
+             .bindPopup(`<strong>${item.name}</strong><br>${item.description || ''}<br><span class="font-medium">District:</span> ${item.district}`);
         }
     });
 </script>
+
 </body>
 </html>
