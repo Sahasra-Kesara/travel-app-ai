@@ -192,7 +192,7 @@ class TravelChatAgent:
         guides = results.get('guides', [])
         
         if not guides:
-            return "👤 No guides found matching your criteria. I can help you find experienced tour guides for your trip! Tell me the destination or type of tour you're interested in."
+            return "No guides found matching your criteria. I can help you find experienced tour guides for your trip! Tell me the destination or type of tour you're interested in."
         
         response = "👥 Here are experienced guides available:\n\n"
         for guide in guides[:3]:
