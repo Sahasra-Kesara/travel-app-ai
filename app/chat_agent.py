@@ -209,7 +209,7 @@ class TravelChatAgent:
         hotels = results.get('hotels', [])
         
         if not hotels:
-            return "🏨 I'm searching for accommodations! Please tell me:\n• Where would you like to stay?\n• What's your budget?\n• Any specific amenities you need?"
+            return "I'm searching for accommodations! Please tell me:\n• Where would you like to stay?\n• What's your budget?\n• Any specific amenities you need?"
         
         response = "🏨 Great hotels and resorts for you:\n\n"
         for hotel in hotels[:3]:
