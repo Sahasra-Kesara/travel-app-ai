@@ -280,7 +280,7 @@ class TravelChatAgent:
     
     def handle_general_query(self, message, results):
         """Handle general travel queries"""
-        response = "🤔 That's a great question! Here's what I can help with:\n\n"
+        response = "That's a great question! Here's what I can help with:\n\n"
         response += "🏔️ **Destinations** - Suggest places, attractions, weather\n"
         response += "🛣️ **Routes** - Best ways to travel, transportation options\n"
         response += "👥 **Guides** - Find experienced tour guides\n"
