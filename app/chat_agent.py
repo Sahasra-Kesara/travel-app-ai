@@ -431,33 +431,54 @@ class TravelChatAgent:
     
     def process_message(self, user_message):
         """Main method to process a message and return response"""
-        # Store in history
+
+        # Store user message
         self.conversation_history.append({
             'role': 'user',
             'message': user_message
         })
-        
+
         try:
-            # Classify the query
-            query_type = self.classify_query(user_message)
+            # ================================
+            # 1. PRIORITY: Pending route flow
+            # ================================
+            if self.context.get("pending_route"):
+                response = self.handle_routes_query(user_message, {})
 
-            # Search knowledge base
-            search_results = self.search_knowledge_base(user_message)
+            else:
+                # ================================
+                # 2. Normal AI processing
+                # ================================
+                query_type = self.classify_query(user_message)
 
-            # Generate response
-            response = self.generate_response(user_message, query_type, search_results)
+                # If message looks like a route request, force route handler
+                route_keywords = ['to', 'from', 'route', 'how to go', 'direction', 'travel']
+                if any(k in user_message.lower() for k in route_keywords):
+                    response = self.handle_routes_query(user_message, {})
+                else:
+                    # Search knowledge base
+                    search_results = self.search_knowledge_base(user_message)
+
+                    # Generate response
+                    response = self.generate_response(
+                        user_message,
+                        query_type,
+                        search_results
+                    )
+
         except Exception as e:
-            # Fallback friendly message and log error
             print(f"chat_agent.process_message error: {e}")
-            response = ("I encountered an internal error while processing your request. "
-                        "Please try rephrasing or ask about a different topic.")
-        
-        # Store response in history
+            response = (
+                "I encountered an internal error while processing your request. "
+                "Please try rephrasing or ask about a different topic."
+            )
+
+        # Store assistant response
         self.conversation_history.append({
             'role': 'assistant',
             'message': response
         })
-        
+
         return response
 
     def extract_locations(self, message):
