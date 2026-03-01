@@ -13,38 +13,40 @@
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 font-sans">
 
 <!-- Navbar -->
-<nav class="bg-white shadow-md">
+<nav class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-blue-600">Sri Lanka Travel AI</h1>
-        <a href="{{ url_for('user.home') }}" class="text-blue-600 font-semibold hover:underline">← Back to Search</a>
+        <h1 class="text-2xl font-bold text-blue-600 tracking-wide">Sri Lanka Travel AI</h1>
+        <a href="{{ url_for('user.home') }}" class="text-blue-600 font-semibold hover:underline flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i> Back to Search
+        </a>
     </div>
 </nav>
 
 <!-- Hero / Top Recommendations -->
-<section class="max-w-7xl mx-auto px-6 py-10">
-    <h2 class="text-3xl font-extrabold text-blue-600 mb-6">Top Recommended Destinations</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<section class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-blue-600 mb-8">Top Recommended Destinations</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {% for rec in results_by_type['destinations'][:3] %}
-        <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col justify-between">
-            <h3 class="text-xl font-semibold text-blue-600">{{ rec.name }}</h3>
-            <p class="text-gray-600 mt-2">{{ rec.summary or rec.description }}</p>
-            <p class="text-sm mt-2"><span class="font-medium">District:</span> {{ rec.district }}</p>
-            <div class="mt-4 flex gap-2">
-                <form action="{{ url_for('user.plan_trip') }}" method="POST" class="flex-1">
+        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition p-6 flex flex-col justify-between">
+            <h3 class="text-xl font-semibold text-blue-600 mb-2">{{ rec.name }}</h3>
+            <p class="text-gray-600 mb-2">{{ rec.summary or rec.description }}</p>
+            <p class="text-sm text-gray-500 mb-4"><span class="font-medium">District:</span> {{ rec.district }}</p>
+            <div class="flex flex-col gap-3">
+                <form action="{{ url_for('user.plan_trip') }}" method="POST" class="flex flex-col gap-2">
                     <input type="hidden" name="end_lat" value="{{ rec.coordinates.lat }}">
                     <input type="hidden" name="end_lon" value="{{ rec.coordinates.lon }}">
                     <input type="hidden" name="destination_name" value="{{ rec.name }}">
                     <input type="text" name="start_city" placeholder="Enter start city"
-                           class="w-full border rounded-lg px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                           class="w-full border-gray-300 border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
                         Plan Trip
                     </button>
                 </form>
-                <a href="tel:+94770000000" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center justify-center">
-                    <i class="fas fa-phone-alt mr-2"></i> Call
+                <a href="tel:+94770000000" class="w-full flex items-center justify-center gap-2 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">
+                    <i class="fas fa-phone-alt"></i> Call
                 </a>
             </div>
         </div>
@@ -52,35 +54,29 @@
     </div>
 </section>
 
-<!-- Interactive Map -->
-<section class="max-w-7xl mx-auto px-6 pb-10">
-    <h2 class="text-3xl font-bold text-blue-600 mb-4">Explore Sri Lanka</h2>
-    <div id="map" class="w-full h-96 rounded-xl border shadow-md"></div>
-</section>
-
 <!-- District-wise Guides -->
-<section class="max-w-7xl mx-auto px-6 pb-10">
-    <h2 class="text-3xl font-bold text-blue-600 mb-6">Guides by District</h2>
+<section class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Guides by District</h2>
     {% for district, guides in results_by_type['guides']|groupby('district') %}
-    <div class="mb-8">
-        <h3 class="text-2xl font-semibold text-gray-700">{{ district|capitalize }}</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+    <div class="mb-10">
+        <h3 class="text-2xl font-semibold text-gray-700 mb-4">{{ district|capitalize }}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             {% for guide in guides %}
-            <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
-                <h4 class="text-lg font-semibold text-blue-600">{{ guide.name }}</h4>
-                <p class="text-gray-600 mt-1"><span class="font-medium">Languages:</span> {{ guide.language | join(', ') }}</p>
-                <p class="text-gray-600 mt-1"><span class="font-medium">Rating:</span> {{ guide.rating }}</p>
-                <p class="text-gray-600 mt-1">{{ guide.ai_pitch }}</p>
-                <div class="mt-4 flex gap-2">
+            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition flex flex-col justify-between">
+                <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ guide.name }}</h4>
+                <p class="text-gray-600 mb-1"><span class="font-medium">Languages:</span> {{ guide.language | join(', ') }}</p>
+                <p class="text-gray-600 mb-1"><span class="font-medium">Rating:</span> {{ guide.rating }}</p>
+                <p class="text-gray-600 mb-3">{{ guide.ai_pitch }}</p>
+                <div class="flex flex-col gap-2 md:flex-row">
                     <a href="tel:+94770000000" class="flex-1 bg-green-500 text-white py-2 rounded-lg text-center hover:bg-green-600 transition">
                         Call Guide
                     </a>
-                    <form action="{{ url_for('user.book_guide') }}" method="POST" class="flex-1">
+                    <form action="{{ url_for('user.book_guide') }}" method="POST" class="flex-1 flex flex-col gap-2">
                         <input type="hidden" name="guide_id" value="{{ guide.id }}">
-                        <input type="date" name="date" class="border rounded-lg px-2 py-1 w-full mb-1">
-                        <input type="time" name="time" class="border rounded-lg px-2 py-1 w-full mb-1">
-                        <input type="number" name="hours" placeholder="Hours" class="border rounded-lg px-2 py-1 w-full mb-1">
-                        <button type="submit" class="w-full bg-blue-600 text-white py-1 rounded-lg hover:bg-blue-700 transition">
+                        <input type="date" name="date" class="border rounded-lg px-3 py-2 w-full">
+                        <input type="time" name="time" class="border rounded-lg px-3 py-2 w-full">
+                        <input type="number" name="hours" placeholder="Hours" class="border rounded-lg px-3 py-2 w-full">
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
                             Book Guide
                         </button>
                     </form>
@@ -93,18 +89,18 @@
 </section>
 
 <!-- Hotels & Hospitals -->
-<section class="max-w-7xl mx-auto px-6 pb-10">
-    <h2 class="text-3xl font-bold text-blue-600 mb-6">Nearby Hotels & Hospitals</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<section class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Nearby Hotels & Hospitals</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Hotels -->
         <div>
             <h3 class="text-2xl font-semibold text-gray-700 mb-4">Hotels</h3>
             {% for hotel in results_by_type['hotels'] %}
-            <div class="bg-white p-4 rounded-xl shadow mb-4">
-                <h4 class="text-lg font-semibold text-blue-600">{{ hotel.name }}</h4>
-                <p class="text-gray-600 mt-1"><span class="font-medium">Price:</span> LKR {{ hotel.price_per_night }}</p>
-                <p class="text-gray-600 mt-1"><span class="font-medium">Amenities:</span> {{ hotel.amenities | join(', ') }}</p>
-                <a href="tel:+94770000000" class="mt-2 inline-block bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition">
+            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition mb-4">
+                <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ hotel.name }}</h4>
+                <p class="text-gray-600 mb-1"><span class="font-medium">Price:</span> LKR {{ hotel.price_per_night }}</p>
+                <p class="text-gray-600 mb-2"><span class="font-medium">Amenities:</span> {{ hotel.amenities | join(', ') }}</p>
+                <a href="tel:+94770000000" class="inline-block bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition">
                     Call Hotel
                 </a>
             </div>
@@ -114,10 +110,10 @@
         <div>
             <h3 class="text-2xl font-semibold text-gray-700 mb-4">Hospitals</h3>
             {% for hospital in results_by_type['hospitals'] %}
-            <div class="bg-white p-4 rounded-xl shadow mb-4">
-                <h4 class="text-lg font-semibold text-blue-600">{{ hospital.name }}</h4>
-                <p class="text-gray-600 mt-1"><span class="font-medium">Specialties:</span> {{ hospital.specialties | join(', ') }}</p>
-                <a href="tel:+94770000000" class="mt-2 inline-block bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">
+            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition mb-4">
+                <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ hospital.name }}</h4>
+                <p class="text-gray-600 mb-2"><span class="font-medium">Specialties:</span> {{ hospital.specialties | join(', ') }}</p>
+                <a href="tel:+94770000000" class="inline-block bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">
                     Call Hospital
                 </a>
             </div>
@@ -127,14 +123,14 @@
 </section>
 
 <!-- Vehicle Booking -->
-<section class="max-w-7xl mx-auto px-6 pb-20">
-    <h2 class="text-3xl font-bold text-blue-600 mb-6">Vehicle Booking & Fare Estimate</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<section class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8">Vehicle Booking & Fare Estimate</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {% for vehicle in results_by_type['vehicles'] %}
-        <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
-            <h4 class="text-lg font-semibold text-blue-600">{{ vehicle.type }} - {{ vehicle.seats }} seats</h4>
-            <p class="text-gray-600 mt-1"><span class="font-medium">Fare Estimate:</span> LKR {{ vehicle.estimated_fare }}</p>
-            <form action="{{ url_for('user.book_vehicle') }}" method="POST" class="mt-4 space-y-2">
+        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition">
+            <h4 class="text-lg font-semibold text-blue-600 mb-2">{{ vehicle.type }} - {{ vehicle.seats }} seats</h4>
+            <p class="text-gray-600 mb-4"><span class="font-medium">Fare Estimate:</span> LKR {{ vehicle.estimated_fare }}</p>
+            <form action="{{ url_for('user.book_vehicle') }}" method="POST" class="flex flex-col gap-3">
                 <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
                 <input type="text" name="mobile" placeholder="Your mobile number" class="w-full border rounded-lg px-3 py-2">
                 <input type="text" name="start_city" placeholder="Start city" class="w-full border rounded-lg px-3 py-2">
@@ -170,6 +166,5 @@
         }
     });
 </script>
-
 </body>
 </html>
