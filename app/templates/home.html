@@ -1136,7 +1136,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ============================
-// FLOATING SEARCH BAR AT BOTTOM
+// FLOATING SEARCH BAR AT BOTTOM - ENHANCED
 // ============================
 const floatingSearchWrapper = document.getElementById('floatingSearchWrapper');
 const floatingSearchInput = document.getElementById('floatingSearchInput');
@@ -1148,16 +1148,30 @@ let floatingSelectedIndex = -1;
 let floatingInlineSuggestion = "";
 let floatingSuggestionsList = [];
 let floatingDebounceFTimer;
+let isFloatingSearchHidden = false;
 
-// Show floating search when scrolled down
+// Show/hide floating search when scrolled
 window.addEventListener('scroll', function() {
     const scrollY = window.scrollY;
     
-    if (scrollY > 400 && !floatingSearchWrapper.classList.contains('visible')) {
-        floatingSearchWrapper.classList.add('visible');
-    } else if (scrollY <= 400 && floatingSearchWrapper.classList.contains('visible')) {
+    if (scrollY > 400) {
+        if (!floatingSearchWrapper.classList.contains('visible') && !isFloatingSearchHidden) {
+            floatingSearchWrapper.classList.remove('hidden');
+            floatingSearchWrapper.classList.add('visible');
+        }
+    } else {
+        if (floatingSearchWrapper.classList.contains('visible') && !isFloatingSearchHidden) {
+            floatingSearchWrapper.classList.remove('visible');
+            floatingSearchSuggestions.classList.remove('visible');
+        }
+    }
+});
+
+// Handle hidden state and animation completion
+floatingSearchWrapper.addEventListener('animationend', function(e) {
+    if (e.animationName === 'slideDownFinal' && floatingSearchWrapper.classList.contains('hidden')) {
         floatingSearchWrapper.classList.remove('visible');
-        floatingSearchSuggestions.classList.remove('visible');
+        isFloatingSearchHidden = true;
     }
 });
 
@@ -1180,6 +1194,14 @@ floatingSearchInput.addEventListener('input', function() {
 
     clearTimeout(floatingDebounceFTimer);
     floatingDebounceFTimer = setTimeout(() => fetchFloatingSuggestions(query), 300);
+});
+
+// Focus on floating input should reset hidden state
+floatingSearchInput.addEventListener('focus', function() {
+    if (isFloatingSearchHidden && window.scrollY > 400) {
+        floatingSearchWrapper.classList.remove('hidden');
+        isFloatingSearchHidden = false;
+    }
 });
 
 // Fetch suggestions for floating search
@@ -1279,6 +1301,9 @@ function highlightFloatingItem(items) {
 floatingSearchBtn.addEventListener('click', function() {
     form.submit();
 });
+
+// Close floating search bar - handled inline in HTML with onclick
+// This keeps the animation smooth while resetting the hidden state properly
 
 // Hide suggestions when clicking outside
 document.addEventListener('click', function(e) {
