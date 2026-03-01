@@ -228,7 +228,7 @@ class TravelChatAgent:
         if not vehicles:
             return "What type of vehicle would you like to book?\n• Car\n• Van\n• Mini bus\n• Tuk-tuk\nTell me your destination and dates!"
         
-        response = "🚗 Available vehicles for booking:\n\n"
+        response = "Available vehicles for booking:\n\n"
         for vehicle in vehicles[:3]:
             vehicle_type = vehicle.get('type', 'Vehicle')
             seats = vehicle.get('seats', '4')
