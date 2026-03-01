@@ -1145,6 +1145,17 @@ const floatingSearchInput = document.getElementById('floatingSearchInput');
 const floatingSearchBtn = document.getElementById('floatingSearchBtn');
 const floatingSearchSuggestions = document.getElementById('floatingSearchSuggestions');
 const floatingGhostText = document.getElementById('floatingGhostText');
+const floatingSearch = document.getElementById('floatingSearchWrapper');
+
+function showFloatingSearch() {
+    floatingSearch.classList.remove('hidden');
+    floatingSearch.classList.add('visible');
+}
+
+function hideFloatingSearch() {
+    floatingSearch.classList.remove('visible');
+    floatingSearch.classList.add('hidden');
+}
 
 let floatingSelectedIndex = -1;
 let floatingInlineSuggestion = "";
