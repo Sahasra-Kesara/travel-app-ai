@@ -130,10 +130,12 @@
         /* Floating Search Bar - Enhanced */
         .floating-search-wrapper {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 160px; /* stop above footer */
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 40;
+            width: 95%;
+            max-width: 1280px;
             display: none;
             animation: slideUpFinal 0.4s ease-out;
         }
