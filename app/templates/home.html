@@ -1146,6 +1146,49 @@ let floatingSuggestionsList = [];
 let floatingDebounceFTimer;
 let isFloatingSearchHidden = false;
 
+document.addEventListener('DOMContentLoaded', () => {
+    const floatingSearch = document.getElementById('floatingSearchWrapper');
+    const closeBtn = document.getElementById('closeFloatingSearch');
+    const footer = document.querySelector('footer');
+
+    // Show search bar after scrolling past hero section
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const heroHeight = document.querySelector('section.relative').offsetHeight;
+
+        // Show floating search if past hero but before footer
+        if (scrollY > heroHeight && !isFooterVisible()) {
+            floatingSearch.classList.remove('hidden');
+            floatingSearch.classList.add('visible');
+            floatingSearch.classList.remove('hidden');
+        } else {
+            floatingSearch.classList.remove('visible');
+            floatingSearch.classList.add('hidden');
+        }
+    });
+
+    // Close button
+    closeBtn.addEventListener('click', () => {
+        floatingSearch.classList.remove('visible');
+        floatingSearch.classList.add('hidden');
+    });
+
+    // Detect if footer is visible
+    function isFooterVisible() {
+        const footerTop = footer.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        return footerTop <= windowHeight;
+    }
+
+    // Optional: Auto-focus input when search bar appears
+    const searchInput = document.getElementById('floatingSearchInput');
+    floatingSearch.addEventListener('transitionend', () => {
+        if (floatingSearch.classList.contains('visible')) {
+            searchInput.focus();
+        }
+    });
+});
+
 // Show/hide floating search when scrolled
 window.addEventListener('scroll', function() {
     const scrollY = window.scrollY;
