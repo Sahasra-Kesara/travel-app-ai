@@ -252,7 +252,7 @@ class TravelChatAgent:
             services = ', '.join(hospital.get('services', ['General care'])[:2])
             response += f"• **{name}** ({district})\n  Services: {services}\n\n"
         
-        response += "📞 For emergencies, call immediately! Emergency contact: +94-011-2696291"
+        response += "For emergencies, call immediately! Emergency contact: +94-011-2696291"
         return response
     
     def handle_trip_planning_query(self, message, results):
