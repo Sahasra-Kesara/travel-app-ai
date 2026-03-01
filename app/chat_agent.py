@@ -245,7 +245,7 @@ class TravelChatAgent:
         if not hospitals:
             return "Emergency? I can help you find medical facilities!\n\nNo hospitals found in search. Please tell me:\n• Your current location\n• Type of medical emergency\n• Preferred hospital (if any)"
         
-        response = "🏥 Nearby medical facilities:\n\n"
+        response = "Nearby medical facilities:\n\n"
         for hospital in hospitals[:3]:
             name = hospital.get('name', 'Hospital')
             district = hospital.get('district', '')
