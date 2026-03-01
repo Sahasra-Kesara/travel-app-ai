@@ -35,6 +35,7 @@ class TravelChatAgent:
         vehicle_keywords = ['vehicle', 'car', 'transport', 'bus', 'train', 'taxi', 'book ride']
         hospital_keywords = ['hospital', 'doctor', 'medical', 'emergency', 'health', 'clinic']
         trip_keywords = ['trip', 'plan', 'itinerary', 'days', 'when', 'best time']
+        route_keywords = ['route', 'direction', 'how to get', 'travel from', 'way to', 'path', 'to', 'from']
         
         query_type = 'general'
         
