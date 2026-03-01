@@ -126,10 +126,337 @@
         details[open] summary {
             color: #667eea;
         }
+        
+        /* Floating Search Bar - Enhanced */
+        .floating-search-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 40;
+            display: none;
+            animation: slideUpFinal 0.4s ease-out;
+        }
+        
+        @keyframes slideUpFinal {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .floating-search-wrapper.visible {
+            display: block;
+        }
+        
+        .floating-search-wrapper.hidden {
+            animation: slideDownFinal 0.4s ease-in forwards;
+        }
+        
+        @keyframes slideDownFinal {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+        
+        .floating-search-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #ffffff 15%);
+            box-shadow: 0 -8px 32px rgba(102, 126, 234, 0.12);
+            border-top: 2px solid rgba(102, 126, 234, 0.15);
+        }
+        
+        .floating-search-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 28px 24px 32px 24px;
+            min-height: 140px;
+        }
+        
+        .floating-search-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .floating-search-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .floating-search-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .floating-action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            color: #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .floating-action-btn:hover {
+            background: #f3f4f6;
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        .floating-input-container {
+            position: relative;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+        
+        .floating-input-wrapper {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .floating-search-icon {
+            position: absolute;
+            left: 16px;
+            color: #667eea;
+            font-size: 1.1rem;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .floating-ghost-text {
+            position: absolute;
+            top: 0;
+            left: 52px;
+            width: calc(100% - 60px);
+            height: 52px;
+            display: flex;
+            align-items: center;
+            color: #d1d5db;
+            pointer-events: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        #floatingSearchInput {
+            width: 100%;
+            padding: 16px 16px 16px 52px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            background: white;
+            font-size: 1rem;
+            font-weight: 500;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #1f2937;
+        }
+        
+        #floatingSearchInput::placeholder {
+            color: #9ca3af;
+            font-weight: 500;
+        }
+        
+        #floatingSearchInput:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), 0 8px 24px rgba(102, 126, 234, 0.15);
+            background: white;
+        }
+        
+        .floating-suggestions {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-bottom: none;
+            border-radius: 14px 14px 0 0;
+            max-height: 320px;
+            overflow-y: auto;
+            z-index: 50;
+            display: none;
+            box-shadow: 0 -12px 40px rgba(102, 126, 234, 0.18);
+        }
+        
+        .floating-suggestions.visible {
+            display: block;
+        }
+        
+        .floating-suggestions li {
+            padding: 14px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #f3f4f6;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .floating-suggestions li:before {
+            content: '→';
+            color: #667eea;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            font-weight: 700;
+        }
+        
+        .floating-suggestions li:last-child {
+            border-bottom: none;
+        }
+        
+        .floating-suggestions li:hover,
+        .floating-suggestions li.selected {
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
+            color: #667eea;
+            padding-left: 20px;
+        }
+        
+        .floating-suggestions li:hover:before,
+        .floating-suggestions li.selected:before {
+            opacity: 1;
+        }
+        
+        .floating-btn-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .floating-btn {
+            padding: 16px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.45);
+        }
+        
+        .floating-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .floating-secondary-btn {
+            padding: 16px 24px;
+            background: white;
+            color: #667eea;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        
+        .floating-secondary-btn:hover {
+            background: #f9fafb;
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
     </style>
+
 </head>
 
 <body class="bg-gray-50 text-gray-800">
+
+<!-- Floating Search Bar - Enhanced -->
+<div id="floatingSearchWrapper" class="floating-search-wrapper">
+    <div class="floating-search-bg"></div>
+    <div class="floating-search-content">
+        <!-- Header -->
+        <div class="floating-search-header">
+            <div class="floating-search-title">
+                <i class="fas fa-bolt"></i> Quick Search
+            </div>
+            <div class="floating-search-actions">
+                <button class="floating-action-btn" title="Filter" onclick="alert('Filters coming soon!')">
+                    <i class="fas fa-sliders-h"></i>
+                </button>
+                <button class="floating-action-btn" title="Voice Search" onclick="alert('Voice search coming soon!')">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Search Input -->
+        <div class="floating-input-container">
+            <div class="floating-input-wrapper">
+                <i class="floating-search-icon fas fa-map-location-dot"></i>
+                <div class="floating-ghost-text" id="floatingGhostText"></div>
+                <input
+                    type="text"
+                    id="floatingSearchInput"
+                    placeholder="Where would you like to explore?"
+                >
+                <ul id="floatingSearchSuggestions" class="floating-suggestions"></ul>
+            </div>
+            <div class="floating-btn-group">
+                <button id="floatingSearchBtn" class="floating-btn">
+                    <i class="fas fa-arrow-right"></i>Search
+                </button>
+                <button class="floating-secondary-btn" onclick="document.getElementById('floatingSearchWrapper').classList.add('hidden');" title="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ================= NAVBAR ================= -->
 <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
@@ -806,6 +1133,158 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             target.scrollIntoView({ behavior: 'smooth' });
         }
     });
+});
+
+// ============================
+// FLOATING SEARCH BAR AT BOTTOM
+// ============================
+const floatingSearchWrapper = document.getElementById('floatingSearchWrapper');
+const floatingSearchInput = document.getElementById('floatingSearchInput');
+const floatingSearchBtn = document.getElementById('floatingSearchBtn');
+const floatingSearchSuggestions = document.getElementById('floatingSearchSuggestions');
+const floatingGhostText = document.getElementById('floatingGhostText');
+
+let floatingSelectedIndex = -1;
+let floatingInlineSuggestion = "";
+let floatingSuggestionsList = [];
+let floatingDebounceFTimer;
+
+// Show floating search when scrolled down
+window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    
+    if (scrollY > 400 && !floatingSearchWrapper.classList.contains('visible')) {
+        floatingSearchWrapper.classList.add('visible');
+    } else if (scrollY <= 400 && floatingSearchWrapper.classList.contains('visible')) {
+        floatingSearchWrapper.classList.remove('visible');
+        floatingSearchSuggestions.classList.remove('visible');
+    }
+});
+
+// Sync floating input with main input
+input.addEventListener('input', function() {
+    floatingSearchInput.value = this.value;
+});
+
+floatingSearchInput.addEventListener('input', function() {
+    input.value = this.value;
+    
+    const query = this.value.trim();
+    floatingSelectedIndex = -1;
+
+    if (query.length < 2) {
+        floatingSearchSuggestions.classList.remove('visible');
+        floatingGhostText.textContent = '';
+        return;
+    }
+
+    clearTimeout(floatingDebounceFTimer);
+    floatingDebounceFTimer = setTimeout(() => fetchFloatingSuggestions(query), 300);
+});
+
+// Fetch suggestions for floating search
+async function fetchFloatingSuggestions(query) {
+    try {
+        const res = await fetch(`${suggestUrl}?q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+
+        floatingSuggestionsList = data;
+        floatingSearchSuggestions.innerHTML = '';
+
+        // Show inline suggestion
+        if (data.length > 0) {
+            const first = data[0];
+            if (first.toLowerCase().startsWith(query.toLowerCase())) {
+                floatingInlineSuggestion = first;
+                floatingGhostText.textContent = first;
+            } else {
+                floatingInlineSuggestion = '';
+                floatingGhostText.textContent = '';
+            }
+        }
+
+        if (data.length === 0) {
+            floatingSearchSuggestions.classList.remove('visible');
+            return;
+        }
+
+        data.forEach((item) => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            li.addEventListener('click', () => {
+                floatingSearchInput.value = item;
+                input.value = item;
+                floatingGhostText.textContent = '';
+                floatingSearchSuggestions.classList.remove('visible');
+                form.submit();
+            });
+
+            floatingSearchSuggestions.appendChild(li);
+        });
+
+        floatingSearchSuggestions.classList.add('visible');
+
+    } catch (error) {
+        console.error('Floating search error:', error);
+        floatingSearchSuggestions.classList.remove('visible');
+    }
+}
+
+// Keyboard navigation for floating search
+floatingSearchInput.addEventListener('keydown', function(e) {
+    const items = floatingSearchSuggestions.querySelectorAll('li');
+
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        floatingSelectedIndex = Math.min(floatingSelectedIndex + 1, items.length - 1);
+        highlightFloatingItem(items);
+    }
+    else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        floatingSelectedIndex = Math.max(floatingSelectedIndex - 1, -1);
+        highlightFloatingItem(items);
+    }
+    else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (floatingSelectedIndex >= 0 && items[floatingSelectedIndex]) {
+            floatingSearchInput.value = items[floatingSelectedIndex].textContent;
+            input.value = items[floatingSelectedIndex].textContent;
+        }
+        floatingSearchSuggestions.classList.remove('visible');
+        form.submit();
+    }
+    else if (e.key === 'Tab') {
+        e.preventDefault();
+        if (floatingInlineSuggestion) {
+            floatingSearchInput.value = floatingInlineSuggestion;
+            input.value = floatingInlineSuggestion;
+            floatingGhostText.textContent = '';
+            floatingInlineSuggestion = '';
+            floatingSearchSuggestions.classList.remove('visible');
+        }
+    }
+    else if (e.key === 'Escape') {
+        floatingSearchSuggestions.classList.remove('visible');
+    }
+});
+
+function highlightFloatingItem(items) {
+    items.forEach(item => item.classList.remove('selected'));
+    if (floatingSelectedIndex >= 0 && items[floatingSelectedIndex]) {
+        items[floatingSelectedIndex].classList.add('selected');
+    }
+}
+
+// Submit floating search
+floatingSearchBtn.addEventListener('click', function() {
+    form.submit();
+});
+
+// Hide suggestions when clicking outside
+document.addEventListener('click', function(e) {
+    if (!floatingSearchSuggestions.contains(e.target) && e.target !== floatingSearchInput) {
+        floatingSearchSuggestions.classList.remove('visible');
+    }
 });
 
 </script>
