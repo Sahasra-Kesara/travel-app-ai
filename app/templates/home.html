@@ -1371,6 +1371,28 @@ document.addEventListener('click', function(e) {
         animation-delay: 4s;
     }
 </style>
+<script>
+const closeBtn = document.getElementById('closeFloatingSearch');
 
+// Function to show the floating bar
+function showFloatingSearch() {
+    floatingSearchWrapper.classList.remove('hidden');
+    floatingSearchWrapper.classList.add('visible');
+}
+
+// Function to hide it
+function hideFloatingSearch() {
+    floatingSearchWrapper.classList.remove('visible');
+    floatingSearchWrapper.classList.add('hidden');
+}
+
+// Close button
+closeBtn.addEventListener('click', hideFloatingSearch);
+
+// Optional: Show on page load
+window.addEventListener('load', () => {
+    showFloatingSearch();
+});
+</script>
 </body>
 </html>
