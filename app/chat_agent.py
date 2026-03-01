@@ -182,7 +182,7 @@ class TravelChatAgent:
         )
 
         response = (
-            f"🗺 Route: **{start} → {end}**\n\n"
+            f"Route: **{start} → {end}**\n\n"
             f"Open in Google Maps:\n{maps_url}\n\n"
             f"Approximate travel time:\n"
             f"• By Car: Depends on traffic\n"
