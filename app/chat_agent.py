@@ -201,7 +201,7 @@ class TravelChatAgent:
             specialization = guide.get('specialization', 'General tours')
             response += f"• **{name}** - {experience}+ years in {specialization}\n"
         
-        response += "\n💡 Contact them directly to book or ask for recommendations!"
+        response += "\nContact them directly to book or ask for recommendations!"
         return response
     
     def handle_hotels_query(self, message, results):
