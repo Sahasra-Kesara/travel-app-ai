@@ -164,12 +164,17 @@ class TravelChatAgent:
     def handle_routes_query(self, message, results):
         message_lower = message.lower()
 
-        # Detect travel method
+        # Detect travel method (expanded)
         methods = {
             'drive': 'driving',
             'car': 'driving',
+            'vehicle': 'driving',
             'train': 'transit',
-            'bus': 'transit'
+            'bus': 'transit',
+            'public': 'transit',
+            'walk': 'walking',
+            'bicycle': 'bicycling',
+            'bike': 'bicycling'
         }
 
         selected_method = None
@@ -187,38 +192,47 @@ class TravelChatAgent:
             end = route["end"]
             stops = route["stops"]
 
-            # Build via string
+            # Build via text
             via_text = ""
             if stops:
                 via_text = " via " + " → ".join(stops)
 
-            # Build Google Maps embed URL (FREE – No API key)
-            base_query = f"{start}"
-            if stops:
-                base_query += " to " + " to ".join(stops)
-            base_query += f" to {end}"
+            # Build directions path
+            directions_path = quote_plus(start)
 
-            maps_embed = (
-                f"https://www.google.com/maps?q={quote_plus(base_query)}&output=embed"
-            )
-
-            # Full navigation link
-            maps_url = f"https://www.google.com/maps/dir/{quote_plus(start)}"
             if stops:
                 for stop in stops:
-                    maps_url += f"/{quote_plus(stop)}"
-            maps_url += f"/{quote_plus(end)}"
+                    directions_path += f"/{quote_plus(stop)}"
 
-            # Travel mode text
+            directions_path += f"/{quote_plus(end)}"
+
+            # Full navigation URL with travel mode (FREE)
+            maps_url = (
+                f"https://www.google.com/maps/dir/{directions_path}"
+                f"?travelmode={selected_method}"
+            )
+
+            # Embed map (simple query preview – free)
+            query_preview = f"{start} to {end}"
+            if stops:
+                query_preview = f"{start} to " + " to ".join(stops) + f" to {end}"
+
+            maps_embed = (
+                f"https://www.google.com/maps?q={quote_plus(query_preview)}&output=embed"
+            )
+
+            # Travel mode display text
             mode_text = {
                 'driving': 'Driving',
-                'transit': 'Public Transport (Train/Bus)'
+                'transit': 'Public Transport (Train/Bus)',
+                'walking': 'Walking',
+                'bicycling': 'Bicycling'
             }.get(selected_method, 'Driving')
 
             response = f"""
     Route: **{start} → {end}**{via_text}
 
-    <div style="width:100%; height:300px; margin-top:8px; margin-bottom:8px;">
+    <div style="width:100%; height:320px; margin-top:8px; margin-bottom:8px;">
     <iframe
         width="100%"
         height="100%"
@@ -234,7 +248,10 @@ class TravelChatAgent:
 
     Travel Mode: **{mode_text}**
 
-    Would you like vehicle recommendations or travel time for this route?
+    Would you like:
+    • Estimated travel time  
+    • Vehicle recommendations  
+    • Nearby attractions on the way?
     """
             return response
 
@@ -263,8 +280,9 @@ class TravelChatAgent:
             f"Route detected: **{start} → {end}**{via_text}\n\n"
             "Which travel method would you prefer?\n"
             "• Drive\n"
-            "• Train\n"
-            "• Bus"
+            "• Train / Bus\n"
+            "• Walk\n"
+            "• Bicycle"
         )
     
     def generate_route_response(self, start, end, stops, method):
