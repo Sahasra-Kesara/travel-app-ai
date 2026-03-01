@@ -161,27 +161,35 @@ class TravelChatAgent:
         return response
     
     def handle_routes_query(self, message, results):
-        """Handle route/transportation queries"""
-        routes = results.get('routes', [])
-        vehicles = results.get('vehicles', [])
-        
-        response = "Here's transportation information for your journey:\n\n"
-        
-        if routes:
-            response += "**Available Routes:**\n"
-            for route in routes[:2]:
-                response += f"• {route.get('description', 'Direct route')}\n"
-        
-        if vehicles:
-            response += "\n**Transport Options:**\n"
-            for vehicle in vehicles[:2]:
-                vehicle_type = vehicle.get('type', 'Vehicle')
-                fare = vehicle.get('estimated_fare', 'TBD')
-                response += f"• {vehicle_type} - LKR {fare}\n"
-        
-        if not routes and not vehicles:
-            return "I can help you plan your route! Please tell me where you're traveling from and where you want to go."
-        
+        """Handle route queries with Google Maps links"""
+
+        start, end = self.extract_locations(message)
+
+        if not start or not end:
+            return (
+                "Please tell me your route like:\n"
+                "**Example:** Colombo to Kandy\n"
+                "or\n"
+                "How to travel from Ella to Nuwara Eliya"
+            )
+
+        # Create Google Maps link
+        maps_url = (
+            "https://www.google.com/maps/dir/?api=1"
+            f"&origin={quote_plus(start)}"
+            f"&destination={quote_plus(end)}"
+            "&travelmode=driving"
+        )
+
+        response = (
+            f"🗺 Route: **{start} → {end}**\n\n"
+            f"Open in Google Maps:\n{maps_url}\n\n"
+            f"Approximate travel time:\n"
+            f"• By Car: Depends on traffic\n"
+            f"• Public Transport: Bus / Train options available\n\n"
+            f"Would you like vehicle or train recommendations for this route?"
+        )
+
         return response
     
     def handle_guides_query(self, message, results):
