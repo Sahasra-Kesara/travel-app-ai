@@ -152,7 +152,7 @@ class TravelChatAgent:
         destinations = results.get('destinations', [])
         
         if not destinations:
-            return "🌍 I couldn't find specific destinations matching your query. Try asking about popular places like 'Sigiriya', 'Kandy', 'Mirissa', or 'Ella'!"
+            return "I couldn't find specific destinations matching your query. Try asking about popular places like 'Sigiriya', 'Kandy', 'Mirissa', or 'Ella'!"
         
         response = "✨ Here are some amazing destinations for you:\n\n"
         for dest in destinations[:3]:  # Show top 3
