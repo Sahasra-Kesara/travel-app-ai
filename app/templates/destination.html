@@ -78,6 +78,66 @@
             border-radius: 1rem;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
         }
+
+        /* Pagination Styles */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .pagination-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #667eea;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            border-color: #667eea;
+            background: #f3f4f6;
+            transform: translateY(-2px);
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .pagination-info {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+
+        .grid-with-pagination {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -103,6 +163,7 @@
 <div class="h-16"></div>
 
 <!-- Hero / Top Destinations Section -->
+{% if results_by_type['destinations'] %}
 <section class="max-w-7xl mx-auto px-6 py-16">
     <div class="mb-12">
         <div class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
@@ -112,9 +173,9 @@
         <p class="text-lg text-gray-600">Discover amazing places and plan your perfect trip</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {% for rec in results_by_type['destinations'][:6] %}
-        <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
+    <div id="destinationsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 grid-with-pagination">
+        {% for rec in results_by_type['destinations'] %}
+        <div class="destination-card card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
             <!-- Header -->
             <div class="mb-6">
                 <div class="flex items-center justify-between mb-3">
@@ -156,9 +217,26 @@
         </div>
         {% endfor %}
     </div>
+
+    <!-- Pagination for Destinations -->
+    {% if results_by_type['destinations'] | length > 6 %}
+    <div class="pagination-container">
+        <button class="pagination-btn" id="destPrevBtn" onclick="paginate('destinations', -1)">
+            <i class="fas fa-chevron-left mr-2"></i>Previous
+        </button>
+        <div class="pagination-info">
+            <span id="destPageInfo">Page 1</span>
+        </div>
+        <button class="pagination-btn" id="destNextBtn" onclick="paginate('destinations', 1)">
+            Next<i class="fas fa-chevron-right ml-2"></i>
+        </button>
+    </div>
+    {% endif %}
 </section>
+{% endif %}
 
 <!-- Guides Section -->
+{% if results_by_type['guides'] %}
 <section class="max-w-7xl mx-auto px-6 py-16">
     <div class="mb-12">
         <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-4">
@@ -168,9 +246,9 @@
         <p class="text-lg text-gray-600">Connect with experienced local guides for unforgettable experiences</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div id="guidesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 grid-with-pagination">
         {% for guide in results_by_type['guides'] %}
-        <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
+        <div class="guide-card card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
             <!-- Header -->
             <div class="mb-6">
                 <div class="flex items-start justify-between mb-3">
@@ -221,9 +299,26 @@
         </div>
         {% endfor %}
     </div>
+
+    <!-- Pagination for Guides -->
+    {% if results_by_type['guides'] | length > 6 %}
+    <div class="pagination-container">
+        <button class="pagination-btn" id="guidesPrevBtn" onclick="paginate('guides', -1)">
+            <i class="fas fa-chevron-left mr-2"></i>Previous
+        </button>
+        <div class="pagination-info">
+            <span id="guidesPageInfo">Page 1</span>
+        </div>
+        <button class="pagination-btn" id="guidesNextBtn" onclick="paginate('guides', 1)">
+            Next<i class="fas fa-chevron-right ml-2"></i>
+        </button>
+    </div>
+    {% endif %}
 </section>
+{% endif %}
 
 <!-- Hotels & Hospitals Section -->
+{% if results_by_type['hotels'] or results_by_type['hospitals'] %}
 <section class="max-w-7xl mx-auto px-6 py-16">
     <div class="mb-12">
         <div class="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
@@ -235,6 +330,7 @@
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Hotels -->
+        {% if results_by_type['hotels'] %}
         <div>
             <div class="flex items-center gap-3 mb-8">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -243,9 +339,9 @@
                 <h3 class="text-2xl font-bold text-gray-900">Hotels & Resorts</h3>
             </div>
             
-            <div class="space-y-6">
+            <div id="hotelsGrid" class="space-y-6 grid-with-pagination">
                 {% for hotel in results_by_type['hotels'] %}
-                <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
+                <div class="hotel-card card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
                     <div class="flex justify-between items-start mb-3">
                         <h4 class="text-lg font-bold text-gray-900">{{ hotel.name }}</h4>
                         <span class="badge text-xs">LKR {{ hotel.price_per_night }}/night</span>
@@ -268,9 +364,26 @@
                 </div>
                 {% endfor %}
             </div>
+
+            <!-- Pagination for Hotels -->
+            {% if results_by_type['hotels'] | length > 5 %}
+            <div class="pagination-container">
+                <button class="pagination-btn" id="hotelsPrevBtn" onclick="paginate('hotels', -1)">
+                    <i class="fas fa-chevron-left mr-2"></i>Previous
+                </button>
+                <div class="pagination-info">
+                    <span id="hotelsPageInfo">Page 1</span>
+                </div>
+                <button class="pagination-btn" id="hotelsNextBtn" onclick="paginate('hotels', 1)">
+                    Next<i class="fas fa-chevron-right ml-2"></i>
+                </button>
+            </div>
+            {% endif %}
         </div>
+        {% endif %}
 
         <!-- Hospitals -->
+        {% if results_by_type['hospitals'] %}
         <div>
             <div class="flex items-center gap-3 mb-8">
                 <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
@@ -279,9 +392,9 @@
                 <h3 class="text-2xl font-bold text-gray-900">Hospitals & Medical</h3>
             </div>
             
-            <div class="space-y-6">
+            <div id="hospitalsGrid" class="space-y-6 grid-with-pagination">
                 {% for hospital in results_by_type['hospitals'] %}
-                <div class="card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
+                <div class="hospital-card card-hover bg-white rounded-xl shadow-md border border-gray-100 p-6">
                     <div class="flex justify-between items-start mb-3">
                         <h4 class="text-lg font-bold text-gray-900">{{ hospital.name }}</h4>
                         <span class="badge bg-red-50 text-red-700">Emergency</span>
@@ -304,11 +417,29 @@
                 </div>
                 {% endfor %}
             </div>
+
+            <!-- Pagination for Hospitals -->
+            {% if results_by_type['hospitals'] | length > 5 %}
+            <div class="pagination-container">
+                <button class="pagination-btn" id="hospitalsPrevBtn" onclick="paginate('hospitals', -1)">
+                    <i class="fas fa-chevron-left mr-2"></i>Previous
+                </button>
+                <div class="pagination-info">
+                    <span id="hospitalsPageInfo">Page 1</span>
+                </div>
+                <button class="pagination-btn" id="hospitalsNextBtn" onclick="paginate('hospitals', 1)">
+                    Next<i class="fas fa-chevron-right ml-2"></i>
+                </button>
+            </div>
+            {% endif %}
         </div>
+        {% endif %}
     </div>
 </section>
+{% endif %}
 
 <!-- Vehicles Section -->
+{% if results_by_type['vehicles'] %}
 <section class="max-w-7xl mx-auto px-6 py-16">
     <div class="mb-12">
         <div class="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold mb-4">
@@ -318,9 +449,9 @@
         <p class="text-lg text-gray-600">Book reliable transportation for your journey</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div id="vehiclesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-8 grid-with-pagination">
         {% for vehicle in results_by_type['vehicles'] %}
-        <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
+        <div class="vehicle-card card-hover bg-white rounded-2xl shadow-md border border-gray-100 p-8 flex flex-col justify-between">
             <!-- Header -->
             <div class="mb-6 pb-6 border-b border-gray-200">
                 <div class="flex items-center justify-between mb-3">
@@ -357,7 +488,23 @@
         </div>
         {% endfor %}
     </div>
+
+    <!-- Pagination for Vehicles -->
+    {% if results_by_type['vehicles'] | length > 6 %}
+    <div class="pagination-container">
+        <button class="pagination-btn" id="vehiclesPrevBtn" onclick="paginate('vehicles', -1)">
+            <i class="fas fa-chevron-left mr-2"></i>Previous
+        </button>
+        <div class="pagination-info">
+            <span id="vehiclesPageInfo">Page 1</span>
+        </div>
+        <button class="pagination-btn" id="vehiclesNextBtn" onclick="paginate('vehicles', 1)">
+            Next<i class="fas fa-chevron-right ml-2"></i>
+        </button>
+    </div>
+    {% endif %}
 </section>
+{% endif %}
 
 <!-- Map Section -->
 <section class="max-w-7xl mx-auto px-6 py-16">
@@ -452,6 +599,103 @@
              .addTo(map)
              .bindPopup(`<strong>${item.name}</strong><br>${item.description || ''}<br><span class="font-medium">District:</span> ${item.district}`);
         }
+    });
+</script>
+
+<!-- Pagination Script -->
+<script>
+    // State management for pagination
+    const paginationState = {
+        destinations: { currentPage: 1, itemsPerPage: 6 },
+        guides: { currentPage: 1, itemsPerPage: 6 },
+        hotels: { currentPage: 1, itemsPerPage: 5 },
+        hospitals: { currentPage: 1, itemsPerPage: 5 },
+        vehicles: { currentPage: 1, itemsPerPage: 6 }
+    };
+
+    function paginate(category, direction) {
+        const grid = document.getElementById(category + 'Grid');
+        if (!grid) return;
+
+        const state = paginationState[category];
+        const cards = Array.from(grid.querySelectorAll('.' + 
+            (category === 'destinations' ? 'destination-card' :
+             category === 'guides' ? 'guide-card' :
+             category === 'hotels' ? 'hotel-card' :
+             category === 'hospitals' ? 'hospital-card' :
+             category === 'vehicles' ? 'vehicle-card' : 'card')));
+
+        const totalPages = Math.ceil(cards.length / state.itemsPerPage);
+        const newPage = state.currentPage + direction;
+
+        // Validate page boundaries
+        if (newPage < 1 || newPage > totalPages) return;
+
+        state.currentPage = newPage;
+
+        // Hide all cards first
+        cards.forEach(card => card.style.display = 'none');
+
+        // Show cards for current page
+        const startIdx = (newPage - 1) * state.itemsPerPage;
+        const endIdx = startIdx + state.itemsPerPage;
+        cards.slice(startIdx, endIdx).forEach(card => {
+            card.style.display = '';
+            card.style.animation = 'fadeIn 0.3s ease-in';
+        });
+
+        // Update pagination buttons
+        updatePaginationButtons(category, newPage, totalPages);
+        updatePageInfo(category, newPage, totalPages);
+    }
+
+    function updatePaginationButtons(category, currentPage, totalPages) {
+        const prevBtn = document.getElementById(category + 'PrevBtn');
+        const nextBtn = document.getElementById(category + 'NextBtn');
+
+        if (prevBtn) {
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.classList.toggle('opacity-50 cursor-not-allowed', currentPage === 1);
+        }
+
+        if (nextBtn) {
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.classList.toggle('opacity-50 cursor-not-allowed', currentPage === totalPages);
+        }
+    }
+
+    function updatePageInfo(category, currentPage, totalPages) {
+        const pageInfo = document.getElementById(category + 'PageInfo');
+        if (pageInfo) {
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        }
+    }
+
+    // Initialize pagination on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        Object.keys(paginationState).forEach(category => {
+            const grid = document.getElementById(category + 'Grid');
+            if (grid) {
+                const cardClass = 
+                    category === 'destinations' ? 'destination-card' :
+                    category === 'guides' ? 'guide-card' :
+                    category === 'hotels' ? 'hotel-card' :
+                    category === 'hospitals' ? 'hospital-card' :
+                    category === 'vehicles' ? 'vehicle-card' : 'card';
+
+                const cards = grid.querySelectorAll('.' + cardClass);
+                const totalPages = Math.ceil(cards.length / paginationState[category].itemsPerPage);
+
+                // Show only first page items
+                cards.forEach((card, idx) => {
+                    card.style.display = idx < paginationState[category].itemsPerPage ? '' : 'none';
+                });
+
+                // Update buttons for initial state
+                updatePaginationButtons(category, 1, totalPages);
+                updatePageInfo(category, 1, totalPages);
+            }
+        });
     });
 </script>
 
