@@ -21,7 +21,7 @@ class TravelChatAgent:
     
     def __init__(self):
         self.conversation_history = []
-        self.context = {}
+        self.context = {"pending_route": None}
     
     def classify_query(self, message):
         """Classify the type of query"""
