@@ -282,12 +282,12 @@ class TravelChatAgent:
         """Handle general travel queries"""
         response = "That's a great question! Here's what I can help with:\n\n"
         response += "**Destinations** - Suggest places, attractions, weather\n"
-        response += "🛣️ **Routes** - Best ways to travel, transportation options\n"
-        response += "👥 **Guides** - Find experienced tour guides\n"
-        response += "🏨 **Hotels** - Accommodation recommendations\n"
-        response += "🚗 **Vehicles** - Book cars, buses, or other transport\n"
-        response += "🏥 **Medical** - Find hospitals and emergency services\n"
-        response += "📅 **Trip Planning** - Create your perfect itinerary\n\n"
+        response += "**Routes** - Best ways to travel, transportation options\n"
+        response += "**Guides** - Find experienced tour guides\n"
+        response += "**Hotels** - Accommodation recommendations\n"
+        response += "**Vehicles** - Book cars, buses, or other transport\n"
+        response += "**Medical** - Find hospitals and emergency services\n"
+        response += "**Trip Planning** - Create your perfect itinerary\n\n"
         response += f"Feel free to ask about any of these or anything specific about your trip!"
         
         return response
