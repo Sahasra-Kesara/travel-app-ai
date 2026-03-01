@@ -130,12 +130,10 @@
         /* Floating Search Bar - Enhanced */
         .floating-search-wrapper {
             position: fixed;
-            bottom: 160px; /* stop above footer */
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 0;
+            left: 0;
+            right: 0;
             z-index: 40;
-            width: 95%;
-            max-width: 1280px;
             display: none;
             animation: slideUpFinal 0.4s ease-out;
         }
@@ -1145,17 +1143,6 @@ const floatingSearchInput = document.getElementById('floatingSearchInput');
 const floatingSearchBtn = document.getElementById('floatingSearchBtn');
 const floatingSearchSuggestions = document.getElementById('floatingSearchSuggestions');
 const floatingGhostText = document.getElementById('floatingGhostText');
-const floatingSearch = document.getElementById('floatingSearchWrapper');
-
-function showFloatingSearch() {
-    floatingSearch.classList.remove('hidden');
-    floatingSearch.classList.add('visible');
-}
-
-function hideFloatingSearch() {
-    floatingSearch.classList.remove('visible');
-    floatingSearch.classList.add('hidden');
-}
 
 let floatingSelectedIndex = -1;
 let floatingInlineSuggestion = "";
