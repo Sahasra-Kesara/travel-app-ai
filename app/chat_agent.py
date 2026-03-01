@@ -164,28 +164,81 @@ class TravelChatAgent:
     def handle_routes_query(self, message, results):
         message_lower = message.lower()
 
-        # Check if user replied with method
-        methods = ['drive', 'car', 'train', 'bus']
-        selected_method = None
+        # Detect travel method
+        methods = {
+            'drive': 'driving',
+            'car': 'driving',
+            'train': 'transit',
+            'bus': 'transit'
+        }
 
-        for m in methods:
-            if m in message_lower:
-                selected_method = m
+        selected_method = None
+        for key in methods:
+            if key in message_lower:
+                selected_method = methods[key]
                 break
 
-        # If method given and pending route exists
+        # If user selected method and route is waiting
         if selected_method and self.context.get("pending_route"):
             route = self.context["pending_route"]
             self.context["pending_route"] = None
 
-            return self.generate_route_response(
-                route["start"],
-                route["end"],
-                route["stops"],
-                selected_method
+            start = route["start"]
+            end = route["end"]
+            stops = route["stops"]
+
+            # Build via string
+            via_text = ""
+            if stops:
+                via_text = " via " + " → ".join(stops)
+
+            # Build Google Maps embed URL (FREE – No API key)
+            base_query = f"{start}"
+            if stops:
+                base_query += " to " + " to ".join(stops)
+            base_query += f" to {end}"
+
+            maps_embed = (
+                f"https://www.google.com/maps?q={quote_plus(base_query)}&output=embed"
             )
 
-        # Otherwise extract route
+            # Full navigation link
+            maps_url = f"https://www.google.com/maps/dir/{quote_plus(start)}"
+            if stops:
+                for stop in stops:
+                    maps_url += f"/{quote_plus(stop)}"
+            maps_url += f"/{quote_plus(end)}"
+
+            # Travel mode text
+            mode_text = {
+                'driving': 'Driving',
+                'transit': 'Public Transport (Train/Bus)'
+            }.get(selected_method, 'Driving')
+
+            response = f"""
+    Route: **{start} → {end}**{via_text}
+
+    <div style="width:100%; height:300px; margin-top:8px; margin-bottom:8px;">
+    <iframe
+        width="100%"
+        height="100%"
+        style="border:0; border-radius:12px;"
+        loading="lazy"
+        allowfullscreen
+        src="{maps_embed}">
+    </iframe>
+    </div>
+
+    Open full navigation:
+    {maps_url}
+
+    Travel Mode: **{mode_text}**
+
+    Would you like vehicle recommendations or travel time for this route?
+    """
+            return response
+
+        # Otherwise extract route from message
         start, end, stops = self.extract_locations(message)
 
         if not start or not end:
@@ -202,8 +255,12 @@ class TravelChatAgent:
             "stops": stops
         }
 
+        via_text = ""
+        if stops:
+            via_text = " via " + " → ".join(stops)
+
         return (
-            f"Route detected: **{start} → {end}**\n\n"
+            f"Route detected: **{start} → {end}**{via_text}\n\n"
             "Which travel method would you prefer?\n"
             "• Drive\n"
             "• Train\n"

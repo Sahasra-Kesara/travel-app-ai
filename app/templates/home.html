@@ -852,10 +852,9 @@
         
         const contentDiv = document.createElement('div');
         contentDiv.className = 'chat-message-content';
-        contentDiv.innerHTML = text.replace(
-            /(https?:\/\/[^\s]+)/g,
-            '<a href="$1" target="_blank" class="text-blue-600 underline">$1</a>'
-        );
+        contentDiv.innerHTML = text
+            .replace(/(https?:\/\/[^\s]+)/g,
+            '<a href="$1" target="_blank" class="text-blue-600 underline">$1</a>');
         
         messageDiv.appendChild(contentDiv);
         messagesContainer.appendChild(messageDiv);
