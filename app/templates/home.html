@@ -415,8 +415,8 @@
 
 <body class="bg-gray-50 text-gray-800">
 
-<!-- Floating Search Bar - Enhanced -->
-<div id="floatingSearchWrapper" class="floating-search-wrapper">
+<!-- Floating Search Bar -->
+<div id="floatingSearchWrapper" class="floating-search-wrapper hidden">
     <div class="floating-search-bg"></div>
     <div class="floating-search-content">
         <!-- Header -->
@@ -425,32 +425,27 @@
                 <i class="fas fa-bolt"></i> Quick Search
             </div>
             <div class="floating-search-actions">
-                <button class="floating-action-btn" title="Filter" onclick="alert('Filters coming soon!')">
+                <button class="floating-action-btn" title="Filter">
                     <i class="fas fa-sliders-h"></i>
                 </button>
-                <button class="floating-action-btn" title="Voice Search" onclick="alert('Voice search coming soon!')">
+                <button class="floating-action-btn" title="Voice Search">
                     <i class="fas fa-microphone"></i>
                 </button>
             </div>
         </div>
-        
-        <!-- Search Input -->
+
+        <!-- Input -->
         <div class="floating-input-container">
             <div class="floating-input-wrapper">
                 <i class="floating-search-icon fas fa-map-location-dot"></i>
-                <div class="floating-ghost-text" id="floatingGhostText"></div>
-                <input
-                    type="text"
-                    id="floatingSearchInput"
-                    placeholder="Where would you like to explore?"
-                >
+                <input id="floatingSearchInput" type="text" placeholder="Where would you like to explore?">
                 <ul id="floatingSearchSuggestions" class="floating-suggestions"></ul>
             </div>
             <div class="floating-btn-group">
                 <button id="floatingSearchBtn" class="floating-btn">
-                    <i class="fas fa-arrow-right"></i>Search
+                    <i class="fas fa-arrow-right"></i> Search
                 </button>
-                <button class="floating-secondary-btn" onclick="document.getElementById('floatingSearchWrapper').classList.add('hidden');" title="Close">
+                <button class="floating-secondary-btn" id="closeFloatingSearch">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
