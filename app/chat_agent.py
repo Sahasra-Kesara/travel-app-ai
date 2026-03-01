@@ -210,6 +210,63 @@ class TravelChatAgent:
             "• Bus"
         )
     
+    def generate_route_response(self, start, end, stops, method):
+        travel_mode = "driving"
+
+        if method in ['train']:
+            travel_mode = "transit"
+        elif method in ['bus']:
+            travel_mode = "transit"
+
+        # Waypoints
+        waypoints = ""
+        if stops:
+            waypoints = "&waypoints=" + "|".join([quote_plus(s) for s in stops])
+
+        # Google Maps URL
+        maps_url = (
+            "https://www.google.com/maps/dir/?api=1"
+            f"&origin={quote_plus(start)}"
+            f"&destination={quote_plus(end)}"
+            f"&travelmode={travel_mode}"
+            f"{waypoints}"
+        )
+
+        # Embedded iframe
+        embed_url = maps_url.replace("/dir/?api=1", "/embed/v1/directions?key=YOUR_GOOGLE_MAPS_API_KEY")
+
+        stops_text = ""
+        if stops:
+            stops_text = "\nStops: " + " → ".join(stops)
+
+        response = f"""
+    🗺 Route Plan
+
+    **{start} → {end}**
+    Method: {method.title()}
+    {stops_text}
+
+    Estimated Time:
+    • Drive: Depends on traffic
+    • Train/Bus: Based on schedule
+
+    <iframe
+        width="100%"
+        height="250"
+        style="border:0; border-radius:12px;"
+        loading="lazy"
+        allowfullscreen
+        src="{embed_url}">
+    </iframe>
+
+    Open in Google Maps:
+    {maps_url}
+
+    Would you like vehicle booking for this route?
+    """
+
+        return response
+        
     def handle_guides_query(self, message, results):
         """Handle tour guide queries"""
         guides = results.get('guides', [])
