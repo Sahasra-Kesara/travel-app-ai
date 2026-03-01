@@ -505,3 +505,36 @@ def smart_search():
         results_by_type=group_results(results),
         ai_answer=ai_answer
     )
+
+
+@user_bp.route('/chat', methods=['POST'])
+def chat():
+    """
+    Chat endpoint for intelligent travel assistant agent
+    Handles queries about destinations, routes, guides, hotels, vehicles, hospitals, and trip planning
+    """
+    from app.chat_agent import chat_agent
+    
+    data = request.get_json()
+    message = data.get('message', '').strip()
+    
+    if not message:
+        return jsonify({
+            'response': '👋 Please ask me something! I can help with destinations, routes, guides, hotels, vehicles, hospitals, and trip planning.'
+        })
+    
+    try:
+        # Process message through the chat agent
+        response = chat_agent.process_message(message)
+        
+        return jsonify({
+            'response': response,
+            'status': 'success'
+        })
+    except Exception as e:
+        print(f"Chat error: {str(e)}")
+        return jsonify({
+            'response': '😅 I encountered an error processing your request. Please try again with a different question!',
+            'status': 'error',
+            'error': str(e)
+        }), 200  # Return 200 to prevent fetch from failing
