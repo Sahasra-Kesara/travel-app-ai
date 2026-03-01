@@ -312,7 +312,7 @@ class TravelChatAgent:
         except Exception as e:
             # Fallback friendly message and log error
             print(f"chat_agent.process_message error: {e}")
-            response = ("😅 I encountered an internal error while processing your request. "
+            response = ("I encountered an internal error while processing your request. "
                         "Please try rephrasing or ask about a different topic.")
         
         # Store response in history
