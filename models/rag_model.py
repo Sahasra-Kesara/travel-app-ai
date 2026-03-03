@@ -42,7 +42,7 @@ with open(HOSPITALS_PATH, 'r', encoding='utf-8') as f:
     hospitals_data = json.load(f)['hospitals']
 
 with open(TOURISM_PATH, 'r', encoding='utf-8') as f:
-    tourism_data = json.load(f)  # tourism.json is a list directly
+    tourism_data = json.load(f) 
 
 # ---- Build global index ----
 def build_global_index():
@@ -109,10 +109,55 @@ def build_global_index():
 # ---- Search function ----
 def search_all_knowledge(query, top_k=10):
     query_embedding = embed_model.encode(query, convert_to_tensor=True)
+    q_lower = query.lower()
+
+    # small helper: check if any keyword present
+    def contains_any(text, keywords):
+        t = text.lower()
+        return any(k in t for k in keywords)
+
+    # mapping keywords to tourism categories for boosting
+    keyword_category_map = {
+        'cultural': 'Cultural & Heritage Sites',
+        'heritage': 'Cultural & Heritage Sites',
+        'temple': 'Cultural & Heritage Sites',
+        'fort': 'Cultural & Heritage Sites',
+        'ancient': 'Cultural & Heritage Sites',
+        'nature': 'Nature & Adventure',
+        'waterfall': 'Nature & Adventure',
+        'hike': 'Nature & Adventure',
+        'park': 'Nature & Adventure',
+        'beach': 'Nature & Adventure',
+        'tea': 'Tea & Spice Shops',
+        'spice': 'Tea & Spice Shops',
+        'food': 'Authentic Food Places',
+        'restaurant': 'Authentic Food Places',
+        'experience': 'Local Experiences',
+        'cooking': 'Local Experiences',
+        'village': 'Local Experiences',
+        'ayurveda': 'Ayurveda & Wellness',
+        'spa': 'Ayurveda & Wellness',
+        'atm': 'ATMs & Currency Exchange',
+        'sim': 'SIM Card / Telecom Shops',
+        'station': 'Transport Hubs'
+    }
 
     scores = []
     for item in global_knowledge_index:
         sim = util.cos_sim(query_embedding, item["embedding"]).item()
+        # boosting for tourism entries
+        if item["type"] == "tourism":
+            data = item["data"]
+            cat = data.get("category", "").lower()
+            # boost if query mentions category keywords
+            for kw, target_cat in keyword_category_map.items():
+                if kw in q_lower and target_cat.lower() == cat:
+                    sim += 0.15  # small nudge
+                    break
+            # boost when activity matches query
+            activities = " ".join(data.get("activities", []))
+            if contains_any(activities, q_lower.split()):
+                sim += 0.1
         scores.append((sim, item))
 
     results = [

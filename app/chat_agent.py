@@ -449,12 +449,48 @@ class TravelChatAgent:
     def handle_tourism_query(self, message, results):
         """Handle tourism/attraction queries"""
         tourism = results.get('tourism', [])
+        q_lower = message.lower()
         
         if not tourism:
             return "I couldn't find tourism attractions matching your query. Try asking about:\n• Natural attractions (waterfalls, beaches, national parks)\n• Heritage sites (temples, forts, ancient ruins)\n• Adventure activities (hiking, diving, wildlife)\n• Cultural experiences (tea estates, local villages)"
-        
+
+        # additional re-ranking to ensure high accuracy
+        keyword_category_map = {
+            'cultural': 'Cultural & Heritage Sites',
+            'heritage': 'Cultural & Heritage Sites',
+            'temple': 'Cultural & Heritage Sites',
+            'fort': 'Cultural & Heritage Sites',
+            'nature': 'Nature & Adventure',
+            'waterfall': 'Nature & Adventure',
+            'hike': 'Nature & Adventure',
+            'park': 'Nature & Adventure',
+            'beach': 'Nature & Adventure',
+            'tea': 'Tea & Spice Shops',
+            'spice': 'Tea & Spice Shops',
+            'food': 'Authentic Food Places',
+            'restaurant': 'Authentic Food Places',
+            'experience': 'Local Experiences',
+            'cooking': 'Local Experiences',
+            'village': 'Local Experiences',
+            'ayurveda': 'Ayurveda & Wellness',
+            'spa': 'Ayurveda & Wellness'
+        }
+
+        def score_item(item):
+            s = 0
+            cat = item.get('category', '').lower()
+            for kw, target in keyword_category_map.items():
+                if kw in q_lower and target.lower() == cat:
+                    s += 1
+            for act in item.get('activities', []):
+                if act.lower() in q_lower:
+                    s += 0.5
+            return s
+
+        ranked = sorted(tourism, key=score_item, reverse=True)
+
         response = "🎯 **Tourist Attractions & Experiences**\n\n"
-        for item in tourism[:4]:  # Show top 4
+        for item in ranked[:4]:  # Show top 4
             name = item.get('name', 'Attraction')
             category = item.get('category', 'Attraction')
             province = item.get('province', '')
