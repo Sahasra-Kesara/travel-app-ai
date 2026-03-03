@@ -454,7 +454,21 @@ class TravelChatAgent:
         if not tourism:
             return "I couldn't find tourism attractions matching your query. Try asking about:\n• Natural attractions (waterfalls, beaches, national parks)\n• Heritage sites (temples, forts, ancient ruins)\n• Adventure activities (hiking, diving, wildlife)\n• Cultural experiences (tea estates, local villages)"
 
-        # additional re-ranking to ensure high accuracy
+        # choose an intro based on keywords
+        intro = "🎯 **Tourist Attractions & Experiences**\n\n"
+        if 'waterfall' in q_lower:
+            intro = "💧 Looking for waterfalls? Here are the top spots:\n\n"
+        elif 'temple' in q_lower or 'heritage' in q_lower or 'fort' in q_lower:
+            intro = "🏯 Heritage and cultural sites you might love:\n\n"
+        elif 'tea' in q_lower:
+            intro = "🍃 Explore tea estates and spice gardens:\n\n"
+        elif 'beach' in q_lower or 'snorkel' in q_lower or 'diving' in q_lower:
+            intro = "🏖 Beach and water activities to consider:\n\n"
+        elif 'hike' in q_lower or 'park' in q_lower or 'nature' in q_lower:
+            intro = "🌲 Nature and adventure attractions ahead:\n\n"
+        elif 'ayurveda' in q_lower or 'spa' in q_lower or 'wellness' in q_lower:
+            intro = "🧘 Wellness and Ayurveda spots for relaxation:\n\n"
+        # additional boosts for matching categories
         keyword_category_map = {
             'cultural': 'Cultural & Heritage Sites',
             'heritage': 'Cultural & Heritage Sites',
@@ -489,7 +503,7 @@ class TravelChatAgent:
 
         ranked = sorted(tourism, key=score_item, reverse=True)
 
-        response = "🎯 **Tourist Attractions & Experiences**\n\n"
+        response = intro
         for item in ranked[:4]:  # Show top 4
             name = item.get('name', 'Attraction')
             category = item.get('category', 'Attraction')
