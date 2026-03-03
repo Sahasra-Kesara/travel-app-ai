@@ -18,6 +18,7 @@ DRIVERS_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'drivers.json')
 BOOKINGS_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'bookings.json')
 HOTELS_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'hotels.json')
 HOSPITALS_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'hospitals.json')
+TOURISM_PATH = os.path.join(BASE_DIR, 'knowledge_base', 'tourism.json')
 
 # -------------------------------
 # Load knowledge base
@@ -39,6 +40,9 @@ with open(HOTELS_PATH, 'r', encoding='utf-8') as f:
 
 with open(HOSPITALS_PATH, 'r', encoding='utf-8') as f:
     hospitals_data = json.load(f)['hospitals']
+
+with open(TOURISM_PATH, 'r', encoding='utf-8') as f:
+    tourism_data = json.load(f)  # tourism.json is a list directly
 
 # ---- Build global index ----
 def build_global_index():
@@ -85,6 +89,17 @@ def build_global_index():
         index.append({
             "type": "guide",
             "data": g,
+            "embedding": emb
+        })
+
+    # Tourism Locations
+    for t in tourism_data:
+        text = f"{t['name']} {t['category']} {t['province']} {t['district']} {t['description']} activities {' '.join(t.get('activities', []))}"
+        emb = embed_model.encode(text, convert_to_tensor=True)
+
+        index.append({
+            "type": "tourism",
+            "data": t,
             "embedding": emb
         })
 

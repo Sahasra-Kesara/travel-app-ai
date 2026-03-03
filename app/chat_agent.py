@@ -35,6 +35,7 @@ class TravelChatAgent:
         vehicle_keywords = ['vehicle', 'car', 'transport', 'bus', 'train', 'taxi', 'book ride']
         hospital_keywords = ['hospital', 'doctor', 'medical', 'emergency', 'health', 'clinic']
         trip_keywords = ['trip', 'plan', 'itinerary', 'days', 'when', 'best time']
+        tourism_keywords = ['attraction', 'tourist', 'heritage', 'adventure', 'nature', 'culture', 'heritage site', 'tea estate']
         route_keywords = ['route', 'direction', 'how to get', 'travel from', 'way to', 'path', 'to', 'from']
         
         query_type = 'general'
@@ -74,6 +75,11 @@ class TravelChatAgent:
                 query_type = 'trip_planning'
                 break
         
+        for keyword in tourism_keywords:
+            if keyword in message_lower:
+                query_type = 'tourism'
+                break
+        
         return query_type
     
     def search_knowledge_base(self, message):
@@ -91,6 +97,7 @@ class TravelChatAgent:
                 'bookings': [],
                 'hotels': [],
                 'hospitals': [],
+                'tourism': [],
                 'routes': []
             }
 
@@ -121,6 +128,7 @@ class TravelChatAgent:
                 'bookings': [],
                 'hotels': [],
                 'hospitals': [],
+                'tourism': [],
                 'routes': []
             }
     
@@ -140,6 +148,8 @@ class TravelChatAgent:
             return self.handle_vehicles_query(message, search_results)
         elif query_type == 'hospitals':
             return self.handle_hospitals_query(message, search_results)
+        elif query_type == 'tourism':
+            return self.handle_tourism_query(message, search_results)
         elif query_type == 'trip_planning':
             return self.handle_trip_planning_query(message, search_results)
         else:
@@ -434,6 +444,34 @@ class TravelChatAgent:
                 response += f"• {dest.get('name', 'Destination')} ({dest.get('district', '')})\n"
         
         response += "\nWould you like me to suggest a specific itinerary?"
+        return response
+    
+    def handle_tourism_query(self, message, results):
+        """Handle tourism/attraction queries"""
+        tourism = results.get('tourism', [])
+        
+        if not tourism:
+            return "I couldn't find tourism attractions matching your query. Try asking about:\n• Natural attractions (waterfalls, beaches, national parks)\n• Heritage sites (temples, forts, ancient ruins)\n• Adventure activities (hiking, diving, wildlife)\n• Cultural experiences (tea estates, local villages)"
+        
+        response = "🎯 **Tourist Attractions & Experiences**\n\n"
+        for item in tourism[:4]:  # Show top 4
+            name = item.get('name', 'Attraction')
+            category = item.get('category', 'Attraction')
+            province = item.get('province', '')
+            district = item.get('district', '')
+            description = item.get('description', '')[:80]
+            activities = item.get('activities', [])[:2]
+            rating = item.get('rating', 4.5)
+            
+            response += f"**{name}**\n"
+            response += f"📍 {category} | {district}, {province}\n"
+            response += f"⭐ Rating: {rating}/5\n"
+            response += f"📝 {description}...\n"
+            if activities:
+                response += f"🎯 Activities: {', '.join(activities)}\n"
+            response += "\n"
+        
+        response += "Want more details? Ask about specific attractions or activities!"
         return response
     
     def handle_general_query(self, message, results):

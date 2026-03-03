@@ -45,7 +45,8 @@ def search():
         "drivers": [],
         "bookings": [],
         "hotels": [],
-        "hospitals": []
+        "hospitals": [],
+        "tourism": []
     }
 
     map_items = []
