@@ -1,0 +1,5465 @@
+[
+  {
+    "id": "SL001",
+    "name": "Sigiriya Rock Fortress",
+    "category": "Cultural & Heritage Sites",
+    "province": "Central",
+    "district": "Matale",
+    "description": "Ancient rock fortress and UNESCO World Heritage Site rising 200m above the surrounding plains. Features 5th-century frescoes, mirror wall, and lion paws gateway. One of Sri Lanka's most iconic landmarks.",
+    "coordinates": { "lat": 7.957, "lon": 80.7603 },
+    "contact": {
+      "phone": "+94 66 228 6248",
+      "email": "sigiriya@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk/sigiriya"
+    },
+    "opening_hours": "07:00 - 17:30 daily",
+    "entry_fee_lkr": 4500,
+    "best_time_to_visit": "Early morning 7:00 AM to avoid heat and crowds",
+    "activities": [
+      "Rock climbing",
+      "Fresco viewing",
+      "Garden exploration",
+      "Photography",
+      "Guided historical tours"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Adventure seekers",
+      "Photographers",
+      "UNESCO enthusiasts"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.9570,80.7603",
+    "rating": 4.8,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "French", "Australian", "Chinese"]
+  },
+  {
+    "id": "SL002",
+    "name": "Temple of the Sacred Tooth Relic (Sri Dalada Maligawa)",
+    "category": "Cultural & Heritage Sites",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Sri Lanka's most sacred Buddhist temple housing the relic of the tooth of the Buddha. A UNESCO World Heritage Site and center of Esala Perahera festival. Dress code strictly required.",
+    "coordinates": { "lat": 7.2936, "lon": 80.6413 },
+    "contact": {
+      "phone": "+94 81 223 4226",
+      "email": "info@sridaladamaligawa.lk",
+      "website": "https://www.sridaladamaligawa.lk"
+    },
+    "opening_hours": "05:30 - 20:00 daily (Puja times: 5:30, 9:30, 18:30)",
+    "entry_fee_lkr": 1500,
+    "best_time_to_visit": "Morning puja at 5:30 AM or during Esala Perahera (July/August)",
+    "activities": [
+      "Religious ceremony attendance",
+      "Museum visit",
+      "Photography (restricted areas)",
+      "Cultural immersion"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "Culture seekers",
+      "History lovers",
+      "Family travelers"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.2936,80.6413",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Chinese", "Japanese", "Thai", "UK"]
+  },
+  {
+    "id": "SL003",
+    "name": "Pedro Tea Estate",
+    "category": "Tea & Spice Shops",
+    "province": "Central",
+    "district": "Nuwara Eliya",
+    "description": "One of Sri Lanka's premier high-grown tea plantations offering factory tours and tea tasting experiences. Located in the picturesque hills of Nuwara Eliya at an elevation of 1,800m.",
+    "coordinates": { "lat": 6.9708, "lon": 80.7829 },
+    "contact": {
+      "phone": "+94 52 222 1234",
+      "email": "pedro@bogawantalawa.com",
+      "website": "https://www.bogawantalawa.com"
+    },
+    "opening_hours": "08:00 - 16:30 Mon-Sat",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Morning for factory tour when production is active",
+    "activities": [
+      "Factory tour",
+      "Tea tasting",
+      "Tea plucking experience",
+      "Photography",
+      "Tea purchase"
+    ],
+    "target_tourist_type": [
+      "Tea enthusiasts",
+      "Foodies",
+      "Culture seekers",
+      "Family travelers"
+    ],
+    "average_visit_duration": "1.5-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9708,80.7829",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Japanese", "Australian", "Indian"]
+  },
+  {
+    "id": "SL004",
+    "name": "Mlesna Tea Centre",
+    "category": "Tea & Spice Shops",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Premium Ceylon tea boutique offering an extensive range of finest Ceylon teas, gift packs, and tea accessories. Perfect for high-end tea gifting and souvenir shopping.",
+    "coordinates": { "lat": 6.9271, "lon": 79.8612 },
+    "contact": {
+      "phone": "+94 11 258 7688",
+      "email": "info@mlesna.com",
+      "website": "https://www.mlesna.com"
+    },
+    "opening_hours": "09:00 - 20:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Any time; weekday mornings for personal attention",
+    "activities": [
+      "Tea tasting",
+      "Gift shopping",
+      "Tea blending consultation",
+      "Premium packaging selection"
+    ],
+    "target_tourist_type": [
+      "Luxury shoppers",
+      "Tea enthusiasts",
+      "Business travelers",
+      "Gift seekers"
+    ],
+    "average_visit_duration": "30-60 minutes",
+    "google_maps_link": "https://maps.google.com/?q=6.9271,79.8612",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["UK", "German", "French", "Japanese", "Australian"]
+  },
+  {
+    "id": "SL005",
+    "name": "New Ranweli Spice Garden",
+    "category": "Tea & Spice Shops",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Traditional spice garden and herbal products center offering guided tours through cinnamon, cardamom, pepper, nutmeg, and medicinal herb plantations. Features Ayurvedic treatments and herbal product sales.",
+    "coordinates": { "lat": 7.2906, "lon": 80.6337 },
+    "contact": {
+      "phone": "+94 81 220 4555",
+      "email": "ranweli@spicegarden.lk",
+      "website": "https://www.ranwelispicegarden.com"
+    },
+    "opening_hours": "08:00 - 17:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning for guided tours",
+    "activities": [
+      "Guided spice tour",
+      "Herbal product shopping",
+      "Ayurvedic demonstration",
+      "Cooking spice tasting"
+    ],
+    "target_tourist_type": [
+      "Nature lovers",
+      "Foodies",
+      "Wellness seekers",
+      "Culture enthusiasts"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.2906,80.6337",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "German", "Chinese", "UK", "Italian"]
+  },
+  {
+    "id": "SL006",
+    "name": "Yala National Park",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Hambantota",
+    "description": "Sri Lanka's most visited and second largest national park, famous for the world's highest density of leopards. Also home to elephants, sloth bears, crocodiles, and 215+ bird species.",
+    "coordinates": { "lat": 6.3728, "lon": 81.5166 },
+    "contact": {
+      "phone": "+94 47 222 0114",
+      "email": "yala@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily (closed Sept-Oct)",
+    "entry_fee_lkr": 6000,
+    "best_time_to_visit": "February to July for best wildlife sightings",
+    "activities": [
+      "Safari jeep tour",
+      "Bird watching",
+      "Photography",
+      "Leopard spotting",
+      "Elephant watching"
+    ],
+    "target_tourist_type": [
+      "Wildlife enthusiasts",
+      "Photographers",
+      "Adventure seekers",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "4-6 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.3728,81.5166",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "Australian", "French"]
+  },
+  {
+    "id": "SL007",
+    "name": "Mirissa Whale Watching",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Matara",
+    "description": "World-class whale watching destination offering sightings of blue whales, sperm whales, and spinner dolphins. Mirissa is considered one of the best whale watching spots in the world.",
+    "coordinates": { "lat": 5.9483, "lon": 80.4716 },
+    "contact": {
+      "phone": "+94 41 225 0777",
+      "email": "info@mirissawhalewatch.com",
+      "website": "https://www.mirissawhalewatch.com"
+    },
+    "opening_hours": "Departures at 06:30 AM daily (Nov-April season)",
+    "entry_fee_lkr": 7500,
+    "best_time_to_visit": "December to April for best whale sightings",
+    "activities": [
+      "Whale watching",
+      "Dolphin watching",
+      "Snorkeling",
+      "Boat tour",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Wildlife enthusiasts",
+      "Adventure seekers",
+      "Families",
+      "Photographers"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=5.9483,80.4716",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "Australian", "Scandinavian"]
+  },
+  {
+    "id": "SL008",
+    "name": "Arugam Bay Surf School",
+    "category": "Nature & Adventure",
+    "province": "Eastern",
+    "district": "Ampara",
+    "description": "World-renowned surf destination and one of Asia's top surfing spots. Offers surf lessons for beginners and advanced surfers. The bay hosts international surf competitions.",
+    "coordinates": { "lat": 6.8453, "lon": 81.836 },
+    "contact": {
+      "phone": "+94 63 224 8170",
+      "email": "surf@arugambay.lk",
+      "website": "https://www.arugambaysurfschool.com"
+    },
+    "opening_hours": "07:00 - 17:00 daily (April-September peak season)",
+    "entry_fee_lkr": 3500,
+    "best_time_to_visit": "May to September for best surf conditions",
+    "activities": [
+      "Surfing lessons",
+      "Board rental",
+      "Surf competitions",
+      "Beach volleyball",
+      "Swimming"
+    ],
+    "target_tourist_type": [
+      "Surfers",
+      "Adventure seekers",
+      "Backpackers",
+      "Young travelers"
+    ],
+    "average_visit_duration": "Half day to full day",
+    "google_maps_link": "https://maps.google.com/?q=6.8453,81.8360",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["Australian", "UK", "German", "Israeli", "French"]
+  },
+  {
+    "id": "SL009",
+    "name": "Siddhalepa Ayurveda Resort",
+    "category": "Ayurveda & Wellness",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Sri Lanka's most prestigious Ayurvedic resort chain offering authentic treatments, herbal therapies, and wellness programs. Certified by the Ministry of Health with qualified Ayurvedic physicians.",
+    "coordinates": { "lat": 6.8202, "lon": 79.9006 },
+    "contact": {
+      "phone": "+94 11 271 4400",
+      "email": "ayurveda@siddhalepa.com",
+      "website": "https://www.siddhalepa.com"
+    },
+    "opening_hours": "08:00 - 20:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Year-round; book treatments in advance",
+    "activities": [
+      "Panchakarma therapy",
+      "Herbal oil massage",
+      "Yoga sessions",
+      "Meditation",
+      "Dietary consultation"
+    ],
+    "target_tourist_type": [
+      "Wellness seekers",
+      "Luxury travelers",
+      "Medical tourists",
+      "Retirees"
+    ],
+    "average_visit_duration": "2-7 days (residential) or 2-3 hours (day treatment)",
+    "google_maps_link": "https://maps.google.com/?q=6.8202,79.9006",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["German", "UK", "Indian", "French", "Italian"]
+  },
+  {
+    "id": "SL010",
+    "name": "Galle Fort",
+    "category": "Cultural & Heritage Sites",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "16th-century Dutch colonial fort and UNESCO World Heritage Site. Features intact ramparts, cobblestone streets, colonial architecture, boutique shops, and restaurants within the fort walls.",
+    "coordinates": { "lat": 6.0269, "lon": 80.2167 },
+    "contact": {
+      "phone": "+94 91 222 2847",
+      "email": "gallefort@ccf.gov.lk",
+      "website": "https://www.gallefort.com"
+    },
+    "opening_hours": "Open 24 hours (fort walls); shops 09:00-20:00",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Early morning or sunset for photography; December-March for best weather",
+    "activities": [
+      "Walking tour",
+      "Rampart walk",
+      "Lighthouse visit",
+      "Boutique shopping",
+      "Café hopping",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Couples",
+      "Foodies",
+      "Photographers",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.0269,80.2167",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL011",
+    "name": "Polonnaruwa Ancient City",
+    "category": "Cultural & Heritage Sites",
+    "province": "North Central",
+    "district": "Polonnaruwa",
+    "description": "UNESCO World Heritage ancient capital featuring remarkable stone sculptures, Buddhist temples, royal palaces, and the famous Gal Vihara rock temple. The medieval capital of Sri Lanka.",
+    "coordinates": { "lat": 7.9403, "lon": 81.0188 },
+    "contact": {
+      "phone": "+94 27 222 2455",
+      "email": "polonnaruwa@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "07:00 - 18:00 daily",
+    "entry_fee_lkr": 4500,
+    "best_time_to_visit": "Early morning to avoid heat; May-October dry season",
+    "activities": [
+      "Cycling through ruins",
+      "Archaeological site tour",
+      "Photography",
+      "Museum visit",
+      "Guided history tour"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "UNESCO enthusiasts",
+      "Cyclists",
+      "Archaeologists"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.9403,81.0188",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["Japanese", "German", "UK", "French", "Indian"]
+  },
+  {
+    "id": "SL012",
+    "name": "Anuradhapura Sacred City",
+    "category": "Cultural & Heritage Sites",
+    "province": "North Central",
+    "district": "Anuradhapura",
+    "description": "Sri Lanka's first ancient capital and UNESCO World Heritage Site with stupas, ancient pools, and the sacred Bodhi Tree (oldest documented tree in the world). A living pilgrimage city.",
+    "coordinates": { "lat": 8.3114, "lon": 80.4037 },
+    "contact": {
+      "phone": "+94 25 222 2266",
+      "email": "info@anuradhapura.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "Open 24 hours (Bodhi Tree area); museums 09:00-17:00",
+    "entry_fee_lkr": 4500,
+    "best_time_to_visit": "Early morning for pilgrimage atmosphere; November-April dry season",
+    "activities": [
+      "Bodhi Tree visit",
+      "Stupa exploration",
+      "Cycling",
+      "Archaeological museum",
+      "Pilgrimage walk"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "History lovers",
+      "UNESCO enthusiasts",
+      "Cyclists"
+    ],
+    "average_visit_duration": "Full day",
+    "google_maps_link": "https://maps.google.com/?q=8.3114,80.4037",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Japanese", "Thai", "UK", "German"]
+  },
+  {
+    "id": "SL013",
+    "name": "Adams Peak (Sri Pada)",
+    "category": "Nature & Adventure",
+    "province": "Sabaragamuwa",
+    "district": "Ratnapura",
+    "description": "Sacred conical mountain with a summit footprint revered by Buddhists, Hindus, Muslims, and Christians. The pilgrimage season climb offers spectacular sunrise views from 2,243m altitude.",
+    "coordinates": { "lat": 6.8096, "lon": 80.4994 },
+    "contact": {
+      "phone": "+94 45 223 5060",
+      "email": "sripada@pilgrimage.lk",
+      "website": "https://www.sripada.org"
+    },
+    "opening_hours": "Pilgrimage season: December to May (night climbs)",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "December to May for pilgrimage season; full moon nights most crowded",
+    "activities": [
+      "Night pilgrimage climb",
+      "Sunrise viewing",
+      "Photography",
+      "Religious offerings",
+      "Nature trekking"
+    ],
+    "target_tourist_type": [
+      "Adventure seekers",
+      "Religious pilgrims",
+      "Hikers",
+      "Photographers"
+    ],
+    "average_visit_duration": "6-8 hours (overnight)",
+    "google_maps_link": "https://maps.google.com/?q=6.8096,80.4994",
+    "rating": 4.8,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "Australian", "Japanese"]
+  },
+  {
+    "id": "SL014",
+    "name": "Horton Plains National Park",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Nuwara Eliya",
+    "description": "UNESCO World Heritage montane grassland plateau at 2,100m. Features the dramatic World's End cliff drop and Baker's Falls waterfall. Home to sambar deer, leopards, and rare birds.",
+    "coordinates": { "lat": 6.8021, "lon": 80.8038 },
+    "contact": {
+      "phone": "+94 52 222 3099",
+      "email": "hortonplains@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 3800,
+    "best_time_to_visit": "Early morning (6-9 AM) to avoid mist; January-April dry season",
+    "activities": [
+      "World's End hike",
+      "Baker's Falls walk",
+      "Bird watching",
+      "Photography",
+      "Wildlife spotting"
+    ],
+    "target_tourist_type": [
+      "Hikers",
+      "Nature lovers",
+      "Photographers",
+      "Wildlife enthusiasts"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8021,80.8038",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "Australian", "French"]
+  },
+  {
+    "id": "SL015",
+    "name": "Sinharaja Forest Reserve",
+    "category": "Nature & Adventure",
+    "province": "Sabaragamuwa",
+    "district": "Ratnapura",
+    "description": "Sri Lanka's last remaining lowland tropical rainforest and UNESCO World Heritage Site. Extraordinary biodiversity including 60% endemic trees, leopards, and rare purple-faced langurs.",
+    "coordinates": { "lat": 6.4013, "lon": 80.5108 },
+    "contact": {
+      "phone": "+94 45 225 5033",
+      "email": "sinharaja@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 17:00 daily (closed Tuesdays for maintenance)",
+    "entry_fee_lkr": 1500,
+    "best_time_to_visit": "August-September and January-February (drier periods)",
+    "activities": [
+      "Guided jungle trek",
+      "Bird watching",
+      "Endemic species spotting",
+      "Photography",
+      "Research visits"
+    ],
+    "target_tourist_type": [
+      "Nature lovers",
+      "Birdwatchers",
+      "Scientists",
+      "Eco-tourists"
+    ],
+    "average_visit_duration": "4-6 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.4013,80.5108",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Dutch", "Japanese", "Australian"]
+  },
+  {
+    "id": "SL016",
+    "name": "Ella Rock Hike",
+    "category": "Nature & Adventure",
+    "province": "Uva",
+    "district": "Badulla",
+    "description": "One of Sri Lanka's most rewarding hikes offering panoramic views over Ella Gap, tea plantations, and surrounding valleys. The 4km trail passes through rice paddies, jungle, and tea estates.",
+    "coordinates": { "lat": 6.8667, "lon": 81.0466 },
+    "contact": {
+      "phone": "+94 57 222 8000",
+      "email": "tourism@ella.lk",
+      "website": "https://www.ella.lk"
+    },
+    "opening_hours": "Best started by 06:00 AM",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Early morning for clear views; May-September dry season",
+    "activities": [
+      "Hiking",
+      "Photography",
+      "Bird watching",
+      "Tea estate walking",
+      "Sunrise viewing"
+    ],
+    "target_tourist_type": [
+      "Hikers",
+      "Backpackers",
+      "Photographers",
+      "Adventure seekers"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8667,81.0466",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Australian", "Israeli", "French"]
+  },
+  {
+    "id": "SL017",
+    "name": "Nine Arches Bridge (Demodara)",
+    "category": "Nature & Adventure",
+    "province": "Uva",
+    "district": "Badulla",
+    "description": "Iconic colonial-era railway viaduct bridge built entirely of stone and brick without steel, standing 24m high with nine elegant arches. One of Sri Lanka's most photographed locations.",
+    "coordinates": { "lat": 6.8748, "lon": 81.0597 },
+    "contact": {
+      "phone": "+94 57 222 8000",
+      "email": "info@ella-tourism.lk",
+      "website": "https://www.ella.lk"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Train passes at approximately 9:15 AM and 3:00 PM daily",
+    "activities": [
+      "Photography",
+      "Train spotting",
+      "Hiking",
+      "Viewpoint exploration"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Backpackers",
+      "Train enthusiasts",
+      "Couples"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8748,81.0597",
+    "rating": 4.8,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Australian", "Japanese"]
+  },
+  {
+    "id": "SL018",
+    "name": "Colombo National Museum",
+    "category": "Cultural & Heritage Sites",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "The largest museum in Sri Lanka housing a vast collection of royal regalia, ancient sculptures, masks, traditional handicrafts, and natural history exhibits spanning 2,500 years of Sri Lankan civilization.",
+    "coordinates": { "lat": 6.9022, "lon": 79.8619 },
+    "contact": {
+      "phone": "+94 11 269 5366",
+      "email": "director@museum.gov.lk",
+      "website": "https://www.museum.gov.lk"
+    },
+    "opening_hours": "09:00 - 17:00 daily (closed Fridays)",
+    "entry_fee_lkr": 2000,
+    "best_time_to_visit": "Weekday mornings for fewer crowds",
+    "activities": [
+      "Museum tour",
+      "Royal collection viewing",
+      "Natural history exhibits",
+      "Archaeological gallery",
+      "Temporary exhibitions"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Students",
+      "Culture seekers",
+      "Families"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9022,79.8619",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "Japanese", "Chinese"]
+  },
+  {
+    "id": "SL019",
+    "name": "Kandy Lake & Royal Palace Area",
+    "category": "Cultural & Heritage Sites",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Scenic artificial lake built in 1807 by the last Kandyan king, surrounded by the royal palace, cloud wall, and the sacred tooth temple. A tranquil heart of the ancient Kandyan Kingdom.",
+    "coordinates": { "lat": 7.2931, "lon": 80.6408 },
+    "contact": {
+      "phone": "+94 81 222 2661",
+      "email": "tourism@kandy.gov.lk",
+      "website": "https://www.kandytourism.lk"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Early morning or evening for lakeside walks",
+    "activities": [
+      "Lakeside walking",
+      "Photography",
+      "Royal Palace visit",
+      "Cultural show",
+      "Boat rides"
+    ],
+    "target_tourist_type": [
+      "Culture seekers",
+      "Couples",
+      "Families",
+      "Photographers"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.2931,80.6408",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "Chinese", "Australian"]
+  },
+  {
+    "id": "SL020",
+    "name": "Dambulla Cave Temple",
+    "category": "Cultural & Heritage Sites",
+    "province": "Central",
+    "district": "Matale",
+    "description": "The largest and best-preserved cave temple complex in Sri Lanka, a UNESCO World Heritage Site with 153 statues of Buddha, 3 statues of Sri Lankan kings, and 4 statues of gods across five caves.",
+    "coordinates": { "lat": 7.8567, "lon": 80.6488 },
+    "contact": {
+      "phone": "+94 66 228 4863",
+      "email": "dambulla@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "07:00 - 19:00 daily",
+    "entry_fee_lkr": 1500,
+    "best_time_to_visit": "Morning for cooler temperatures and better light",
+    "activities": [
+      "Cave temple tour",
+      "Photography",
+      "Religious ceremonies",
+      "Golden temple visit",
+      "Buddhist art appreciation"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "History lovers",
+      "Culture seekers",
+      "Photographers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.8567,80.6488",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Japanese", "UK", "German", "Indian", "Chinese"]
+  },
+  {
+    "id": "SL021",
+    "name": "Udawalawe National Park",
+    "category": "Nature & Adventure",
+    "province": "Uva",
+    "district": "Monaragala",
+    "description": "Famous for large herds of wild Sri Lankan elephants. One of the best places in Asia to see wild elephants in their natural habitat, with over 600 resident elephants.",
+    "coordinates": { "lat": 6.4709, "lon": 80.8973 },
+    "contact": {
+      "phone": "+94 47 223 3068",
+      "email": "udawalawe@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 4500,
+    "best_time_to_visit": "May-September for dry season and best elephant viewing",
+    "activities": [
+      "Elephant safari",
+      "Jeep tour",
+      "Bird watching",
+      "Photography",
+      "Wildlife documentary watching"
+    ],
+    "target_tourist_type": [
+      "Wildlife enthusiasts",
+      "Families",
+      "Photographers",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.4709,80.8973",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "Australian", "Indian"]
+  },
+  {
+    "id": "SL022",
+    "name": "Elephant Transit Home Udawalawe",
+    "category": "Nature & Adventure",
+    "province": "Uva",
+    "district": "Monaragala",
+    "description": "Government-run orphanage rehabilitating orphaned baby elephants for reintroduction to the wild. Feeding time (daily at 9 AM, noon, 3 PM, 6 PM) draws visitors from around the world.",
+    "coordinates": { "lat": 6.4373, "lon": 80.8763 },
+    "contact": {
+      "phone": "+94 47 223 5154",
+      "email": "eth@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "08:30 - 17:30 daily",
+    "entry_fee_lkr": 1000,
+    "best_time_to_visit": "Feeding sessions: 09:00, 12:00, 15:00, 18:00",
+    "activities": [
+      "Baby elephant feeding watching",
+      "Photography",
+      "Educational tour",
+      "Conservation talks"
+    ],
+    "target_tourist_type": [
+      "Families",
+      "Wildlife lovers",
+      "Children",
+      "Conservation enthusiasts"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.4373,80.8763",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Dutch", "Australian", "Japanese"]
+  },
+  {
+    "id": "SL023",
+    "name": "Pinnawala Elephant Orphanage",
+    "category": "Nature & Adventure",
+    "province": "Sabaragamuwa",
+    "district": "Kegalle",
+    "description": "World's largest captive elephant herd with 80+ elephants. Visitors can observe feeding and bathing in the Maha Oya River. One of Sri Lanka's most visited tourist attractions.",
+    "coordinates": { "lat": 7.3003, "lon": 80.3857 },
+    "contact": {
+      "phone": "+94 35 226 5284",
+      "email": "pinnawala@dfz.gov.lk",
+      "website": "https://www.pinnawalaelephantorphanage.com"
+    },
+    "opening_hours": "08:30 - 17:30 daily",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "Bathing times: 10:00 AM and 2:00 PM",
+    "activities": [
+      "Elephant bathing viewing",
+      "Feeding time watching",
+      "Photography",
+      "Souvenir shopping"
+    ],
+    "target_tourist_type": [
+      "Families",
+      "Children",
+      "Wildlife enthusiasts",
+      "Day-trippers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.3003,80.3857",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "Chinese", "French"]
+  },
+  {
+    "id": "SL024",
+    "name": "Minneriya National Park",
+    "category": "Nature & Adventure",
+    "province": "North Central",
+    "district": "Polonnaruwa",
+    "description": "Home to The Gathering – one of the largest congregation of Asian elephants in the world (July-September). Up to 300 elephants gather at Minneriya Tank when surrounding areas dry up.",
+    "coordinates": { "lat": 8.0408, "lon": 80.8996 },
+    "contact": {
+      "phone": "+94 27 224 6264",
+      "email": "minneriya@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 4000,
+    "best_time_to_visit": "July-September for The Gathering elephant congregation",
+    "activities": [
+      "Elephant gathering safari",
+      "Bird watching",
+      "Jeep tour",
+      "Photography",
+      "Tank (reservoir) viewing"
+    ],
+    "target_tourist_type": [
+      "Wildlife enthusiasts",
+      "Photographers",
+      "Nature lovers",
+      "Families"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.0408,80.8996",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL025",
+    "name": "Wilpattu National Park",
+    "category": "Nature & Adventure",
+    "province": "North Western",
+    "district": "Puttalam",
+    "description": "Sri Lanka's largest national park, known for its unique natural lakes (villus) and the highest density of leopards after Yala. Recently reopened after decades and still offers uncrowded safari experiences.",
+    "coordinates": { "lat": 8.4553, "lon": 80.0221 },
+    "contact": {
+      "phone": "+94 32 222 3043",
+      "email": "wilpattu@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 4500,
+    "best_time_to_visit": "February to October dry season",
+    "activities": [
+      "Leopard spotting safari",
+      "Elephant watching",
+      "Bird watching",
+      "Jeep tour",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Wildlife enthusiasts",
+      "Photographers",
+      "Adventure seekers",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.4553,80.0221",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL026",
+    "name": "Ritigala Forest Monastery",
+    "category": "Cultural & Heritage Sites",
+    "province": "North Central",
+    "district": "Anuradhapura",
+    "description": "Ancient forest monastery ruins hidden deep in a designated strict nature reserve. A mysterious atmospheric site rarely visited, featuring unique double-platform meditation walks built by forest-dwelling monks.",
+    "coordinates": { "lat": 8.2325, "lon": 80.6821 },
+    "contact": {
+      "phone": "+94 25 222 2266",
+      "email": "ccf@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "07:00 - 17:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Early morning; May-September dry season",
+    "activities": [
+      "Archaeological exploration",
+      "Jungle trekking",
+      "Photography",
+      "Bird watching",
+      "Meditation"
+    ],
+    "target_tourist_type": [
+      "Off-beat travelers",
+      "History lovers",
+      "Hikers",
+      "Photographers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.2325,80.6821",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Dutch", "French", "Japanese"]
+  },
+  {
+    "id": "SL027",
+    "name": "Negombo Fish Market",
+    "category": "Authentic Food Places",
+    "province": "Western",
+    "district": "Gampaha",
+    "description": "One of Sri Lanka's most vibrant morning fish markets where fishermen bring in fresh catch from the Indian Ocean. Authentic local experience offering insight into the fishing community.",
+    "coordinates": { "lat": 7.2081, "lon": 79.8358 },
+    "contact": {
+      "phone": "+94 31 222 2222",
+      "email": "negombo@tourism.gov.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "04:00 - 10:00 AM (peak activity 5-7 AM)",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Early morning 5:00-7:00 AM when boats return",
+    "activities": [
+      "Fish market exploration",
+      "Photography",
+      "Local interaction",
+      "Fresh seafood breakfast",
+      "Boat watching"
+    ],
+    "target_tourist_type": [
+      "Foodies",
+      "Photographers",
+      "Culture seekers",
+      "Adventure seekers"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.2081,79.8358",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Italian", "Dutch"]
+  },
+  {
+    "id": "SL028",
+    "name": "Hela Bojun Authentic Sri Lankan Food Hall",
+    "category": "Authentic Food Places",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Government-backed women-run food court serving authentic traditional Sri Lankan home-cooked food at very affordable prices. The best place in Colombo to try genuine local cuisine.",
+    "coordinates": { "lat": 6.9197, "lon": 79.8622 },
+    "contact": {
+      "phone": "+94 11 267 4444",
+      "email": "helabojun@mpi.gov.lk",
+      "website": "https://www.helabojun.lk"
+    },
+    "opening_hours": "08:00 - 20:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Lunchtime for freshest food variety",
+    "activities": [
+      "Sri Lankan cuisine tasting",
+      "Cooking observation",
+      "Street food exploration",
+      "Cultural dining"
+    ],
+    "target_tourist_type": [
+      "Foodies",
+      "Budget travelers",
+      "Backpackers",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "45-60 minutes",
+    "google_maps_link": "https://maps.google.com/?q=6.9197,79.8622",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "French", "Australian"]
+  },
+  {
+    "id": "SL029",
+    "name": "Palmyrah Restaurant Jaffna",
+    "category": "Authentic Food Places",
+    "province": "Northern",
+    "district": "Jaffna",
+    "description": "Iconic Jaffna restaurant serving authentic Northern Tamil cuisine including Jaffna crab curry, mutton rolls, and traditional Jaffna rice and curry. A culinary institution since 1956.",
+    "coordinates": { "lat": 9.6615, "lon": 80.0255 },
+    "contact": {
+      "phone": "+94 21 222 2783",
+      "email": "palmyrah@jaffnarestaurant.lk",
+      "website": "https://www.palmyrahjaffna.com"
+    },
+    "opening_hours": "11:00 - 22:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Lunch or early evening",
+    "activities": [
+      "Jaffna cuisine tasting",
+      "Crab curry experience",
+      "Cultural dining",
+      "Culinary tourism"
+    ],
+    "target_tourist_type": [
+      "Foodies",
+      "Culture seekers",
+      "Culinary travelers",
+      "Adventure travelers"
+    ],
+    "average_visit_duration": "1-1.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=9.6615,80.0255",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["Indian", "UK", "German", "Australian", "Singaporean"]
+  },
+  {
+    "id": "SL030",
+    "name": "Ministry of Crab Colombo",
+    "category": "Authentic Food Places",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Award-winning restaurant in a restored 1904 Dutch Hospital celebrating Sri Lanka's lagoon crabs and seafood. Founded by cricket legends Kumar Sangakkara and Mahela Jayawardena. Asia's 50 Best Restaurants listed.",
+    "coordinates": { "lat": 6.9368, "lon": 79.8429 },
+    "contact": {
+      "phone": "+94 11 234 2722",
+      "email": "info@ministryofcrab.com",
+      "website": "https://www.ministryofcrab.com"
+    },
+    "opening_hours": "12:00 - 15:00, 19:00 - 23:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Dinner with advance reservation",
+    "activities": [
+      "Fine dining",
+      "Crab feast",
+      "Cocktail experience",
+      "Celebrity restaurant visit"
+    ],
+    "target_tourist_type": [
+      "Luxury travelers",
+      "Foodies",
+      "Business travelers",
+      "Couples"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9368,79.8429",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["UK", "Australian", "Japanese", "Singaporean", "US"]
+  },
+  {
+    "id": "SL031",
+    "name": "Jaffna Lagoon Fishing Tour",
+    "category": "Local Experiences",
+    "province": "Northern",
+    "district": "Jaffna",
+    "description": "Traditional fishing experience with local Tamil fishermen on Jaffna Lagoon. Learn ancient fishing techniques, cast nets, and enjoy fresh catch cooked on the boat or at the village.",
+    "coordinates": { "lat": 9.6685, "lon": 80.0065 },
+    "contact": {
+      "phone": "+94 21 222 4501",
+      "email": "jaffnatours@tourism.gov.lk",
+      "website": "https://www.jaffnatourism.com"
+    },
+    "opening_hours": "05:00 - 10:00 AM and 15:00 - 18:00 PM",
+    "entry_fee_lkr": 2500,
+    "best_time_to_visit": "Early morning at sunrise for best experience",
+    "activities": [
+      "Traditional fishing",
+      "Net casting",
+      "Fresh fish cooking",
+      "Lagoon boat tour",
+      "Bird watching"
+    ],
+    "target_tourist_type": [
+      "Adventure seekers",
+      "Culture seekers",
+      "Foodies",
+      "Photographers"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=9.6685,80.0065",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  },
+  {
+    "id": "SL032",
+    "name": "Weligama Surf School",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Matara",
+    "description": "Sri Lanka's most beginner-friendly surf spot with a long sandy beach and gentle rolling waves. Multiple surf schools offer lessons for complete beginners. Stilt fishermen add to the picturesque backdrop.",
+    "coordinates": { "lat": 5.9731, "lon": 80.4285 },
+    "contact": {
+      "phone": "+94 41 225 0777",
+      "email": "surf@weligama.lk",
+      "website": "https://www.weligamasurfschool.com"
+    },
+    "opening_hours": "07:00 - 17:00 daily",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "November to April for best surf conditions",
+    "activities": [
+      "Beginner surf lessons",
+      "Board rental",
+      "Stand up paddling",
+      "Stilt fishermen photography"
+    ],
+    "target_tourist_type": [
+      "Beginner surfers",
+      "Couples",
+      "Families",
+      "Beach lovers"
+    ],
+    "average_visit_duration": "2-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=5.9731,80.4285",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["Australian", "UK", "German", "French", "Italian"]
+  },
+  {
+    "id": "SL033",
+    "name": "Ratnapura Gem Museum & Market",
+    "category": "Cultural & Heritage Sites",
+    "province": "Sabaragamuwa",
+    "district": "Ratnapura",
+    "description": "Sri Lanka is the world's gem capital and Ratnapura is its gem city. The National Gem & Jewellery Authority museum displays world-famous blue sapphires, rubies, and cat's eyes. Adjacent market offers genuine gems.",
+    "coordinates": { "lat": 6.6833, "lon": 80.3956 },
+    "contact": {
+      "phone": "+94 45 222 2200",
+      "email": "info@ngja.gov.lk",
+      "website": "https://www.ngja.gov.lk"
+    },
+    "opening_hours": "09:00 - 17:00 Mon-Fri; Market: 08:00-18:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Weekday mornings for gem trading activity",
+    "activities": [
+      "Gem museum tour",
+      "Gem trading observation",
+      "Jewelry shopping",
+      "Mine visit",
+      "Gemstone identification"
+    ],
+    "target_tourist_type": [
+      "Luxury shoppers",
+      "Gem enthusiasts",
+      "Culture seekers",
+      "Collectors"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.6833,80.3956",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["Indian", "Chinese", "Japanese", "UK", "German"]
+  },
+  {
+    "id": "SL034",
+    "name": "Colombo City Cooking Class",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Hands-on Sri Lankan cooking classes in local homes or boutique venues. Learn to prepare rice and curry, hoppers, kottu, and sambol. Includes market visit, cooking, and dining together.",
+    "coordinates": { "lat": 6.9217, "lon": 79.8612 },
+    "contact": {
+      "phone": "+94 77 734 5678",
+      "email": "cook@colombocooking.lk",
+      "website": "https://www.colombocookingclass.com"
+    },
+    "opening_hours": "Classes daily at 09:00 and 15:00 (booking required)",
+    "entry_fee_lkr": 5000,
+    "best_time_to_visit": "Any time; book 24 hours in advance",
+    "activities": [
+      "Market shopping",
+      "Sri Lankan cooking",
+      "Spice identification",
+      "Dining together",
+      "Recipe booklet"
+    ],
+    "target_tourist_type": [
+      "Foodies",
+      "Couples",
+      "Families",
+      "Solo travelers",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9217,79.8612",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Australian", "French", "Japanese"]
+  },
+  {
+    "id": "SL035",
+    "name": "Kandy Cultural Village Tour",
+    "category": "Local Experiences",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Immersive village walking tour in the Kandy highlands experiencing traditional paddy farming, ayurvedic village life, batik weaving, and rural Sri Lankan family hospitality. Authentic cultural exchange.",
+    "coordinates": { "lat": 7.3141, "lon": 80.6278 },
+    "contact": {
+      "phone": "+94 81 222 5432",
+      "email": "village@kandytours.lk",
+      "website": "https://www.kandyvillagetour.com"
+    },
+    "opening_hours": "09:00 - 17:00 daily (advance booking required)",
+    "entry_fee_lkr": 3500,
+    "best_time_to_visit": "Morning departure; year-round",
+    "activities": [
+      "Paddy farming",
+      "Batik making",
+      "Village walk",
+      "Home-cooked meal",
+      "Bullock cart ride"
+    ],
+    "target_tourist_type": [
+      "Culture seekers",
+      "Families",
+      "Eco-tourists",
+      "Responsible travelers"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.3141,80.6278",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "Japanese", "French"]
+  },
+  {
+    "id": "SL036",
+    "name": "Trincomalee Koneswaram Temple",
+    "category": "Cultural & Heritage Sites",
+    "province": "Eastern",
+    "district": "Trincomalee",
+    "description": "Ancient Hindu temple perched dramatically on Swami Rock overlooking the Indian Ocean and Trincomalee harbour. One of the Pancha Ishwarams (five abodes of Shiva) in Sri Lanka.",
+    "coordinates": { "lat": 8.5767, "lon": 81.2338 },
+    "contact": {
+      "phone": "+94 26 222 2271",
+      "email": "koneswaram@hindutemple.lk",
+      "website": "https://www.koneshwaramtemple.com"
+    },
+    "opening_hours": "06:00 - 19:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning for sunrise over the harbour; July-August Ther festival",
+    "activities": [
+      "Temple worship",
+      "Cliff viewpoint",
+      "Harbour photography",
+      "Religious rituals",
+      "Diving spot below cliff"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "Photographers",
+      "Culture seekers",
+      "Hindu devotees"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.5767,81.2338",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "German", "UK", "French", "Australian"]
+  },
+  {
+    "id": "SL037",
+    "name": "Pigeon Island National Park",
+    "category": "Nature & Adventure",
+    "province": "Eastern",
+    "district": "Trincomalee",
+    "description": "Sri Lanka's only coral reef national park located 1km offshore. Crystal clear waters with vibrant coral gardens, reef sharks, turtles, and rainbow fish. One of Asia's best snorkeling spots.",
+    "coordinates": { "lat": 8.6253, "lon": 81.2386 },
+    "contact": {
+      "phone": "+94 26 222 3048",
+      "email": "pigeonisland@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "08:00 - 17:00 daily (March-August peak season)",
+    "entry_fee_lkr": 2500,
+    "best_time_to_visit": "April-September for best visibility and calmest water",
+    "activities": [
+      "Snorkeling",
+      "Swimming",
+      "Reef shark spotting",
+      "Turtle watching",
+      "Underwater photography"
+    ],
+    "target_tourist_type": [
+      "Snorkelers",
+      "Divers",
+      "Beach lovers",
+      "Wildlife enthusiasts"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.6253,81.2386",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "Australian", "French"]
+  },
+  {
+    "id": "SL038",
+    "name": "Nilaveli Beach",
+    "category": "Nature & Adventure",
+    "province": "Eastern",
+    "district": "Trincomalee",
+    "description": "One of Sri Lanka's most pristine and longest beaches on the East coast with turquoise calm waters. Ideal for swimming, snorkeling, and dolphin watching in season.",
+    "coordinates": { "lat": 8.7024, "lon": 81.2149 },
+    "contact": {
+      "phone": "+94 26 222 7895",
+      "email": "nilaveli@tourism.gov.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "April to September for calm seas",
+    "activities": [
+      "Swimming",
+      "Snorkeling",
+      "Beach relaxation",
+      "Dolphin watching",
+      "Sunset photography"
+    ],
+    "target_tourist_type": ["Beach lovers", "Families", "Couples", "Divers"],
+    "average_visit_duration": "Half day to full day",
+    "google_maps_link": "https://maps.google.com/?q=8.7024,81.2149",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL039",
+    "name": "Unawatuna Beach",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Beautiful horseshoe-shaped bay with calm turquoise waters, white sand, and a vibrant beach atmosphere. Popular for swimming, snorkeling, and beach cafés. Close proximity to Galle Fort.",
+    "coordinates": { "lat": 6.0103, "lon": 80.2491 },
+    "contact": {
+      "phone": "+94 91 438 0100",
+      "email": "unawatuna@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "November to April for calm waters and good visibility",
+    "activities": [
+      "Swimming",
+      "Snorkeling",
+      "Scuba diving",
+      "Beach yoga",
+      "Café hopping",
+      "Turtle watching"
+    ],
+    "target_tourist_type": ["Beach lovers", "Couples", "Backpackers", "Divers"],
+    "average_visit_duration": "Half day to full day",
+    "google_maps_link": "https://maps.google.com/?q=6.0103,80.2491",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Australian", "Italian", "French"]
+  },
+  {
+    "id": "SL040",
+    "name": "Mirissa Beach",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Matara",
+    "description": "Crescent-shaped beach with swaying coconut palms, calm waters, and a relaxed vibe. Famous for whale watching, stilt fishermen, and beautiful sunsets. One of Sri Lanka's trendiest beach destinations.",
+    "coordinates": { "lat": 5.948, "lon": 80.4693 },
+    "contact": {
+      "phone": "+94 41 225 0000",
+      "email": "mirissa@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "December to April for whale season and best beach weather",
+    "activities": [
+      "Swimming",
+      "Sunset watching",
+      "Whale watching departure",
+      "Beach dining",
+      "Coconut tree climbing"
+    ],
+    "target_tourist_type": [
+      "Beach lovers",
+      "Young travelers",
+      "Couples",
+      "Photographers"
+    ],
+    "average_visit_duration": "Full day",
+    "google_maps_link": "https://maps.google.com/?q=5.9480,80.4693",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Australian", "French", "Dutch"]
+  },
+  {
+    "id": "SL041",
+    "name": "Kandy Esala Perahera (Seasonal Event)",
+    "category": "Cultural & Heritage Sites",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Sri Lanka's most spectacular cultural procession held annually in July-August over 10 days. Features decorated elephants, Kandyan dancers, fire-breathers, and drummers parading through Kandy. A UNESCO Intangible Cultural Heritage.",
+    "coordinates": { "lat": 7.2936, "lon": 80.6413 },
+    "contact": {
+      "phone": "+94 81 222 2661",
+      "email": "perahera@sridaladamaligawa.lk",
+      "website": "https://www.sridaladamaligawa.lk"
+    },
+    "opening_hours": "Procession starts at 20:00 (July-August only)",
+    "entry_fee_lkr": 2000,
+    "best_time_to_visit": "Last 3 nights for the grandest procession",
+    "activities": [
+      "Procession viewing",
+      "Photography",
+      "Cultural experience",
+      "Elephant watching",
+      "Kandyan dance watching"
+    ],
+    "target_tourist_type": [
+      "Culture seekers",
+      "Photographers",
+      "Religious pilgrims",
+      "Festival lovers"
+    ],
+    "average_visit_duration": "3-4 hours per night",
+    "google_maps_link": "https://maps.google.com/?q=7.2936,80.6413",
+    "rating": 4.9,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Indian", "Japanese", "Australian"]
+  },
+  {
+    "id": "SL042",
+    "name": "Colombo Pettah Market",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Colombo's bustling historic bazaar district with specialized streets for electronics, textiles, spices, fruits, and everyday goods. A sensory overload of South Asian market culture.",
+    "coordinates": { "lat": 6.9396, "lon": 79.8529 },
+    "contact": {
+      "phone": "+94 11 232 1000",
+      "email": "pettah@colombo.lk",
+      "website": "https://www.colombo.lk"
+    },
+    "opening_hours": "08:00 - 19:00 Mon-Sat",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Weekday mornings for authentic market activity",
+    "activities": [
+      "Spice shopping",
+      "Street food tasting",
+      "Market photography",
+      "Bargain shopping",
+      "Cultural immersion"
+    ],
+    "target_tourist_type": [
+      "Budget travelers",
+      "Foodies",
+      "Photographers",
+      "Culture seekers",
+      "Shoppers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9396,79.8529",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "Australian", "French"]
+  },
+  {
+    "id": "SL043",
+    "name": "Hikkaduwa Coral Reef Snorkeling",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Protected coral sanctuary in Hikkaduwa offering excellent snorkeling and diving in shallow reefs with sea turtles, tropical fish, and coral gardens. A popular marine national park.",
+    "coordinates": { "lat": 6.1399, "lon": 80.1002 },
+    "contact": {
+      "phone": "+94 91 227 7294",
+      "email": "hikkaduwa@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "08:00 - 17:00 daily",
+    "entry_fee_lkr": 1500,
+    "best_time_to_visit": "November to April for best visibility",
+    "activities": [
+      "Snorkeling",
+      "Glass bottom boat tour",
+      "Scuba diving",
+      "Sea turtle watching",
+      "Underwater photography"
+    ],
+    "target_tourist_type": ["Snorkelers", "Divers", "Families", "Beach lovers"],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.1399,80.1002",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "French", "Italian", "Australian"]
+  },
+  {
+    "id": "SL044",
+    "name": "Colombo Fort & Dutch Hospital Shopping Precinct",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Restored 400-year-old Dutch Hospital turned premium shopping and dining precinct in Colombo Fort. Upscale boutiques, fine dining, cafés, and cocktail bars in colonial architecture.",
+    "coordinates": { "lat": 6.9368, "lon": 79.8429 },
+    "contact": {
+      "phone": "+94 11 234 2700",
+      "email": "dutchhospital@colombo.lk",
+      "website": "https://www.dutchhospital.lk"
+    },
+    "opening_hours": "10:00 - 22:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Evening for dining and drinks",
+    "activities": [
+      "Premium shopping",
+      "Fine dining",
+      "Craft cocktails",
+      "Architecture photography",
+      "Souvenir shopping"
+    ],
+    "target_tourist_type": [
+      "Luxury travelers",
+      "Foodies",
+      "Shoppers",
+      "Business travelers",
+      "Couples"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9368,79.8429",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["UK", "German", "Australian", "Singaporean", "Japanese"]
+  },
+  {
+    "id": "SL045",
+    "name": "Ambuluwawa Tower",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Unique multi-religion tower and biodiversity complex offering 360-degree panoramic views of mountains and valleys. Features Buddhist, Hindu, Christian, and Muslim religious structures on one hilltop.",
+    "coordinates": { "lat": 7.1697, "lon": 80.5786 },
+    "contact": {
+      "phone": "+94 35 226 5200",
+      "email": "ambuluwawa@tourism.lk",
+      "website": "https://www.ambuluwawa.lk"
+    },
+    "opening_hours": "08:00 - 17:00 daily",
+    "entry_fee_lkr": 1000,
+    "best_time_to_visit": "Clear morning for panoramic views",
+    "activities": [
+      "Tower climb",
+      "Panoramic viewing",
+      "Multi-religion site",
+      "Nature walk",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Spiritual seekers",
+      "Nature lovers",
+      "Families"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.1697,80.5786",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "Chinese", "Australian"]
+  },
+  {
+    "id": "SL046",
+    "name": "Nuwara Eliya Post Office (Photography Spot)",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Nuwara Eliya",
+    "description": "Iconic red-brick colonial post office in Little England - the most photographed colonial building in Sri Lanka. Surrounded by manicured gardens, a lake, and English-style architecture.",
+    "coordinates": { "lat": 6.9702, "lon": 80.7727 },
+    "contact": {
+      "phone": "+94 52 222 2228",
+      "email": "nuwaraeliya@slpost.gov.lk",
+      "website": "https://www.slpost.gov.lk"
+    },
+    "opening_hours": "08:00 - 17:00 Mon-Fri",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning for best light; April for Sinhala New Year races",
+    "activities": [
+      "Colonial architecture photography",
+      "Garden walk",
+      "Lake stroll",
+      "Historical exploration"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "History lovers",
+      "Couples",
+      "Architecture enthusiasts"
+    ],
+    "average_visit_duration": "30-60 minutes",
+    "google_maps_link": "https://maps.google.com/?q=6.9702,80.7727",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Indian", "Japanese", "French"]
+  },
+  {
+    "id": "SL047",
+    "name": "BOC ATM Colombo Fort",
+    "category": "ATMs & Currency Exchange",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Bank of Ceylon main branch and ATM in Colombo Fort – central banking hub with reliable foreign card acceptance (Visa, Mastercard, UnionPay) and currency exchange services. 24-hour ATM.",
+    "coordinates": { "lat": 6.9354, "lon": 79.8441 },
+    "contact": {
+      "phone": "+94 11 244 8348",
+      "email": "info@boc.lk",
+      "website": "https://www.boc.lk"
+    },
+    "opening_hours": "ATM: 24 hours; Bank: 09:00 - 15:00 Mon-Fri",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Weekday banking hours for currency exchange",
+    "activities": [
+      "ATM cash withdrawal",
+      "Currency exchange",
+      "Wire transfer",
+      "Travel money"
+    ],
+    "target_tourist_type": ["All tourists"],
+    "average_visit_duration": "15-30 minutes",
+    "google_maps_link": "https://maps.google.com/?q=6.9354,79.8441",
+    "rating": 4.1,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL048",
+    "name": "People's Bank Currency Exchange Kandy",
+    "category": "ATMs & Currency Exchange",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "People's Bank main branch in Kandy city centre offering competitive exchange rates for major currencies. Reliable ATM services with Visa, Mastercard, and international network acceptance.",
+    "coordinates": { "lat": 7.2906, "lon": 80.6349 },
+    "contact": {
+      "phone": "+94 81 222 3033",
+      "email": "kandy@peoplesbank.lk",
+      "website": "https://www.peoplesbank.lk"
+    },
+    "opening_hours": "ATM: 24 hours; Bank: 09:00 - 15:00 Mon-Fri",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Any time for ATM; banking hours for exchange",
+    "activities": ["Currency exchange", "ATM withdrawal", "Travel banking"],
+    "target_tourist_type": ["All tourists"],
+    "average_visit_duration": "15-30 minutes",
+    "google_maps_link": "https://maps.google.com/?q=7.2906,80.6349",
+    "rating": 4.0,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL049",
+    "name": "Dialog Axiata Service Centre Colombo",
+    "category": "SIM Card / Telecom Shops",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Sri Lanka's largest mobile network operator. Tourist SIM cards available with 4G/5G data packages, WhatsApp bundles, and international calling. Available at airport and all major outlets.",
+    "coordinates": { "lat": 6.9142, "lon": 79.8567 },
+    "contact": {
+      "phone": "+94 11 767 7777",
+      "email": "care@dialog.lk",
+      "website": "https://www.dialog.lk"
+    },
+    "opening_hours": "08:30 - 20:00 daily; Airport outlet 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "On arrival at Bandaranaike Airport for immediate connectivity",
+    "activities": [
+      "Tourist SIM purchase",
+      "Data plan activation",
+      "Phone unlocking",
+      "Roaming setup"
+    ],
+    "target_tourist_type": ["All tourists"],
+    "average_visit_duration": "20-30 minutes",
+    "google_maps_link": "https://maps.google.com/?q=6.9142,79.8567",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL050",
+    "name": "Mobitel Tourist SIM Outlet Katunayake Airport",
+    "category": "SIM Card / Telecom Shops",
+    "province": "Western",
+    "district": "Gampaha",
+    "description": "Sri Lanka Telecom's Mobitel SIM outlet at Bandaranaike International Airport offering tourist SIM cards with data packages and island-wide 4G coverage immediately on arrival.",
+    "coordinates": { "lat": 7.1808, "lon": 79.8841 },
+    "contact": {
+      "phone": "+94 71 100 5000",
+      "email": "care@mobitel.lk",
+      "website": "https://www.mobitel.lk"
+    },
+    "opening_hours": "24 hours daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "On arrival at airport",
+    "activities": [
+      "Tourist SIM purchase",
+      "Data activation",
+      "International calling"
+    ],
+    "target_tourist_type": ["All tourists"],
+    "average_visit_duration": "15-20 minutes",
+    "google_maps_link": "https://maps.google.com/?q=7.1808,79.8841",
+    "rating": 4.1,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL051",
+    "name": "National Hospital Colombo",
+    "category": "Emergency Services",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Sri Lanka's largest and most advanced government hospital with 24-hour emergency services, specialist doctors, and modern ICU facilities. Free emergency treatment for all persons.",
+    "coordinates": { "lat": 6.9176, "lon": 79.8686 },
+    "contact": {
+      "phone": "+94 11 269 1111",
+      "email": "nhc@health.gov.lk",
+      "website": "https://www.nhc.gov.lk"
+    },
+    "opening_hours": "Emergency: 24 hours; OPD: 07:00 - 16:30",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Emergency - 24 hours; OPD early morning",
+    "activities": [
+      "Emergency medical care",
+      "Specialist consultation",
+      "Pharmacy",
+      "Laboratory services"
+    ],
+    "target_tourist_type": ["All tourists requiring medical assistance"],
+    "average_visit_duration": "As needed",
+    "google_maps_link": "https://maps.google.com/?q=6.9176,79.8686",
+    "rating": 3.9,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL052",
+    "name": "Asiri Central Hospital Colombo",
+    "category": "Emergency Services",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Premium private hospital with 24-hour emergency services, international patient department, and English-speaking staff. Accepts international health insurance and travel insurance.",
+    "coordinates": { "lat": 6.8931, "lon": 79.8586 },
+    "contact": {
+      "phone": "+94 11 466 5500",
+      "email": "international@asiri.lk",
+      "website": "https://www.asiri.lk"
+    },
+    "opening_hours": "24 hours daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Emergency - 24 hours",
+    "activities": [
+      "Emergency care",
+      "International patient services",
+      "Surgery",
+      "ICU",
+      "Pharmacy"
+    ],
+    "target_tourist_type": ["All tourists requiring medical assistance"],
+    "average_visit_duration": "As needed",
+    "google_maps_link": "https://maps.google.com/?q=6.8931,79.8586",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL053",
+    "name": "Colombo Fort Railway Station",
+    "category": "Transport Hubs",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Sri Lanka's main railway hub and departure point for iconic scenic train journeys to Kandy and Ella. Historical colonial-era station serving all major routes across the island.",
+    "coordinates": { "lat": 6.9341, "lon": 79.8496 },
+    "contact": {
+      "phone": "+94 11 243 4215",
+      "email": "info@railway.gov.lk",
+      "website": "https://www.railway.gov.lk"
+    },
+    "opening_hours": "05:00 - 22:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Book Kandy/Ella train tickets at least 2 days in advance",
+    "activities": [
+      "Train travel booking",
+      "Scenic journey departure",
+      "Local transport"
+    ],
+    "target_tourist_type": ["All tourists", "Backpackers", "Budget travelers"],
+    "average_visit_duration": "30-60 minutes (for ticketing)",
+    "google_maps_link": "https://maps.google.com/?q=6.9341,79.8496",
+    "rating": 3.8,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL054",
+    "name": "Kandy Railway Station",
+    "category": "Transport Hubs",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Kandy's main railway station and starting point for the celebrated Kandy-Ella scenic train journey, one of the world's most beautiful train routes through tea country.",
+    "coordinates": { "lat": 7.2914, "lon": 80.6411 },
+    "contact": {
+      "phone": "+94 81 222 2271",
+      "email": "kandy@railway.gov.lk",
+      "website": "https://www.railway.gov.lk"
+    },
+    "opening_hours": "05:00 - 22:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Book scenic Ella train (Observation Car) tickets in advance",
+    "activities": [
+      "Scenic train departure",
+      "Train ticketing",
+      "Train photography"
+    ],
+    "target_tourist_type": ["All tourists", "Train enthusiasts", "Backpackers"],
+    "average_visit_duration": "30-60 minutes",
+    "google_maps_link": "https://maps.google.com/?q=7.2914,80.6411",
+    "rating": 4.0,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL055",
+    "name": "Colombo Central Bus Stand (Pettah)",
+    "category": "Transport Hubs",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Sri Lanka's largest bus terminal and intercity bus hub with connections to all major cities, tourist destinations, and provincial towns across Sri Lanka. Air-conditioned express services available.",
+    "coordinates": { "lat": 6.9397, "lon": 79.8549 },
+    "contact": {
+      "phone": "+94 11 232 8081",
+      "email": "ctb@transport.gov.lk",
+      "website": "https://www.ctb.gov.lk"
+    },
+    "opening_hours": "05:00 - 22:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Early morning for direct intercity buses",
+    "activities": [
+      "Intercity bus travel",
+      "Local bus connections",
+      "Budget transport"
+    ],
+    "target_tourist_type": ["Budget travelers", "Backpackers", "All tourists"],
+    "average_visit_duration": "20-40 minutes",
+    "google_maps_link": "https://maps.google.com/?q=6.9397,79.8549",
+    "rating": 3.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL056",
+    "name": "Nuwara Eliya Gregory Lake",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Nuwara Eliya",
+    "description": "Picturesque artificial lake in the heart of Nuwara Eliya, Sri Lanka's Little England. Surrounded by rose gardens, colonial bungalows, and manicured parks with a cool misty mountain climate.",
+    "coordinates": { "lat": 6.9672, "lon": 80.7714 },
+    "contact": {
+      "phone": "+94 52 222 2228",
+      "email": "nuwaraeliya@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning for mist photography; April for racing season",
+    "activities": [
+      "Boat riding",
+      "Lakeside walking",
+      "Photography",
+      "Horse riding",
+      "Rose garden walk"
+    ],
+    "target_tourist_type": [
+      "Couples",
+      "Families",
+      "Photographers",
+      "Honeymooners"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9672,80.7714",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "French", "Japanese"]
+  },
+  {
+    "id": "SL057",
+    "name": "Bundala National Park (Birding)",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Hambantota",
+    "description": "UNESCO Biosphere Reserve and internationally recognized bird sanctuary hosting over 200 bird species including lesser flamingos, painted storks, and migratory waders from Siberia.",
+    "coordinates": { "lat": 6.1895, "lon": 81.2161 },
+    "contact": {
+      "phone": "+94 47 222 0750",
+      "email": "bundala@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "September to March for migratory birds; flamingos October-March",
+    "activities": [
+      "Bird watching",
+      "Safari jeep",
+      "Photography",
+      "Flamingo watching",
+      "Nature study"
+    ],
+    "target_tourist_type": [
+      "Birdwatchers",
+      "Nature lovers",
+      "Photographers",
+      "Scientists"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.1895,81.2161",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "Scandinavian", "Japanese"]
+  },
+  {
+    "id": "SL058",
+    "name": "Rekawa Beach Turtle Watching",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Hambantota",
+    "description": "One of Asia's most important sea turtle nesting beaches where all five sea turtle species nest. Guided night tours allow visitors to witness nesting and hatchling release in a conservation-focused setting.",
+    "coordinates": { "lat": 6.0534, "lon": 80.8548 },
+    "contact": {
+      "phone": "+94 47 568 9412",
+      "email": "rekawa@turleconservation.lk",
+      "website": "https://www.rekawaturtleproject.org"
+    },
+    "opening_hours": "Night tours: 20:00 - 02:00 (nesting season year-round)",
+    "entry_fee_lkr": 2000,
+    "best_time_to_visit": "February to August for nesting; March-April for hatchlings",
+    "activities": [
+      "Turtle nesting watching",
+      "Hatchling release",
+      "Conservation education",
+      "Night beach walk"
+    ],
+    "target_tourist_type": [
+      "Conservation enthusiasts",
+      "Families",
+      "Nature lovers",
+      "Eco-tourists"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.0534,80.8548",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL059",
+    "name": "Jaffna Fort",
+    "category": "Cultural & Heritage Sites",
+    "province": "Northern",
+    "district": "Jaffna",
+    "description": "One of the largest remaining Dutch forts in Asia, built in 1658. Massive star-shaped fortification with moat, watchtowers, and Dutch-period architecture. Partially restored with ocean-facing ramparts.",
+    "coordinates": { "lat": 9.6699, "lon": 80.0047 },
+    "contact": {
+      "phone": "+94 21 222 2220",
+      "email": "jaffnafort@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "08:00 - 17:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Morning; May-September dry season",
+    "activities": [
+      "Historical exploration",
+      "Fort rampart walk",
+      "Photography",
+      "Dutch history tour",
+      "Lighthouse visit"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Photographers",
+      "Architecture enthusiasts",
+      "Adventure seekers"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=9.6699,80.0047",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL060",
+    "name": "Mannar Island & Adam's Bridge Viewpoint",
+    "category": "Cultural & Heritage Sites",
+    "province": "Northern",
+    "district": "Mannar",
+    "description": "Remote island connected by causeway, home to ancient baobab trees, massive bird migration, and the start of the legendary Rama's Bridge (Adam's Bridge) connecting Sri Lanka to India.",
+    "coordinates": { "lat": 8.9741, "lon": 79.9036 },
+    "contact": {
+      "phone": "+94 23 222 3400",
+      "email": "mannar@tourism.gov.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "October-March for bird migration; September-October for flamingos",
+    "activities": [
+      "Bird watching",
+      "Baobab tree photography",
+      "Beach exploration",
+      "Historical Fort visit",
+      "Flamingo watching"
+    ],
+    "target_tourist_type": [
+      "Off-beat travelers",
+      "Birdwatchers",
+      "Photographers",
+      "Adventure seekers"
+    ],
+    "average_visit_duration": "Full day",
+    "google_maps_link": "https://maps.google.com/?q=8.9741,79.9036",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Dutch", "Indian", "French"]
+  },
+  {
+    "id": "SL061",
+    "name": "Tangalle Medaketiya Beach",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Hambantota",
+    "description": "Secluded, uncrowded beach with natural rock formations, calm lagoon for swimming, and pristine white sands. One of Sri Lanka's best-kept beach secrets, favored by independent travelers.",
+    "coordinates": { "lat": 6.0261, "lon": 80.7892 },
+    "contact": {
+      "phone": "+94 47 224 0400",
+      "email": "tangalle@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "December to April for calm seas",
+    "activities": [
+      "Swimming",
+      "Snorkeling",
+      "Beach relaxation",
+      "Rock pool exploring",
+      "Turtle watching"
+    ],
+    "target_tourist_type": [
+      "Beach lovers",
+      "Backpackers",
+      "Couples",
+      "Off-beat travelers"
+    ],
+    "average_visit_duration": "Full day",
+    "google_maps_link": "https://maps.google.com/?q=6.0261,80.7892",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "French", "UK", "Italian", "Dutch"]
+  },
+  {
+    "id": "SL062",
+    "name": "Kitulgala White Water Rafting",
+    "category": "Nature & Adventure",
+    "province": "Sabaragamuwa",
+    "district": "Kegalle",
+    "description": "Sri Lanka's best white water rafting destination on the Kelani River. Grade 2-4 rapids through lush jungle. Also famous as the filming location for the Bridge on the River Kwai and for canyoning.",
+    "coordinates": { "lat": 6.9888, "lon": 80.4197 },
+    "contact": {
+      "phone": "+94 36 228 7536",
+      "email": "raft@kitulgala.lk",
+      "website": "https://www.kitulgalaadventures.com"
+    },
+    "opening_hours": "08:00 - 15:00 daily",
+    "entry_fee_lkr": 4500,
+    "best_time_to_visit": "May-December (higher water levels); Year-round rafting available",
+    "activities": [
+      "White water rafting",
+      "Canyoning",
+      "Rock climbing",
+      "Bird watching",
+      "River camping"
+    ],
+    "target_tourist_type": [
+      "Adventure seekers",
+      "Groups",
+      "Young travelers",
+      "Thrill seekers"
+    ],
+    "average_visit_duration": "3-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9888,80.4197",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Australian", "Israeli", "French"]
+  },
+  {
+    "id": "SL063",
+    "name": "Handunugoda Tea Estate (Virgin White Tea)",
+    "category": "Tea & Spice Shops",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Home of the world-famous Virgin White Tea (one of the world's most expensive teas). Estate tours include tea factory visit, tea tasting, and insights into luxury tea production in southern Sri Lanka.",
+    "coordinates": { "lat": 6.1063, "lon": 80.3156 },
+    "contact": {
+      "phone": "+94 91 438 9280",
+      "email": "handunugoda@hermannteas.com",
+      "website": "https://www.hermannteas.com"
+    },
+    "opening_hours": "09:00 - 16:00 Mon-Sat",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Morning; call ahead to confirm tour availability",
+    "activities": [
+      "Estate tour",
+      "Rare tea tasting",
+      "Virgin White Tea experience",
+      "Tea purchase",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Tea enthusiasts",
+      "Luxury travelers",
+      "Foodies",
+      "Connoisseurs"
+    ],
+    "average_visit_duration": "1.5-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.1063,80.3156",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["UK", "German", "Japanese", "Australian", "French"]
+  },
+  {
+    "id": "SL064",
+    "name": "Lipton's Seat Tea Plantation Viewpoint",
+    "category": "Nature & Adventure",
+    "province": "Uva",
+    "district": "Badulla",
+    "description": "Iconic misty hilltop where Sir Thomas Lipton surveyed his tea empire. Surrounded by endless Haputale tea estates rolling into the mist. One of Sri Lanka's most dramatic landscape photography spots.",
+    "coordinates": { "lat": 6.8289, "lon": 80.9489 },
+    "contact": {
+      "phone": "+94 57 222 8500",
+      "email": "dambatenne@lipton.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "06:00 - 17:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Clear mornings; July-September for least fog",
+    "activities": [
+      "Tea estate walk",
+      "Panoramic photography",
+      "Sunrise viewing",
+      "Tea plucking experience"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Hikers",
+      "Tea enthusiasts",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8289,80.9489",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  },
+  {
+    "id": "SL065",
+    "name": "Kanniyai Hot Springs",
+    "category": "Ayurveda & Wellness",
+    "province": "Eastern",
+    "district": "Trincomalee",
+    "description": "Seven natural hot spring wells with different water temperatures located near Trincomalee, revered as sacred by Hindus. Used for therapeutic bathing, believed to have healing properties.",
+    "coordinates": { "lat": 8.6063, "lon": 81.2186 },
+    "contact": {
+      "phone": "+94 26 222 3400",
+      "email": "kanniyai@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 200,
+    "best_time_to_visit": "Morning for peaceful atmosphere",
+    "activities": [
+      "Hot spring bathing",
+      "Ayurvedic therapy",
+      "Religious offering",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Wellness seekers",
+      "Religious pilgrims",
+      "Culture seekers",
+      "Families"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.6063,81.2186",
+    "rating": 4.1,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "French", "Australian"]
+  },
+  {
+    "id": "SL066",
+    "name": "Bandarawela Ayurveda Health Resort",
+    "category": "Ayurveda & Wellness",
+    "province": "Uva",
+    "district": "Badulla",
+    "description": "Established Ayurvedic resort in Uva highlands offering authentic panchakarma treatments, herbal steam baths, yoga, and vegetarian Ayurvedic cuisine in a serene mountain environment.",
+    "coordinates": { "lat": 6.8301, "lon": 81.0676 },
+    "contact": {
+      "phone": "+94 57 222 2501",
+      "email": "ayurveda@bandarawela.lk",
+      "website": "https://www.bandarawelahotel.com"
+    },
+    "opening_hours": "08:00 - 20:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Year-round; minimum 3-day residential package recommended",
+    "activities": [
+      "Panchakarma treatment",
+      "Yoga",
+      "Meditation",
+      "Herbal bath",
+      "Ayurvedic diet"
+    ],
+    "target_tourist_type": [
+      "Wellness seekers",
+      "Medical tourists",
+      "Luxury travelers",
+      "Retirees"
+    ],
+    "average_visit_duration": "3-14 days",
+    "google_maps_link": "https://maps.google.com/?q=6.8301,81.0676",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["German", "UK", "Indian", "French", "Scandinavian"]
+  },
+  {
+    "id": "SL067",
+    "name": "Colombo Gangaramaya Temple",
+    "category": "Cultural & Heritage Sites",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "One of Colombo's most important and eclectic Buddhist temples featuring an extraordinary museum of religious artifacts from around Asia. The annual Navam Perahera in February is spectacular.",
+    "coordinates": { "lat": 6.9167, "lon": 79.8583 },
+    "contact": {
+      "phone": "+94 11 232 7084",
+      "email": "info@gangaramaya.com",
+      "website": "https://www.gangaramaya.com"
+    },
+    "opening_hours": "06:00 - 22:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Morning or February for Navam Perahera",
+    "activities": [
+      "Temple visit",
+      "Museum exploration",
+      "Photography",
+      "Meditation",
+      "Religious ceremony"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "Culture seekers",
+      "History lovers",
+      "Photographers"
+    ],
+    "average_visit_duration": "1.5-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9167,79.8583",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Japanese", "Chinese", "UK", "German"]
+  },
+  {
+    "id": "SL068",
+    "name": "Lahugala Kitulana National Park",
+    "category": "Nature & Adventure",
+    "province": "Eastern",
+    "district": "Ampara",
+    "description": "Small but ecologically significant national park famous for large elephant herds gathering at the Lahugala Tank. Also a superb birding destination with many waterbirds and raptors.",
+    "coordinates": { "lat": 6.9153, "lon": 81.6853 },
+    "contact": {
+      "phone": "+94 63 224 8000",
+      "email": "lahugala@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 2000,
+    "best_time_to_visit": "August-September for elephant gatherings at the tank",
+    "activities": [
+      "Elephant watching",
+      "Bird watching",
+      "Jeep safari",
+      "Photography",
+      "Nature study"
+    ],
+    "target_tourist_type": [
+      "Wildlife enthusiasts",
+      "Birdwatchers",
+      "Photographers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9153,81.6853",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Dutch", "Japanese", "Australian"]
+  },
+  {
+    "id": "SL069",
+    "name": "Batik Sri Lanka Workshop Colombo",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Traditional batik fabric art workshop where tourists learn the ancient wax-resist dyeing technique. Create your own sarong or fabric design using traditional patterns. Authentic handicraft experience.",
+    "coordinates": { "lat": 6.9041, "lon": 79.8604 },
+    "contact": {
+      "phone": "+94 11 258 0200",
+      "email": "batik@craft.lk",
+      "website": "https://www.batikworkshop.lk"
+    },
+    "opening_hours": "09:00 - 17:00 Mon-Sat",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "Morning sessions for best results",
+    "activities": [
+      "Batik fabric making",
+      "Wax dyeing",
+      "Pattern design",
+      "Souvenir creation",
+      "Handicraft shopping"
+    ],
+    "target_tourist_type": [
+      "Art lovers",
+      "Families",
+      "Culture seekers",
+      "Couples",
+      "Shoppers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9041,79.8604",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Japanese", "French", "Australian"]
+  },
+  {
+    "id": "SL070",
+    "name": "Mask Museum Ambalangoda",
+    "category": "Cultural & Heritage Sites",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Legendary traditional Sri Lankan mask carving center in Ambalangoda – the home of Kolam and Sanni masks used in exorcism rituals and dance dramas. Museum with 300+ masks and workshop demonstrations.",
+    "coordinates": { "lat": 6.2333, "lon": 80.0581 },
+    "contact": {
+      "phone": "+94 91 225 8373",
+      "email": "masks@ariyapala.lk",
+      "website": "https://www.ariyapalamaskmuse.com"
+    },
+    "opening_hours": "09:00 - 18:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Morning for carving demonstrations",
+    "activities": [
+      "Mask museum tour",
+      "Carving demonstration",
+      "Mask purchase",
+      "Cultural performance",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Culture seekers",
+      "Art lovers",
+      "Collectors",
+      "Photographers"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.2333,80.0581",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Italian", "Japanese"]
+  },
+  {
+    "id": "SL071",
+    "name": "Poya Day Cultural Experience",
+    "category": "Local Experiences",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Monthly full moon Poya day Buddhist experience visiting temples, observing all-white dressed devotees, participating in oil lamp lighting ceremonies, and witnessing the quieter, spiritual side of Sri Lanka.",
+    "coordinates": { "lat": 7.2936, "lon": 80.6413 },
+    "contact": {
+      "phone": "+94 81 223 4226",
+      "email": "poya@kandytourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "All day (especially 05:00-08:00 and 18:00-20:00)",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Full moon day (Poya Day) monthly",
+    "activities": [
+      "Temple visit",
+      "Oil lamp lighting",
+      "Alms giving",
+      "Cultural photography",
+      "Meditation"
+    ],
+    "target_tourist_type": [
+      "Spiritual travelers",
+      "Culture seekers",
+      "Photographers",
+      "Mindful travelers"
+    ],
+    "average_visit_duration": "Half day",
+    "google_maps_link": "https://maps.google.com/?q=7.2936,80.6413",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Japanese", "German", "UK", "French", "Thai"]
+  },
+  {
+    "id": "SL072",
+    "name": "Gem & Jewellery Fair Beruwala",
+    "category": "Cultural & Heritage Sites",
+    "province": "Western",
+    "district": "Kalutara",
+    "description": "Beruwala is the heart of Sri Lanka's Moor (Muslim) trading community and hosts gem traders since Arab merchant times. Visit gem workshops, Moor architecture, and the oldest mosque in Sri Lanka.",
+    "coordinates": { "lat": 6.4789, "lon": 79.9819 },
+    "contact": {
+      "phone": "+94 34 227 6500",
+      "email": "beruwala@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "09:00 - 18:00 daily (market days: Mon, Thu)",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Monday and Thursday market days",
+    "activities": [
+      "Gem shopping",
+      "Mosque visit",
+      "Cultural exploration",
+      "Boat tour",
+      "Snorkeling"
+    ],
+    "target_tourist_type": [
+      "Shoppers",
+      "History lovers",
+      "Gem enthusiasts",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.4789,79.9819",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["Indian", "Chinese", "German", "UK", "Middle Eastern"]
+  },
+  {
+    "id": "SL073",
+    "name": "Knuckles Mountain Range Trekking",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Matale",
+    "description": "UNESCO World Heritage wilderness zone with challenging mountain treks through diverse ecosystems, waterfalls, ancient villages, and cloud forests. Named after the knuckle-like appearance of the peaks.",
+    "coordinates": { "lat": 7.4532, "lon": 80.7879 },
+    "contact": {
+      "phone": "+94 66 222 7700",
+      "email": "knuckles@tourism.gov.lk",
+      "website": "https://www.knucklestrekking.lk"
+    },
+    "opening_hours": "Dawn to dusk (guided treks only recommended)",
+    "entry_fee_lkr": 1500,
+    "best_time_to_visit": "January to April and August to September for best trekking",
+    "activities": [
+      "Multi-day trekking",
+      "Waterfall visits",
+      "Bird watching",
+      "Village stays",
+      "Rock climbing"
+    ],
+    "target_tourist_type": [
+      "Hikers",
+      "Adventure seekers",
+      "Eco-tourists",
+      "Photographers"
+    ],
+    "average_visit_duration": "1-3 days",
+    "google_maps_link": "https://maps.google.com/?q=7.4532,80.7879",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "French", "Swiss"]
+  },
+  {
+    "id": "SL074",
+    "name": "Kataragama Sacred Pilgrimage Site",
+    "category": "Cultural & Heritage Sites",
+    "province": "Southern",
+    "district": "Monaragala",
+    "description": "One of Sri Lanka's most sacred multi-religious pilgrimage sites venerated by Buddhists, Hindus, and indigenous Veddah people. The July Esala Festival attracts hundreds of thousands with fire-walking ceremonies.",
+    "coordinates": { "lat": 6.4108, "lon": 81.3347 },
+    "contact": {
+      "phone": "+94 47 223 5001",
+      "email": "kataragama@pilgrimage.lk",
+      "website": "https://www.kataragama.org"
+    },
+    "opening_hours": "05:00 - 21:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "July-August Esala Festival; daily evening fire-walking",
+    "activities": [
+      "Religious pilgrimage",
+      "Fire-walking viewing",
+      "Temple worship",
+      "Cultural photography",
+      "River ritual"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "Culture seekers",
+      "Spiritual travelers",
+      "Photographers"
+    ],
+    "average_visit_duration": "2-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.4108,81.3347",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Japanese", "UK", "German", "Australian"]
+  },
+  {
+    "id": "SL075",
+    "name": "Pasikuda Bay Beach",
+    "category": "Nature & Adventure",
+    "province": "Eastern",
+    "district": "Batticaloa",
+    "description": "East coast beach with exceptional flat, shallow, crystal-clear water ideal for families and non-swimmers. One of the calmest and most pristine beaches in Asia, emerging as a luxury resort destination.",
+    "coordinates": { "lat": 7.9271, "lon": 81.5516 },
+    "contact": {
+      "phone": "+94 65 224 9000",
+      "email": "pasikuda@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "April to September for calm east coast seas",
+    "activities": [
+      "Swimming",
+      "Snorkeling",
+      "Water sports",
+      "Beach relaxation",
+      "Sunset watching"
+    ],
+    "target_tourist_type": [
+      "Families",
+      "Beach lovers",
+      "Luxury travelers",
+      "Water sports enthusiasts"
+    ],
+    "average_visit_duration": "Full day to multi-day",
+    "google_maps_link": "https://maps.google.com/?q=7.9271,81.5516",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["German", "UK", "Middle Eastern", "Indian", "Australian"]
+  },
+  {
+    "id": "SL076",
+    "name": "Batticaloa Singing Fish Lagoon",
+    "category": "Nature & Adventure",
+    "province": "Eastern",
+    "district": "Batticaloa",
+    "description": "Mysterious natural phenomenon where the Batticaloa Lagoon produces musical singing sounds on full moon nights, believed to be caused by catfish. A unique natural curiosity attracting curious travelers.",
+    "coordinates": { "lat": 7.7175, "lon": 81.6978 },
+    "contact": {
+      "phone": "+94 65 222 4800",
+      "email": "batticaloa@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Singing phenomenon: Full moon nights",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Full moon nights; calm conditions",
+    "activities": [
+      "Boat tour",
+      "Singing fish listening",
+      "Lagoon photography",
+      "Fishing village visit"
+    ],
+    "target_tourist_type": [
+      "Curious travelers",
+      "Eco-tourists",
+      "Nature lovers",
+      "Off-beat explorers"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.7175,81.6978",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  },
+  {
+    "id": "SL077",
+    "name": "Galle International Cricket Stadium",
+    "category": "Local Experiences",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "One of the world's most beautiful cricket grounds, located alongside the 16th-century Galle Fort. Watching a Test match here is an unforgettable experience with Dutch ramparts as backdrop.",
+    "coordinates": { "lat": 6.0306, "lon": 80.2167 },
+    "contact": {
+      "phone": "+94 91 222 5000",
+      "email": "galle@cricket.lk",
+      "website": "https://www.srilankacricket.lk"
+    },
+    "opening_hours": "Match days only",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "During scheduled international matches",
+    "activities": [
+      "Cricket watching",
+      "Stadium tour",
+      "Fort backdrop photography",
+      "Sports tourism"
+    ],
+    "target_tourist_type": [
+      "Cricket fans",
+      "Sports lovers",
+      "Photography enthusiasts",
+      "UK travelers"
+    ],
+    "average_visit_duration": "Full day (match days)",
+    "google_maps_link": "https://maps.google.com/?q=6.0306,80.2167",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "Australian", "Indian", "Bangladeshi", "Pakistani"]
+  },
+  {
+    "id": "SL078",
+    "name": "Sri Lanka Cultural Show (Kandy)",
+    "category": "Local Experiences",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Nightly traditional cultural dance performance featuring Kandyan dancing, low country dancing, fire walking, and acrobatic fire shows. Performed at dedicated cultural halls near the Tooth Temple.",
+    "coordinates": { "lat": 7.2953, "lon": 80.6389 },
+    "contact": {
+      "phone": "+94 81 223 5568",
+      "email": "kandydance@cultural.lk",
+      "website": "https://www.kandyarts.lk"
+    },
+    "opening_hours": "Show at 17:30 nightly",
+    "entry_fee_lkr": 2000,
+    "best_time_to_visit": "Any evening; arrive 30 minutes early for front row",
+    "activities": [
+      "Kandyan dance performance",
+      "Fire walking show",
+      "Drum performance",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Culture seekers",
+      "Families",
+      "Couples",
+      "Photography enthusiasts"
+    ],
+    "average_visit_duration": "1.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.2953,80.6389",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Indian", "Japanese", "Chinese"]
+  },
+  {
+    "id": "SL079",
+    "name": "Herbal Village Matale",
+    "category": "Ayurveda & Wellness",
+    "province": "Central",
+    "district": "Matale",
+    "description": "Traditional Ayurvedic village offering extensive herbal garden tours, body massage treatments, herbal steam baths, and medicinal plant identification. Certified Ayurvedic practitioners on site.",
+    "coordinates": { "lat": 7.4675, "lon": 80.6237 },
+    "contact": {
+      "phone": "+94 66 223 4567",
+      "email": "herbs@matale.lk",
+      "website": "https://www.herbalvillage.lk"
+    },
+    "opening_hours": "09:00 - 17:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Morning for full treatment sessions",
+    "activities": [
+      "Herbal garden tour",
+      "Ayurvedic massage",
+      "Steam bath",
+      "Herbal product shopping",
+      "Medicinal plant identification"
+    ],
+    "target_tourist_type": [
+      "Wellness seekers",
+      "Nature lovers",
+      "Health tourists",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.4675,80.6237",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Indian", "Japanese", "French"]
+  },
+  {
+    "id": "SL080",
+    "name": "Kalpitiya Dolphin & Whale Watching",
+    "category": "Nature & Adventure",
+    "province": "North Western",
+    "district": "Puttalam",
+    "description": "Northwestern coast spot offering spectacular encounters with massive pods of spinner dolphins (500-1000+) and occasional blue whales. Also a world-class kitesurfing and windsurfing destination.",
+    "coordinates": { "lat": 8.2303, "lon": 79.7411 },
+    "contact": {
+      "phone": "+94 32 226 4444",
+      "email": "kalpitiya@blueadventures.lk",
+      "website": "https://www.blueadventureskalpitiya.com"
+    },
+    "opening_hours": "Boat departures: 07:00 daily (Oct-April season)",
+    "entry_fee_lkr": 6000,
+    "best_time_to_visit": "November to April for dolphins; December-March for kite surfing",
+    "activities": [
+      "Dolphin watching",
+      "Whale watching",
+      "Kitesurfing",
+      "Windsurfing",
+      "Island hopping"
+    ],
+    "target_tourist_type": [
+      "Water sports enthusiasts",
+      "Wildlife lovers",
+      "Adventure seekers",
+      "Photographers"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.2303,79.7411",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "French", "Scandinavian"]
+  },
+  {
+    "id": "SL081",
+    "name": "Kuragala Ancient Buddhist Monastery",
+    "category": "Cultural & Heritage Sites",
+    "province": "Sabaragamuwa",
+    "district": "Ratnapura",
+    "description": "Remote ancient cave monastery perched on a dramatic rocky outcrop featuring 2,000-year-old meditation caves, Brahmi inscriptions, and coexisting Sufi shrine. An extraordinary hidden gem of Sri Lanka.",
+    "coordinates": { "lat": 6.573, "lon": 80.7031 },
+    "contact": {
+      "phone": "+94 45 222 5000",
+      "email": "ccf@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Early morning; dry season November to March",
+    "activities": [
+      "Cave monastery tour",
+      "Rock climbing",
+      "Meditation",
+      "Photography",
+      "Historical exploration"
+    ],
+    "target_tourist_type": [
+      "Off-beat travelers",
+      "Spiritual seekers",
+      "History lovers",
+      "Hikers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.5730,80.7031",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  },
+  {
+    "id": "SL082",
+    "name": "Dutch Canal Kayaking (Negombo)",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Gampaha",
+    "description": "Historic 17th-century Dutch canal network stretching 120km along the west coast. Kayak through the mangroves, fishing villages, and Buddhist temples observing daily Sri Lankan coastal life from the water.",
+    "coordinates": { "lat": 7.2092, "lon": 79.8382 },
+    "contact": {
+      "phone": "+94 31 223 7272",
+      "email": "kayak@negombo.lk",
+      "website": "https://www.negomboactivities.com"
+    },
+    "opening_hours": "07:00 - 17:00 daily",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "Early morning for calmest water and bird life",
+    "activities": [
+      "Kayaking",
+      "Mangrove tour",
+      "Bird watching",
+      "Village photography",
+      "Fishing boat watching"
+    ],
+    "target_tourist_type": [
+      "Eco-tourists",
+      "Active travelers",
+      "Photographers",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.2092,79.8382",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL083",
+    "name": "Victoria Park Nuwara Eliya (Bird Watching)",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Nuwara Eliya",
+    "description": "Manicured colonial-era park in the center of Nuwara Eliya attracting migrant birds from India in April and October. Home to the Kashmir flycatcher, pied thrush, and Indian pitta during migration.",
+    "coordinates": { "lat": 6.9661, "lon": 80.7697 },
+    "contact": {
+      "phone": "+94 52 222 2228",
+      "email": "park@nuwaraeliya.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "07:00 - 18:00 daily",
+    "entry_fee_lkr": 200,
+    "best_time_to_visit": "April and October for migrant bird species",
+    "activities": [
+      "Bird watching",
+      "Garden walking",
+      "Photography",
+      "Relaxing",
+      "Children's play area"
+    ],
+    "target_tourist_type": [
+      "Birdwatchers",
+      "Families",
+      "Nature lovers",
+      "Photographers"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9661,80.7697",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Japanese", "Indian", "Dutch"]
+  },
+  {
+    "id": "SL084",
+    "name": "Mangrove Forest Kayaking Madu River",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Magical boat journey through Sri Lanka's most biodiverse mangrove forest on the Madu River Lagoon. 64 islands, 303 plant species, monitored crocodiles, and rare birds in a UNESCO-listed wetland.",
+    "coordinates": { "lat": 6.1606, "lon": 80.1436 },
+    "contact": {
+      "phone": "+94 91 228 8100",
+      "email": "madu@ecotours.lk",
+      "website": "https://www.maduriversafari.com"
+    },
+    "opening_hours": "07:00 - 17:00 daily",
+    "entry_fee_lkr": 2500,
+    "best_time_to_visit": "Morning for bird activity; year-round",
+    "activities": [
+      "Mangrove boat tour",
+      "Kayaking",
+      "Bird watching",
+      "Crocodile spotting",
+      "Prawn farm visit"
+    ],
+    "target_tourist_type": [
+      "Eco-tourists",
+      "Nature lovers",
+      "Families",
+      "Photographers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.1606,80.1436",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL085",
+    "name": "Ambuluwawa Handicraft Village",
+    "category": "Local Experiences",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Traditional handicraft village where artisans demonstrate and sell handmade lacquerware, brassware, woodcarving, cane furniture, and silver jewelry. Authentic Sri Lankan crafts at fair prices.",
+    "coordinates": { "lat": 7.3128, "lon": 80.6322 },
+    "contact": {
+      "phone": "+94 81 222 9899",
+      "email": "crafts@kandy.gov.lk",
+      "website": "https://www.kandycrafts.lk"
+    },
+    "opening_hours": "09:00 - 18:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning for demonstrations",
+    "activities": [
+      "Handicraft shopping",
+      "Craft demonstrations",
+      "Lacquerware making",
+      "Souvenir purchasing",
+      "Cultural interaction"
+    ],
+    "target_tourist_type": [
+      "Shoppers",
+      "Culture seekers",
+      "Art lovers",
+      "Gift buyers"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.3128,80.6322",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Japanese", "French", "Indian"]
+  },
+  {
+    "id": "SL086",
+    "name": "Vavuniya Archaeology Museum",
+    "category": "Cultural & Heritage Sites",
+    "province": "Northern",
+    "district": "Vavuniya",
+    "description": "Rarely visited but fascinating regional museum displaying archaeological finds from the Northern Province including Buddhist sculptures, ancient coins, and traditional artifacts from the Chola and Anuradhapura periods.",
+    "coordinates": { "lat": 8.7514, "lon": 80.4975 },
+    "contact": {
+      "phone": "+94 24 222 2299",
+      "email": "vavuniya@museum.gov.lk",
+      "website": "https://www.museum.gov.lk"
+    },
+    "opening_hours": "09:00 - 17:00 (closed Fridays)",
+    "entry_fee_lkr": 200,
+    "best_time_to_visit": "Weekday mornings",
+    "activities": [
+      "Museum tour",
+      "Archaeological exploration",
+      "Cultural learning",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Off-beat travelers",
+      "Researchers",
+      "Students"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.7514,80.4975",
+    "rating": 4.0,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Indian", "French", "Japanese"]
+  },
+  {
+    "id": "SL087",
+    "name": "Pidurangala Rock (Photography Spot)",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Matale",
+    "description": "The lesser-known but better photography viewpoint opposite Sigiriya. A 45-minute hike rewards with iconic sunrise/sunset shots of Sigiriya Rock rising from the jungle canopy. No crowds compared to Sigiriya.",
+    "coordinates": { "lat": 7.961, "lon": 80.7578 },
+    "contact": {
+      "phone": "+94 66 228 6248",
+      "email": "info@sigiriya.gov.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Sunrise (6 AM) for iconic Sigiriya photography",
+    "activities": [
+      "Sunrise hike",
+      "Sigiriya photography",
+      "Ancient temple visit",
+      "Nature walk"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Hikers",
+      "Adventure seekers",
+      "Backpackers"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.9610,80.7578",
+    "rating": 4.8,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL088",
+    "name": "Colombo Barefoot Gallery & Café",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Iconic Colombo institution combining a contemporary art gallery, hand-printed textile shop, bookshop, and garden café. The heart of Colombo's creative and cultural scene for over 40 years.",
+    "coordinates": { "lat": 6.8968, "lon": 79.8554 },
+    "contact": {
+      "phone": "+94 11 258 0114",
+      "email": "info@barefoot.lk",
+      "website": "https://www.barefootceylon.com"
+    },
+    "opening_hours": "10:00 - 20:00 Mon-Sat; 11:00 - 19:00 Sun",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Any time; weekend afternoon for live music",
+    "activities": [
+      "Art gallery visit",
+      "Textile shopping",
+      "Garden café lunch",
+      "Book shopping",
+      "Live music (weekends)"
+    ],
+    "target_tourist_type": [
+      "Art lovers",
+      "Culture seekers",
+      "Shoppers",
+      "Foodies",
+      "Literary travelers"
+    ],
+    "average_visit_duration": "1.5-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8968,79.8554",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Australian", "French", "Japanese"]
+  },
+  {
+    "id": "SL089",
+    "name": "Habarana Village Bicycle Tour",
+    "category": "Local Experiences",
+    "province": "North Central",
+    "district": "Anuradhapura",
+    "description": "Guided bicycle tours through ancient villages in the Cultural Triangle, visiting rural paddy farmers, village temples, tanks (reservoirs), and endemic birdlife. A peaceful authentic cultural experience.",
+    "coordinates": { "lat": 8.0502, "lon": 80.7527 },
+    "contact": {
+      "phone": "+94 66 227 0200",
+      "email": "bike@habarana.lk",
+      "website": "https://www.habaranatours.com"
+    },
+    "opening_hours": "07:00 - 16:00 daily",
+    "entry_fee_lkr": 2500,
+    "best_time_to_visit": "Early morning for cooler temperatures",
+    "activities": [
+      "Cycling",
+      "Village tour",
+      "Temple visits",
+      "Bird watching",
+      "Paddy field photography"
+    ],
+    "target_tourist_type": [
+      "Eco-tourists",
+      "Culture seekers",
+      "Active travelers",
+      "Photography enthusiasts"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.0502,80.7527",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "French", "Scandinavian"]
+  },
+  {
+    "id": "SL090",
+    "name": "Talangama Wetland Bird Watching",
+    "category": "Nature & Adventure",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Easily accessible urban wetland sanctuary near Colombo city with over 100 bird species including painted storks, purple herons, and kingfishers. Perfect for birdwatching between city sightseeing.",
+    "coordinates": { "lat": 6.9127, "lon": 79.9219 },
+    "contact": {
+      "phone": "+94 11 284 6100",
+      "email": "talangama@birding.lk",
+      "website": "https://www.slbirding.com"
+    },
+    "opening_hours": "06:00 - 17:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Early morning 6-9 AM for peak bird activity",
+    "activities": [
+      "Bird watching",
+      "Photography",
+      "Nature walking",
+      "Wetland ecology observation"
+    ],
+    "target_tourist_type": [
+      "Birdwatchers",
+      "Photographers",
+      "Nature lovers",
+      "Urban eco-tourists"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9127,79.9219",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Dutch", "Japanese", "Australian"]
+  },
+  {
+    "id": "SL091",
+    "name": "Hikkaduwa Beach (Photography & Nightlife)",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Lively beach town with colorful beach bars, nightlife, coral snorkeling, and reggae vibes. One of Sri Lanka's most popular backpacker destinations with an active social scene.",
+    "coordinates": { "lat": 6.1399, "lon": 80.1002 },
+    "contact": {
+      "phone": "+94 91 227 7000",
+      "email": "hikkaduwa@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Bars: until 01:00; Beach: 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "November to April; beach parties on weekends",
+    "activities": [
+      "Swimming",
+      "Nightlife",
+      "Live music",
+      "Snorkeling",
+      "Beach dining",
+      "Art galleries"
+    ],
+    "target_tourist_type": [
+      "Young travelers",
+      "Backpackers",
+      "Surfers",
+      "Beach lovers"
+    ],
+    "average_visit_duration": "Multi-day",
+    "google_maps_link": "https://maps.google.com/?q=6.1399,80.1002",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Israeli", "Australian", "Italian"]
+  },
+  {
+    "id": "SL092",
+    "name": "Nainativu Nagadeepa Temple",
+    "category": "Cultural & Heritage Sites",
+    "province": "Northern",
+    "district": "Jaffna",
+    "description": "Ancient Buddhist and Hindu temple complex on a small island accessible only by boat from Kurikadduwan. One of Sri Lanka's oldest Buddhist sites where the Buddha is believed to have visited twice.",
+    "coordinates": { "lat": 9.6917, "lon": 79.8778 },
+    "contact": {
+      "phone": "+94 21 222 4400",
+      "email": "nainativu@pilgrimage.lk",
+      "website": "https://www.nainativu.com"
+    },
+    "opening_hours": "06:00 - 17:00 daily (boats depart hourly)",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning for quieter pilgrimage; full moon days",
+    "activities": [
+      "Temple pilgrimage",
+      "Boat journey",
+      "Religious rituals",
+      "Island exploration",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "Buddhist devotees",
+      "Hindu devotees",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "3-4 hours including boat journey",
+    "google_maps_link": "https://maps.google.com/?q=9.6917,79.8778",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Japanese", "Thai", "UK", "German"]
+  },
+  {
+    "id": "SL093",
+    "name": "Galle Fort Photography Walk",
+    "category": "Local Experiences",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Guided photography walk through the cobblestone streets of Galle Fort with professional photographer guide, covering hidden alleys, colorful doors, lighthouse, cricket ground, and sunset rampart shots.",
+    "coordinates": { "lat": 6.0278, "lon": 80.2172 },
+    "contact": {
+      "phone": "+94 77 456 7890",
+      "email": "photo@galleforphotography.lk",
+      "website": "https://www.gallephotowalk.com"
+    },
+    "opening_hours": "08:00 - 10:00 AM and 16:00 - 18:30 PM",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "Golden hour sessions at 16:00 for best light",
+    "activities": [
+      "Photography workshop",
+      "Heritage walk",
+      "Architecture photography",
+      "Street photography",
+      "Sunset shooting"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Art lovers",
+      "Culture seekers",
+      "Couples"
+    ],
+    "average_visit_duration": "2.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.0278,80.2172",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "French", "Japanese", "Australian"]
+  },
+  {
+    "id": "SL094",
+    "name": "Mulgirigala Rock Temple",
+    "category": "Cultural & Heritage Sites",
+    "province": "Southern",
+    "district": "Hambantota",
+    "description": "Ancient Buddhist cave temple complex rising 200m above the jungle on a dramatic granite rock. Seven cave temples with ancient murals and inscriptions dating back to 2nd century BC. Often called the 'mini Sigiriya'.",
+    "coordinates": { "lat": 6.0784, "lon": 80.8568 },
+    "contact": {
+      "phone": "+94 47 222 5000",
+      "email": "mulgirigala@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "08:00 - 17:30 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Early morning",
+    "activities": [
+      "Rock temple climbing",
+      "Ancient mural viewing",
+      "Meditation",
+      "Photography",
+      "Nature walk"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Hikers",
+      "Off-beat travelers",
+      "Buddhist pilgrims"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.0784,80.8568",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Japanese"]
+  },
+  {
+    "id": "SL095",
+    "name": "Lanka Hydraulic Institute (Model Irrigation)",
+    "category": "Cultural & Heritage Sites",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Unique interactive museum showcasing the extraordinary ancient hydraulic civilization of Sri Lanka, featuring scale models of the 2,000-year-old irrigation network that fed an ancient civilisation.",
+    "coordinates": { "lat": 6.9027, "lon": 79.8614 },
+    "contact": {
+      "phone": "+94 11 269 3444",
+      "email": "lhi@irrigation.gov.lk",
+      "website": "https://www.lhi.gov.lk"
+    },
+    "opening_hours": "09:00 - 16:00 Mon-Fri",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Weekday mornings",
+    "activities": [
+      "Museum visit",
+      "Engineering history tour",
+      "Scale model viewing",
+      "Educational tour"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Engineers",
+      "Students",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "1.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9027,79.8614",
+    "rating": 4.1,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Japanese", "German", "UK", "Indian", "French"]
+  },
+  {
+    "id": "SL096",
+    "name": "Negombo Beach & Lagoon",
+    "category": "Nature & Adventure",
+    "province": "Western",
+    "district": "Gampaha",
+    "description": "Popular beach town just 8km from Colombo Airport perfect for a first/last night stay. Long sandy beach, historic Catholic churches, Dutch canal, and abundant fresh seafood restaurants.",
+    "coordinates": { "lat": 7.2108, "lon": 79.8358 },
+    "contact": {
+      "phone": "+94 31 222 2778",
+      "email": "negombo@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "November to April for beach season",
+    "activities": [
+      "Beach relaxation",
+      "Seafood dining",
+      "Lagoon boat tour",
+      "Church visiting",
+      "Canal kayaking"
+    ],
+    "target_tourist_type": [
+      "Beach lovers",
+      "Families",
+      "Transitioning travelers",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "1-2 days",
+    "google_maps_link": "https://maps.google.com/?q=7.2108,79.8358",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "Italian", "Scandinavian"]
+  },
+  {
+    "id": "SL097",
+    "name": "Bandaranaike International Airport",
+    "category": "Transport Hubs",
+    "province": "Western",
+    "district": "Gampaha",
+    "description": "Sri Lanka's main international gateway, located in Katunayake, 30km north of Colombo. Features modern terminals, duty free shopping, currency exchange, SIM card shops, and tourist information.",
+    "coordinates": { "lat": 7.1808, "lon": 79.8841 },
+    "contact": {
+      "phone": "+94 11 225 2861",
+      "email": "info@airport.lk",
+      "website": "https://www.airport.lk"
+    },
+    "opening_hours": "24 hours daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Arrive 3 hours before departure for international flights",
+    "activities": [
+      "Duty free shopping",
+      "SIM card purchase",
+      "Currency exchange",
+      "Tourist information",
+      "Car hire"
+    ],
+    "target_tourist_type": ["All international tourists"],
+    "average_visit_duration": "As needed",
+    "google_maps_link": "https://maps.google.com/?q=7.1808,79.8841",
+    "rating": 4.0,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["All nationalities"]
+  },
+  {
+    "id": "SL098",
+    "name": "Ella Train Journey (Kandy-Ella Scenic Route)",
+    "category": "Transport Hubs",
+    "province": "Uva",
+    "district": "Badulla",
+    "description": "Consistently voted one of the world's most beautiful train journeys. The Observation Car (First Class) offers glass-windowed rear viewing through cloud forests, waterfalls, tea estates, and tunnels for 7 hours.",
+    "coordinates": { "lat": 6.8738, "lon": 81.046 },
+    "contact": {
+      "phone": "+94 11 243 4215",
+      "email": "tickets@railway.gov.lk",
+      "website": "https://www.railway.gov.lk"
+    },
+    "opening_hours": "Book via online or station office",
+    "entry_fee_lkr": 1000,
+    "best_time_to_visit": "Book Observation Car tickets 1-2 weeks in advance",
+    "activities": [
+      "Scenic train journey",
+      "Tea country viewing",
+      "Waterfall photography",
+      "Observation car experience"
+    ],
+    "target_tourist_type": [
+      "All tourists",
+      "Train enthusiasts",
+      "Photographers",
+      "Backpackers"
+    ],
+    "average_visit_duration": "7-8 hours (full journey)",
+    "google_maps_link": "https://maps.google.com/?q=6.8738,81.0460",
+    "rating": 4.9,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Australian", "Japanese"]
+  },
+  {
+    "id": "SL099",
+    "name": "Colombo City Tour (Tuk Tuk)",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Iconic half-day Colombo city tour by three-wheeler (tuk-tuk) visiting Gangaramaya Temple, Viharamahadevi Park, Galle Face Green, Independence Square, Pettah Market, and Old Dutch Hospital.",
+    "coordinates": { "lat": 6.9197, "lon": 79.8622 },
+    "contact": {
+      "phone": "+94 77 234 5678",
+      "email": "tuktuk@colombotours.lk",
+      "website": "https://www.colombotuktuk.com"
+    },
+    "opening_hours": "Tours available 07:00 - 19:00 daily",
+    "entry_fee_lkr": 3500,
+    "best_time_to_visit": "Morning for cooler temperatures",
+    "activities": [
+      "Temple visits",
+      "Market tour",
+      "Colonial architecture viewing",
+      "Street food stops",
+      "City photography"
+    ],
+    "target_tourist_type": [
+      "First-time visitors",
+      "Families",
+      "Culture seekers",
+      "Budget travelers"
+    ],
+    "average_visit_duration": "4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9197,79.8622",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Indian", "French", "Australian"]
+  },
+  {
+    "id": "SL100",
+    "name": "Colombo Viharamahadevi Park",
+    "category": "Nature & Adventure",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Sri Lanka's oldest and largest public park (Victoria Park redesigned) covering 23 acres in the heart of Colombo. Features a boating lake, golden Buddha statue, Japanese garden, and Sunday music concerts.",
+    "coordinates": { "lat": 6.9105, "lon": 79.8632 },
+    "contact": {
+      "phone": "+94 11 269 4800",
+      "email": "viharmahadevi@colombo.lk",
+      "website": "https://www.colombo.lk"
+    },
+    "opening_hours": "06:00 - 22:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Weekday morning; Sunday for local atmosphere",
+    "activities": [
+      "Park walking",
+      "Photography",
+      "Boating",
+      "Flower viewing",
+      "Children's play area"
+    ],
+    "target_tourist_type": [
+      "Families",
+      "Joggers",
+      "Photographers",
+      "All tourists"
+    ],
+    "average_visit_duration": "1 hour",
+    "google_maps_link": "https://maps.google.com/?q=6.9105,79.8632",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "German", "UK", "Chinese", "French"]
+  },
+  {
+    "id": "SL101",
+    "name": "Dickwella Blow Hole & Hoo-maniya",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Matara",
+    "description": "Natural ocean blow hole that can shoot water up to 18 meters into the air during high tide. One of Asia's largest known blow holes, a dramatic natural spectacle on Sri Lanka's southern coast.",
+    "coordinates": { "lat": 5.9797, "lon": 80.7072 },
+    "contact": {
+      "phone": "+94 41 225 0100",
+      "email": "dickwella@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours; best during high tide",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "High tide for maximum water jet; June-July for monsoon surge",
+    "activities": [
+      "Blow hole viewing",
+      "Wave photography",
+      "Cliff walking",
+      "Coastal exploration"
+    ],
+    "target_tourist_type": [
+      "Nature lovers",
+      "Photographers",
+      "Adventure seekers",
+      "Day-trippers"
+    ],
+    "average_visit_duration": "1 hour",
+    "google_maps_link": "https://maps.google.com/?q=5.9797,80.7072",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  },
+  {
+    "id": "SL102",
+    "name": "Jaffna Public Library",
+    "category": "Cultural & Heritage Sites",
+    "province": "Northern",
+    "district": "Jaffna",
+    "description": "Rebuilt iconic neoclassical library, a symbol of Tamil cultural resilience after its destruction in 1981. Contains over 100,000 volumes including rare Tamil manuscripts and a significant archive of Tamil literature.",
+    "coordinates": { "lat": 9.6614, "lon": 80.0171 },
+    "contact": {
+      "phone": "+94 21 222 2779",
+      "email": "library@jaffna.gov.lk",
+      "website": "https://www.jaffna.gov.lk"
+    },
+    "opening_hours": "09:00 - 17:00 Mon-Sat",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning",
+    "activities": [
+      "Architecture viewing",
+      "Cultural history learning",
+      "Photography",
+      "Tamil literary heritage"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Culture seekers",
+      "Literary travelers",
+      "Off-beat travelers"
+    ],
+    "average_visit_duration": "1 hour",
+    "google_maps_link": "https://maps.google.com/?q=9.6614,80.0171",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "French", "Canadian"]
+  },
+  {
+    "id": "SL103",
+    "name": "Diyaluma Falls",
+    "category": "Nature & Adventure",
+    "province": "Uva",
+    "district": "Monaragala",
+    "description": "Sri Lanka's second highest waterfall at 220m, accessible via a 2-hour hike through tea estates. Natural rock pools at the top ideal for swimming with spectacular views over Uva province.",
+    "coordinates": { "lat": 6.7285, "lon": 81.0164 },
+    "contact": {
+      "phone": "+94 55 222 8000",
+      "email": "diyaluma@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours; hike during daylight",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning; December-April for full water flow",
+    "activities": [
+      "Waterfall hiking",
+      "Natural pool swimming",
+      "Photography",
+      "Picnicking",
+      "Bird watching"
+    ],
+    "target_tourist_type": [
+      "Hikers",
+      "Adventure seekers",
+      "Swimmers",
+      "Photographers"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.7285,81.0164",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Israeli", "Australian"]
+  },
+  {
+    "id": "SL104",
+    "name": "Bavarian Lanka Cookie Factory",
+    "category": "Local Experiences",
+    "province": "Central",
+    "district": "Nuwara Eliya",
+    "description": "Colonial-era cookie factory in Nuwara Eliya producing traditional shortbread and biscuits using a 100-year-old original German recipe. Factory tour shows traditional baking methods.",
+    "coordinates": { "lat": 6.9697, "lon": 80.7752 },
+    "contact": {
+      "phone": "+94 52 222 3456",
+      "email": "bavarian@cookies.lk",
+      "website": "https://www.bavarianlanka.com"
+    },
+    "opening_hours": "09:00 - 18:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning baking sessions",
+    "activities": [
+      "Factory tour",
+      "Cookie tasting",
+      "Purchase gifts",
+      "Colonial history learning"
+    ],
+    "target_tourist_type": [
+      "Foodies",
+      "Families",
+      "Gift shoppers",
+      "German tourists"
+    ],
+    "average_visit_duration": "45 minutes",
+    "google_maps_link": "https://maps.google.com/?q=6.9697,80.7752",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Indian", "Australian", "French"]
+  },
+  {
+    "id": "SL105",
+    "name": "Katharagama Jungle Safari",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Monaragala",
+    "description": "Off-the-beaten-path jungle safari in the wilderness surrounding Kataragama offering encounters with elephants, leopards, sloth bears, and endemic birds in pristine forest bordering Yala.",
+    "coordinates": { "lat": 6.4098, "lon": 81.3337 },
+    "contact": {
+      "phone": "+94 47 223 5100",
+      "email": "safari@kataragama.lk",
+      "website": "https://www.kataragamasafari.com"
+    },
+    "opening_hours": "05:30 - 18:00 daily",
+    "entry_fee_lkr": 5000,
+    "best_time_to_visit": "May to September dry season",
+    "activities": [
+      "Jeep safari",
+      "Elephant spotting",
+      "Leopard tracking",
+      "Night safari",
+      "Bird watching"
+    ],
+    "target_tourist_type": [
+      "Wildlife enthusiasts",
+      "Adventure seekers",
+      "Photographers",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.4098,81.3337",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL106",
+    "name": "Bambarakanda Falls",
+    "category": "Nature & Adventure",
+    "province": "Uva",
+    "district": "Badulla",
+    "description": "Sri Lanka's highest waterfall at 263m, cascading down the Horton Plains escarpment into the Bambarakanda jungle. Accessible via a short hike and very photogenic in morning light.",
+    "coordinates": { "lat": 6.7572, "lon": 80.8899 },
+    "contact": {
+      "phone": "+94 55 222 8100",
+      "email": "bambarakanda@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours; best at sunrise",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "December-April when rains feed the falls",
+    "activities": [
+      "Waterfall viewing",
+      "Hiking",
+      "Photography",
+      "Swimming at base",
+      "Picnicking"
+    ],
+    "target_tourist_type": [
+      "Nature lovers",
+      "Hikers",
+      "Photographers",
+      "Families"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.7572,80.8899",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Indian"]
+  },
+  {
+    "id": "SL107",
+    "name": "Koggala Lake Boat Tour",
+    "category": "Local Experiences",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Scenic boat tour of Koggala Lake, Sri Lanka's largest natural lake, visiting islands with Buddhist temples, cinnamon plantations, and bird sanctuaries. Watch traditional stilt fishermen along the shoreline.",
+    "coordinates": { "lat": 5.9969, "lon": 80.3318 },
+    "contact": {
+      "phone": "+94 91 228 4100",
+      "email": "koggala@boattours.lk",
+      "website": "https://www.kogglalalaketour.com"
+    },
+    "opening_hours": "08:00 - 17:00 daily",
+    "entry_fee_lkr": 2000,
+    "best_time_to_visit": "Morning for bird activity and calm water",
+    "activities": [
+      "Boat tour",
+      "Island temple visit",
+      "Cinnamon plantation",
+      "Stilt fisherman photography",
+      "Bird watching"
+    ],
+    "target_tourist_type": [
+      "Nature lovers",
+      "Culture seekers",
+      "Photographers",
+      "Families"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=5.9969,80.3318",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "French", "Italian", "Dutch"]
+  },
+  {
+    "id": "SL108",
+    "name": "Wellawaya Buduruwagala Rock Carvings",
+    "category": "Cultural & Heritage Sites",
+    "province": "Uva",
+    "district": "Monaragala",
+    "description": "Remarkable 9th-century Mahayana Buddhist rock relief carvings featuring seven colossal figures including a rare standing Tara figure with a flame-like nimbus. A little-visited but extraordinary ancient site.",
+    "coordinates": { "lat": 6.7458, "lon": 81.1047 },
+    "contact": {
+      "phone": "+94 55 222 8000",
+      "email": "buduruwagala@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "08:00 - 17:00 daily",
+    "entry_fee_lkr": 1000,
+    "best_time_to_visit": "Morning for best rock carving light",
+    "activities": [
+      "Rock carving viewing",
+      "Archaeological exploration",
+      "Photography",
+      "Historical interpretation"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Off-beat travelers",
+      "Archaeologists",
+      "Art enthusiasts"
+    ],
+    "average_visit_duration": "1.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.7458,81.1047",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Japanese", "Dutch"]
+  },
+  {
+    "id": "SL109",
+    "name": "Galle Road Stilt Fishermen Photography (Ahangama)",
+    "category": "Local Experiences",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Iconic Sri Lanka image - traditional stilt fishermen perched on cross poles in the ocean at Ahangama, a unique ancient fishing method. The most photographed scene in Sri Lanka.",
+    "coordinates": { "lat": 5.9897, "lon": 80.3598 },
+    "contact": {
+      "phone": "+94 91 228 5100",
+      "email": "stilts@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Best at sunrise (06:00 - 08:00)",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Sunrise for photography; small tip for fishermen expected",
+    "activities": [
+      "Photography",
+      "Cultural interaction",
+      "Sunrise watching",
+      "Fishermen interaction"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Culture seekers",
+      "Couples",
+      "Backpackers"
+    ],
+    "average_visit_duration": "1 hour",
+    "google_maps_link": "https://maps.google.com/?q=5.9897,80.3598",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Japanese", "Australian"]
+  },
+  {
+    "id": "SL110",
+    "name": "Marine Drive Colombo Sunset",
+    "category": "Nature & Adventure",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Galle Face Green – the iconic ocean front promenade in Colombo where locals and tourists gather for spectacular Indian Ocean sunsets. Street food vendors, kite flying, and the colonial Galle Face Hotel backdrop.",
+    "coordinates": { "lat": 6.9047, "lon": 79.8464 },
+    "contact": {
+      "phone": "+94 11 232 4400",
+      "email": "galleface@colombo.lk",
+      "website": "https://www.colombo.lk"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Sunset hours 17:30-18:30 for spectacular views",
+    "activities": [
+      "Sunset watching",
+      "Street food",
+      "Kite flying",
+      "Photography",
+      "People watching"
+    ],
+    "target_tourist_type": [
+      "All tourists",
+      "Families",
+      "Couples",
+      "Photographers"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9047,79.8464",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "German", "UK", "Chinese", "French"]
+  },
+  {
+    "id": "SL111",
+    "name": "Jaffna Market & Food Tour",
+    "category": "Authentic Food Places",
+    "province": "Northern",
+    "district": "Jaffna",
+    "description": "Morning food tour through Jaffna's vibrant central market sampling palmyra fruit, dried fish, Northern Tamil sweets, fresh toddy, and authentic Tamil street food. An essential northern Sri Lanka experience.",
+    "coordinates": { "lat": 9.6603, "lon": 80.0255 },
+    "contact": {
+      "phone": "+94 21 222 4400",
+      "email": "jaffnamarket@tourism.lk",
+      "website": "https://www.jaffnatourism.com"
+    },
+    "opening_hours": "06:00 - 12:00 (peak morning activity)",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "7-10 AM for maximum market activity",
+    "activities": [
+      "Market exploration",
+      "Street food tasting",
+      "Palmyra products",
+      "Dried fish shopping",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Foodies",
+      "Culture seekers",
+      "Adventure travelers",
+      "Photographers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=9.6603,80.0255",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "German", "UK", "French", "Australian"]
+  },
+  {
+    "id": "SL112",
+    "name": "Kelaniya Raja Maha Vihara",
+    "category": "Cultural & Heritage Sites",
+    "province": "Western",
+    "district": "Gampaha",
+    "description": "One of Sri Lanka's most sacred Buddhist temples, 11km from Colombo. Believed to be the spot where the Buddha visited during his third visit to Sri Lanka. Famous for its beautiful murals and Duruthu Perahera.",
+    "coordinates": { "lat": 6.9556, "lon": 79.9211 },
+    "contact": {
+      "phone": "+94 11 291 1778",
+      "email": "kelaniya@temple.lk",
+      "website": "https://www.kelaniyarajamahavihara.lk"
+    },
+    "opening_hours": "05:30 - 22:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "January Duruthu Perahera; morning or evening puja",
+    "activities": [
+      "Temple worship",
+      "Mural viewing",
+      "Cultural photography",
+      "Religious ceremony",
+      "Meditation"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "Culture seekers",
+      "History lovers",
+      "Day-trippers from Colombo"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9556,79.9211",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Japanese", "Thai", "UK", "German"]
+  },
+  {
+    "id": "SL113",
+    "name": "Wellawatte Textile Market (Colombo)",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Sri Lanka's best textile and fashion shopping district in Wellawatte. Famous for handloom sarees, batik fabrics, tailoring shops, and multi-ethnic street food. A vibrant multicultural commercial neighborhood.",
+    "coordinates": { "lat": 6.8671, "lon": 79.8589 },
+    "contact": {
+      "phone": "+94 11 258 0900",
+      "email": "wellawatte@colombo.gov.lk",
+      "website": "https://www.colombo.lk"
+    },
+    "opening_hours": "09:00 - 21:00 Mon-Sat",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning for fabric shopping; afternoon for street food",
+    "activities": [
+      "Fabric shopping",
+      "Tailor visits",
+      "Street food tasting",
+      "Cultural exploration"
+    ],
+    "target_tourist_type": [
+      "Shoppers",
+      "Foodies",
+      "Culture seekers",
+      "Budget travelers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8671,79.8589",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Middle Eastern", "UK", "German", "French"]
+  },
+  {
+    "id": "SL114",
+    "name": "Aukana Buddha Statue",
+    "category": "Cultural & Heritage Sites",
+    "province": "North Central",
+    "district": "Anuradhapura",
+    "description": "Magnificent 5th-century standing Buddha statue (14.5m tall) carved from a single granite rock. One of the finest examples of ancient Sri Lankan sculpture art, located near the Kala Wewa reservoir.",
+    "coordinates": { "lat": 8.0358, "lon": 80.4025 },
+    "contact": {
+      "phone": "+94 25 222 3400",
+      "email": "aukana@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "07:00 - 18:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Sunrise when light hits the statue face beautifully",
+    "activities": [
+      "Statue viewing",
+      "Photography",
+      "Meditation",
+      "Temple complex exploration"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "History lovers",
+      "Photographers",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "1.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.0358,80.4025",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Japanese", "German", "UK", "Indian", "French"]
+  },
+  {
+    "id": "SL115",
+    "name": "Unawatuna Jungle Beach & Secret Cove",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Hidden jungle-framed cove accessible via 15-minute coastal hike beyond Unawatuna. Crystal clear waters, dramatic rock formations, and no crowds. One of Sri Lanka's best-kept beach secrets.",
+    "coordinates": { "lat": 6.0045, "lon": 80.2551 },
+    "contact": {
+      "phone": "+94 91 438 0100",
+      "email": "jungle@unawatuna.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "November to April; low tide for access",
+    "activities": [
+      "Swimming",
+      "Snorkeling",
+      "Rock exploring",
+      "Photography",
+      "Picnicking"
+    ],
+    "target_tourist_type": [
+      "Beach lovers",
+      "Adventure seekers",
+      "Couples",
+      "Off-beat travelers"
+    ],
+    "average_visit_duration": "Half day",
+    "google_maps_link": "https://maps.google.com/?q=6.0045,80.2551",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Italian", "Dutch"]
+  },
+  {
+    "id": "SL116",
+    "name": "Mathalan Mangrove Reserve (Jaffna)",
+    "category": "Nature & Adventure",
+    "province": "Northern",
+    "district": "Jaffna",
+    "description": "Pristine Northern mangrove ecosystem with rare flamingo populations, dugongs, and extraordinary bird diversity rarely visited by international tourists. Offers boat safari through protected channels.",
+    "coordinates": { "lat": 9.5867, "lon": 79.9867 },
+    "contact": {
+      "phone": "+94 21 222 5000",
+      "email": "mathalan@eco.lk",
+      "website": "https://www.jaffnatourism.com"
+    },
+    "opening_hours": "06:00 - 17:00 daily",
+    "entry_fee_lkr": 1500,
+    "best_time_to_visit": "October-March for flamingos and migratory birds",
+    "activities": [
+      "Mangrove boat tour",
+      "Flamingo watching",
+      "Bird watching",
+      "Dugong spotting",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Birdwatchers",
+      "Eco-tourists",
+      "Off-beat travelers",
+      "Wildlife enthusiasts"
+    ],
+    "average_visit_duration": "3 hours",
+    "google_maps_link": "https://maps.google.com/?q=9.5867,79.9867",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Dutch", "French", "Japanese"]
+  },
+  {
+    "id": "SL117",
+    "name": "Haputale Train Journey & Valley Views",
+    "category": "Nature & Adventure",
+    "province": "Uva",
+    "district": "Badulla",
+    "description": "The Haputale range offers Sri Lanka's most dramatic valley views with the hill station perched on a ridge overlooking both southern coastal plains and the Uva basin simultaneously.",
+    "coordinates": { "lat": 6.7683, "lon": 80.9601 },
+    "contact": {
+      "phone": "+94 57 222 8300",
+      "email": "haputale@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Clear mornings from June-September; best before 9 AM",
+    "activities": [
+      "Viewpoint photography",
+      "Valley panorama",
+      "Train spotting",
+      "Tea estate walk",
+      "Hiking"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Nature lovers",
+      "Hikers",
+      "Backpackers"
+    ],
+    "average_visit_duration": "Half day",
+    "google_maps_link": "https://maps.google.com/?q=6.7683,80.9601",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Israeli", "Swiss"]
+  },
+  {
+    "id": "SL118",
+    "name": "Canoeing Mahaweli River (Kandy)",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Gentle river canoeing along Sri Lanka's longest river, the Mahaweli, through jungle and village scenery near Kandy. Calm sections suitable for families and beginners with wildlife spotting.",
+    "coordinates": { "lat": 7.3378, "lon": 80.6867 },
+    "contact": {
+      "phone": "+94 81 223 4567",
+      "email": "canoe@kandyriverdventures.lk",
+      "website": "https://www.kandyriveradventures.com"
+    },
+    "opening_hours": "07:30 - 15:30 daily",
+    "entry_fee_lkr": 4000,
+    "best_time_to_visit": "Morning; November-April for calmer water levels",
+    "activities": [
+      "River canoeing",
+      "Bird watching",
+      "Village spotting",
+      "Nature photography",
+      "Swimming stops"
+    ],
+    "target_tourist_type": [
+      "Families",
+      "Active travelers",
+      "Nature lovers",
+      "Couples"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.3378,80.6867",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL119",
+    "name": "Matara Dutch Fort & Parevi Beach",
+    "category": "Cultural & Heritage Sites",
+    "province": "Southern",
+    "district": "Matara",
+    "description": "Small but well-preserved Dutch star fort built in 1763 in the center of Matara town, connected to the main fort by a bridge. Adjacent Parevi Beach offers relaxed southern beach town atmosphere.",
+    "coordinates": { "lat": 5.9487, "lon": 80.5414 },
+    "contact": {
+      "phone": "+94 41 222 3000",
+      "email": "matara@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "08:00 - 17:00 daily",
+    "entry_fee_lkr": 300,
+    "best_time_to_visit": "Morning; November-April for beach",
+    "activities": [
+      "Fort exploration",
+      "Historical walk",
+      "Beach relaxation",
+      "Photography",
+      "Local seafood dining"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Beach lovers",
+      "Culture seekers",
+      "Day-trippers"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=5.9487,80.5414",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL120",
+    "name": "Ceylon Tea Museum Kandy",
+    "category": "Cultural & Heritage Sites",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Fascinating museum housed in a historic tea factory telling the complete story of Sri Lanka's 150-year-old tea industry. Features original Victorian-era tea machinery, photographs, and interactive exhibits.",
+    "coordinates": { "lat": 7.2601, "lon": 80.6309 },
+    "contact": {
+      "phone": "+94 81 223 2601",
+      "email": "ceylonteamuseum@stf.lk",
+      "website": "https://www.ceylonteamuseum.lk"
+    },
+    "opening_hours": "08:30 - 16:00 Tue-Sat",
+    "entry_fee_lkr": 1000,
+    "best_time_to_visit": "Morning",
+    "activities": [
+      "Tea history museum",
+      "Machinery exhibition",
+      "Tea tasting",
+      "Tea industry overview"
+    ],
+    "target_tourist_type": [
+      "Tea enthusiasts",
+      "History lovers",
+      "Culture seekers",
+      "Foodies"
+    ],
+    "average_visit_duration": "1.5-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.2601,80.6309",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Japanese", "French", "Australian"]
+  },
+  {
+    "id": "SL121",
+    "name": "Trincomalee Natural Harbour Boat Tour",
+    "category": "Nature & Adventure",
+    "province": "Eastern",
+    "district": "Trincomalee",
+    "description": "Tour of Trincomalee's famous natural harbour – one of the world's finest and deepest natural harbours with panoramic coastal views, war memorial sites, and whale watching opportunities.",
+    "coordinates": { "lat": 8.5756, "lon": 81.2333 },
+    "contact": {
+      "phone": "+94 26 222 4200",
+      "email": "tricoboats@tourism.lk",
+      "website": "https://www.trincomaleeboattours.com"
+    },
+    "opening_hours": "07:00 - 16:00 daily",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "April-September for best conditions",
+    "activities": [
+      "Harbour boat tour",
+      "Whale watching",
+      "Naval history",
+      "Photography",
+      "Dolphin watching"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Wildlife enthusiasts",
+      "Photographers",
+      "Maritime enthusiasts"
+    ],
+    "average_visit_duration": "3 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.5756,81.2333",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL122",
+    "name": "Pettah Floating Market Colombo",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Unique urban floating market concept with vendors selling spices, handicrafts, street food, and fresh produce from boats along a restored Colombo canal. A blend of heritage and modern retail experience.",
+    "coordinates": { "lat": 6.9354, "lon": 79.8509 },
+    "contact": {
+      "phone": "+94 11 232 5600",
+      "email": "floatingmarket@colombo.lk",
+      "website": "https://www.floatingmarketcolombo.lk"
+    },
+    "opening_hours": "10:00 - 20:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Evening for lights and atmosphere",
+    "activities": [
+      "Market shopping",
+      "Street food",
+      "Photography",
+      "Cultural experience",
+      "Canal boat rides"
+    ],
+    "target_tourist_type": ["Shoppers", "Foodies", "Photographers", "Families"],
+    "average_visit_duration": "1.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9354,79.8509",
+    "rating": 4.1,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Chinese", "German", "UK", "French"]
+  },
+  {
+    "id": "SL123",
+    "name": "Gal Oya National Park Boat Safari",
+    "category": "Nature & Adventure",
+    "province": "Eastern",
+    "district": "Ampara",
+    "description": "Sri Lanka's only boat-based national park safari. Canoe through the Senanayake Samudra reservoir (Sri Lanka's largest) spotting swimming elephants, crocodiles, and endemic birds from the water.",
+    "coordinates": { "lat": 7.0667, "lon": 81.3833 },
+    "contact": {
+      "phone": "+94 63 224 8000",
+      "email": "galoya@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 17:30 daily",
+    "entry_fee_lkr": 5000,
+    "best_time_to_visit": "May-September dry season for swimming elephants",
+    "activities": [
+      "Boat safari",
+      "Swimming elephant spotting",
+      "Bird watching",
+      "Crocodile watching",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Wildlife enthusiasts",
+      "Adventure seekers",
+      "Photographers",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.0667,81.3833",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL124",
+    "name": "Kumana National Park",
+    "category": "Nature & Adventure",
+    "province": "Eastern",
+    "district": "Ampara",
+    "description": "Premier bird breeding sanctuary with massive seasonal bird colonies including painted storks, ibis, egrets, and herons nesting in large numbers. Adjoins Yala and offers less crowded wildlife viewing.",
+    "coordinates": { "lat": 6.5893, "lon": 81.7236 },
+    "contact": {
+      "phone": "+94 63 224 8000",
+      "email": "kumana@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 4000,
+    "best_time_to_visit": "April-July for nesting colonies; May-September for general wildlife",
+    "activities": [
+      "Bird watching",
+      "Safari",
+      "Photography",
+      "Elephant spotting",
+      "Lagoon tour"
+    ],
+    "target_tourist_type": [
+      "Birdwatchers",
+      "Wildlife photographers",
+      "Nature lovers",
+      "Eco-tourists"
+    ],
+    "average_visit_duration": "4-5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.5893,81.7236",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "Scandinavian", "Japanese"]
+  },
+  {
+    "id": "SL125",
+    "name": "Kekirawa Kandulla National Park",
+    "category": "Nature & Adventure",
+    "province": "North Central",
+    "district": "Anuradhapura",
+    "description": "Compact national park offering excellent elephant viewing and bird watching around Kandalama and Hurulu tanks. Less visited than Minneriya but often excellent for elephants during June-September.",
+    "coordinates": { "lat": 8.1167, "lon": 80.7833 },
+    "contact": {
+      "phone": "+94 66 227 0000",
+      "email": "kaudulla@wildlife.gov.lk",
+      "website": "https://www.wildlife.gov.lk"
+    },
+    "opening_hours": "06:00 - 18:00 daily",
+    "entry_fee_lkr": 3500,
+    "best_time_to_visit": "August-October for elephant congregation",
+    "activities": [
+      "Elephant safari",
+      "Bird watching",
+      "Jeep tour",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Wildlife enthusiasts",
+      "Families",
+      "Photographers",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.1167,80.7833",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL126",
+    "name": "Colombo Lotus Tower",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "South Asia's tallest tower at 356m, shaped like a lotus flower. Features observation deck, revolving restaurant, and entertainment complex offering 360-degree views across Colombo and the Indian Ocean.",
+    "coordinates": { "lat": 6.921, "lon": 79.8663 },
+    "contact": {
+      "phone": "+94 11 233 6666",
+      "email": "info@lotustower.lk",
+      "website": "https://www.lotustower.lk"
+    },
+    "opening_hours": "09:00 - 22:00 daily",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "Sunset or evening for city lights",
+    "activities": [
+      "Observation deck",
+      "Revolving restaurant",
+      "City panorama",
+      "Night photography",
+      "Shopping mall"
+    ],
+    "target_tourist_type": [
+      "Families",
+      "Couples",
+      "Architecture enthusiasts",
+      "Foodies"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9210,79.8663",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["Chinese", "Indian", "UK", "German", "Japanese"]
+  },
+  {
+    "id": "SL127",
+    "name": "Anuradhapura Mihintale",
+    "category": "Cultural & Heritage Sites",
+    "province": "North Central",
+    "district": "Anuradhapura",
+    "description": "Sacred hill where Buddhism was introduced to Sri Lanka in 247 BC by the Indian missionary Mahinda. Climb 1,840 granite steps to ancient stupas, meditation caves, and the Mahinda Cave.",
+    "coordinates": { "lat": 8.3501, "lon": 80.5103 },
+    "contact": {
+      "phone": "+94 25 222 2266",
+      "email": "mihintale@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "07:00 - 18:00 daily",
+    "entry_fee_lkr": 1000,
+    "best_time_to_visit": "Morning; June full moon (Poson Poya) festival",
+    "activities": [
+      "Sacred staircase climb",
+      "Ancient stupa visit",
+      "Meditation cave",
+      "Photography",
+      "Religious ceremony"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "History lovers",
+      "Hikers",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.3501,80.5103",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Japanese", "Thai", "UK", "German"]
+  },
+  {
+    "id": "SL128",
+    "name": "Dondra Head Lighthouse",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Matara",
+    "description": "Sri Lanka's southernmost point and tallest lighthouse (49m). The colonial-era lighthouse marks the southernmost tip of Asia's 'teardrop' with dramatic ocean views and regular whale sighting opportunities offshore.",
+    "coordinates": { "lat": 5.9189, "lon": 80.5929 },
+    "contact": {
+      "phone": "+94 41 225 0100",
+      "email": "dondra@port.gov.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "09:00 - 17:00 daily",
+    "entry_fee_lkr": 200,
+    "best_time_to_visit": "Morning for whale watching; sunset for photography",
+    "activities": [
+      "Lighthouse visit",
+      "Southernmost point",
+      "Photography",
+      "Whale watching",
+      "Temple visit"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Travelers",
+      "Whale watchers",
+      "Lighthouse enthusiasts"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=5.9189,80.5929",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  },
+  {
+    "id": "SL129",
+    "name": "Point Pedro Northernmost Point",
+    "category": "Nature & Adventure",
+    "province": "Northern",
+    "district": "Jaffna",
+    "description": "Sri Lanka's northernmost point with a historic lighthouse, windswept coastline, and dramatic views to India. A symbolic destination for travelers completing a full island journey from South to North.",
+    "coordinates": { "lat": 9.8174, "lon": 80.2357 },
+    "contact": {
+      "phone": "+94 21 222 6600",
+      "email": "pointpedro@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning; May-September dry season",
+    "activities": [
+      "Northernmost point visit",
+      "Lighthouse photography",
+      "Coastline walk",
+      "Bird watching"
+    ],
+    "target_tourist_type": [
+      "Adventure travelers",
+      "Photographers",
+      "Milestone seekers",
+      "Off-beat explorers"
+    ],
+    "average_visit_duration": "1 hour",
+    "google_maps_link": "https://maps.google.com/?q=9.8174,80.2357",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  },
+  {
+    "id": "SL130",
+    "name": "Kalutara Gangatilake Cetiya",
+    "category": "Cultural & Heritage Sites",
+    "province": "Western",
+    "district": "Kalutara",
+    "description": "Unique hollow stupa pagoda where the interior is elaborately decorated with Buddhist murals telling the Jataka stories. The only hollow stupa in Sri Lanka, visible from the Colombo-Galle highway.",
+    "coordinates": { "lat": 6.5842, "lon": 79.9615 },
+    "contact": {
+      "phone": "+94 34 222 2500",
+      "email": "kalutara@cetiya.lk",
+      "website": "https://www.gangatilaka.lk"
+    },
+    "opening_hours": "06:00 - 20:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning",
+    "activities": [
+      "Stupa interior tour",
+      "Mural viewing",
+      "Religious ceremony",
+      "Photography",
+      "Meditation"
+    ],
+    "target_tourist_type": [
+      "Religious pilgrims",
+      "Art lovers",
+      "Culture seekers",
+      "Photographers"
+    ],
+    "average_visit_duration": "45 minutes",
+    "google_maps_link": "https://maps.google.com/?q=6.5842,79.9615",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Japanese", "UK", "German", "Chinese"]
+  },
+  {
+    "id": "SL131",
+    "name": "Bar Reef Marine Sanctuary (Kalpitiya)",
+    "category": "Nature & Adventure",
+    "province": "North Western",
+    "district": "Puttalam",
+    "description": "Sri Lanka's largest and most diverse coral reef system, home to hawksbill turtles, reef sharks, eagle rays, and hundreds of fish species. One of the most pristine dive sites in South Asia.",
+    "coordinates": { "lat": 8.3133, "lon": 79.6811 },
+    "contact": {
+      "phone": "+94 32 226 4500",
+      "email": "barreef@diving.lk",
+      "website": "https://www.barreefdiving.lk"
+    },
+    "opening_hours": "Dive trips: 07:00 daily (Oct-April season)",
+    "entry_fee_lkr": 8000,
+    "best_time_to_visit": "December to March for best visibility",
+    "activities": [
+      "Scuba diving",
+      "Snorkeling",
+      "Turtle spotting",
+      "Coral reef photography",
+      "Marine biology tours"
+    ],
+    "target_tourist_type": [
+      "Scuba divers",
+      "Snorkelers",
+      "Marine biologists",
+      "Wildlife photographers"
+    ],
+    "average_visit_duration": "Full day",
+    "google_maps_link": "https://maps.google.com/?q=8.3133,79.6811",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL132",
+    "name": "Colombo Barefoot Sri Lanka Cooking Class",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Premium cooking class in Colombo's upscale Colombo 7 neighborhood learning traditional Colombo-style Dutch Burgher recipes, devilled dishes, lamprais, and hoppers from a Burgher family descendant.",
+    "coordinates": { "lat": 6.8966, "lon": 79.8567 },
+    "contact": {
+      "phone": "+94 77 889 0123",
+      "email": "burghercook@colombo.lk",
+      "website": "https://www.burgherfoodtour.lk"
+    },
+    "opening_hours": "Classes: Mon-Sat at 10:00 and 15:00 (advance booking)",
+    "entry_fee_lkr": 8500,
+    "best_time_to_visit": "Any day; advance booking required",
+    "activities": [
+      "Heritage recipe cooking",
+      "Dutch Burgher history",
+      "Lamprais preparation",
+      "Market shopping",
+      "Dining"
+    ],
+    "target_tourist_type": [
+      "Luxury foodies",
+      "Culinary travelers",
+      "History lovers",
+      "Couples"
+    ],
+    "average_visit_duration": "4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8966,79.8567",
+    "rating": 4.8,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["UK", "German", "Australian", "Dutch", "French"]
+  },
+  {
+    "id": "SL133",
+    "name": "Hikkaduwa Scuba Diving",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Galle",
+    "description": "Popular beginner-to-intermediate scuba diving destination with HMS Hermes British aircraft carrier wreck, coral gardens, moray eels, and sea turtles in 8-25m depth warm water.",
+    "coordinates": { "lat": 6.1399, "lon": 80.0965 },
+    "contact": {
+      "phone": "+94 91 227 7294",
+      "email": "dive@hikkaduwa.lk",
+      "website": "https://www.hikkaduwadivers.com"
+    },
+    "opening_hours": "Dives: 08:00 and 13:00 daily (Nov-April season)",
+    "entry_fee_lkr": 7500,
+    "best_time_to_visit": "November to April for best visibility",
+    "activities": [
+      "Wreck diving",
+      "Reef diving",
+      "Beginner dive courses",
+      "Turtle swimming",
+      "Underwater photography"
+    ],
+    "target_tourist_type": [
+      "Scuba divers",
+      "Beginners",
+      "Underwater photographers",
+      "Adventure seekers"
+    ],
+    "average_visit_duration": "Half day",
+    "google_maps_link": "https://maps.google.com/?q=6.1399,80.0965",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL134",
+    "name": "National Zoological Gardens Dehiwala",
+    "category": "Nature & Adventure",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "South Asia's best zoo with 3,500+ animals across 350+ species including leopards, elephants, primates, reptiles, and an excellent aquarium. Set in 25 acres of tropical garden.",
+    "coordinates": { "lat": 6.8353, "lon": 79.8765 },
+    "contact": {
+      "phone": "+94 11 271 2751",
+      "email": "zoo@dzg.gov.lk",
+      "website": "https://www.national-zoological-gardens.gov.lk"
+    },
+    "opening_hours": "08:30 - 18:00 daily",
+    "entry_fee_lkr": 2000,
+    "best_time_to_visit": "Morning; elephant show at 15:30",
+    "activities": [
+      "Animal viewing",
+      "Elephant show",
+      "Aquarium visit",
+      "Children's train ride",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Families",
+      "Children",
+      "Nature lovers",
+      "Day-trippers"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8353,79.8765",
+    "rating": 4.1,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "Chinese", "Australian"]
+  },
+  {
+    "id": "SL135",
+    "name": "Ella Cutcherry (Tea Estate Walk)",
+    "category": "Local Experiences",
+    "province": "Uva",
+    "district": "Badulla",
+    "description": "Guided tea estate walking tour through Ella's surrounding tea plantations with a local Tamil tea plucker as guide. Learn tea cultivation, hand-plucking, and visit a small estate processing facility.",
+    "coordinates": { "lat": 6.8731, "lon": 81.0598 },
+    "contact": {
+      "phone": "+94 57 222 8900",
+      "email": "ella@teastates.lk",
+      "website": "https://www.ellateaestate.com"
+    },
+    "opening_hours": "07:30 - 15:30 daily (Mon-Sat)",
+    "entry_fee_lkr": 2000,
+    "best_time_to_visit": "Morning when pluckers are active",
+    "activities": [
+      "Tea plucking",
+      "Estate walk",
+      "Processing factory tour",
+      "Tea tasting",
+      "Cultural interaction"
+    ],
+    "target_tourist_type": [
+      "Tea enthusiasts",
+      "Culture seekers",
+      "Eco-tourists",
+      "Photographers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8731,81.0598",
+    "rating": 4.6,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "French", "Japanese", "Australian"]
+  },
+  {
+    "id": "SL136",
+    "name": "Moragaha Meditation Centre",
+    "category": "Ayurveda & Wellness",
+    "province": "Western",
+    "district": "Gampaha",
+    "description": "Traditional forest meditation retreat offering Vipassana-inspired mindfulness retreats in a jungle setting, with experienced Buddhist meditation masters guiding 3-10 day programs for serious practitioners.",
+    "coordinates": { "lat": 7.0897, "lon": 79.9867 },
+    "contact": {
+      "phone": "+94 33 222 8900",
+      "email": "retreat@moragaha.lk",
+      "website": "https://www.moragahameditation.lk"
+    },
+    "opening_hours": "Retreats by prior registration only",
+    "entry_fee_lkr": 5000,
+    "best_time_to_visit": "Year-round; pre-registration 2-4 weeks ahead",
+    "activities": [
+      "Vipassana meditation",
+      "Dharma teaching",
+      "Yoga",
+      "Nature walking",
+      "Vegetarian retreat meals"
+    ],
+    "target_tourist_type": [
+      "Spiritual seekers",
+      "Meditation practitioners",
+      "Wellness travelers",
+      "Mindful tourists"
+    ],
+    "average_visit_duration": "3-10 days",
+    "google_maps_link": "https://maps.google.com/?q=7.0897,79.9867",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  },
+  {
+    "id": "SL137",
+    "name": "Colombo Night Food Tour",
+    "category": "Authentic Food Places",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Evening guided street food tour exploring Colombo's diverse culinary landscape from hoppers in Slave Island to kottu in Wellawatte, samosa in Pettah, and fresh juices in Fort. Multi-ethnic food experience.",
+    "coordinates": { "lat": 6.9197, "lon": 79.8588 },
+    "contact": {
+      "phone": "+94 77 345 6789",
+      "email": "nighttour@colombofood.lk",
+      "website": "https://www.colombonightfoodtour.com"
+    },
+    "opening_hours": "Tours depart 18:30 nightly",
+    "entry_fee_lkr": 5500,
+    "best_time_to_visit": "Evening any day of the week",
+    "activities": [
+      "Hopper tasting",
+      "Kottu experience",
+      "Street food tour",
+      "Cultural neighborhood exploration",
+      "Juice bar stops"
+    ],
+    "target_tourist_type": [
+      "Foodies",
+      "Solo travelers",
+      "Couples",
+      "Food adventurers"
+    ],
+    "average_visit_duration": "3.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9197,79.8588",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "French", "Australian", "Japanese"]
+  },
+  {
+    "id": "SL138",
+    "name": "Lake Gregory Boating Nuwara Eliya",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Nuwara Eliya",
+    "description": "Scenic boating on colonial-era Gregory Lake surrounded by manicured gardens, rose hedges, and misty mountain backdrop. Pedal boats, rowing boats, and speed boat rides available.",
+    "coordinates": { "lat": 6.9672, "lon": 80.7714 },
+    "contact": {
+      "phone": "+94 52 222 3400",
+      "email": "gregory@nuwaraeliya.lk",
+      "website": "https://www.nuwaraeliyatourism.lk"
+    },
+    "opening_hours": "08:30 - 17:30 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Morning for mist photography; April racing season",
+    "activities": [
+      "Pedal boating",
+      "Row boating",
+      "Speed boat",
+      "Garden walking",
+      "Pony riding"
+    ],
+    "target_tourist_type": ["Families", "Couples", "Children", "Honeymooners"],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9672,80.7714",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "Chinese", "French"]
+  },
+  {
+    "id": "SL139",
+    "name": "Saptha Vadiya Indigenous Village (Veddah)",
+    "category": "Local Experiences",
+    "province": "Uva",
+    "district": "Monaragala",
+    "description": "Authentic cultural encounter with Sri Lanka's indigenous Veddah (Wanniyala-aetto) community. Experience their forest hunting techniques, bow-and-arrow demonstrations, traditional songs, and ancestral lifestyle.",
+    "coordinates": { "lat": 7.0667, "lon": 81.1833 },
+    "contact": {
+      "phone": "+94 55 224 5600",
+      "email": "veddah@indigenous.lk",
+      "website": "https://www.veddahvillage.lk"
+    },
+    "opening_hours": "09:00 - 16:00 daily (advance booking required)",
+    "entry_fee_lkr": 3000,
+    "best_time_to_visit": "Morning; dry season November-March",
+    "activities": [
+      "Cultural immersion",
+      "Bow and arrow demo",
+      "Traditional music",
+      "Forest walk",
+      "Indigenous food tasting"
+    ],
+    "target_tourist_type": [
+      "Culture seekers",
+      "Anthropologists",
+      "Off-beat travelers",
+      "Eco-tourists"
+    ],
+    "average_visit_duration": "3-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.0667,81.1833",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["German", "UK", "French", "Dutch", "Japanese"]
+  },
+  {
+    "id": "SL140",
+    "name": "Colombo Lotus Road Luxury Shopping",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Colombo's premium shopping street (Galle Road, Colpetty to Bambalapitiya) featuring international designer boutiques, Odel department store, luxury hotels, and upscale restaurants.",
+    "coordinates": { "lat": 6.8946, "lon": 79.8558 },
+    "contact": {
+      "phone": "+94 11 252 5577",
+      "email": "odel@colombo.lk",
+      "website": "https://www.odel.lk"
+    },
+    "opening_hours": "10:00 - 21:00 daily",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Weekdays to avoid weekend crowds",
+    "activities": [
+      "Designer shopping",
+      "Sri Lankan fashion",
+      "Gems & jewelry",
+      "Café culture",
+      "International restaurants"
+    ],
+    "target_tourist_type": [
+      "Luxury travelers",
+      "Shoppers",
+      "Business travelers",
+      "Fashion enthusiasts"
+    ],
+    "average_visit_duration": "2-4 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8946,79.8558",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["UK", "Indian", "Middle Eastern", "Chinese", "Singaporean"]
+  },
+  {
+    "id": "SL141",
+    "name": "Yoda Ela Ancient Irrigation Canal",
+    "category": "Cultural & Heritage Sites",
+    "province": "North Central",
+    "district": "Polonnaruwa",
+    "description": "The Yoda Ela (Giant Canal) is a 2nd-century BC masterwork of ancient hydraulic engineering, stretching 87km and still functioning after 2,000 years. A testament to ancient Sri Lankan engineering genius.",
+    "coordinates": { "lat": 8.1333, "lon": 80.9167 },
+    "contact": {
+      "phone": "+94 27 222 4400",
+      "email": "yodaela@irrigation.gov.lk",
+      "website": "https://www.irrigation.gov.lk"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Early morning; March-September dry season",
+    "activities": [
+      "Historical canal walk",
+      "Engineering marvel viewing",
+      "Photography",
+      "Bird watching",
+      "Cycling"
+    ],
+    "target_tourist_type": [
+      "History lovers",
+      "Cyclists",
+      "Engineers",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.1333,80.9167",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Japanese", "German", "UK", "Indian", "French"]
+  },
+  {
+    "id": "SL142",
+    "name": "Debarawewa Tissa Wewa Sunset",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Hambantota",
+    "description": "Ancient reservoir at Tissamaharama offering spectacular sunset views with elephants, waterbirds including painted storks, and the dramatic Hambantota plains backdrop. Often overlooked gem near Yala.",
+    "coordinates": { "lat": 6.2806, "lon": 81.2872 },
+    "contact": {
+      "phone": "+94 47 223 7200",
+      "email": "tissa@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Sunset for spectacular orange sky and elephant silhouettes",
+    "activities": [
+      "Sunset photography",
+      "Bird watching",
+      "Elephant watching",
+      "Evening stroll",
+      "Temple visit"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Nature lovers",
+      "Families",
+      "Wildlife enthusiasts"
+    ],
+    "average_visit_duration": "1.5-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.2806,81.2872",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Dutch", "French", "Australian"]
+  },
+  {
+    "id": "SL143",
+    "name": "Kelaniya River Float (Adventure)",
+    "category": "Nature & Adventure",
+    "province": "Western",
+    "district": "Gampaha",
+    "description": "Relaxed river floating and gentle tubing experience on the Kelani River near Kitulgala-Colombo highway. Easy adventure suitable for non-swimmers with life vests, passing through jungle and village scenery.",
+    "coordinates": { "lat": 7.0067, "lon": 80.2619 },
+    "contact": {
+      "phone": "+94 36 228 7900",
+      "email": "river@kelaniyafloat.lk",
+      "website": "https://www.kelaniyariver.com"
+    },
+    "opening_hours": "09:00 - 15:00 daily",
+    "entry_fee_lkr": 2500,
+    "best_time_to_visit": "Morning; June-October rainy season for better flow",
+    "activities": [
+      "River tubing",
+      "Swimming",
+      "Jungle trail walk",
+      "Bird watching",
+      "Village interaction"
+    ],
+    "target_tourist_type": [
+      "Families",
+      "Beginners",
+      "Young travelers",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "3 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.0067,80.2619",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "Indian", "Australian", "French"]
+  },
+  {
+    "id": "SL144",
+    "name": "Aluvihare Rock Temple (Manuscript Caves)",
+    "category": "Cultural & Heritage Sites",
+    "province": "Central",
+    "district": "Matale",
+    "description": "Ancient cave temple where the Pali Buddhist scriptures (Tripitaka) were first written on ola leaf manuscripts in 89 BC. Workshop still practices traditional ola leaf writing. Fascinating for Buddhist scholars.",
+    "coordinates": { "lat": 7.4783, "lon": 80.6419 },
+    "contact": {
+      "phone": "+94 66 222 3400",
+      "email": "aluvihare@ccf.gov.lk",
+      "website": "https://www.ccf.gov.lk"
+    },
+    "opening_hours": "08:00 - 17:00 daily",
+    "entry_fee_lkr": 500,
+    "best_time_to_visit": "Morning",
+    "activities": [
+      "Cave temple tour",
+      "Ola leaf manuscript viewing",
+      "Mural appreciation",
+      "Historical learning",
+      "Meditation"
+    ],
+    "target_tourist_type": [
+      "Buddhist scholars",
+      "History lovers",
+      "Culture seekers",
+      "Off-beat travelers"
+    ],
+    "average_visit_duration": "1.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.4783,80.6419",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Japanese", "German", "UK", "French", "Indian"]
+  },
+  {
+    "id": "SL145",
+    "name": "Colombo Beira Lake Sunset Cruise",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Evening boat cruise on Colombo's Beira Lake through the heart of the city, passing the Gangaramaya Temple, luxury hotels, and the illuminated Lotus Tower. Cocktails served onboard at sunset.",
+    "coordinates": { "lat": 6.9167, "lon": 79.8583 },
+    "contact": {
+      "phone": "+94 11 254 0600",
+      "email": "cruise@beiralake.lk",
+      "website": "https://www.colombolakecruise.com"
+    },
+    "opening_hours": "Sunset cruise: 17:30-19:30 daily",
+    "entry_fee_lkr": 4000,
+    "best_time_to_visit": "Sunset hour (17:30-18:30)",
+    "activities": [
+      "Lake cruise",
+      "Sunset photography",
+      "Cocktail bar",
+      "City skyline viewing",
+      "Gangaramaya temple view"
+    ],
+    "target_tourist_type": [
+      "Couples",
+      "Luxury travelers",
+      "Foodies",
+      "Photographers"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9167,79.8583",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["UK", "German", "Indian", "French", "Australian"]
+  },
+  {
+    "id": "SL146",
+    "name": "Hatton Tea Country Scenic Drive",
+    "category": "Nature & Adventure",
+    "province": "Central",
+    "district": "Nuwara Eliya",
+    "description": "Spectacular highland drive through some of the world's most scenic tea country connecting Colombo to Nuwara Eliya via Hatton. Rolling green tea carpets, waterfalls, and mountain tunnels.",
+    "coordinates": { "lat": 6.8919, "lon": 80.5953 },
+    "contact": {
+      "phone": "+94 51 222 3500",
+      "email": "hatton@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Road open 24 hours; best in daylight",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning for mist-free views; January-March",
+    "activities": [
+      "Scenic driving",
+      "Waterfall stops",
+      "Photography",
+      "Tea estate viewing",
+      "Mountain village visits"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Road travelers",
+      "Couples",
+      "Nature lovers"
+    ],
+    "average_visit_duration": "Half day",
+    "google_maps_link": "https://maps.google.com/?q=6.8919,80.5953",
+    "rating": 4.7,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "Dutch", "French", "Swiss"]
+  },
+  {
+    "id": "SL147",
+    "name": "Colombo Colombo7 Art Gallery District",
+    "category": "Local Experiences",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Colombo's most vibrant art and gallery district in Colombo 7 featuring contemporary Sri Lankan art galleries, indie cafés, art studios, and design boutiques. Hosts First Thursday gallery nights monthly.",
+    "coordinates": { "lat": 6.8964, "lon": 79.8557 },
+    "contact": {
+      "phone": "+94 11 269 0000",
+      "email": "art@colombo7.lk",
+      "website": "https://www.colomboartscene.lk"
+    },
+    "opening_hours": "Galleries: 10:00 - 18:00 Tue-Sun",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "First Thursday evening for art walk events",
+    "activities": [
+      "Gallery hopping",
+      "Contemporary art viewing",
+      "Café visits",
+      "Artist studio tour",
+      "Art purchasing"
+    ],
+    "target_tourist_type": [
+      "Art lovers",
+      "Culture seekers",
+      "Creative professionals",
+      "Couples"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.8964,79.8557",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "mid",
+    "popular_with": ["UK", "German", "French", "Australian", "Singaporean"]
+  },
+  {
+    "id": "SL148",
+    "name": "Negombo St. Mary's Church",
+    "category": "Cultural & Heritage Sites",
+    "province": "Western",
+    "district": "Gampaha",
+    "description": "Magnificent neo-Gothic Catholic church reflecting Negombo's strong Catholic heritage from Portuguese colonial period. Stunning stained glass, elaborate altar paintings depicting Sri Lankan scenes in Christian context.",
+    "coordinates": { "lat": 7.2078, "lon": 79.8369 },
+    "contact": {
+      "phone": "+94 31 222 2401",
+      "email": "stmarys@church.lk",
+      "website": "https://www.negombostmarys.lk"
+    },
+    "opening_hours": "08:00 - 18:00 daily; Mass: 07:00, 09:00, 18:30",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Sunday morning Mass for full cultural experience",
+    "activities": [
+      "Church visit",
+      "Mural viewing",
+      "Religious ceremony attendance",
+      "Architecture photography",
+      "Cultural heritage"
+    ],
+    "target_tourist_type": [
+      "Religious travelers",
+      "Culture seekers",
+      "History lovers",
+      "Photographers"
+    ],
+    "average_visit_duration": "45 minutes",
+    "google_maps_link": "https://maps.google.com/?q=7.2078,79.8369",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Italian", "Portuguese", "UK", "German", "French"]
+  },
+  {
+    "id": "SL149",
+    "name": "Hambantota Salt Pans",
+    "category": "Local Experiences",
+    "province": "Southern",
+    "district": "Hambantota",
+    "description": "Traditional salt evaporation pans stretching across the Hambantota lagoon operated by salt farmers for centuries. The geometric pink-white salt flats create extraordinary photography opportunities, especially at sunrise.",
+    "coordinates": { "lat": 6.1167, "lon": 81.1167 },
+    "contact": {
+      "phone": "+94 47 222 0300",
+      "email": "saltpans@hambantota.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours; best at sunrise",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Sunrise for pink-tinted salt and bird photography; dry season",
+    "activities": [
+      "Salt pan photography",
+      "Salt harvesting observation",
+      "Flamingo watching",
+      "Sunrise viewing",
+      "Bird photography"
+    ],
+    "target_tourist_type": [
+      "Photographers",
+      "Nature lovers",
+      "Off-beat travelers",
+      "Bird watchers"
+    ],
+    "average_visit_duration": "1.5 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.1167,81.1167",
+    "rating": 4.4,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  },
+  {
+    "id": "SL150",
+    "name": "Puttalam Lagoon Prawn Farm Tour",
+    "category": "Local Experiences",
+    "province": "North Western",
+    "district": "Puttalam",
+    "description": "Sri Lanka's largest prawn and shrimp aquaculture region. Guided tours of commercial prawn farms with fresh prawn tasting, cooking demonstrations, and insight into Sri Lanka's seafood export industry.",
+    "coordinates": { "lat": 8.0297, "lon": 79.8426 },
+    "contact": {
+      "phone": "+94 32 222 4800",
+      "email": "prawn@puttalam.lk",
+      "website": "https://www.puttalamagriculture.lk"
+    },
+    "opening_hours": "09:00 - 16:00 (advance booking required)",
+    "entry_fee_lkr": 2000,
+    "best_time_to_visit": "Year-round; harvest season May-October",
+    "activities": [
+      "Prawn farm tour",
+      "Fresh prawn tasting",
+      "Cooking demo",
+      "Lagoon boat trip",
+      "Seafood purchase"
+    ],
+    "target_tourist_type": [
+      "Foodies",
+      "Eco-tourists",
+      "Agricultural tourists",
+      "Culture seekers"
+    ],
+    "average_visit_duration": "2-3 hours",
+    "google_maps_link": "https://maps.google.com/?q=8.0297,79.8426",
+    "rating": 4.2,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "Japanese", "UK", "German", "Chinese"]
+  },
+  {
+    "id": "SL151",
+    "name": "Colombo National Aquarium",
+    "category": "Nature & Adventure",
+    "province": "Western",
+    "district": "Colombo",
+    "description": "Modern aquarium in Colombo's Mattakkuliya area showcasing Sri Lanka's extraordinary marine biodiversity including sharks, rays, sea turtles, and colorful reef fish from Sri Lankan and global waters.",
+    "coordinates": { "lat": 6.9603, "lon": 79.8609 },
+    "contact": {
+      "phone": "+94 11 258 9333",
+      "email": "aquarium@nara.gov.lk",
+      "website": "https://www.nara.gov.lk"
+    },
+    "opening_hours": "09:00 - 17:00 daily (closed Mondays)",
+    "entry_fee_lkr": 1000,
+    "best_time_to_visit": "Weekday morning for smaller crowds",
+    "activities": [
+      "Aquarium tour",
+      "Shark tank viewing",
+      "Touch pool",
+      "Marine education",
+      "Photography"
+    ],
+    "target_tourist_type": [
+      "Families",
+      "Children",
+      "Marine enthusiasts",
+      "Educators"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=6.9603,79.8609",
+    "rating": 4.0,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["Indian", "UK", "German", "Chinese", "Australian"]
+  },
+  {
+    "id": "SL152",
+    "name": "Kandy Gem Bureau & Market",
+    "category": "Cultural & Heritage Sites",
+    "province": "Central",
+    "district": "Kandy",
+    "description": "Authentic gem trading center in Kandy offering certified blue sapphires, rubies, alexandrite, and cat's eyes directly from Sri Lankan mines at transparent prices with government certification available.",
+    "coordinates": { "lat": 7.2918, "lon": 80.6368 },
+    "contact": {
+      "phone": "+94 81 222 5900",
+      "email": "gems@kandygembureau.lk",
+      "website": "https://www.kandygembureau.com"
+    },
+    "opening_hours": "09:00 - 18:00 Mon-Sat",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "Morning for trader activity",
+    "activities": [
+      "Gem shopping",
+      "Certification consultation",
+      "Gem identification",
+      "Jewelry customization",
+      "Mining history tour"
+    ],
+    "target_tourist_type": [
+      "Gem buyers",
+      "Collectors",
+      "Luxury shoppers",
+      "Investors"
+    ],
+    "average_visit_duration": "1-2 hours",
+    "google_maps_link": "https://maps.google.com/?q=7.2918,80.6368",
+    "rating": 4.3,
+    "verified": true,
+    "budget_level": "luxury",
+    "popular_with": ["Indian", "Chinese", "Japanese", "UK", "German"]
+  },
+  {
+    "id": "SL153",
+    "name": "Mullaitivu War Memorial & Lagoon",
+    "category": "Cultural & Heritage Sites",
+    "province": "Northern",
+    "district": "Mullaitivu",
+    "description": "Significant site of contemporary Sri Lankan history on the northeastern coast. A sober war memorial and pristine natural lagoon where fishing communities are rebuilding. Important for understanding modern Sri Lanka.",
+    "coordinates": { "lat": 9.2674, "lon": 80.8128 },
+    "contact": {
+      "phone": "+94 21 223 4000",
+      "email": "mullaitivu@tourism.gov.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Memorial: 09:00 - 17:00; Lagoon: 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "May-September dry season",
+    "activities": [
+      "War memorial visit",
+      "Lagoon photography",
+      "Fishing village tour",
+      "Historical reflection"
+    ],
+    "target_tourist_type": [
+      "History seekers",
+      "Reconciliation travelers",
+      "Off-beat explorers",
+      "Journalists"
+    ],
+    "average_visit_duration": "2 hours",
+    "google_maps_link": "https://maps.google.com/?q=9.2674,80.8128",
+    "rating": 4.1,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["UK", "German", "French", "Indian", "Dutch"]
+  },
+  {
+    "id": "SL154",
+    "name": "Meemure Village (Last Ancient Village)",
+    "category": "Local Experiences",
+    "province": "Central",
+    "district": "Matale",
+    "description": "Remote village in the Knuckles wilderness considered one of Sri Lanka's last truly traditional villages, accessible only on foot or by 4WD. No mobile signal, electricity until recently. Homestay available.",
+    "coordinates": { "lat": 7.6201, "lon": 80.7808 },
+    "contact": {
+      "phone": "+94 66 228 5500",
+      "email": "meemure@ecotourism.lk",
+      "website": "https://www.meemurevillage.lk"
+    },
+    "opening_hours": "Year-round (2-3 hour trek required)",
+    "entry_fee_lkr": 1000,
+    "best_time_to_visit": "January to April and August-September; dry season",
+    "activities": [
+      "Village homestay",
+      "Jungle trekking",
+      "Traditional farming",
+      "River swimming",
+      "Waterfall visit"
+    ],
+    "target_tourist_type": [
+      "Eco-tourists",
+      "Adventurous travelers",
+      "Off-beat explorers",
+      "Responsible travelers"
+    ],
+    "average_visit_duration": "1-2 days (overnight recommended)",
+    "google_maps_link": "https://maps.google.com/?q=7.6201,80.7808",
+    "rating": 4.8,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Swiss"]
+  },
+  {
+    "id": "SL155",
+    "name": "Tangalle Blow Hole & Rekawa Circuit",
+    "category": "Nature & Adventure",
+    "province": "Southern",
+    "district": "Hambantota",
+    "description": "Southern coast natural circuit combining the Tangalle area's dramatic blow hole at Dickwella, turtle nesting beach at Rekawa, and the secluded bays between Tangalle town and Hambantota.",
+    "coordinates": { "lat": 6.0261, "lon": 80.7985 },
+    "contact": {
+      "phone": "+94 47 224 0000",
+      "email": "tangalle@tourism.lk",
+      "website": "https://www.srilanka.travel"
+    },
+    "opening_hours": "Open 24 hours",
+    "entry_fee_lkr": 0,
+    "best_time_to_visit": "December to April; turtle season February-August",
+    "activities": [
+      "Blow hole viewing",
+      "Turtle watching",
+      "Beach hopping",
+      "Scenic coastal drive",
+      "Snorkeling"
+    ],
+    "target_tourist_type": [
+      "Nature lovers",
+      "Beach lovers",
+      "Photographers",
+      "Wildlife enthusiasts"
+    ],
+    "average_visit_duration": "Full day",
+    "google_maps_link": "https://maps.google.com/?q=6.0261,80.7985",
+    "rating": 4.5,
+    "verified": true,
+    "budget_level": "low",
+    "popular_with": ["German", "UK", "French", "Dutch", "Australian"]
+  }
+]
