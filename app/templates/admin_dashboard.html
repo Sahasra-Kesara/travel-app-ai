@@ -5,60 +5,92 @@
 
   <!-- Header -->
   <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8">
-    <h1 class="text-4xl font-extrabold text-blue-600 mb-4 md:mb-0">Admin Dashboard</h1>
+    <h1 class="text-4xl font-extrabold text-blue-600 mb-4 md:mb-0">
+      Admin Dashboard
+    </h1>
+
     <div class="flex space-x-4">
-      <a href="{{ url_for('admin.add_hotel') }}" 
+      <a href="{{ url_for('admin.add_hotel') }}"
          class="px-5 py-3 bg-blue-50 text-blue-600 rounded-xl font-semibold hover:bg-blue-100 transition">
-        ➕ Add Hotel
+        Add Hotel
       </a>
-      <a href="{{ url_for('admin.add_destination') }}" 
+
+      <a href="{{ url_for('admin.add_destination') }}"
          class="px-5 py-3 bg-blue-50 text-blue-600 rounded-xl font-semibold hover:bg-blue-100 transition">
-        🌍 Add Destination
+        Add Destination
       </a>
     </div>
-
   </div>
 
-  <!-- AI Admin Agent Card -->
+  <!-- ================= FILTER SECTION ================= -->
   <div class="bg-white rounded-2xl shadow-lg p-6 mb-10">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">AI Admin Agent 🤖</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Filter Destinations</h2>
 
-      <!-- Task Buttons -->
-      <div class="flex space-x-3 mb-4">
-          <button type="button" data-task="recommend" class="ai-task-btn px-4 py-2 bg-blue-50 text-blue-600 rounded-xl font-semibold hover:bg-blue-100 transition">Recommend Destinations</button>
-          <button type="button" data-task="trip" class="ai-task-btn px-4 py-2 bg-green-50 text-green-600 rounded-xl font-semibold hover:bg-green-100 transition">Trip Scheduler</button>
-          <button type="button" data-task="add_dest" class="ai-task-btn px-4 py-2 bg-purple-50 text-purple-600 rounded-xl font-semibold hover:bg-purple-100 transition">Add Destination</button>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
 
-      <!-- Query Input -->
-      <form id="aiForm">
-          <input type="text" id="aiQuery" placeholder="Ask AI..." class="w-full p-3 border rounded-xl mb-3" />
-          <button type="submit" class="px-5 py-3 bg-blue-50 text-blue-600 rounded-xl font-semibold hover:bg-blue-100 transition">
-              Execute
-          </button>
-      </form>
+      <!-- Search -->
+      <input type="text" id="searchFilter"
+             placeholder="Search by name..."
+             class="p-3 border rounded-xl">
 
-      <!-- Response -->
-      <div id="aiResponse" class="mt-4 text-gray-700"></div>
+      <!-- Category -->
+      <select id="categoryFilter" class="p-3 border rounded-xl">
+        <option value="">All Categories</option>
+        {% for c in destinations | map(attribute='category') | unique %}
+          <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+      </select>
+
+      <!-- Province -->
+      <select id="provinceFilter" class="p-3 border rounded-xl">
+        <option value="">All Provinces</option>
+        {% for p in destinations | map(attribute='province') | unique %}
+          <option value="{{ p }}">{{ p }}</option>
+        {% endfor %}
+      </select>
+
+      <!-- District -->
+      <select id="districtFilter" class="p-3 border rounded-xl">
+        <option value="">All Districts</option>
+        {% for d in destinations | map(attribute='district') | unique %}
+          <option value="{{ d }}">{{ d }}</option>
+        {% endfor %}
+      </select>
+
+    </div>
   </div>
+  <!-- ================= END FILTER ================= -->
+
 
   <!-- Map Card -->
   <div class="bg-white rounded-2xl shadow-lg p-6 mb-10">
     <h2 class="text-2xl font-semibold text-gray-800 mb-4">All Destinations Map</h2>
     <div id="destinationsMap" class="w-full h-[500px] rounded-xl border"></div>
-    <p class="text-gray-500 text-sm mt-2">
-      View all saved destinations. Click on a marker to see details.
-    </p>
   </div>
+
 
   <!-- Destinations Grid -->
   <h2 class="text-2xl font-semibold text-gray-800 mb-6">All Destinations</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+  <div id="destGrid"
+       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
     {% for dest in destinations %}
-    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition">
-      <h3 class="text-xl font-semibold text-blue-600 mb-2">{{ dest.name }}</h3>
+    <div class="destination-card bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition"
+         data-name="{{ dest.name }}"
+         data-category="{{ dest.category }}"
+         data-province="{{ dest.province }}"
+         data-district="{{ dest.district }}">
+
+      <h3 class="text-xl font-semibold text-blue-600 mb-2">
+        {{ dest.name }}
+      </h3>
+
       <p class="text-gray-600 mb-1">{{ dest.category }}</p>
-      <p class="text-gray-500 text-sm">{{ dest.province }}, {{ dest.district }}</p>
+      <p class="text-gray-500 text-sm">
+        {{ dest.province }}, {{ dest.district }}
+      </p>
+
       <div class="mt-3 space-y-1 text-gray-600 text-sm">
         <p><span class="font-medium">Best Time:</span> {{ dest.best_time_to_visit }}</p>
         <p><span class="font-medium">Entry Fee:</span> {{ dest.entry_fee }}</p>
@@ -66,144 +98,90 @@
       </div>
     </div>
     {% endfor %}
+
   </div>
-  
+
 </section>
 
-<!-- Leaflet CSS & JS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<!-- ================= MAP SCRIPT ================= -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-// Initialize map
 const map = L.map('destinationsMap').setView([7.8731, 80.7718], 7);
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-// Destinations from backend
 const destinations = JSON.parse('{{ destinations | tojson | safe }}');
+let markers = [];
 
-// Category colors
-const categoryColors = {
-    "Historical & Cultural": "#2563eb",
-    "Beach": "#f59e0b",
-    "Hill": "#10b981",
-    "Nature": "#8b5cf6",
-    "Urban": "#ef4444"
-};
+function renderMarkers(filtered){
+    markers.forEach(m => map.removeLayer(m));
+    markers = [];
 
-// Add markers for all destinations
-destinations.forEach(dest => {
-    if(dest.coordinates?.lat && dest.coordinates?.lon){
-        const color = categoryColors[dest.category] || "#6b7280"; // default gray
-        L.circleMarker([dest.coordinates.lat, dest.coordinates.lon], {
-            radius: 10,
-            fillColor: color,
-            color: "#fff",
-            weight: 2,
-            opacity: 1,
-            fillOpacity: 0.8
-        }).addTo(map)
-          .bindPopup(`<b>${dest.name}</b><br>${dest.category}<br>${dest.province}, ${dest.district}`);
-    }
-});
+    filtered.forEach(dest => {
+        if(dest.coordinates?.lat && dest.coordinates?.lon){
+            const marker = L.marker([dest.coordinates.lat, dest.coordinates.lon])
+                .addTo(map)
+                .bindPopup(`<b>${dest.name}</b><br>${dest.category}`);
+            markers.push(marker);
+        }
+    });
+}
+
+renderMarkers(destinations);
 </script>
 
+
+<!-- ================= FILTER LOGIC ================= -->
 <script>
-let selectedTask = "recommend";
-let tripLayers = L.layerGroup().addTo(map);
 
-// Task buttons
-document.querySelectorAll(".ai-task-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        selectedTask = btn.dataset.task;
-        aiQuery.placeholder =
-            selectedTask === "trip"
-                ? "Colombo to Kandy"
-                : "Ask AI...";
-    });
-});
+const searchInput = document.getElementById("searchFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+const provinceFilter = document.getElementById("provinceFilter");
+const districtFilter = document.getElementById("districtFilter");
 
-// Submit
-document.getElementById("aiForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
+function applyFilters(){
 
-    const query = aiQuery.value.trim();
-    if(!query) return;
+    const search = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
+    const province = provinceFilter.value;
+    const district = districtFilter.value;
 
-    aiResponse.innerHTML = "🤖 AI is thinking...";
-    tripLayers.clearLayers();
+    let filteredData = [];
 
-    const res = await fetch("{{ url_for('admin.ai_assistant') }}", {
-        method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({ query, task_type: selectedTask })
-    });
+    document.querySelectorAll(".destination-card").forEach(card => {
 
-    const data = await res.json();
+        const name = card.dataset.name.toLowerCase();
+        const cat = card.dataset.category;
+        const prov = card.dataset.province;
+        const dist = card.dataset.district;
 
-    if(!data.success){
-        aiResponse.innerHTML = `<p class="text-red-600">${data.message}</p>`;
-        return;
-    }
+        const match =
+            name.includes(search) &&
+            (category === "" || cat === category) &&
+            (province === "" || prov === province) &&
+            (district === "" || dist === district);
 
-    aiResponse.innerHTML = "";
+        card.style.display = match ? "block" : "none";
 
-    /* ---------------- RECOMMEND ---------------- */
-    if(selectedTask === "recommend"){
-        data.results.forEach((r,i) => {
-            aiResponse.innerHTML += `
-              <div class="p-4 bg-blue-50 rounded-xl mb-3">
-                <h4 class="font-bold text-blue-600">${i+1}. ${r.name}</h4>
-                <p>${r.summary}</p>
-              </div>`;
-        });
-    }
-
-    /* ---------------- ADD DEST ---------------- */
-    else if(selectedTask === "add_dest"){
-        const d = data.results[0].destination;
-        aiResponse.innerHTML = `
-          <div class="p-4 bg-purple-50 rounded-xl">
-            <h4 class="font-bold text-purple-600">${d.name}</h4>
-            <p>${d.description}</p>
-            <p class="text-sm mt-2">📍 ${d.province}, ${d.district}</p>
-          </div>`;
-    }
-
-    /* ---------------- TRIP ---------------- */
-    else if(selectedTask === "trip"){
-        const points = [];
-
-        data.results.forEach((stop,i) => {
-            if(!stop.lat) return;
-
-            points.push([stop.lat, stop.lon]);
-
-            const icon = L.divIcon({
-                html:`<div class="trip-step-icon">${i+1}</div>`,
-                iconSize:[30,30],
-                iconAnchor:[15,30]
-            });
-
-            L.marker([stop.lat, stop.lon], {icon})
-                .addTo(tripLayers)
-                .bindPopup(stop.message.replace(/\n/g,"<br>"));
-
-            aiResponse.innerHTML += `
-              <div class="p-4 bg-gray-50 rounded-xl mb-3">
-                <h4 class="font-bold text-blue-600">Step ${i+1}</h4>
-                <pre class="whitespace-pre-wrap text-sm">${stop.message}</pre>
-              </div>`;
-        });
-
-        if(points.length > 1){
-            L.polyline(points,{color:"#2563eb",weight:5}).addTo(tripLayers);
-            map.fitBounds(points,{padding:[50,50]});
+        if(match){
+            const found = destinations.find(d => d.name === card.dataset.name);
+            if(found) filteredData.push(found);
         }
-    }
-});
+    });
+
+    renderMarkers(filteredData);
+}
+
+searchInput.addEventListener("input", applyFilters);
+categoryFilter.addEventListener("change", applyFilters);
+provinceFilter.addEventListener("change", applyFilters);
+districtFilter.addEventListener("change", applyFilters);
+
 </script>
 
 {% endblock %}
