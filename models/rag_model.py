@@ -42,7 +42,7 @@ with open(HOSPITALS_PATH, 'r', encoding='utf-8') as f:
     hospitals_data = json.load(f)['hospitals']
 
 with open(TOURISM_PATH, 'r', encoding='utf-8') as f:
-    tourism_data = json.load(f) 
+    tourism_data = json.load(f)['tourism']
 
 # ---- Build global index ----
 def build_global_index():
