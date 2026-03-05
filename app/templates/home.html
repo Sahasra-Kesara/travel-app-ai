@@ -1119,6 +1119,51 @@ function toggleSearchRecording() {
         recognition.stop();
         isRecording = false;
     }
+    if ('webkitSpeechRecognition' in window) {
+
+        recognition = new webkitSpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = true;
+        recognition.lang = "en-US";
+
+        recognition.onstart = () => {
+            document.getElementById("searchVoiceIcon").className = "fas fa-stop text-red-600";
+            document.getElementById("voicePulse").style.opacity = "0.6";
+            isRecording = true;
+        };
+
+        recognition.onresult = (event) => {
+
+            let transcript = "";
+
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                transcript += event.results[i][0].transcript;
+            }
+
+            document.getElementById("searchInput").value = transcript;
+        };
+
+        recognition.onend = () => {
+            document.getElementById("searchVoiceIcon").className = "fas fa-microphone text-gray-700";
+            document.getElementById("voicePulse").style.opacity = "0";
+            isRecording = false;
+        };
+    }
+
+    function toggleSearchRecording(){
+
+        if(!recognition) {
+            alert("Voice recognition not supported in this browser");
+            return;
+        }
+
+        if(isRecording){
+            recognition.stop();
+        }else{
+            recognition.start();
+        }
+
+    }
 }
 </script>
 <script src="{{ url_for('static', filename='js/home.js') }}"></script>
