@@ -824,6 +824,7 @@
 
 <!-- Page scripts -->
 <script>
+    
     window.suggestUrl = "{{ url_for('user.ai_autocomplete') }}";
     
     let chatOpen = false;
@@ -931,7 +932,6 @@
     }
     let mediaRecorder = null;
     let audioChunks = [];
-    let isRecording = false;
 
     async function toggleRecording() {
         if (isRecording) {
@@ -1065,6 +1065,44 @@
             }
         }
     }
+</script>
+<script>
+let recognition;
+let isRecording = false;
+
+function toggleSearchRecording() {
+
+    if (!('webkitSpeechRecognition' in window)) {
+        alert("Speech recognition not supported in this browser");
+        return;
+    }
+
+    if (!recognition) {
+        recognition = new webkitSpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = "en-US";
+
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById("searchInput").value = transcript;
+        };
+
+        recognition.onend = function() {
+            isRecording = false;
+            document.getElementById("searchVoiceIcon").classList.remove("text-red-500");
+        };
+    }
+
+    if (!isRecording) {
+        recognition.start();
+        isRecording = true;
+        document.getElementById("searchVoiceIcon").classList.add("text-red-500");
+    } else {
+        recognition.stop();
+        isRecording = false;
+    }
+}
 </script>
 <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 </body>
