@@ -1164,6 +1164,21 @@ function toggleSearchRecording() {
         }
 
     }
+    const textarea = document.getElementById("searchInput");
+
+    textarea.addEventListener("input", () => {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+    });
+
+    document.getElementById("searchInput").addEventListener("keydown", function(e){
+
+        if(e.key === "Enter" && !e.shiftKey){
+            e.preventDefault();
+            document.getElementById("searchForm").submit();
+        }
+
+    });
 }
 </script>
 <script src="{{ url_for('static', filename='js/home.js') }}"></script>
