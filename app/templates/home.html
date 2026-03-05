@@ -204,40 +204,57 @@
 
         <!-- Search Form -->
         <form id="searchForm" action="{{ url_for('user.search') }}" method="POST" class="relative mb-12">
-            <div class="relative">
-                <!-- Ghost text (AI completion) -->
-                <div id="ghostText"
-                    class="absolute top-0 left-0 w-full px-6 py-5 text-lg text-gray-300 pointer-events-none whitespace-pre-wrap">
-                </div>
 
-                <!-- Real input -->
-                <textarea
-                    id="searchInput"
-                    name="query"
-                    rows="2"
-                    placeholder="Example: Best budget hotels near Ella for next weekend"
-                    class="input-focus relative w-full resize-none rounded-2xl border-2 border-gray-200 px-6 py-5 text-lg bg-white/80 backdrop-blur
-                           focus:outline-none focus:ring-0 shadow-xl focus:bg-white"
-                ></textarea>
+        <div class="relative group">
+
+        <!-- Search Container -->
+        <div class="flex items-end gap-3 bg-white border border-gray-200 rounded-2xl shadow-xl px-4 py-3 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 transition">
+
+            <!-- Search Icon -->
+            <div class="text-gray-400 text-lg pb-2">
+                <i class="fas fa-magnifying-glass"></i>
             </div>
-<button 
-    type="button"
-    id="searchVoiceBtn"
-    onclick="toggleSearchRecording()"
-    class="absolute right-32 bottom-4 bg-blue-600 text-white px-4 py-3 rounded-xl hover:bg-blue-700 flex items-center justify-center">
-    
-    <i class="fas fa-microphone" id="searchVoiceIcon"></i>
-</button>
-            <ul id="suggestions"
-                class="absolute left-0 right-0 bg-white border border-gray-200 rounded-2xl mt-2 shadow-xl hidden z-20 max-h-64 overflow-y-auto">
-            </ul>
-            
 
+            <!-- Input -->
+            <textarea
+                id="searchInput"
+                name="query"
+                rows="1"
+                placeholder="Ask about destinations, hotels, routes, or guides..."
+                class="flex-1 resize-none outline-none text-lg py-2 bg-transparent placeholder-gray-400"
+            ></textarea>
+
+            <!-- Voice Button -->
+            <button 
+                type="button"
+                id="searchVoiceBtn"
+                onclick="toggleSearchRecording()"
+                class="relative w-11 h-11 rounded-xl flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition group"
+            >
+                <i class="fas fa-microphone text-gray-700" id="searchVoiceIcon"></i>
+
+                <!-- Recording pulse -->
+                <span id="voicePulse"
+                class="absolute w-full h-full rounded-xl bg-red-500 opacity-0 animate-ping"></span>
+            </button>
+
+            <!-- Search Button -->
             <button
                 type="submit"
-                class="btn-gradient absolute right-4 bottom-4 text-white px-8 py-3 rounded-xl text-base font-semibold hover:shadow-lg flex items-center gap-2">
-                <i class="fas fa-arrow-right"></i>Search
+                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition shadow-md"
+            >
+                <i class="fas fa-arrow-right"></i>
+                Search
             </button>
+
+        </div>
+
+        <!-- Suggestions -->
+        <ul id="suggestions"
+        class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-xl hidden z-20 max-h-64 overflow-y-auto"></ul>
+
+        </div>
+
         </form>
 
         <!-- Quick Examples -->
