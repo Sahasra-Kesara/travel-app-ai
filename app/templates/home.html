@@ -921,6 +921,86 @@
         const messagesContainer = document.getElementById('chatMessages');
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let isRecording = false;
+
+    async function toggleRecording() {
+        if (isRecording) {
+            stopRecording();
+        } else {
+            await startRecording();
+        }
+    }
+
+    async function startRecording() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            audioChunks = [];
+
+            mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+
+            mediaRecorder.onstop = async () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                stream.getTracks().forEach(t => t.stop());
+                await sendVoiceMessage(audioBlob);
+            };
+
+            mediaRecorder.start();
+            isRecording = true;
+
+            const btn = document.getElementById('voiceBtn');
+            const icon = document.getElementById('voiceIcon');
+            btn.classList.add('recording');
+            icon.className = 'fas fa-stop';
+        } catch (err) {
+            addChatMessage('Microphone access denied. Please allow microphone permissions.', 'ai');
+        }
+    }
+
+    function stopRecording() {
+        if (mediaRecorder && isRecording) {
+            mediaRecorder.stop();
+            isRecording = false;
+
+            const btn = document.getElementById('voiceBtn');
+            const icon = document.getElementById('voiceIcon');
+            btn.classList.remove('recording');
+            icon.className = 'fas fa-microphone';
+        }
+    }
+
+    async function sendVoiceMessage(audioBlob) {
+        const loadingId = showLoadingIndicator();
+        addChatMessage('🎤 <em>Voice message sent...</em>', 'user');
+
+        const formData = new FormData();
+        formData.append('audio', audioBlob, 'voice.webm');
+
+        try {
+            const res = await fetch('/user/voice', { method: 'POST', body: formData });
+            const data = await res.json();
+
+            removeLoadingIndicator(loadingId);
+
+            if (data.transcription) {
+                // Replace the placeholder with actual transcription
+                const msgs = document.querySelectorAll('.chat-message.user .chat-message-content');
+                const last = msgs[msgs.length - 1];
+                if (last) last.innerHTML = `🎤 "${data.transcription}"`;
+            }
+
+            if (data.response) {
+                addChatMessage(data.response, 'ai');
+            } else if (data.error) {
+                addChatMessage(`Sorry, could not process voice: ${data.error}`, 'ai');
+            }
+        } catch (err) {
+            removeLoadingIndicator(loadingId);
+            addChatMessage('Voice message failed. Please try again.', 'ai');
+        }
+    }
 </script>
 <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 </body>
