@@ -771,6 +771,10 @@
             autocomplete="off"
             onkeypress="if(event.key === 'Enter') sendMessage()"
         >
+        <!-- NEW: Voice button -->
+        <button class="chat-voice-btn" id="voiceBtn" onclick="toggleRecording()" title="Voice message">
+            <i class="fas fa-microphone" id="voiceIcon"></i>
+        </button>
         <button class="chat-send" id="sendBtn" onclick="sendMessage()">
             <i class="fas fa-paper-plane"></i>
         </button>
