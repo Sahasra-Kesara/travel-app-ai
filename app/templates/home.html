@@ -220,10 +220,13 @@
                            focus:outline-none focus:ring-0 shadow-xl focus:bg-white"
                 ></textarea>
             </div>
-
+<button type="button" id="searchVoiceBtn" onclick="toggleSearchRecording()" ...>
+    <i class="fas fa-microphone" id="searchVoiceIcon"></i>
+</button>
             <ul id="suggestions"
                 class="absolute left-0 right-0 bg-white border border-gray-200 rounded-2xl mt-2 shadow-xl hidden z-20 max-h-64 overflow-y-auto">
             </ul>
+            
 
             <button
                 type="submit"
@@ -999,6 +1002,62 @@
         } catch (err) {
             removeLoadingIndicator(loadingId);
             addChatMessage('Voice message failed. Please try again.', 'ai');
+        }
+    }
+    let searchRecorder = null;
+    let searchAudioChunks = [];
+    let searchIsRecording = false;
+
+    async function toggleSearchRecording() {
+        if (searchIsRecording) {
+            searchRecorder.stop();
+            searchIsRecording = false;
+            document.getElementById('searchVoiceBtn').classList.remove('bg-red-500', 'text-white');
+            document.getElementById('searchVoiceIcon').className = 'fas fa-microphone';
+        } else {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                searchRecorder = new MediaRecorder(stream);
+                searchAudioChunks = [];
+
+                searchRecorder.ondataavailable = e => searchAudioChunks.push(e.data);
+
+                searchRecorder.onstop = async () => {
+                    stream.getTracks().forEach(t => t.stop());
+                    const audioBlob = new Blob(searchAudioChunks, { type: 'audio/webm' });
+
+                    // Show feedback in the textarea
+                    const input = document.getElementById('searchInput');
+                    input.value = '🎤 Transcribing...';
+
+                    const formData = new FormData();
+                    formData.append('audio', audioBlob, 'search_voice.webm');
+
+                    try {
+                        const res = await fetch('/search-voice', { method: 'POST', body: formData });
+                        const data = await res.json();
+
+                        if (data.transcription) {
+                            input.value = data.transcription;
+                            // Auto-submit the search form
+                            document.getElementById('searchForm').submit();
+                        } else {
+                            input.value = '';
+                            alert('Could not understand audio. Please try again.');
+                        }
+                    } catch (err) {
+                        input.value = '';
+                        alert('Voice search failed. Please try again.');
+                    }
+                };
+
+                searchRecorder.start();
+                searchIsRecording = true;
+                document.getElementById('searchVoiceBtn').classList.add('bg-red-500', 'text-white');
+                document.getElementById('searchVoiceIcon').className = 'fas fa-stop';
+            } catch (err) {
+                alert('Microphone access denied. Please allow microphone permissions.');
+            }
         }
     }
 </script>
