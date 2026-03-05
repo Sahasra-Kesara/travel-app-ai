@@ -4,6 +4,7 @@ import torch
 import json
 import re
 from urllib.parse import quote_plus
+from models.speech_to_text import transcribe_audio
 
 # Load text generation pipeline for intelligent responses
 try:
