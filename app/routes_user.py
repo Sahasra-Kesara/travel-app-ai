@@ -15,6 +15,8 @@ from models.rag_model import get_guides_route_based
 from models.rag_model import search_all_knowledge
 from app.services.trip_response_builder import build_trip_response
 import re
+import tempfile
+import os
 
 GEOIP_DB_PATH = "geoip/GeoLite2-City.mmdb"
 user_bp = Blueprint('user', __name__)
