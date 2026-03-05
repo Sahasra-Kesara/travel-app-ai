@@ -627,3 +627,22 @@ class TravelChatAgent:
 
 # Global agent instance
 chat_agent = TravelChatAgent()
+
+def process_voice_message(self, audio_path):
+    """
+    Convert voice to text and process like normal message
+    """
+
+    try:
+        text = transcribe_audio(audio_path)
+
+        if not text:
+            return "Sorry, I couldn't understand the audio."
+
+        print("User said:", text)
+
+        return self.process_message(text)
+
+    except Exception as e:
+        print("Speech error:", e)
+        return "Voice processing failed."
