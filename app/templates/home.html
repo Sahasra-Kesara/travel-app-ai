@@ -220,7 +220,12 @@
                            focus:outline-none focus:ring-0 shadow-xl focus:bg-white"
                 ></textarea>
             </div>
-<button type="button" id="searchVoiceBtn" onclick="toggleSearchRecording()" ...>
+<button 
+    type="button"
+    id="searchVoiceBtn"
+    onclick="toggleSearchRecording()"
+    class="absolute right-32 bottom-4 bg-blue-600 text-white px-4 py-3 rounded-xl hover:bg-blue-700 flex items-center justify-center">
+    
     <i class="fas fa-microphone" id="searchVoiceIcon"></i>
 </button>
             <ul id="suggestions"
