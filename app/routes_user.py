@@ -567,3 +567,26 @@ def voice_chat():
         return jsonify({'transcription': text, 'response': response})
     finally:
         os.unlink(tmp_path)
+
+@user_bp.route('/search-voice', methods=['POST'])
+def search_voice():
+    if 'audio' not in request.files:
+        return jsonify({'error': 'No audio file'}), 400
+
+    audio_file = request.files['audio']
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.webm') as tmp:
+        audio_file.save(tmp.name)
+        tmp_path = tmp.name
+
+    try:
+        from models.speech_to_text import transcribe_audio
+        text = transcribe_audio(tmp_path)
+
+        if not text:
+            return jsonify({'error': 'Could not transcribe audio'}), 400
+
+        # Return the transcribed text so the frontend can submit it as a search
+        return jsonify({'transcription': text})
+    finally:
+        os.unlink(tmp_path)
