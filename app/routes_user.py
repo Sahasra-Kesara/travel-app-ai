@@ -544,6 +544,8 @@ def chat():
 
 @user_bp.route('/voice', methods=['POST'])
 def voice_chat():
+    import tempfile, os  # ← safest to inline if top-level import is missing
+    
     if 'audio' not in request.files:
         return jsonify({'error': 'No audio file'}), 400
     
@@ -560,7 +562,7 @@ def voice_chat():
         if not text:
             return jsonify({'error': 'Could not transcribe audio'}), 400
         
-        from models.chat_agent import chat_agent
+        from app.chat_agent import chat_agent  # ← fixed import path
         response = chat_agent.process_message(text)
         return jsonify({'transcription': text, 'response': response})
     finally:
