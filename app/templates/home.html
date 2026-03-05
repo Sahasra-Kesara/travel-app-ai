@@ -979,7 +979,7 @@
         formData.append('audio', audioBlob, 'voice.webm');
 
         try {
-            const res = await fetch('/user/voice', { method: 'POST', body: formData });
+            const res = await fetch('{{ url_for("user.voice_chat") }}', { method: 'POST', body: formData });
             const data = await res.json();
 
             removeLoadingIndicator(loadingId);
