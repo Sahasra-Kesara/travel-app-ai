@@ -554,9 +554,7 @@ class TravelChatAgent:
                 response = self.handle_routes_query(user_message, {})
 
             else:
-                # ================================
-                # 2. Normal AI processing
-                # ================================
+                
                 query_type = self.classify_query(user_message)
 
                 # If message looks like a route request, force route handler
