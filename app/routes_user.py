@@ -59,7 +59,7 @@ def search():
         if type_key in results_by_type:
             results_by_type[type_key].append(data)
 
-        # Only add items that have coordinates for the map
+
         if "coordinates" in data:
             map_items.append({
                 "type": item["type"],
