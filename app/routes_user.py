@@ -133,7 +133,6 @@ def plan_trip():
 
     alternative_routes = routes[1:]
 
-    # Route-based AI recommendations
     query = "Suggest tourist destinations near this travel route in Sri Lanka"
     recommendations = route_based_recommendation(main_route["geometry"], query)
     
