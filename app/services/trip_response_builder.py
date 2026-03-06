@@ -74,9 +74,6 @@ def build_trip_response(start_lat, start_lon, end_lat, end_lon, destination_name
                 "rating": g.get("rating")
             })
 
-    # --------------------------------------------------
-    # 6. Distance Calculation
-    # --------------------------------------------------
     distance_km = haversine(start_lat, start_lon, end_lat, end_lon)
 
     # --------------------------------------------------
