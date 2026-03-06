@@ -160,7 +160,7 @@ def plan_trip():
 def guides(destination_name):
     from models.rag_model import get_guides_for_destination, generate_guide_pitch
 
-    # Try detecting district from user's IP
+
     user_ip = request.remote_addr
     user_district = None
     try:
