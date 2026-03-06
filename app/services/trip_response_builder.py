@@ -36,9 +36,6 @@ def build_trip_response(start_lat, start_lon, end_lat, end_lon, destination_name
             "summary": rec.get("summary")
         })
 
-    # --------------------------------------------------
-    # 3. Hotels near destination
-    # --------------------------------------------------
     hotels = []
     if destination_name:
         hotel_results = search_all_knowledge(destination_name)
