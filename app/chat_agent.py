@@ -549,9 +549,7 @@ class TravelChatAgent:
         })
 
         try:
-            # ================================
-            # 1. PRIORITY: Pending route flow
-            # ================================
+            
             if self.context.get("pending_route"):
                 response = self.handle_routes_query(user_message, {})
 
