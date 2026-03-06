@@ -169,7 +169,7 @@ def ai_assistant():
 
             return jsonify({"success": True, "results": response})
 
-        # ---------------- ADD DEST ----------------
+
         elif task_type == "add_dest":
             results = get_recommendations(query, top_k=1)
             if not results:
