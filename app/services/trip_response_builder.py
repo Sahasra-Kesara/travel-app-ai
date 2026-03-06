@@ -22,9 +22,6 @@ def build_trip_response(start_lat, start_lon, end_lat, end_lon, destination_name
     main_route = routes[0]
     route_geometry = main_route["geometry"]
 
-    # --------------------------------------------------
-    # 2. Route-based destination recommendations
-    # --------------------------------------------------
     query = "Tourist attractions near this route in Sri Lanka"
     recommendations = route_based_recommendation(route_geometry, query)
 
