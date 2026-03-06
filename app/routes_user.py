@@ -23,7 +23,7 @@ user_bp = Blueprint('user', __name__)
 
 @user_bp.route('/')
 def home():
-    # Just show search page
+
     return render_template('home.html')
 
 @user_bp.route("/trip-planner")
