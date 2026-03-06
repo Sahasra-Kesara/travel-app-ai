@@ -25,10 +25,6 @@ def dashboard():
     destinations = data.get("destinations", [])
     return render_template("admin_dashboard.html", destinations=destinations)
 
-
-# ---------------------------
-# Add Destination
-# ---------------------------
 @admin_bp.route("/add-destination", methods=["GET", "POST"])
 def add_destination():
     if request.method == "POST":
