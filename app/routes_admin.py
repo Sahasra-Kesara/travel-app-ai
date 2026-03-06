@@ -161,7 +161,7 @@ def ai_assistant():
                         f"📍 {dest.get('province','')}, {dest.get('district','')}\n"
                         f"✨ {dest.get('description','')}\n"
                         f"🏨 Hotels: {hotels or 'None'}\n"
-                        f"🧑‍🏫 Guides: {guide_text or 'None'}"
+                        f"Guides: {guide_text or 'None'}"
                     ),
                     "lat": dest["coordinates"]["lat"],
                     "lon": dest["coordinates"]["lon"]
