@@ -76,9 +76,6 @@ def build_trip_response(start_lat, start_lon, end_lat, end_lon, destination_name
 
     distance_km = haversine(start_lat, start_lon, end_lat, end_lon)
 
-    # --------------------------------------------------
-    # 7. Vehicles + Fare estimate
-    # --------------------------------------------------
     vehicles = []
     available_vehicles = get_available_vehicles()
 
