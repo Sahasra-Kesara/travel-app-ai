@@ -61,9 +61,6 @@ def build_trip_response(start_lat, start_lon, end_lat, end_lon, destination_name
                     "specialties": m.get("specialties", [])
                 })
 
-    # --------------------------------------------------
-    # 5. Guides
-    # --------------------------------------------------
     guides = []
     if destination_name:
         guide_results = get_guides_route_based(destination_name, route_geometry)
