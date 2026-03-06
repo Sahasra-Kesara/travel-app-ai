@@ -116,7 +116,7 @@ def plan_trip():
     except ValueError:
         return "Invalid destination coordinates.", 400
 
-    # Get routes from OSRM
+
     routes = get_route(start_lat, start_lon, end_lat, end_lon)
     if not routes:
         return "No routes found.", 500
