@@ -122,7 +122,7 @@ def ai_assistant():
 
             return jsonify({"success": True, "results": response})
 
-        # ---------------- TRIP ----------------
+        
         elif task_type == "trip":
             parts = [p.strip() for p in query.lower().split("to")]
             if len(parts) < 2:
