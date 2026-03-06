@@ -112,7 +112,7 @@ def ai_assistant():
         return jsonify({"success": False, "message": "Query is empty!"})
 
     try:
-        # ---------------- RECOMMEND ----------------
+        
         if task_type == "recommend":
             results = get_recommendations(query, top_k=5)
             response = [{
