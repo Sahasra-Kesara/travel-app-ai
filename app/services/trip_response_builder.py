@@ -14,10 +14,6 @@ def build_trip_response(start_lat, start_lon, end_lat, end_lon, destination_name
     """
     Master function that builds full AI travel response
     """
-
-    # --------------------------------------------------
-    # 1. Get Route
-    # --------------------------------------------------
     routes = get_route(start_lat, start_lon, end_lat, end_lon)
 
     if not routes:
