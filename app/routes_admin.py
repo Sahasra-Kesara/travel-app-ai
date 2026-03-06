@@ -15,9 +15,6 @@ admin_bp = Blueprint('admin', __name__, url_prefix="/admin")
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEST_PATH = os.path.join(BASE_DIR, "knowledge_base", "destinations.json")
 
-# ---------------------------
-# Dashboard
-# ---------------------------
 @admin_bp.route("/")
 def dashboard():
     with open(DEST_PATH, "r", encoding="utf-8") as f:
