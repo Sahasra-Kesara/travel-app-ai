@@ -49,9 +49,6 @@ def build_trip_response(start_lat, start_lon, end_lat, end_lon, destination_name
                     "amenities": h.get("amenities", [])
                 })
 
-    # --------------------------------------------------
-    # 4. Hospitals near destination
-    # --------------------------------------------------
     hospitals = []
     if destination_name:
         hospital_results = search_all_knowledge(destination_name)
