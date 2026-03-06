@@ -89,9 +89,7 @@ def build_trip_response(start_lat, start_lon, end_lat, end_lon, destination_name
             "estimated_fare": round(fare, 2) if fare else None
         })
 
-    # --------------------------------------------------
-    # 8. AI Summary
-    # --------------------------------------------------
+
     summary_prompt = f"""
     Create a short travel plan.
 
