@@ -109,7 +109,7 @@ def plan_trip():
         except Exception:
             return "Cannot determine start location. Please enter a city.", 400
 
-    # Destination coordinates
+
     try:
         end_lat = float(request.form["end_lat"])
         end_lon = float(request.form["end_lon"])
