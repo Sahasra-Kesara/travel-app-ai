@@ -1,3 +1,4 @@
+#routes_user.py
 from flask import Blueprint, render_template, request, jsonify
 from models.rag_model import get_recommendations, destinations_with_embeddings
 from flask import render_template, request
