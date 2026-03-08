@@ -1,3 +1,4 @@
+#chat_agent.py
 from models.rag_model import search_all_knowledge, get_recommendations
 from transformers import pipeline
 import torch
