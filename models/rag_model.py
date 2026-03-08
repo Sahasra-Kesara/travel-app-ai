@@ -1,3 +1,4 @@
+#rag_model.py
 import os
 import json
 from sentence_transformers import SentenceTransformer, util
